@@ -61,7 +61,7 @@ const ServiceIcon = {
 // ─── Service data ───────────────────────────────────────────────────────────
 const SERVICES = [
 {
-  key: 'hospitalidade', label: 'Hospitalidade', color: '#2B2B2B', inHero: true,
+  key: 'hospitalidade', label: 'Meet & Greet', color: '#2B2B2B', inHero: true,
   short: 'Atendimento exclusivo, do desembarque ao embarque.',
   headline: 'Sua jornada, cuidada de ponta a ponta.',
   subline: 'Check-in assistido, fast-track e condução até o portão.',

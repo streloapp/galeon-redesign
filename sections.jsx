@@ -182,7 +182,7 @@ function HospitalidadeCard({ mobile }) {
           Check-in assistido, fast-track e condução até o portão.
         </p>
         <div style={{ display: 'flex', flexDirection: mobile ? 'column' : 'row', gap: 10, alignItems: mobile ? 'stretch' : 'center' }}>
-          <button className="gl-btn gl-btn--primary">Garanta sua Hospitalidade {window.GaleonIcon.arrow(14)}</button>
+          <button className="gl-btn gl-btn--primary">Conhecer mais {window.GaleonIcon.arrow(14)}</button>
           <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.65)', marginLeft: mobile ? 0 : 4 }}>
             A partir de R$ 480
           </span>
@@ -366,15 +366,15 @@ const VITRINE_DATA = {
     { brand: 'TFC The Club', dish: 'Embarque internacional', meta: '4h · a partir de R$ 289', slot: 'gl-vit-tfc' }]
 
   },
-  hospitalidade: {
-    eyebrow: 'Hospitalidade',
-    title: 'O que vem incluso.',
-    cta: 'Garanta sua Hospitalidade',
+  transportes: {
+    eyebrow: 'Transportes',
+    title: 'Opções de transfer.',
+    cta: 'Reserve seu transfer',
     items: [
-    { brand: 'Check-in', dish: 'Despacho assistido', meta: 'Sem fila no balcão', slot: 'gl-vit-hosp-1' },
-    { brand: 'Fast-track', dish: 'Inspeção prioritária', meta: 'Você atravessa em minutos', slot: 'gl-vit-hosp-2' },
-    { brand: 'Condução', dish: 'Até o portão', meta: 'Carrinho elétrico exclusivo', slot: 'gl-vit-hosp-3' },
-    { brand: 'Acolhimento', dish: 'Sala de espera privativa', meta: 'Café da manhã ou jantar leve', slot: 'gl-vit-hosp-4' }]
+    { brand: 'Táxi Executivo', dish: 'Transfer privativo', meta: 'Do aeroporto ao destino', slot: 'gl-vit-taxi-1' },
+    { brand: 'Van Compartilhada', dish: 'Transfer econômico', meta: 'Até 8 passageiros', slot: 'gl-vit-taxi-2' },
+    { brand: 'Transfer VIP', dish: 'Veículo premium', meta: 'Mercedes ou similar', slot: 'gl-vit-taxi-3' },
+    { brand: 'Transfer Noturno', dish: 'Disponível 24h', meta: 'Reserva com antecedência', slot: 'gl-vit-taxi-4' }]
 
   }
 };
@@ -390,11 +390,11 @@ function Vitrine({ mobile }) {
           <h2 style={{ fontSize: mobile ? 32 : 56 }}>Mais pedidos</h2>
         </div>
         <div className="gl-tabs">
-          {['delivery', 'vip', 'hospitalidade'].map((k) => {
+          {['delivery', 'vip', 'transportes'].map((k) => {
             const isActive = tab === k;
             const tabColor = k === 'delivery' ? 'var(--c-delivery)' :
               k === 'vip' ? 'var(--c-sala-vip)' :
-              'var(--c-hospitalidade)';
+              'var(--c-transportes)';
             return (
               <button
                 key={k}
@@ -402,7 +402,7 @@ function Vitrine({ mobile }) {
                 data-active={isActive}
                 onClick={() => setTab(k)}
                 style={isActive ? { background: tabColor, color: '#fff' } : undefined}>
-                {k === 'delivery' ? 'Delivery' : k === 'vip' ? 'Sala VIP' : 'Hospitalidade'}
+                {k === 'delivery' ? 'Delivery' : k === 'vip' ? 'Sala VIP' : 'Transportes'}
               </button>);
           })}
         </div>
@@ -804,6 +804,7 @@ function Hospitalidade({ mobile }) {
     <section id="hospitalidade-feature" style={{
       position: 'relative',
       width: '100%',
+      minHeight: '100vh',
       overflow: 'hidden',
       background: 'var(--c-hospitalidade)',
       backgroundImage: 'radial-gradient(ellipse 80% 80% at 50% -20%, rgba(120,119,198,0.3), rgba(255,255,255,0))'
@@ -816,7 +817,8 @@ function Hospitalidade({ mobile }) {
         gap: mobile ? 32 : 40,
         padding: mobile ? '56px 20px' : '80px 56px',
         boxSizing: 'border-box',
-        alignItems: 'stretch'
+        alignItems: 'center',
+        minHeight: '100vh'
       }}>
         {/* Left — content */}
         <div style={{
@@ -826,7 +828,7 @@ function Hospitalidade({ mobile }) {
           color: '#fff'
         }}>
           <span className="gl-eyebrow" style={{ color: '#fff' }}>
-            Hospitalidade
+            Meet & Greet
           </span>
 
           <h2 style={{
@@ -890,7 +892,7 @@ function Hospitalidade({ mobile }) {
             alignSelf: 'flex-start',
             marginTop: mobile ? 4 : 8
           }}>
-            Garanta sua Hospitalidade {window.GaleonIcon && window.GaleonIcon.arrow(13)}
+            Conhecer mais {window.GaleonIcon && window.GaleonIcon.arrow(13)}
           </a>
         </div>
 
@@ -1351,7 +1353,7 @@ function Footer({ mobile }) {
           }
         </div>
         {[
-        { h: 'Serviços', l: ['Hospitalidade', 'Delivery', 'Sala VIP', 'Transportes', 'Guarda-volume', 'Câmbio', 'Personal Shopper'] },
+        { h: 'Serviços', l: ['Meet & Greet', 'Delivery', 'Sala VIP', 'Transportes', 'Guarda-volume', 'Câmbio', 'Personal Shopper'] },
         { h: 'GaleON', l: ['Como funciona', 'Para empresas', 'Para parceiros', 'Imprensa'] },
         { h: 'Ajuda', l: ['Central de atendimento', 'Status do pedido', 'Termos', 'Privacidade'] }].
         map((c, i) =>
