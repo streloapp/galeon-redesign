@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Vitrine card (with image slot)</title>
+<link rel="stylesheet" href="../colors_and_type.css"/>
+<style>
+  html, body { margin: 0; padding: 0; background: #fff; font-family: var(--font-body); color: var(--c-fg); -webkit-font-smoothing: antialiased; font-feature-settings: "ss01","ss02"; }
+  .card { width: 100%; min-height: 230px; padding: 24px 28px; box-sizing: border-box; display: flex; }
+  .meta { font-size: 11px; color: var(--c-muted); letter-spacing: 0.04em; text-transform: uppercase; font-weight: 600; }
+  .hex { font-size: 12px; color: var(--c-muted); font-variant-numeric: tabular-nums; }
+  .gl-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    height: 52px; padding: 0 22px; border-radius: 999px;
+    border: 1px solid transparent; font-weight: 600; font-size: 15px;
+    letter-spacing: -0.005em; cursor: pointer; font-family: inherit;
+    white-space: nowrap; transition: transform .15s ease, background .15s ease;
+  }
+  .gl-btn:hover { transform: translateY(-1px); }
+  .gl-btn--primary { background: var(--c-primary); color: var(--c-primary-ink); }
+  .gl-btn--dark { background: var(--c-fg); color: #fff; }
+  .gl-btn--ghost { background: transparent; color: var(--c-fg); border-color: var(--c-fg); }
+  .gl-btn--sm { height: 40px; padding: 0 16px; font-size: 13px; }
+  .gl-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+    padding: 6px 10px; border-radius: 999px;
+    background: rgba(255,255,255,0.92);
+    color: var(--c-fg);
+    border: 1px solid var(--c-border);
+  }
+  .gl-tag .dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+  .gl-tabs { display: inline-flex; padding: 4px; background: var(--c-bg-soft); border-radius: 999px; gap: 2px; border: 1px solid var(--c-border); }
+  .gl-tab { background: transparent; border: 0; height: 38px; padding: 0 18px; border-radius: 999px; font-weight: 500; font-size: 14px; color: var(--c-muted); font-family: inherit; cursor: pointer; }
+  .gl-tab[data-active="true"] { background: var(--c-fg); color: #fff; }
+  .arrow { width: 14px; height: 14px; }
+</style>
+</head><body><div class="card"><div style="display:flex;gap:14px;width:100%;">
+     
+       <article style="flex:1;background:#fff;border-radius:22px;overflow:hidden;border:1px solid var(--c-border);display:flex;flex-direction:column;">
+         <div style="height:84px;background:linear-gradient(135deg, #FBD8B5, #FBD8B5cc);"></div>
+         <div style="padding:12px 14px;display:flex;flex-direction:column;gap:4px;">
+           <span style="font-size:10px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--c-delivery);">Outback</span>
+           <span style="font-size:14px;font-weight:500;letter-spacing:-0.01em;">Bloomin' Burger</span>
+           <span style="font-size:11px;color:var(--c-muted);">12 min · R$ 64</span>
+         </div>
+       </article>
+       <article style="flex:1;background:#fff;border-radius:22px;overflow:hidden;border:1px solid var(--c-border);display:flex;flex-direction:column;">
+         <div style="height:84px;background:linear-gradient(135deg, #F2E0C5, #F2E0C5cc);"></div>
+         <div style="padding:12px 14px;display:flex;flex-direction:column;gap:4px;">
+           <span style="font-size:10px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--c-delivery);">Cheirin Bão</span>
+           <span style="font-size:14px;font-weight:500;letter-spacing:-0.01em;">Pão de queijo</span>
+           <span style="font-size:11px;color:var(--c-muted);">8 min · R$ 22</span>
+         </div>
+       </article>
+       <article style="flex:1;background:#fff;border-radius:22px;overflow:hidden;border:1px solid var(--c-border);display:flex;flex-direction:column;">
+         <div style="height:84px;background:linear-gradient(135deg, #E8D3BD, #E8D3BDcc);"></div>
+         <div style="padding:12px 14px;display:flex;flex-direction:column;gap:4px;">
+           <span style="font-size:10px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--c-delivery);">Spoleto</span>
+           <span style="font-size:14px;font-weight:500;letter-spacing:-0.01em;">Penne ao rosé</span>
+           <span style="font-size:11px;color:var(--c-muted);">10 min · R$ 38</span>
+         </div>
+       </article>
+   </div></div></body></html>

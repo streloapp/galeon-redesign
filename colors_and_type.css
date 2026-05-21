@@ -1,0 +1,106 @@
+/* ──────────────────────────────────────────────────────────────────────────
+   GaleON Design System — colors, type, spacing tokens
+   Single source of truth. Mirror of styles.css in the prototype.
+   ────────────────────────────────────────────────────────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* ── Brand ─────────────────────────────────────────────────────────── */
+  --c-primary:        #9ACA3C;   /* GaleON green */
+  --c-primary-ink:    #1f2a0c;   /* readable on primary */
+
+  /* ── Neutrals (warm) ───────────────────────────────────────────────── */
+  --c-bg:             #FFFFFF;   /* page */
+  --c-bg-soft:        #F7F7F4;   /* alt section */
+  --c-fg:             #0E0F0E;   /* body text */
+  --c-muted:          #6B6B68;   /* secondary text */
+  --c-border:         #E7E6E1;   /* hairline */
+  --c-border-strong:  #1f1f1f;   /* heavy dividers */
+
+  /* ── Service palette (one color per offering) ──────────────────────── */
+  --c-hospitalidade:  #2B2B2B;
+  --c-delivery:       #ED1C24;
+  --c-sala-vip:       #822A85;
+  --c-transportes:    #C58200;
+  --c-guarda:         #F58220;
+  --c-cambio:         #009B90;
+  --c-personal:       #ED0080;
+
+  /* ── Radii ─────────────────────────────────────────────────────────── */
+  --r-sm:  8px;
+  --r-md:  14px;
+  --r-lg:  22px;
+  --r-xl:  32px;
+  --r-pill: 999px;
+
+  /* ── Type ──────────────────────────────────────────────────────────── */
+  --font-body: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-serif-italic: Georgia, "Times New Roman", serif;
+
+  /* Display sizes (desktop) */
+  --type-h1-display:  132px;  /* Statement hero  */
+  --type-h1:          92px;   /* Cinema hero     */
+  --type-h2:          64px;   /* Section title   */
+  --type-h2-compact:  52px;
+  --type-h3:          44px;   /* Subhead         */
+  --type-h3-card:     34px;
+  --type-h4:          22px;
+  --type-body-lg:     19px;
+  --type-body:        16px;
+  --type-body-sm:     15px;
+  --type-meta:        14px;
+  --type-micro:       13px;
+  --type-eyebrow:     12px;
+
+  /* Letter spacing (display vs body) */
+  --tracking-display:  -0.05em;
+  --tracking-h1:       -0.045em;
+  --tracking-h2:       -0.035em;
+  --tracking-h3:       -0.025em;
+  --tracking-body:     -0.01em;
+  --tracking-eyebrow:   0.06em;
+
+  /* Line heights */
+  --leading-display:   0.92;
+  --leading-h1:        0.96;
+  --leading-h2:        1.0;
+  --leading-h3:        1.15;
+  --leading-body:      1.45;
+
+  /* ── Spacing scale (used informally; sections use raw values) ──────── */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+}
+
+/* ── Semantic typography helpers ─────────────────────────────────────── */
+.ds-h1 { font-family: var(--font-body); font-weight: 600; font-size: var(--type-h1); line-height: var(--leading-h1); letter-spacing: var(--tracking-h1); }
+.ds-h2 { font-family: var(--font-body); font-weight: 600; font-size: var(--type-h2); line-height: var(--leading-h2); letter-spacing: var(--tracking-h2); }
+.ds-h3 { font-family: var(--font-body); font-weight: 600; font-size: var(--type-h3); line-height: var(--leading-h3); letter-spacing: var(--tracking-h3); }
+.ds-h4 { font-family: var(--font-body); font-weight: 600; font-size: var(--type-h4); line-height: 1.25; letter-spacing: var(--tracking-body); }
+.ds-body-lg { font-family: var(--font-body); font-size: var(--type-body-lg); line-height: var(--leading-body); color: var(--c-muted); }
+.ds-body { font-family: var(--font-body); font-size: var(--type-body); line-height: var(--leading-body); }
+.ds-body-sm { font-family: var(--font-body); font-size: var(--type-body-sm); line-height: var(--leading-body); color: var(--c-muted); }
+.ds-eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--type-eyebrow); font-weight: 600;
+  letter-spacing: var(--tracking-eyebrow); text-transform: uppercase;
+  color: var(--c-muted);
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.ds-eyebrow::before { content: ""; width: 22px; height: 1px; background: currentColor; }
+
+/* ── Numerals ────────────────────────────────────────────────────────── */
+.ds-num {
+  font-family: var(--font-body); font-weight: 600;
+  font-feature-settings: "ss01", "ss02";
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.045em; line-height: 0.92;
+}

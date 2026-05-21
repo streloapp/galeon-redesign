@@ -1,0 +1,183 @@
+/* GaleON — system tokens */
+:root {
+  --c-primary: #9ACA3C;
+  --c-primary-ink: #1f2a0c;
+  --c-bg: #FFFFFF;
+  --c-bg-soft: #F7F7F4;
+  --c-fg: #0E0F0E;
+  --c-muted: #6B6B68;
+  --c-border: #E7E6E1;
+  --c-border-strong: #1f1f1f;
+
+  --c-hospitalidade: #2B2B2B;
+  --c-delivery: #ED1C24;
+  --c-sala-vip: #822A85;
+  --c-transportes: #E5A91D;
+  --c-guarda: #F58220;
+  --c-cambio: #009B90;
+  --c-personal: #ED0080;
+
+  --r-sm: 8px;
+  --r-md: 14px;
+  --r-lg: 22px;
+  --r-xl: 32px;
+
+  --font-body: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+/* Page reset scoped to .galeao */
+.galeao, .galeao * { box-sizing: border-box; }
+.galeao {
+  font-family: var(--font-body);
+  color: var(--c-fg);
+  background: var(--c-bg);
+  letter-spacing: -0.01em;
+  font-feature-settings: "ss01", "ss02";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  position: relative;
+}
+.galeao img { display: block; max-width: 100%; }
+.galeao a { color: inherit; text-decoration: none; }
+.galeao button { font: inherit; cursor: pointer; }
+.galeao h1, .galeao h2, .galeao h3, .galeao h4 { margin: 0; font-weight: 600; letter-spacing: -0.035em; line-height: 0.96; text-wrap: balance; }
+.galeao p { margin: 0; text-wrap: pretty; }
+
+/* Buttons */
+.gl-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  height: 52px; padding: 0 22px; border-radius: 999px;
+  border: 1px solid transparent; font-weight: 600; font-size: 15px;
+  letter-spacing: -0.005em;
+  transition: transform .15s ease, background-color .15s ease, color .15s ease, border-color .15s ease;
+  white-space: nowrap;
+}
+.gl-btn:hover { transform: translateY(-1px); }
+.gl-btn--primary { background: var(--c-primary); color: var(--c-primary-ink); }
+.gl-btn--primary:hover { background: #88b832; }
+.gl-btn--ghost { background: transparent; color: var(--c-fg); border-color: var(--c-fg); }
+.gl-btn--ghost:hover { background: var(--c-fg); color: #fff; }
+.gl-btn--dark { background: var(--c-fg); color: #fff; }
+.gl-btn--sm { height: 40px; padding: 0 16px; font-size: 13px; }
+.gl-btn .gl-arrow { transition: transform .2s ease; }
+.gl-btn:hover .gl-arrow { transform: translateX(3px); }
+
+/* Tag chip */
+.gl-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+  padding: 6px 10px; border-radius: 999px;
+  background: rgba(255,255,255,0.92);
+  color: var(--c-fg);
+  border: 1px solid var(--c-border);
+}
+.gl-tag .dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+
+/* Section frame */
+.gl-section { padding: 96px 56px; }
+.gl-section--tight { padding: 64px 56px; }
+.gl-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--c-muted);
+}
+.gl-eyebrow::before {
+  content: ""; width: 22px; height: 1px; background: currentColor;
+}
+
+/* Image slot helpers */
+image-slot {
+  background: linear-gradient(135deg, #efeee9 0%, #e3e2dc 100%);
+  display: block;
+}
+
+/* Hide horizontal scroll bars in vitrine */
+.gl-hscroll::-webkit-scrollbar { display: none; }
+.gl-hscroll { scrollbar-width: none; }
+
+/* Mobile-specific */
+.galeao[data-vp="mobile"] { font-size: 15px; }
+.galeao[data-vp="mobile"] .gl-section { padding: 64px 20px; }
+.galeao[data-vp="mobile"] .gl-section--tight { padding: 48px 20px; }
+.galeao[data-vp="mobile"] .gl-btn { height: 48px; padding: 0 18px; }
+
+/* Tab pill */
+.gl-tabs { display: inline-flex; padding: 4px; background: var(--c-bg-soft); border-radius: 999px; gap: 2px; border: 1px solid var(--c-border); }
+.gl-tab { background: transparent; border: 0; height: 38px; padding: 0 18px; border-radius: 999px; font-weight: 500; font-size: 14px; color: var(--c-muted); letter-spacing: -0.005em; }
+.gl-tab[data-active="true"] { background: var(--c-primary); color: var(--c-primary-ink); }
+
+/* Marquee for partners */
+@keyframes gl-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.gl-marquee-track { display: flex; gap: 80px; width: max-content; animation: gl-marquee 38s linear infinite; }
+.galeao[data-vp="mobile"] .gl-marquee-track { gap: 48px; animation-duration: 26px; }
+
+/* Card hover */
+.gl-card { transition: transform .35s cubic-bezier(.2,.7,.3,1), border-color .2s ease; }
+.gl-card:hover { transform: translateY(-3px); }
+
+/* Hero crossfade — keyframe-driven; runs on key change. */
+@keyframes gl-fadein { from { opacity: 0; } to { opacity: 1; } }
+.gl-hero-anim { animation: gl-fadein 320ms ease both; }
+
+/* Service chips bar (top of hero) — static, with per-chip progress bar. */
+.gl-svc-top-chip {
+  position: relative;
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 16px 24px 18px; border-radius: var(--r-md);
+  background: rgba(20,20,18,0.28); color: rgba(255,255,255,0.82);
+  border: 1px solid rgba(255,255,255,0.14);
+  font: inherit; font-weight: 500; font-size: 14px; letter-spacing: -0.005em;
+  white-space: nowrap; cursor: pointer;
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+          backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+  transition: color .2s ease, background-color .2s ease, border-color .2s ease;
+}
+.gl-svc-top-chip:hover { color: #fff; background: rgba(20,20,18,0.42); }
+.gl-svc-top-chip[data-active="true"] {
+  background: rgba(255,255,255,0.18);
+  color: #fff;
+  border-color: rgba(255,255,255,0.28);
+  font-weight: 700;
+}
+/* Bare variant — inside a glass bar; no own bg/border. Used on mobile
+   compact bar and the desktop full-width container. */
+.gl-svc-top-chip--bare {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+          backdrop-filter: none;
+  padding: 15px 18px 17px;
+  justify-content: center;
+}
+.gl-svc-top-chip--bare:hover { background: rgba(255,255,255,0.10); }
+.gl-svc-top-chip--bare[data-active="true"] {
+  background: rgba(255,255,255,0.14);
+  border-color: transparent;
+}
+.gl-svc-progress {
+  position: absolute; left: 16px; right: 16px; bottom: 6px; height: 2px;
+  background: rgba(255,255,255,0.16); border-radius: 1px;
+  overflow: hidden;
+}
+.gl-svc-progress::after {
+  content: ""; display: block; height: 100%; width: 100%;
+  background: var(--chip-c, #fff);
+  transform-origin: left; transform: scaleX(0);
+  animation: gl-progress 4500ms linear forwards;
+  border-radius: 1px;
+}
+@keyframes gl-progress { to { transform: scaleX(1); } }
+
+/* Pause progress + rotate-related anims while user is dragging a file in. */
+body.gl-is-dragging .gl-svc-progress::after { animation-play-state: paused; }
+body.gl-is-dragging .gl-hero-anim { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  .gl-hero-anim { animation: none; }
+  .gl-svc-progress::after { animation: none; transform: scaleX(0); }
+}
+
+/* Subtle grid line that fades */
+.gl-divider { height: 1px; background: var(--c-border); width: 100%; }

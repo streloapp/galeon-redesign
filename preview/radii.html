@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Border radii</title>
+<link rel="stylesheet" href="../colors_and_type.css"/>
+<style>
+  html, body { margin: 0; padding: 0; background: #fff; font-family: var(--font-body); color: var(--c-fg); -webkit-font-smoothing: antialiased; font-feature-settings: "ss01","ss02"; }
+  .card { width: 100%; min-height: 200px; padding: 24px 28px; box-sizing: border-box; display: flex; }
+  .meta { font-size: 11px; color: var(--c-muted); letter-spacing: 0.04em; text-transform: uppercase; font-weight: 600; }
+  .hex { font-size: 12px; color: var(--c-muted); font-variant-numeric: tabular-nums; }
+</style>
+</head><body><div class="card"><div style="display:flex;align-items:flex-end;gap:18px;width:100%;justify-content:space-between;">
+    
+      <div style="display:flex;flex-direction:column;gap:8px;align-items:center;flex:1;">
+        <div style="width:90px;height:90px;background:var(--c-bg-soft);border:1px solid var(--c-border);border-radius:8px;"></div>
+        <div style="font-size:12px;font-weight:600;">sm</div>
+        <div class="hex">8 px</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;align-items:center;flex:1;">
+        <div style="width:90px;height:90px;background:var(--c-bg-soft);border:1px solid var(--c-border);border-radius:14px;"></div>
+        <div style="font-size:12px;font-weight:600;">md</div>
+        <div class="hex">14 px</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;align-items:center;flex:1;">
+        <div style="width:90px;height:90px;background:var(--c-bg-soft);border:1px solid var(--c-border);border-radius:22px;"></div>
+        <div style="font-size:12px;font-weight:600;">lg</div>
+        <div class="hex">22 px</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;align-items:center;flex:1;">
+        <div style="width:90px;height:90px;background:var(--c-bg-soft);border:1px solid var(--c-border);border-radius:32px;"></div>
+        <div style="font-size:12px;font-weight:600;">xl</div>
+        <div class="hex">32 px</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;align-items:center;flex:1;">
+        <div style="width:90px;height:90px;background:var(--c-bg-soft);border:1px solid var(--c-border);border-radius:999px;"></div>
+        <div style="font-size:12px;font-weight:600;">pill</div>
+        <div class="hex">999 px</div>
+      </div>
+   </div></div></body></html>
