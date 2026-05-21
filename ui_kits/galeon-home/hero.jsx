@@ -61,7 +61,7 @@ const ServiceIcon = {
 // ─── Service data ───────────────────────────────────────────────────────────
 const SERVICES = [
 {
-  key: 'hospitalidade', label: 'Hospitalidade', color: '#2B2B2B', inHero: true,
+  key: 'hospitalidade', label: 'Hospitalidade', caption: 'Recepção personalizada', color: '#2B2B2B', inHero: true,
   short: 'Atendimento exclusivo, do desembarque ao embarque.',
   headline: 'Sua jornada, cuidada de ponta a ponta.',
   subline: 'Check-in assistido, fast-track e condução até o portão.',
@@ -70,7 +70,7 @@ const SERVICES = [
   photo: 'atendente da Hospitalidade recebendo passageiro'
 },
 {
-  key: 'delivery', label: 'Delivery', color: '#ED1C24', inHero: true,
+  key: 'delivery', label: 'Delivery', caption: 'Entregas no portão', color: '#ED1C24', inHero: true,
   short: 'Comida no portão de embarque, em 12 min.',
   headline: 'Comer sem sair do portão de embarque.',
   subline: 'Restaurantes do Galeão entregam no seu assento em 12 min.',
@@ -79,7 +79,7 @@ const SERVICES = [
   photo: 'bandeja entregue no portão de embarque'
 },
 {
-  key: 'vip', label: 'Sala VIP', color: '#822A85', inHero: true,
+  key: 'vip', label: 'Sala VIP', caption: 'Acesso a salas exclusivas', color: '#822A85', inHero: true,
   short: 'Embarque com privacidade e conforto.',
   headline: 'Embarque sem barulho, com chuveiro e bebida.',
   subline: 'Salas domésticas e internacionais por hora, sem milhas.',
@@ -88,7 +88,7 @@ const SERVICES = [
   photo: 'sala VIP com vista para a pista'
 },
 {
-  key: 'transportes', label: 'Transportes', color: '#C58200', inHero: true,
+  key: 'transportes', label: 'Transportes', caption: 'Comuns e executivos', color: '#C58200', inHero: true,
   short: 'Táxi e transfer, planejado ou imediato.',
   headline: 'Táxi e transfer pra começar leve.',
   subline: 'Motorista te encontra no portão certo, no horário certo.',
@@ -97,7 +97,7 @@ const SERVICES = [
   photo: 'van de transfer encostada no terminal'
 },
 {
-  key: 'guarda', label: 'Guarda-volume', color: '#F58220', inHero: true,
+  key: 'guarda', label: 'Guarda-volume', caption: 'Locação de armários', color: '#F58220', inHero: true,
   short: 'Bagagem em segurança no aeroporto.',
   headline: 'Deixe a bagagem em segurança e ande leve.',
   subline: 'Despache as malas no aeroporto e retire quando voltar.',
@@ -106,7 +106,7 @@ const SERVICES = [
   photo: 'compartimentos do guarda-volume do Galeão'
 },
 {
-  key: 'cambio', label: 'Câmbio', color: '#009B90', inHero: true,
+  key: 'cambio', label: 'Câmbio', caption: 'Moedas internacionais', color: '#009B90', inHero: true,
   short: 'Troque moeda sem fila.',
   headline: 'Troque moeda sem fila.',
   subline: 'Reserve a taxa antes e retire no balcão do Galeão.',
@@ -115,7 +115,7 @@ const SERVICES = [
   photo: 'balcão de câmbio do Galeão'
 },
 {
-  key: 'personal', label: 'Personal Shopper', color: '#ED0080', inHero: true,
+  key: 'personal', label: 'Personal Shopper', caption: 'Assistência para compras', color: '#ED0080', inHero: true,
   short: 'Alguém compra por você nas lojas.',
   headline: 'Alguém compra por você nas lojas.',
   subline: 'Diga o que quer; entregamos antes do embarque.',
@@ -222,7 +222,7 @@ function ServicesDropdown({ open, setOpen }) {
           }}>{ServiceIcon[s.key](18)}</span>
             <span style={{ display: 'flex', flexDirection: 'column' }}>
               <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--c-fg)' }}>{s.label}</span>
-              <span style={{ fontSize: 12, color: 'var(--c-muted)' }}>Ver detalhes →</span>
+              <span style={{ fontSize: 12, color: 'var(--c-muted)' }}>{s.caption}</span>
             </span>
           </a>
         )}
