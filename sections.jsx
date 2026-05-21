@@ -1371,7 +1371,7 @@ function Footer({ mobile }) {
         fontSize: 13, color: 'var(--c-muted)', flexWrap: 'wrap', gap: 12
       }}>
         <span>© 2026 GaleON · RIOgaleão</span>
-        <span>Aeroporto Internacional do Rio de Janeiro — Tom Jobim</span>
+        <img src="uploads/desenvolvido-pelo-strelo.webp" alt="Desenvolvido pelo Strelo" style={{ height: 20 }} />
       </div>
     </footer>);
 
