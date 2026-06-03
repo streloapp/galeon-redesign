@@ -323,18 +323,22 @@ function ServicesDropdown({ open, setOpen }) {
         Serviços <span style={{ transform: open ? 'rotate(180deg)' : 'none', transition: 'transform .2s' }}>{Icon.chevron(13)}</span>
       </button>
       <div style={{
-        position: 'absolute', top: 'calc(100% + 8px)', right: 0,
-        background: '#fff', borderRadius: 16, padding: 12,
-        boxShadow: '0 12px 40px rgba(0,0,0,0.10), 0 0 0 1px var(--c-border)',
-        minWidth: 480,
+        position: 'absolute', top: '100%', right: 0,
+        paddingTop: 8,
         opacity: open ? 1 : 0,
         transform: open ? 'translateY(0)' : 'translateY(-6px)',
         pointerEvents: open ? 'auto' : 'none',
         transition: 'opacity .18s ease, transform .18s ease',
-        display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 4
+        zIndex: 20
       }}>
+        <div style={{
+          background: '#fff', borderRadius: 16, padding: 12,
+          boxShadow: '0 12px 40px rgba(0,0,0,0.10), 0 0 0 1px var(--c-border)',
+          minWidth: 480,
+          display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 4
+        }}>
         {SERVICES.map((s) =>
-        <a key={s.key} href={`#${s.key}`} onClick={() => setOpen(false)} style={{
+        <a key={s.key} href={s.key === 'hospitalidade' ? 'Meet%20%26%20Greet.html' : `#${s.key}`} onClick={() => setOpen(false)} style={{
           display: 'flex', alignItems: 'center', gap: 12,
           padding: '12px 14px', borderRadius: 10,
           transition: 'background .15s ease'
@@ -351,6 +355,7 @@ function ServicesDropdown({ open, setOpen }) {
             </span>
           </a>
         )}
+        </div>
       </div>
     </div>);
 
@@ -489,6 +494,14 @@ function HeroSplit({ mobile, active, onSelect }) {
             <p style={{ fontSize: mobile ? 15 : 19, color: 'rgba(255,255,255,0.86)', maxWidth: 560, lineHeight: 1.4 }}>
               {s.subline}
             </p>
+            {s.key === 'hospitalidade' ?
+            <a href="Meet%20%26%20Greet.html" className="gl-btn" style={{
+              background: s.color, color: '#fff', marginTop: mobile ? 4 : 6,
+              pointerEvents: 'auto', textDecoration: 'none',
+              transition: 'background-color .35s ease'
+            }}>
+              {s.cta} {Icon.arrow(14)}
+            </a> :
             <button className="gl-btn" style={{
               background: s.color, color: '#fff', marginTop: mobile ? 4 : 6,
               pointerEvents: 'auto',
@@ -496,6 +509,7 @@ function HeroSplit({ mobile, active, onSelect }) {
             }}>
               {s.cta} {Icon.arrow(14)}
             </button>
+            }
           </div>
         </div>
         <ServiceChipsTop active={active} onSelect={onSelect} mobile={mobile} />

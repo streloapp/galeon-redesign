@@ -182,7 +182,7 @@ function HospitalidadeCard({ mobile }) {
           Check-in assistido, fast-track e condução até o portão.
         </p>
         <div style={{ display: 'flex', flexDirection: mobile ? 'column' : 'row', gap: 10, alignItems: mobile ? 'stretch' : 'center' }}>
-          <button className="gl-btn gl-btn--primary">Conhecer mais {window.GaleonIcon.arrow(14)}</button>
+          <a href="Meet%20%26%20Greet.html" className="gl-btn gl-btn--primary" style={{ textDecoration: 'none' }}>Conhecer mais {window.GaleonIcon.arrow(14)}</a>
           <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.65)', marginLeft: mobile ? 0 : 4 }}>
             A partir de R$ 480
           </span>
@@ -220,10 +220,10 @@ function DeliveryCard({ mobile }) {
       </div>
       <div style={{ padding: mobile ? '22px 22px 26px' : '32px 32px 36px', display: 'flex', flexDirection: 'column', gap: 16, flex: 1 }}>
         <h3 style={{ fontSize: mobile ? 28 : 34 }}>
-          Comer sem sair do portão.
+          Peça sua comida sem sair do portão de embarque
         </h3>
         <p style={{ color: 'var(--c-muted)', fontSize: mobile ? 15 : 16, lineHeight: 1.45, flex: 1 }}>
-          Restaurantes do Galeão entregam no assento em 12 min.
+          Mais de 30 restaurantes do RIOgaleão entregam direto para você. Em até 30 minutos.
         </p>
         <button className="gl-btn gl-btn--dark" style={{ alignSelf: 'flex-start' }}>
           Peça no portão de embarque {window.GaleonIcon.arrow(14)}
@@ -885,7 +885,7 @@ function Hospitalidade({ mobile }) {
             )}
           </ul>
 
-          <a href="#hospitalidade" style={{
+          <a href="Meet%20%26%20Greet.html" style={{
             display: 'inline-flex', alignItems: 'center', gap: 10,
             color: '#fff', fontSize: 14, fontWeight: 600,
             letterSpacing: '-0.005em', textDecoration: 'none',
