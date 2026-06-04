@@ -338,7 +338,7 @@ function ServicesDropdown({ open, setOpen }) {
           display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 4
         }}>
         {SERVICES.map((s) =>
-        <a key={s.key} href={s.key === 'hospitalidade' ? 'Meet%20%26%20Greet.html' : `#${s.key}`} onClick={() => setOpen(false)} style={{
+        <a key={s.key} href={s.key === 'hospitalidade' ? 'meet-greet.html' : `#${s.key}`} onClick={() => setOpen(false)} style={{
           display: 'flex', alignItems: 'center', gap: 12,
           padding: '12px 14px', borderRadius: 10,
           transition: 'background .15s ease'
@@ -495,7 +495,7 @@ function HeroSplit({ mobile, active, onSelect }) {
               {s.subline}
             </p>
             {s.key === 'hospitalidade' ?
-            <a href="Meet%20%26%20Greet.html" className="gl-btn" style={{
+            <a href="meet-greet.html" className="gl-btn" style={{
               background: s.color, color: '#fff', marginTop: mobile ? 4 : 6,
               pointerEvents: 'auto', textDecoration: 'none',
               transition: 'background-color .35s ease'

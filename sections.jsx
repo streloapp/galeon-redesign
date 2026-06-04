@@ -182,7 +182,7 @@ function HospitalidadeCard({ mobile }) {
           Check-in assistido, fast-track e condução até o portão.
         </p>
         <div style={{ display: 'flex', flexDirection: mobile ? 'column' : 'row', gap: 10, alignItems: mobile ? 'stretch' : 'center' }}>
-          <a href="Meet%20%26%20Greet.html" className="gl-btn gl-btn--primary" style={{ textDecoration: 'none' }}>Conhecer mais {window.GaleonIcon.arrow(14)}</a>
+          <a href="meet-greet.html" className="gl-btn gl-btn--primary" style={{ textDecoration: 'none' }}>Conhecer mais {window.GaleonIcon.arrow(14)}</a>
           <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.65)', marginLeft: mobile ? 0 : 4 }}>
             A partir de R$ 480
           </span>
@@ -885,7 +885,7 @@ function Hospitalidade({ mobile }) {
             )}
           </ul>
 
-          <a href="Meet%20%26%20Greet.html" style={{
+          <a href="meet-greet.html" style={{
             display: 'inline-flex', alignItems: 'center', gap: 10,
             color: '#fff', fontSize: 14, fontWeight: 600,
             letterSpacing: '-0.005em', textDecoration: 'none',
