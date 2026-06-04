@@ -133,7 +133,8 @@ const MG_SERVICES = [
       { tier: 'por pessoa', value: 'R$ 999' }
     ],
     cta: 'Reservar',
-    slot: 'mg-conexoes', photo: 'passageiro sendo conduzido entre portões de conexão'
+    slot: 'mg-conexoes', photo: 'passageiro sendo conduzido entre portões de conexão',
+    src: 'assets/mg-conexoes.jpg'
   },
 
   // ── Para grupos e empresas ──────────────────────────────────────────────

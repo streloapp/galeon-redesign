@@ -309,7 +309,9 @@ body.gl-is-dragging .mg-hero-media image-slot { animation-play-state: paused; }
   position: relative; flex: 0 0 100%; height: 100%;
   transition: transform .7s cubic-bezier(.2,.7,.3,1); will-change: transform;
 }
-.mg-gallery:hover .mg-gallery__slide { transform: scale(1.04); }
+/* Zoom só no slide ATIVO — escalar os slides vizinhos (fora da tela) fazia a
+   borda deles vazar pela lateral da janela visível. */
+.mg-gallery:hover .mg-gallery__slide.is-active { transform: scale(1.04); }
 .mg-gallery__dots {
   position: absolute; left: 0; right: 0; bottom: 16px; z-index: 4;
   display: flex; gap: 8px; justify-content: center;

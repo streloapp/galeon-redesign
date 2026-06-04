@@ -47,9 +47,9 @@ function MGGallery({ images }) {
   return (
     <div className="mg-gallery">
       <div className="mg-gallery__track" style={{ transform: `translateX(-${idx * 100}%)` }}>
-        {images.map((im) =>
-        <div className="mg-gallery__slide" key={im.slot}>
-            <image-slot id={im.slot} shape="rect" fit="cover" placeholder={`foto: ${im.photo}`}></image-slot>
+        {images.map((im, i) =>
+        <div className={'mg-gallery__slide' + (i === idx ? ' is-active' : '')} key={im.slot}>
+            <image-slot id={im.slot} shape="rect" fit="cover" src={im.src} placeholder={`foto: ${im.photo}`}></image-slot>
           </div>
         )}
       </div>
@@ -89,7 +89,7 @@ function MGFamBody({ s, mobile, style }) {
 //             (mirrors the Home "Serviços" card language)
 function MGServiceCard({ s, side, mobile, variant = 'overlap' }) {
   const imgLeft = side === 'left';
-  const gallery = s.gallery || [{ slot: s.slot, photo: s.photo }];
+  const gallery = s.gallery || [{ slot: s.slot, photo: s.photo, src: s.src }];
   const media = (style) =>
     <div className="mg-fam__media" style={style}><MGGallery images={gallery} /></div>;
 
