@@ -80,7 +80,7 @@ const MG_SERVICES = [
       { icon: 'vip', label: 'Acesso à sala VIP' }
     ],
     prices: [
-      { tier: 'para doméstico', value: 'R$ 1.099' },
+      { tier: 'para doméstico', value: 'R$ 1.199' },
       { tier: 'para internacional', value: 'R$ 1.349' }
     ],
     priceUnit: 'Preço por pessoa',
@@ -106,7 +106,7 @@ const MG_SERVICES = [
       { icon: 'suporte', label: 'Suporte dedicado na jornada' }
     ],
     prices: [
-      { tier: 'para doméstico', value: 'R$ 1.199' },
+      { tier: 'para doméstico', value: 'R$ 1.349' },
       { tier: 'para internacional', value: 'R$ 1.499' }
     ],
     priceUnit: 'Preço por pessoa',
@@ -130,7 +130,7 @@ const MG_SERVICES = [
       { icon: 'suporte', label: 'Suporte na jornada' }
     ],
     prices: [
-      { tier: 'por pessoa', value: 'R$ 899' }
+      { tier: 'por pessoa', value: 'R$ 999' }
     ],
     cta: 'Reservar',
     slot: 'mg-conexoes', photo: 'passageiro sendo conduzido entre portões de conexão'

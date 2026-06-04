@@ -7,17 +7,20 @@
 
 function mgIsQuote(s) {return !/^R\$/.test(s.price.value);}
 
-// ─── Price block — two tiers (doméstico / internacional), page style ────────
+// Valor numérico de "R$ 1.199" → 1199, para comparar tiers.
+function mgPriceNum(v) { return parseInt(String(v).replace(/\D/g, ''), 10) || 0; }
+
+// ─── Price block — só o menor preço entre os tiers (doméstico/internacional),
+//     no padrão "A partir de … /pessoa" dos demais cards ──────────────────────
 function MGFamPrice({ s }) {
+  const lowest = s.prices.reduce((a, b) => (mgPriceNum(b.value) < mgPriceNum(a.value) ? b : a));
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-      {s.prices.map((p) =>
-      <div key={p.tier} style={{ display: 'flex', alignItems: 'baseline', gap: 7, flexWrap: 'wrap' }}>
-          <span className="ds-num" style={{ fontSize: 24, fontWeight: 600, color: 'var(--c-fg)', letterSpacing: '-0.02em' }}>{p.value}</span>
-          <span style={{ fontSize: 16, color: 'var(--c-muted)' }}>{p.tier}</span>
-        </div>
-      )}
-      {s.priceUnit && <div style={{ fontSize: 13, color: 'var(--c-muted)', marginTop: 2 }}>{s.priceUnit}</div>}
+      <span style={{ fontSize: 14, color: 'var(--c-muted)' }}>A partir de</span>
+      <div style={{ display: 'flex', alignItems: 'baseline', gap: 7, flexWrap: 'wrap' }}>
+        <span className="ds-num" style={{ fontSize: 24, fontWeight: 600, color: 'var(--c-fg)', letterSpacing: '-0.02em' }}>{lowest.value}</span>
+        <span style={{ fontSize: 12, color: 'var(--c-muted)' }}>/pessoa</span>
+      </div>
     </div>);
 
 }
