@@ -32,7 +32,7 @@ function MGCarouselSlide({ s }) {
         </div>
         <div style={{ marginTop: 22, display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 22 }}>
           <MGCarPrice s={s} />
-          <button className="gl-btn gl-btn--sm" style={{ background: 'var(--c-mg)', color: '#fff', fontWeight: '600', flexShrink: 0 }}>Saber mais {Icon.arrow(13)}</button>
+          <button className="gl-btn gl-btn--sm" style={{ background: '#fff', color: 'var(--c-ink)', fontWeight: '600', flexShrink: 0 }}>Saber mais {Icon.arrow(13)}</button>
         </div>
       </div>
     </article>

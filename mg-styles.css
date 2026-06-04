@@ -4,10 +4,11 @@
    ────────────────────────────────────────────────────────────────────────── */
 
 :root {
-  --c-mg:        #2B2B2B;   /* graphite accent */
-  --c-mg-ink:    #FFFFFF;
-  --c-mg-soft:   #F4F3F1;   /* warm graphite-tinted surface */
-  --c-ink:       #15110D;   /* near-black for cinematic surfaces */
+  --c-mg:         #2B2B2B;   /* graphite accent */
+  --c-mg-ink:     #FFFFFF;
+  --c-mg-soft:    #F4F3F1;   /* warm graphite-tinted surface */
+  --c-mg-surface: #1A1A1A;   /* faixa escura — entre #0E0F0E e o card #2B2B2B */
+  --c-ink:        #15110D;   /* near-black for cinematic surfaces */
 }
 
 /* Page root reuses .galeao scope from styles.css. */
@@ -335,7 +336,7 @@ body.gl-is-dragging .mg-hero-media image-slot { animation-play-state: paused; }
    Para grupos e empresas — dark band + horizontal carousel (Anexo 2)
    ══════════════════════════════════════════════════════════════════════════ */
 .mg-emp {
-  background: #0E0F0E; color: #fff;
+  background: var(--c-mg-surface); color: #fff;
   padding: 104px 56px; overflow: hidden; scroll-margin-top: 80px;
 }
 .mg-emp__inner {
@@ -348,12 +349,18 @@ body.gl-is-dragging .mg-hero-media image-slot { animation-play-state: paused; }
 }
 
 .mg-emp-card {
+  /* Teste dark mode: redefine as variáveis de texto só no card, então os
+     estilos inline (var(--c-fg)/var(--c-muted)) viram claros sem mexer no JSX. */
+  --c-fg: #fff;
+  --c-muted: rgba(255,255,255,0.62);
   min-width: 0;
-  background: var(--c-bg-soft); border-radius: var(--r-lg); overflow: hidden;
+  background: var(--c-mg);
+  border-radius: var(--r-lg); overflow: hidden;
+  box-shadow: 0 16px 44px rgba(0,0,0,0.35);
   display: flex; flex-direction: column; min-height: 480px;
 }
 .mg-emp-card__media {
-  position: relative; aspect-ratio: 5/3; background: var(--c-mg-soft);
+  position: relative; aspect-ratio: 5/3; background: var(--c-mg);
 }
 .mg-emp-card__media image-slot {
   position: absolute; inset: 0; width: 100%; height: 100%;
