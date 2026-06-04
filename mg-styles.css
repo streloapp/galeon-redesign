@@ -374,7 +374,7 @@ body.gl-is-dragging .mg-hero-media image-slot { animation-play-state: paused; }
 
 .galeao[data-vp="mobile"] .mg-emp { padding: 64px 20px; }
 .galeao[data-vp="mobile"] .mg-emp__inner { gap: 28px; }
-.galeao[data-vp="mobile"] .mg-emp__grid { grid-template-columns: 1fr; gap: 20px; }
+.galeao[data-vp="mobile"] .mg-emp__grid { grid-template-columns: 1fr; gap: 32px; }
 .galeao[data-vp="mobile"] .mg-emp-card { min-height: 480px; }
 
 /* ── FAQ band — soft gray (matches the Home "Serviços" section) ─────────── */

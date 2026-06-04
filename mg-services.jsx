@@ -98,7 +98,7 @@ function MGServiceCard({ s, side, mobile, variant = 'overlap' }) {
     if (variant === 'overlap') {
       return (
         <article className="mg-fam" id={s.key} style={{ position: 'relative', display: 'block' }}>
-          {media({ position: 'relative', width: '100%', aspectRatio: '4/3' })}
+          {media({ position: 'relative', margin: '0 16px', aspectRatio: '4/3' })}
           <div className="mg-fam__card" style={{ position: 'relative', zIndex: 1, margin: '-40px 16px 0', padding: '64px 26px 28px' }}>
             <MGFamBody s={s} mobile={mobile} />
           </div>
@@ -231,7 +231,7 @@ function MGZoneSection({ zone, mobile, variant = 'overlap' }) {
         {zone.sub && <p style={{ fontSize: mobile ? 16 : 18, color: 'var(--c-muted)', lineHeight: 1.5, maxWidth: 640 }}>{zone.sub}</p>}
       </div>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: mobile ? 48 : 104 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: mobile ? 32 : 104 }}>
         {all.map((s, i) =>
         <div key={s.key} className="mg-reveal">
             <MGServiceCard s={s} side={i % 2 === 0 ? 'right' : 'left'} mobile={mobile} variant={variant} />

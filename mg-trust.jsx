@@ -7,7 +7,7 @@ const { useState: useStateT } = React;
 
 const MG_STATS = [
 { stat: '+08', desc: 'anos de experiência' },
-{ stat: '+15 mil', desc: 'atendimentos Meet & Greet' },
+{ stat: '+15 mil', desc: 'atendimentos' },
 { stat: '4.9', desc: 'nota de satisfação', star: true }];
 
 
@@ -77,17 +77,35 @@ function MGTrust({ mobile }) {
         </div>
       </div>
 
+      {/* Stats — mesmo tratamento da home (ProvaSocial): 3 colunas lado a
+          lado em qualquer viewport, "+"/estrela em verde posicionados à
+          esquerda do número, e os mesmos tamanhos de fonte. */}
       <div style={{
-          display: 'grid', gridTemplateColumns: mobile ? '1fr 1fr' : 'repeat(3, 1fr)',
-          gap: mobile ? 18 : 32, padding: mobile ? '24px 0 0' : '40px 0 0'
+          display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)',
+          gap: mobile ? 12 : 32, paddingTop: mobile ? 20 : 36
         }}>
         {MG_STATS.map((p, i) =>
-          <div key={i} style={{ display: 'flex', flexDirection: 'column', gap: 6, alignItems: mobile ? 'flex-start' : 'center', textAlign: mobile ? 'left' : 'center' }}>
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: mobile ? 34 : 52, color: 'var(--c-fg)' }} className="mg-stat">
-              {p.star && <span style={{ color: 'var(--c-mg)', display: 'inline-flex' }}>{window.MGIcon.star(mobile ? 22 : 34)}</span>}
-              {p.stat}
+          <div key={i} style={{ display: 'flex', flexDirection: 'column', gap: 6, alignItems: 'center', textAlign: 'center', justifyContent: 'center' }}>
+            <span className="mg-stat" style={{
+                display: 'inline-flex', alignItems: 'baseline', gap: mobile ? 4 : 8,
+                fontSize: mobile ? 30 : 56, lineHeight: 0.92, letterSpacing: '-0.045em',
+                fontWeight: 600, color: 'var(--c-fg)', fontVariantNumeric: 'tabular-nums',
+                justifyContent: 'center', position: 'relative'
+              }}>
+              {p.star &&
+                <svg width={mobile ? 16 : 36} height={mobile ? 16 : 36} viewBox="0 0 24 24"
+                  fill="var(--c-mg)" aria-hidden="true"
+                  style={{ position: 'absolute', right: '100%', marginRight: mobile ? 6 : 12, top: mobile ? '4px' : '8px', flexShrink: 0 }}>
+                  <path d="M12 2.5l2.95 5.98 6.6.96-4.78 4.66 1.13 6.57L12 17.58l-5.9 3.1 1.13-6.57L2.45 9.44l6.6-.96L12 2.5z" />
+                </svg>}
+              {p.stat.startsWith('+') ?
+                <React.Fragment>
+                  <span style={{ color: 'var(--c-mg)', position: 'absolute', right: '100%', marginRight: mobile ? 2 : 4, top: 0 }}>+</span>
+                  {p.stat.slice(1)}
+                </React.Fragment> :
+                p.stat}
             </span>
-            <span style={{ fontSize: mobile ? 13 : 16, color: 'var(--c-muted)', lineHeight: 1.4, maxWidth: 220 }}>{p.desc}</span>
+            <span style={{ fontSize: mobile ? 13 : 22, color: 'var(--c-muted)', lineHeight: 1.4, maxWidth: mobile ? 'none' : 280, marginTop: mobile ? 2 : 6 }}>{p.desc}</span>
           </div>
           )}
       </div>
