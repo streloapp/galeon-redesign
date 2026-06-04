@@ -401,3 +401,75 @@ body.gl-is-dragging .mg-hero-media image-slot { animation-play-state: paused; }
 
 /* ── FAQ band — soft gray (matches the Home "Serviços" section) ─────────── */
 .mg-faq-band { background: var(--c-bg-soft); }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   Delegações Esportivas — seção dedicada ("Hero": cartão inset + esteira de logos)
+   ══════════════════════════════════════════════════════════════════════════ */
+.mg-deleg { scroll-margin-top: 80px; }
+
+/* ── "Hero" — cartão arredondado inset, fundo + texto centralizado ─────── */
+.mg-deleg--herostyle { padding: 104px 40px 96px; }
+.mg-deleg-hero__card {
+  position: relative; border-radius: var(--r-xl); overflow: hidden;
+  height: 72vh; min-height: 600px; max-height: 840px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--c-ink);
+}
+.mg-deleg-hero__card > image-slot {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  transform: scale(1.04); animation: mg-kenburns 30s ease-in-out infinite alternate;
+}
+@media (prefers-reduced-motion: reduce) { .mg-deleg-hero__card > image-slot { animation: none; } }
+.mg-deleg-hero__scrim {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    /* horizontal: esquerda levemente mais escura que a direita (texto à esquerda) */
+    linear-gradient(90deg, rgba(21,17,13,0.66) 0%, rgba(21,17,13,0.42) 36%, rgba(21,17,13,0.18) 70%, rgba(21,17,13,0.08) 100%),
+    /* leve reforço embaixo para o preço/CTA */
+    linear-gradient(180deg, rgba(21,17,13,0.12) 0%, rgba(21,17,13,0) 42%, rgba(21,17,13,0.3) 100%);
+}
+.mg-deleg-hero__body {
+  position: relative; z-index: 2; text-align: left; color: #fff;
+  display: flex; flex-direction: column; align-items: flex-start; gap: 22px;
+  margin-right: auto; padding: 48px; max-width: 780px;
+}
+/* Tamanhos alinhados aos cards de Experiência (.mg-exp__name / .mg-exp__lead). */
+.mg-deleg-hero__body h2 { font-size: 48px; line-height: 1.0; letter-spacing: -0.04em; font-weight: 600; color: #fff; }
+.mg-deleg-hero__body p { font-size: 20px; line-height: 1.5; color: rgba(255,255,255,0.84); max-width: 34em; }
+/* Preço no mesmo padrão dos demais cards (.mg-price-line), em versão clara.
+   Valor em 24px, como o preço dos cards do carrossel (.ds-num). */
+.mg-deleg-hero__body .mg-price-line { color: rgba(255,255,255,0.7); }
+.mg-deleg-hero__body .mg-price-line b { color: #fff; font-size: 24px; }
+/* "A partir de" em linha própria, acima do valor. */
+.mg-deleg-hero__price { display: flex; flex-direction: column; gap: 2px; line-height: 1.2; }
+.mg-deleg-hero__price-label { font-size: 14px; }
+
+/* Esteira de logos — FORA do card, logo abaixo dele (coladas, para lerem
+   como uma unidade com a imagem). */
+.mg-deleg-hero__logos {
+  margin-top: 22px;
+  display: flex; flex-direction: column; align-items: center; gap: 14px;
+}
+.mg-deleg-hero__marquee {
+  width: 100%; overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+          mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+}
+/* pausa ao passar o mouse — facilita ler e subir os logos (alvo parado) */
+.mg-deleg-hero__marquee:hover .gl-marquee-track { animation-play-state: paused; }
+.mg-deleg-hero__marquee .gl-marquee-track { will-change: transform; }
+/* Preto e branco por padrão; ganham cor ao passar o mouse sobre cada logo. */
+.mg-deleg-hero__marquee img {
+  object-fit: contain;
+  filter: grayscale(1); opacity: 0.55;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+.mg-deleg-hero__marquee img:hover { filter: grayscale(0); opacity: 1; }
+
+/* ── Mobile ────────────────────────────────────────────────────────────── */
+.galeao[data-vp="mobile"] .mg-deleg--herostyle { padding: 64px 20px; }
+.galeao[data-vp="mobile"] .mg-deleg-hero__card { height: auto; min-height: 72vh; }
+.galeao[data-vp="mobile"] .mg-deleg-hero__body { padding: 32px 22px; gap: 18px; }
+.galeao[data-vp="mobile"] .mg-deleg-hero__body h2 { font-size: 32px; }
+.galeao[data-vp="mobile"] .mg-deleg-hero__body p { font-size: 17px; }
+.galeao[data-vp="mobile"] .mg-deleg-hero__logos { margin-top: 18px; gap: 10px; }

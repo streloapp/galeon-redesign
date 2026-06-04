@@ -155,7 +155,7 @@ const MG_SERVICES = [
   {
     key: 'delegacoes', zone: 'empresas', hero: true, role: 'flagship', tag: 'Delegações esportivas',
     name: 'Atendimento Delegações Esportivas',
-    lead: 'No embarque e desembarque oferecemos assistência exclusiva, eficiente e privativa.',
+    lead: 'No embarque ou desembarque: Acesso exclusivo, apoio logístico, atendimento personalizados e parada de veículos.',
     occasion: 'delegações esportivas chegando ou partindo do Rio.',
     includes: [
       { icon: 'trofeu', label: 'Receptivo de embarque e/ou desembarque' },

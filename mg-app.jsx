@@ -57,6 +57,7 @@ function MGApp() {
       <window.MGHero mobile={mobile} onExplore={scrollToFamilia} />
       <window.MGZoneSection zone={zones[0]} mobile={mobile} variant={t.famVariant} />
       <window.MGCarouselZone zone={zones[1]} mobile={mobile} />
+      <window.MGDelegacoesSection mobile={mobile} />
       <window.MGTrust mobile={mobile} />
       <window.MGFooter mobile={mobile} />
 
