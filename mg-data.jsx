@@ -139,8 +139,8 @@ const MG_SERVICES = [
   // ── Para grupos e empresas ──────────────────────────────────────────────
   {
     key: 'aviacao', zone: 'empresas', role: 'vertical', tag: 'Aviação executiva',
-    name: 'Atendimento para aviação executiva',
-    lead: 'Atendimento dedicado para a aviação privada — discrição, agilidade e privacidade do desembarque ao hangar.',
+    name: 'Aviação executiva',
+    lead: 'Atendimento dedicado para a aviação privada. Discrição, agilidade e privacidade do desembarque ao hangar.',
     occasion: 'você opera ou viaja em aviação executiva.',
     includes: [
       { icon: 'jato', label: 'Receptivo no terminal executivo' },
@@ -148,24 +148,9 @@ const MG_SERVICES = [
       { icon: 'porta', label: 'Condução privativa' },
       { icon: 'cerimonial', label: 'Coordenação com a tripulação' }
     ],
-    price: { value: 'R$ 2.490', unit: '/ atendimento' },
+    price: { value: 'R$ 8.000', unit: '/ atendimento' },
     cta: 'Saber mais',
     slot: 'mg-aviacao', photo: 'jato executivo no pátio com atendente recebendo'
-  },
-  {
-    key: 'delegacoes', zone: 'empresas', hero: true, role: 'flagship', tag: 'Delegações esportivas',
-    name: 'Atendimento Delegações Esportivas',
-    lead: 'No embarque ou desembarque: Acesso exclusivo, apoio logístico, atendimento personalizados e parada de veículos.',
-    occasion: 'delegações esportivas chegando ou partindo do Rio.',
-    includes: [
-      { icon: 'trofeu', label: 'Receptivo de embarque e/ou desembarque' },
-      { icon: 'cerimonial', label: 'Coordenação logística dedicada' },
-      { icon: 'seguranca', label: 'Acessos e fluxos exclusivos' },
-      { icon: 'bagagem', label: 'Apoio com bagagem volumosa' }
-    ],
-    price: { value: 'R$ 5.445', unit: '/ trecho' },
-    cta: 'Saber mais',
-    slot: 'mg-delegacoes', photo: 'delegação esportiva desembarcando recebida por equipe'
   },
   {
     key: 'grupos', zone: 'empresas', role: 'split', tag: 'Grupos',
@@ -184,8 +169,8 @@ const MG_SERVICES = [
   },
   {
     key: 'exclusive', zone: 'empresas', role: 'split', tag: 'Eventos',
-    name: 'Locação do Espaço RIOgaleão Exclusive',
-    lead: 'Um ambiente privativo dentro do terminal para receber convidados, fechar negócios ou celebrar uma chegada.',
+    name: 'Espaço Riogaleão Exclusive',
+    lead: 'Locação de um ambiente privativo dentro do terminal para receber convidados, fechar negócios ou celebrar uma chegada.',
     occasion: 'a ocasião pede privacidade total e um espaço à altura.',
     includes: [
       { icon: 'espaco', label: 'Espaço privativo exclusivo' },
@@ -193,9 +178,27 @@ const MG_SERVICES = [
       { icon: 'vip', label: 'Catering sob demanda' },
       { icon: 'acessos', label: 'Acessos diferenciados' }
     ],
-    price: { value: 'R$ 8.900', unit: '· por evento' },
+    price: { value: 'R$ 8.900', unit: '/ evento' },
     cta: 'Saber mais',
     slot: 'mg-exclusive', photo: 'salão exclusivo privativo do RIOgaleão preparado para evento'
+  },
+  // Delegações esportivas: NÃO entra na grade de "Atendimentos sob medida"
+  // (zone próprio, fora de MG_ZONES). Renderizado só como Hero por
+  // MGDelegacoesSection, que o localiza por key.
+  {
+    key: 'delegacoes', zone: 'delegacoes', hero: true, role: 'flagship', tag: 'Delegações esportivas',
+    name: 'Atendimento Delegações Esportivas',
+    lead: 'No embarque ou desembarque: Acesso exclusivo, apoio logístico, atendimento personalizados e parada de veículos.',
+    occasion: 'delegações esportivas chegando ou partindo do Rio.',
+    includes: [
+      { icon: 'trofeu', label: 'Receptivo de embarque e/ou desembarque' },
+      { icon: 'cerimonial', label: 'Coordenação logística dedicada' },
+      { icon: 'seguranca', label: 'Acessos e fluxos exclusivos' },
+      { icon: 'bagagem', label: 'Apoio com bagagem volumosa' }
+    ],
+    price: { value: 'R$ 5.445', unit: '/ trecho' },
+    cta: 'Saber mais',
+    slot: 'mg-delegacoes', photo: 'delegação esportiva desembarcando recebida por equipe'
   }
 ];
 
@@ -203,8 +206,7 @@ const MG_ZONES = [
   { id: 'familia', railLabel: 'Para você e sua família', railShort: 'Você', eyebrow: 'Experiências',
     title: 'Diferentes experiências, o mesmo cuidado' },
   { id: 'empresas', railLabel: 'Grupos e empresas', railShort: 'Grupos', eyebrow: 'Atendimentos sob medida',
-    title: 'Cada ocasião, do seu jeito',
-    sub: 'Para um grupo inteiro, uma conexão ou um voo privado, o atendimento se adapta ao que a sua viagem precisa.' }
+    title: 'Cada ocasião, do seu jeito' }
 ];
 
 Object.assign(window, {

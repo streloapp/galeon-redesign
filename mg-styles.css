@@ -339,27 +339,21 @@ body.gl-is-dragging .mg-hero-media image-slot { animation-play-state: paused; }
   padding: 104px 56px; overflow: hidden; scroll-margin-top: 80px;
 }
 .mg-emp__inner {
-  display: grid; grid-template-columns: clamp(300px, 32vw, 440px) minmax(0, 1fr); gap: 56px; align-items: start;
+  display: flex; flex-direction: column; gap: 48px;
 }
-.mg-emp__intro { display: flex; flex-direction: column; gap: 18px; padding-top: 8px; }
+.mg-emp__intro { display: flex; flex-direction: column; gap: 18px; max-width: 640px; }
 
-.mg-emp__rail {
-  min-width: 0;
-  display: flex; gap: 24px; overflow-x: auto; padding: 6px 4px 24px 4px;
-  scroll-snap-type: x mandatory; scrollbar-width: none;
+.mg-emp__grid {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; align-items: stretch;
 }
-.mg-emp__rail::-webkit-scrollbar { display: none; }
 
 .mg-emp-card {
-  /* Width sized off the rail (container query) so ~2.5 cards stay visible at any
-     desktop width; capped at 460px so they never grow oversized. */
-  flex: 0 0 calc((100cqw - 56px) / 2.5); min-width: 0; max-width: 460px;
-  scroll-snap-align: start;
-  background: #fff; border-radius: var(--r-lg); overflow: hidden;
+  min-width: 0;
+  background: var(--c-bg-soft); border-radius: var(--r-lg); overflow: hidden;
   display: flex; flex-direction: column; min-height: 480px;
 }
 .mg-emp-card__media {
-  position: relative; aspect-ratio: 4/3; background: var(--c-mg-soft);
+  position: relative; aspect-ratio: 5/3; background: var(--c-mg-soft);
 }
 .mg-emp-card__media image-slot {
   position: absolute; inset: 0; width: 100%; height: 100%;
@@ -371,33 +365,10 @@ body.gl-is-dragging .mg-hero-media image-slot { animation-play-state: paused; }
   padding: 26px 26px 28px;
 }
 
-.mg-emp-arrow {
-  width: 46px; height: 46px; border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.24); background: transparent; color: #fff;
-  display: grid; place-items: center; cursor: pointer;
-  transition: background-color .15s ease, color .15s ease, border-color .15s ease;
-}
-.mg-emp-arrow:hover { background: #fff; color: #0E0F0E; border-color: #fff; }
-.mg-emp-arrow:disabled { opacity: 0.28; cursor: default; }
-.mg-emp-arrow:disabled:hover { background: transparent; color: #fff; border-color: rgba(255,255,255,0.24); }
-
-.mg-emp__railwrap { position: relative; container-type: inline-size; }
-.mg-emp-controls { display: flex; align-items: center; gap: 16px; margin: 22px 4px 0; }
-
-.mg-emp-progress {
-  flex: 1 1 auto; height: 4px;
-  background: rgba(255,255,255,0.16); border-radius: 999px; overflow: hidden;
-}
-.mg-emp-progress__fill {
-  display: block; height: 100%; background: #fff; border-radius: 999px;
-  transition: width .14s ease-out;
-}
-
 .galeao[data-vp="mobile"] .mg-emp { padding: 64px 20px; }
-.galeao[data-vp="mobile"] .mg-emp__inner { grid-template-columns: 1fr; gap: 28px; }
-.galeao[data-vp="mobile"] .mg-emp__rail { padding: 4px 2px 20px 2px; gap: 16px; }
-.galeao[data-vp="mobile"] .mg-emp-card { flex: 0 0 80vw; max-width: none; min-height: 480px; }
-.galeao[data-vp="mobile"] .mg-emp-controls { margin: 18px 2px 0; }
+.galeao[data-vp="mobile"] .mg-emp__inner { gap: 28px; }
+.galeao[data-vp="mobile"] .mg-emp__grid { grid-template-columns: 1fr; gap: 20px; }
+.galeao[data-vp="mobile"] .mg-emp-card { min-height: 480px; }
 
 /* ── FAQ band — soft gray (matches the Home "Serviços" section) ─────────── */
 .mg-faq-band { background: var(--c-bg-soft); }
