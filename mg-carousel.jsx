@@ -11,9 +11,12 @@ function MGCarPrice({ s }) {
     return <span className="ds-num" style={{ fontSize: 22, color: 'var(--c-fg)' }}>{s.price.value}</span>;
   }
   return (
-    <div style={{ display: 'flex', alignItems: 'baseline', gap: 7, flexWrap: 'wrap' }}>
-      <span className="ds-num" style={{ fontSize: 24, fontWeight: 600, color: 'var(--c-fg)', letterSpacing: '-0.02em' }}>{s.price.value}</span>
-      {s.price.unit && <span style={{ fontSize: 12, color: 'var(--c-muted)' }}>{s.price.unit}</span>}
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+      <span style={{ fontSize: 14, color: 'var(--c-muted)' }}>A partir de</span>
+      <div style={{ display: 'flex', alignItems: 'baseline', gap: 7, flexWrap: 'wrap' }}>
+        <span className="ds-num" style={{ fontSize: 24, fontWeight: 600, color: 'var(--c-fg)', letterSpacing: '-0.02em' }}>{s.price.value}</span>
+        {s.price.unit && <span style={{ fontSize: 12, color: 'var(--c-muted)' }}>{s.price.unit}</span>}
+      </div>
     </div>
   );
 }

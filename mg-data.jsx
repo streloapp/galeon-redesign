@@ -148,7 +148,7 @@ const MG_SERVICES = [
       { icon: 'porta', label: 'Condução privativa' },
       { icon: 'cerimonial', label: 'Coordenação com a tripulação' }
     ],
-    price: { value: 'R$ 8.000', unit: '/ atendimento' },
+    price: { value: 'R$ 8.000', unit: '/ 20 pessoas' },
     cta: 'Saber mais',
     slot: 'mg-aviacao', photo: 'jato executivo no pátio com atendente recebendo'
   },
@@ -178,7 +178,7 @@ const MG_SERVICES = [
       { icon: 'vip', label: 'Catering sob demanda' },
       { icon: 'acessos', label: 'Acessos diferenciados' }
     ],
-    price: { value: 'R$ 8.900', unit: '/ evento' },
+    price: { value: 'R$ 8.000', unit: '/ 2 horas' },
     cta: 'Saber mais',
     slot: 'mg-exclusive', photo: 'salão exclusivo privativo do RIOgaleão preparado para evento'
   },
