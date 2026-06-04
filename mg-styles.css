@@ -383,7 +383,7 @@ body.gl-is-dragging .mg-hero-media image-slot { animation-play-state: paused; }
 /* ══════════════════════════════════════════════════════════════════════════
    Delegações Esportivas — seção dedicada ("Hero": cartão inset + esteira de logos)
    ══════════════════════════════════════════════════════════════════════════ */
-.mg-deleg { scroll-margin-top: 80px; }
+.mg-deleg { scroll-margin-top: 80px; background: var(--c-bg-soft); }
 
 /* ── "Hero" — cartão arredondado inset, fundo + texto centralizado ─────── */
 .mg-deleg--herostyle { padding: 104px 40px 96px; }
