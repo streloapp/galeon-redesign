@@ -118,6 +118,23 @@ const MG_SERVICES = [
       { slot: 'mg-vipplus-3', photo: 'passageiro acomodado na sala VIP antes do voo' }
     ]
   },
+  {
+    key: 'conexoes', zone: 'familia', role: 'split', tag: 'Conexão',
+    name: 'Atendimento para Conexões',
+    lead: 'Entre um voo e outro, um anfitrião encontra o passageiro na ponte e garante a chegada ao próximo portão com calma.',
+    occasion: 'há conexão e não dá para correr pelo terminal.',
+    includes: [
+      { icon: 'receptivo', label: 'Receptivo na chegada do 1º voo' },
+      { icon: 'conexao', label: 'Condução entre portões' },
+      { icon: 'prioridade', label: 'Fila prioritária' },
+      { icon: 'suporte', label: 'Suporte na jornada' }
+    ],
+    prices: [
+      { tier: 'por pessoa', value: 'R$ 899' }
+    ],
+    cta: 'Reservar',
+    slot: 'mg-conexoes', photo: 'passageiro sendo conduzido entre portões de conexão'
+  },
 
   // ── Para grupos e empresas ──────────────────────────────────────────────
   {
@@ -149,21 +166,6 @@ const MG_SERVICES = [
     price: { value: 'R$ 5.445', unit: '/ trecho' },
     cta: 'Saber mais',
     slot: 'mg-delegacoes', photo: 'delegação esportiva desembarcando recebida por equipe'
-  },
-  {
-    key: 'conexoes', zone: 'empresas', role: 'split', tag: 'Conexão',
-    name: 'Atendimento para Conexões',
-    lead: 'Entre um voo e outro, um anfitrião encontra o passageiro na ponte e garante a chegada ao próximo portão com calma.',
-    occasion: 'há conexão e não dá para correr pelo terminal.',
-    includes: [
-      { icon: 'receptivo', label: 'Receptivo na chegada do 1º voo' },
-      { icon: 'conexao', label: 'Condução entre portões' },
-      { icon: 'prioridade', label: 'Fila prioritária' },
-      { icon: 'suporte', label: 'Suporte na jornada' }
-    ],
-    price: { value: 'R$ 899', unit: '/ pessoa' },
-    cta: 'Saber mais',
-    slot: 'mg-conexoes', photo: 'passageiro sendo conduzido entre portões de conexão'
   },
   {
     key: 'grupos', zone: 'empresas', role: 'split', tag: 'Grupos',

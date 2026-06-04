@@ -228,7 +228,7 @@ function MGZoneSection({ zone, mobile, variant = 'overlap' }) {
         {zone.sub && <p style={{ fontSize: mobile ? 16 : 18, color: 'var(--c-muted)', lineHeight: 1.5, maxWidth: 640 }}>{zone.sub}</p>}
       </div>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: mobile ? 48 : 128 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: mobile ? 48 : 104 }}>
         {all.map((s, i) =>
         <div key={s.key} className="mg-reveal">
             <MGServiceCard s={s} side={i % 2 === 0 ? 'right' : 'left'} mobile={mobile} variant={variant} />
