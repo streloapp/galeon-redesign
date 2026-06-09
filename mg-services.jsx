@@ -16,10 +16,10 @@ function MGFamPrice({ s }) {
   const lowest = s.prices.reduce((a, b) => (mgPriceNum(b.value) < mgPriceNum(a.value) ? b : a));
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-      <span style={{ fontSize: 14, color: 'var(--c-muted)' }}>A partir de</span>
+      <span style={{ fontSize: 'var(--text-small)', color: 'var(--c-muted)' }}>A partir de</span>
       <div style={{ display: 'flex', alignItems: 'baseline', gap: 7, flexWrap: 'wrap' }}>
-        <span className="ds-num" style={{ fontSize: 24, fontWeight: 600, color: 'var(--c-fg)', letterSpacing: '-0.02em' }}>{lowest.value}</span>
-        <span style={{ fontSize: 12, color: 'var(--c-muted)' }}>/pessoa</span>
+        <span className="ds-num" style={{ fontSize: 'var(--num-price)', fontWeight: 600, color: 'var(--c-fg)', letterSpacing: '-0.02em' }}>{lowest.value}</span>
+        <span style={{ fontSize: 'var(--text-micro)', color: 'var(--c-muted)' }}>/pessoa</span>
       </div>
     </div>);
 
@@ -31,7 +31,7 @@ function MGFamInclGroup({ items }) {
   return (
     <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 8 }}>
       {items.map((it) =>
-      <li key={it.label} style={{ display: 'flex', alignItems: 'flex-start', gap: 13, fontSize: 15, color: 'var(--c-fg)', lineHeight: 1.35 }}>
+      <li key={it.label} style={{ display: 'flex', alignItems: 'flex-start', gap: 13, fontSize: 'var(--text-body)', color: 'var(--c-fg)', lineHeight: 1.35 }}>
           <span style={{ color: 'var(--c-mg)', flexShrink: 0, marginTop: 1 }}>{Feat[it.icon] && Feat[it.icon](18)}</span>
           <span>{it.label}</span>
         </li>
@@ -70,8 +70,8 @@ function MGFamBody({ s, mobile, style }) {
   const Icon = window.MGIcon;
   return (
     <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: mobile ? 18 : 22, ...style }}>
-      <h3 style={{ fontSize: mobile ? 28 : 34, lineHeight: 1.04, letterSpacing: '-0.03em' }}>{s.name}</h3>
-      <p style={{ fontSize: mobile ? 15.5 : 17, color: 'var(--c-muted)', lineHeight: 1.5 }}>{s.lead}</p>
+      <h3 style={{ fontSize: mobile ? 'var(--text-h4-mobile)' : 'var(--text-h4)', lineHeight: 'var(--text-h4-lh)', letterSpacing: 'var(--text-h4-tracking)' }}>{s.name}</h3>
+      <p style={{ fontSize: mobile ? 'var(--text-body-mobile)' : 'var(--text-body)', color: 'var(--c-muted)', lineHeight: 1.5 }}>{s.lead}</p>
       <MGFamInclGroup items={s.includes} />
       <MGFamPrice s={s} />
       <div style={{ marginTop: 4 }}>
@@ -227,8 +227,8 @@ function MGZoneSection({ zone, mobile, variant = 'overlap' }) {
     <section ref={rootRef} id={zone.id} className="gl-section" style={{ scrollMarginTop: 80 }}>
       <div style={{ maxWidth: 820, display: 'flex', flexDirection: 'column', gap: 16, marginBottom: mobile ? 32 : 52 }} className="mg-reveal">
         <span className="gl-eyebrow" style={{ color: 'var(--c-mg)' }}>{zone.eyebrow}</span>
-        <h2 style={{ fontSize: mobile ? 34 : 56, letterSpacing: '-0.04em', lineHeight: 0.98 }}>{zone.title}</h2>
-        {zone.sub && <p style={{ fontSize: mobile ? 16 : 18, color: 'var(--c-muted)', lineHeight: 1.5, maxWidth: 640 }}>{zone.sub}</p>}
+        <h2 style={{ fontSize: mobile ? 'var(--text-h2-mobile)' : 'var(--text-h2)', letterSpacing: 'var(--text-h2-tracking)', lineHeight: 'var(--text-h2-lh)' }}>{zone.title}</h2>
+        {zone.sub && <p style={{ fontSize: mobile ? 'var(--text-subtitle-mobile)' : 'var(--text-subtitle)', color: 'var(--c-muted)', lineHeight: 1.5, maxWidth: 640 }}>{zone.sub}</p>}
       </div>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: mobile ? 32 : 104 }}>

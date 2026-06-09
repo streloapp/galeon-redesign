@@ -1,29 +1,6 @@
-/* GaleON — system tokens */
-:root {
-  --c-primary: #9ACA3C;
-  --c-primary-ink: #1f2a0c;
-  --c-bg: #FFFFFF;
-  --c-bg-soft: #F7F7F4;
-  --c-fg: #0E0F0E;
-  --c-muted: #6B6B68;
-  --c-border: #E7E6E1;
-  --c-border-strong: #1f1f1f;
-
-  --c-hospitalidade: #2B2B2B;
-  --c-delivery: #ED1C24;
-  --c-sala-vip: #822A85;
-  --c-transportes: #E5A91D;
-  --c-guarda: #F58220;
-  --c-cambio: #009B90;
-  --c-personal: #ED0080;
-
-  --r-sm: 8px;
-  --r-md: 14px;
-  --r-lg: 22px;
-  --r-xl: 32px;
-
-  --font-body: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
-}
+/* GaleON — system tokens.
+   Single source of truth: colors_and_type.css. Do not redeclare tokens here. */
+@import url("colors_and_type.css");
 
 /* Page reset scoped to .galeao */
 .galeao, .galeao * { box-sizing: border-box; }

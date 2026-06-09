@@ -806,7 +806,7 @@ function Hospitalidade({ mobile }) {
       width: '100%',
       minHeight: '100vh',
       overflow: 'hidden',
-      background: 'var(--c-hospitalidade)',
+      background: 'var(--c-meet-greet)',
       backgroundImage: 'radial-gradient(ellipse 80% 80% at 50% -20%, rgba(120,119,198,0.3), rgba(255,255,255,0))'
     }}>
       {/* Two-column layout: content on the left, image on the right */}
@@ -1210,7 +1210,7 @@ function Jornada({ mobile }) {
     moment: 'Antes',
     sub: 'de sair de casa',
     items: [
-    { tag: 'Hospitalidade', color: 'var(--c-hospitalidade)', text: 'Garanta atendimento exclusivo no dia.' },
+    { tag: 'Meet & Greet', color: 'var(--c-meet-greet)', text: 'Garanta atendimento exclusivo no dia.' },
     { tag: 'Transportes', color: 'var(--c-transportes)', text: 'Reserve táxi ou transfer pro Galeão.' },
     { tag: 'Personal Shopper', color: 'var(--c-personal)', text: 'Encomende o que comprar nas lojas.' }]
 

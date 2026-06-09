@@ -4,7 +4,7 @@
    ────────────────────────────────────────────────────────────────────────── */
 
 :root {
-  --c-mg:         #2B2B2B;   /* graphite accent */
+  --c-mg:         var(--c-meet-greet);   /* graphite accent — unified with the Meet & Greet service token */
   --c-mg-ink:     #FFFFFF;
   --c-mg-soft:    #F4F3F1;   /* warm graphite-tinted surface */
   --c-mg-surface: #1A1A1A;   /* faixa escura — entre #0E0F0E e o card #2B2B2B */
@@ -16,7 +16,7 @@
 
 /* ── Content draft ribbon ──────────────────────────────────────────────── */
 .mg-draft-note {
-  font-size: 11px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+  font-size: var(--text-micro); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
   color: #9a7b00; background: #fff7df; border: 1px solid #f0e2a8;
   padding: 3px 9px; border-radius: 999px; display: inline-flex; align-items: center; gap: 6px;
 }
@@ -29,7 +29,7 @@
 }
 .mg-topbar a, .mg-topbar button { color: #fff; }
 .mg-topbar .mg-navlink {
-  font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.86);
+  font-size: var(--text-small); font-weight: 500; color: rgba(255,255,255,0.86);
   padding: 8px 14px; border-radius: 8px; transition: color .15s ease, background-color .15s ease;
 }
 .mg-topbar .mg-navlink:hover { color: #fff; background: rgba(255,255,255,0.12); }
@@ -63,7 +63,7 @@
 }
 .mg-hero-play {
   display: inline-flex; align-items: center; gap: 8px;
-  font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+  font-size: var(--text-micro); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
   color: rgba(255,255,255,0.7);
 }
 .mg-hero-play .dot {
@@ -90,7 +90,7 @@ body.gl-is-dragging .mg-hero-media image-slot { animation-play-state: paused; }
 }
 .mg-rail-brand {
   display: inline-flex; align-items: center; gap: 9px;
-  font-size: 15px; font-weight: 700; letter-spacing: -0.02em; color: var(--c-fg);
+  font-size: var(--text-body); font-weight: 700; letter-spacing: -0.02em; color: var(--c-fg);
   white-space: nowrap;
 }
 .mg-rail-brand .mark {
@@ -101,7 +101,7 @@ body.gl-is-dragging .mg-hero-media image-slot { animation-play-state: paused; }
 .mg-chip {
   position: relative; border: 0; background: transparent;
   padding: 13px 18px 15px; border-radius: 10px;
-  font: inherit; font-size: 14px; font-weight: 600; letter-spacing: -0.01em;
+  font: inherit; font-size: var(--text-small); font-weight: 600; letter-spacing: -0.01em;
   color: var(--c-muted); cursor: pointer; white-space: nowrap;
   transition: color .2s ease, background-color .2s ease;
 }
@@ -131,22 +131,22 @@ body.gl-is-dragging .mg-hero-media image-slot { animation-play-state: paused; }
   display: flex; flex-direction: column; justify-content: center; gap: 22px;
   padding: 96px 80px;
 }
-.mg-exp__name { font-size: 48px; line-height: 1.0; letter-spacing: -0.04em; }
-.mg-exp__lead { font-size: 20px; line-height: 1.5; color: var(--c-muted); max-width: 30em; }
+.mg-exp__name { font-size: var(--text-h3); line-height: var(--text-h3-lh); letter-spacing: var(--text-h3-tracking); }
+.mg-exp__lead { font-size: var(--text-subtitle); line-height: var(--text-subtitle-lh); color: var(--c-muted); max-width: 30em; }
 
 /* Inclusos as a quiet "menu" — never a competing checklist */
 .mg-incl-menu { display: flex; flex-direction: column; padding-top: 22px; border-top: 1px solid var(--c-border); }
-.mg-incl-menu__label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--c-muted); margin-bottom: 12px; }
+.mg-incl-menu__label { font-size: var(--text-micro); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--c-muted); margin-bottom: 12px; }
 .mg-incl-menu ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 11px; }
-.mg-incl-menu li { display: flex; align-items: flex-start; gap: 11px; font-size: 14.5px; color: var(--c-fg); line-height: 1.4; }
+.mg-incl-menu li { display: flex; align-items: flex-start; gap: 11px; font-size: var(--text-small); color: var(--c-fg); line-height: 1.4; }
 .mg-incl-menu li::before { content: "—"; color: var(--c-mg); flex-shrink: 0; }
 
-.mg-price-line { font-size: 14px; color: var(--c-muted); }
-.mg-price-line b { color: var(--c-fg); font-weight: 700; font-size: 17px; margin-left: 2px; }
+.mg-price-line { font-size: var(--text-small); color: var(--c-muted); }
+.mg-price-line b { color: var(--c-fg); font-weight: 700; font-size: var(--num-price-sm); margin-left: 2px; }
 
 .mg-exp-cta {
   display: inline-flex; align-items: center; gap: 10px; align-self: flex-start;
-  font-size: 15px; font-weight: 600; color: var(--c-fg);
+  font-size: var(--text-body); font-weight: 600; color: var(--c-fg);
   border-bottom: 1px solid var(--c-fg); padding-bottom: 5px;
   transition: gap .2s ease;
 }
@@ -175,14 +175,14 @@ body.gl-is-dragging .mg-hero-media image-slot { animation-play-state: paused; }
 .mg-moment__frame image-slot { position: absolute; inset: 0; width: 100%; height: 100%; transform: scale(1.05); animation: mg-kenburns 28s ease-in-out infinite alternate; }
 .mg-moment__scrim { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(100deg, rgba(21,17,13,0.72) 0%, rgba(21,17,13,0.28) 46%, rgba(21,17,13,0) 74%); }
 .mg-moment__body { position: absolute; left: 56px; bottom: 52px; right: 56px; max-width: 660px; color: #fff; display: flex; flex-direction: column; gap: 16px; }
-.mg-moment__kicker { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.78); display: inline-flex; align-items: center; gap: 9px; }
+.mg-moment__kicker { font-size: var(--text-micro); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.78); display: inline-flex; align-items: center; gap: 9px; }
 .mg-moment__kicker .dot { width: 7px; height: 7px; border-radius: 999px; background: var(--c-primary); }
-.mg-moment__title { font-size: 46px; line-height: 1.06; letter-spacing: -0.03em; font-weight: 600; color: #fff; }
+.mg-moment__title { font-size: var(--text-h3); line-height: var(--text-h3-lh); letter-spacing: var(--text-h3-tracking); font-weight: 600; color: #fff; }
 .mg-moment__title em { font-family: Georgia, "Times New Roman", serif; font-style: italic; font-weight: 500; }
 .galeao[data-vp="mobile"] .mg-moment { padding: 16px 20px; }
 .galeao[data-vp="mobile"] .mg-moment__frame { aspect-ratio: 4/5; }
 .galeao[data-vp="mobile"] .mg-moment__body { left: 22px; right: 22px; bottom: 28px; }
-.galeao[data-vp="mobile"] .mg-moment__title { font-size: 28px; }
+.galeao[data-vp="mobile"] .mg-moment__title { font-size: var(--text-h3-mobile); }
 @media (prefers-reduced-motion: reduce) { .mg-moment__frame image-slot { animation: none; } }
 
 /* Experiência carousel */
@@ -194,7 +194,7 @@ body.gl-is-dragging .mg-hero-media image-slot { animation-play-state: paused; }
 .mg-exp-cinema { position: relative; min-height: 90vh; display: flex; align-items: flex-end; overflow: hidden; background: var(--c-ink); }
 .mg-exp-cinema image-slot { position: absolute; inset: 0; width: 100%; height: 100%; }
 .mg-exp-cinema__body { position: relative; padding: 0 80px 88px; max-width: 860px; color: #fff; display: flex; flex-direction: column; gap: 22px; }
-.mg-exp-cinema .mg-exp__name { color: #fff; font-size: 60px; }
+.mg-exp-cinema .mg-exp__name { color: #fff; font-size: var(--text-h2); line-height: var(--text-h2-lh); letter-spacing: var(--text-h2-tracking); }
 .mg-exp-cinema .mg-exp__lead { color: rgba(255,255,255,0.84); }
 .mg-exp-cinema .mg-incl-menu { border-color: rgba(255,255,255,0.2); }
 .mg-exp-cinema .mg-incl-menu__label { color: rgba(255,255,255,0.6); }
@@ -207,11 +207,11 @@ body.gl-is-dragging .mg-hero-media image-slot { animation-play-state: paused; }
 .galeao[data-vp="mobile"] .mg-seq-intro { padding: 0 20px; }
 .galeao[data-vp="mobile"] .mg-exp__media { min-height: 50vh; }
 .galeao[data-vp="mobile"] .mg-exp__body { padding: 36px 22px 44px; gap: 18px; }
-.galeao[data-vp="mobile"] .mg-exp__name { font-size: 32px; }
-.galeao[data-vp="mobile"] .mg-exp__lead { font-size: 17px; }
+.galeao[data-vp="mobile"] .mg-exp__name { font-size: var(--text-h3-mobile); }
+.galeao[data-vp="mobile"] .mg-exp__lead { font-size: var(--text-subtitle-mobile); }
 .galeao[data-vp="mobile"] .mg-exp-cinema { min-height: 78vh; }
 .galeao[data-vp="mobile"] .mg-exp-cinema__body { padding: 0 22px 48px; }
-.galeao[data-vp="mobile"] .mg-exp-cinema .mg-exp__name { font-size: 38px; }
+.galeao[data-vp="mobile"] .mg-exp-cinema .mg-exp__name { font-size: var(--text-h2-mobile); }
 
 /* ── Service section frame ─────────────────────────────────────────────── */
 .mg-zone { padding: 104px 56px 96px; scroll-margin-top: 140px; }
@@ -229,21 +229,21 @@ body.gl-is-dragging .mg-hero-media image-slot { animation-play-state: paused; }
 
 .mg-incl {
   display: flex; align-items: flex-start; gap: 9px;
-  font-size: 13px; font-weight: 500; color: var(--c-fg); letter-spacing: -0.005em;
+  font-size: var(--text-small); font-weight: 500; color: var(--c-fg); letter-spacing: -0.005em;
   line-height: 1.35;
 }
 .mg-incl svg { color: var(--c-mg); flex-shrink: 0; margin-top: 1px; }
 
 .mg-occasion {
   display: block;
-  font-size: 13.5px; line-height: 1.45; color: var(--c-muted);
+  font-size: var(--text-small); line-height: 1.45; color: var(--c-muted);
 }
 .mg-occasion b { color: var(--c-mg); font-weight: 700; font-style: italic; font-family: Georgia, "Times New Roman", serif; margin-right: 3px; }
 
 /* Tags must never wrap */
 .mg-page .gl-tag { white-space: nowrap; }
 
-.mg-price-unit { font-size: 13px; color: var(--c-muted); font-weight: 500; }
+.mg-price-unit { font-size: var(--text-small); color: var(--c-muted); font-weight: 500; }
 
 /* Cinematic (flagship) card */
 .mg-hero-card { position: relative; border-radius: var(--r-xl); overflow: hidden; background: var(--c-ink); color: #fff; }
@@ -278,7 +278,7 @@ body.gl-is-dragging .mg-hero-media image-slot { animation-play-state: paused; }
 .galeao[data-vp="mobile"] .mg-rail-inner { padding: 9px 14px; gap: 10px; }
 .galeao[data-vp="mobile"] .mg-chips { overflow-x: auto; scrollbar-width: none; }
 .galeao[data-vp="mobile"] .mg-chips::-webkit-scrollbar { display: none; }
-.galeao[data-vp="mobile"] .mg-chip { padding: 11px 13px 13px; font-size: 13px; }
+.galeao[data-vp="mobile"] .mg-chip { padding: 11px 13px 13px; font-size: var(--text-small); }
 .galeao[data-vp="mobile"] .mg-chip-track { left: 13px; right: 13px; }
 
 /* ══════════════════════════════════════════════════════════════════════════
@@ -328,7 +328,7 @@ body.gl-is-dragging .mg-hero-media image-slot { animation-play-state: paused; }
 .mg-fam-link {
   display: inline-flex; align-items: center; gap: 10px; align-self: flex-start;
   background: transparent; border: 0; padding: 0; cursor: pointer;
-  font-family: inherit; font-size: 14px; font-weight: 600; color: var(--c-fg);
+  font-family: inherit; font-size: var(--text-small); font-weight: 600; color: var(--c-fg);
   letter-spacing: -0.005em;
 }
 .mg-fam-link .gl-arrow { transition: transform .2s ease; }
@@ -414,15 +414,15 @@ body.gl-is-dragging .mg-hero-media image-slot { animation-play-state: paused; }
   margin-right: auto; padding: 48px; max-width: 780px;
 }
 /* Tamanhos alinhados aos cards de Experiência (.mg-exp__name / .mg-exp__lead). */
-.mg-deleg-hero__body h2 { font-size: 48px; line-height: 1.0; letter-spacing: -0.04em; font-weight: 600; color: #fff; }
-.mg-deleg-hero__body p { font-size: 20px; line-height: 1.5; color: rgba(255,255,255,0.84); max-width: 34em; }
+.mg-deleg-hero__body h2 { font-size: var(--text-h3); line-height: var(--text-h3-lh); letter-spacing: var(--text-h3-tracking); font-weight: 600; color: #fff; }
+.mg-deleg-hero__body p { font-size: var(--text-subtitle); line-height: var(--text-subtitle-lh); color: rgba(255,255,255,0.84); max-width: 34em; }
 /* Preço no mesmo padrão dos demais cards (.mg-price-line), em versão clara.
    Valor em 24px, como o preço dos cards do carrossel (.ds-num). */
 .mg-deleg-hero__body .mg-price-line { color: rgba(255,255,255,0.7); }
-.mg-deleg-hero__body .mg-price-line b { color: #fff; font-size: 24px; }
+.mg-deleg-hero__body .mg-price-line b { color: #fff; font-size: var(--num-price); }
 /* "A partir de" em linha própria, acima do valor. */
 .mg-deleg-hero__price { display: flex; flex-direction: column; gap: 2px; line-height: 1.2; }
-.mg-deleg-hero__price-label { font-size: 14px; }
+.mg-deleg-hero__price-label { font-size: var(--text-small); }
 
 /* Esteira de logos — FORA do card, logo abaixo dele (coladas, para lerem
    como uma unidade com a imagem). */
@@ -450,6 +450,6 @@ body.gl-is-dragging .mg-hero-media image-slot { animation-play-state: paused; }
 .galeao[data-vp="mobile"] .mg-deleg--herostyle { padding: 64px 20px; }
 .galeao[data-vp="mobile"] .mg-deleg-hero__card { height: auto; min-height: 72vh; }
 .galeao[data-vp="mobile"] .mg-deleg-hero__body { padding: 32px 22px; gap: 18px; }
-.galeao[data-vp="mobile"] .mg-deleg-hero__body h2 { font-size: 32px; }
-.galeao[data-vp="mobile"] .mg-deleg-hero__body p { font-size: 17px; }
+.galeao[data-vp="mobile"] .mg-deleg-hero__body h2 { font-size: var(--text-h3-mobile); }
+.galeao[data-vp="mobile"] .mg-deleg-hero__body p { font-size: var(--text-subtitle-mobile); }
 .galeao[data-vp="mobile"] .mg-deleg-hero__logos { margin-top: 18px; gap: 10px; }

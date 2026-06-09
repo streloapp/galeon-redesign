@@ -88,7 +88,7 @@ const SERVICES = [
   photo: 'sala VIP com vista para a pista'
 },
 {
-  key: 'transportes', label: 'Transportes', caption: 'Comuns e executivos', color: '#C58200', inHero: true,
+  key: 'transportes', label: 'Transportes', caption: 'Comuns e executivos', color: '#E5A91D', inHero: true,
   short: 'Táxi e transfer, planejado ou imediato.',
   headline: 'Táxi e transfer pra começar leve.',
   subline: 'Motorista te encontra no portão certo, no horário certo.',

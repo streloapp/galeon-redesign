@@ -45,7 +45,7 @@ function MGLanguage({ compact = false }) {
           display: 'inline-flex', alignItems: 'center', gap: 8,
           background: open ? 'var(--c-bg-soft)' : 'transparent', border: 0,
           padding: compact ? '6px 8px' : '6px 10px 6px 8px', borderRadius: 999,
-          fontSize: 13, color: 'var(--c-fg)', fontWeight: 500, fontFamily: 'inherit', cursor: 'pointer',
+          fontSize: 'var(--text-small)', color: 'var(--c-fg)', fontWeight: 500, fontFamily: 'inherit', cursor: 'pointer',
           transition: 'background .15s ease'
         }}>
         <MGFlag cc={current.cc} size={compact ? 20 : 22} />
@@ -75,8 +75,8 @@ function MGLanguage({ compact = false }) {
               onMouseOut={(e) => { if (!isActive) e.currentTarget.style.background = 'transparent'; }}>
               <MGFlag cc={l.cc} size={22} />
               <span style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
-                <span style={{ fontSize: 13, fontWeight: 500, color: 'var(--c-fg)' }}>{l.label}</span>
-                <span style={{ fontSize: 11, color: 'var(--c-muted)', letterSpacing: '0.04em', textTransform: 'uppercase', fontWeight: 600 }}>{l.short}</span>
+                <span style={{ fontSize: 'var(--text-small)', fontWeight: 500, color: 'var(--c-fg)' }}>{l.label}</span>
+                <span style={{ fontSize: 'var(--text-micro)', color: 'var(--c-muted)', letterSpacing: '0.04em', textTransform: 'uppercase', fontWeight: 600 }}>{l.short}</span>
               </span>
               {isActive &&
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--c-fg)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12l5 5L20 7"/></svg>
@@ -99,7 +99,7 @@ function MGServicesDropdown() {
         style={{
           display: 'inline-flex', alignItems: 'center', gap: 6,
           background: open ? 'var(--c-bg-soft)' : 'transparent', border: 0,
-          padding: '8px 14px', borderRadius: 8, fontSize: 14, color: 'var(--c-fg)', fontWeight: 500, cursor: 'pointer', fontFamily: 'inherit'
+          padding: '8px 14px', borderRadius: 8, fontSize: 'var(--text-small)', color: 'var(--c-fg)', fontWeight: 500, cursor: 'pointer', fontFamily: 'inherit'
         }}>
         Serviços <span style={{ transform: open ? 'rotate(180deg)' : 'none', transition: 'transform .2s', display: 'inline-flex' }}>{window.MGIcon.chevron(13)}</span>
       </button>
@@ -119,8 +119,8 @@ function MGServicesDropdown() {
               {Nav[s.key] && Nav[s.key](18)}
             </span>
             <span style={{ display: 'flex', flexDirection: 'column' }}>
-              <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--c-fg)' }}>{s.label}</span>
-              <span style={{ fontSize: 12, color: 'var(--c-muted)' }}>{s.desc}</span>
+              <span style={{ fontSize: 'var(--text-small)', fontWeight: 600, color: 'var(--c-fg)' }}>{s.label}</span>
+              <span style={{ fontSize: 'var(--text-micro)', color: 'var(--c-muted)' }}>{s.desc}</span>
             </span>
           </a>
         )}
@@ -129,7 +129,7 @@ function MGServicesDropdown() {
   );
 }
 
-const mgNavLink = { fontSize: 14, color: 'var(--c-fg)', fontWeight: 500, padding: '8px 14px', borderRadius: 8 };
+const mgNavLink = { fontSize: 'var(--text-small)', color: 'var(--c-fg)', fontWeight: 500, padding: '8px 14px', borderRadius: 8 };
 
 function MGHeader({ mobile }) {
   const [hidden, setHidden] = useStateH(false);
@@ -218,7 +218,7 @@ function MGHero({ mobile, onExplore }) {
         }}>
           <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', color: '#fff', maxWidth: 1000 }}>
             <span className="gl-eyebrow" style={{ position: 'absolute', bottom: '100%', marginBottom: mobile ? 18 : 24, color: 'rgba(255,255,255,0.72)' }}>Meet &amp; Greet</span>
-            <h1 style={{ fontSize: mobile ? 40 : 80, lineHeight: 0.96, letterSpacing: '-0.045em', fontWeight: 600, color: '#fff' }}>
+            <h1 style={{ fontSize: mobile ? 'var(--text-h1-mobile)' : 'var(--text-h1)', lineHeight: 'var(--text-h1-lh)', letterSpacing: 'var(--text-h1-tracking)', fontWeight: 600, color: '#fff' }}>
               Sua jornada,<br/>cuidada de ponta a ponta
             </h1>
           </div>

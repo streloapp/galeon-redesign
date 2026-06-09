@@ -33,11 +33,24 @@ Tone of voice (visual): **editorial, calm, oficial.** Not a startup. Not a marke
 - One brand primary: **GaleON green `#9ACA3C`** on dark ink `#1f2a0c`. Used for the primary CTA, key accents (CSAT star), brand mark.
 - Neutrals are **warm-leaning**: page bg `#FFFFFF`, soft bg `#F7F7F4`, foreground `#0E0F0E`, muted `#6B6B68`, border `#E7E6E1`. Avoids cold blue-grays — the brand sits closer to off-white than to pure white.
 - A **functional palette of 7 service colors**, one per offering. Each service drives the hero CTA color, the chip dot, the card accent. Never mixed gratuitously — a color = a service.
-  - Hospitalidade `#2B2B2B` · Delivery `#ED1C24` · Sala VIP `#822A85` · Transportes `#C58200` · Guarda-volume `#F58220` · Câmbio `#009B90` · Personal Shopper `#ED0080`
+  - Meet & Greet `#2B2B2B` · Delivery `#ED1C24` · Sala VIP `#822A85` · Transportes `#E5A91D` · Guarda-volume `#F58220` · Câmbio `#009B90` · Personal Shopper `#ED0080`
 - **No gradients as decoration.** Gradients exist only as **legibility scrims** over photography (top/bottom dark overlays on hero & banner images).
 
 ### Type
 - Single typeface: **Plus Jakarta Sans**, weights 400/500/600/700/800. Loaded from Google Fonts.
+- **One scale, nine steps, all even** (`--text-*` tokens in `colors_and_type.css`). Each step carries size (desktop→mobile), line-height and tracking. Home and Meet & Greet share it — same hierarchy level = same token.
+
+  | Token | desktop→mobile | line-height | tracking | papel |
+  |---|---|---|---|---|
+  | `--text-h1` | 80→44 | 1.0 | -0.045em | herói de página |
+  | `--text-h2` | 56→36 | 1.0 | -0.04em | título de seção |
+  | `--text-h3` | 44→30 | 1.05 | -0.03em | subhead / título de experiência |
+  | `--text-h4` | 32→26 | 1.1 | -0.025em | título de card |
+  | `--text-h5` | 24→20 | 1.2 | -0.015em | bloco menor / pergunta FAQ |
+  | `--text-subtitle` | 20→18 | 1.45 | -0.01em | parágrafo de abertura / subtítulo do herói |
+  | `--text-body` | 16 | 1.5 | -0.005em | texto corrido |
+  | `--text-small` | 14 | 1.4 | 0 | legenda / label secundário |
+  | `--text-micro` | 12 | 1.3 | uppercase +0.06em (eyebrow) | eyebrow / kicker |
 - Display copy uses tight tracking (`letter-spacing: -0.035em` to `-0.05em` at large sizes) and short line-height (`0.92`–`1.0`). `text-wrap: balance` on headlines.
 - Body uses `text-wrap: pretty`, line-height ~1.45.
 - Feature settings always on: `ss01, ss02`, plus `font-variant-numeric: tabular-nums` for any stat.
