@@ -13,7 +13,7 @@ function ServicosOverview({ mobile }) {
     <section id="servicos-overview" className="gl-section" style={{ paddingTop: mobile ? 56 : 96, paddingBottom: mobile ? 24 : 32 }}>
       <div style={{ maxWidth: 720, marginBottom: mobile ? 28 : 48 }}>
         <span className="gl-eyebrow">Serviços</span>
-        <h2 style={{ fontSize: mobile ? 36 : 64, marginTop: 16, maxWidth: 880 }}>
+        <h2 style={{ fontSize: mobile ? 'var(--text-h2-mobile)' : 'var(--text-h2)', marginTop: 16, maxWidth: 880 }}>
           Pra cada momento da viagem.
         </h2>
       </div>
@@ -41,8 +41,8 @@ function ServicosOverview({ mobile }) {
               {Icon[s.key] && Icon[s.key](mobile ? 20 : 22)}
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 6, flex: 1 }}>
-              <span style={{ fontSize: mobile ? 17 : 19, fontWeight: 600, letterSpacing: '-0.01em' }}>{s.label}</span>
-              <span style={{ fontSize: mobile ? 13 : 14, color: 'var(--c-muted)', lineHeight: 1.4 }}>{s.short}</span>
+              <span style={{ fontSize: mobile ? 'var(--text-subtitle-mobile)' : 'var(--text-subtitle)', fontWeight: 600, letterSpacing: '-0.01em' }}>{s.label}</span>
+              <span style={{ fontSize: mobile ? 'var(--text-small-mobile)' : 'var(--text-small)', color: 'var(--c-muted)', lineHeight: 1.4 }}>{s.short}</span>
             </div>
             <span style={{
             position: 'absolute', top: mobile ? 18 : 24, right: mobile ? 16 : 22,
@@ -71,12 +71,12 @@ function Servicos({ mobile }) {
       }}>
         <div style={{ maxWidth: 720 }}>
           <span className="gl-eyebrow">Serviços</span>
-          <h2 style={{ fontSize: mobile ? 36 : 64, marginTop: 16, maxWidth: 880 }}>
+          <h2 style={{ fontSize: mobile ? 'var(--text-h2-mobile)' : 'var(--text-h2)', marginTop: 16, maxWidth: 880 }}>
             Pra cada momento da viagem.
           </h2>
         </div>
         {!mobile &&
-        <a href="#" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 14, fontWeight: 500, color: 'var(--c-fg)', borderBottom: '1px solid var(--c-fg)', paddingBottom: 4 }}>
+        <a href="#" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 'var(--text-small)', fontWeight: 500, color: 'var(--c-fg)', borderBottom: '1px solid var(--c-fg)', paddingBottom: 4 }}>
             Ver todos os serviços {window.GaleonIcon.arrow(13)}
           </a>
         }
@@ -171,19 +171,19 @@ function HospitalidadeCard({ mobile }) {
         <span className="gl-tag" style={{ background: 'rgba(255,255,255,0.18)', color: '#fff', borderColor: 'rgba(255,255,255,0.24)', backdropFilter: 'blur(8px)' }}>
           <span className="dot" style={{ background: 'var(--c-primary)' }} /> Em destaque
         </span>
-        <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.7)' }}>Hospitalidade</span>
+        <span style={{ fontSize: 'var(--text-micro)', color: 'rgba(255,255,255,0.7)' }}>Hospitalidade</span>
       </div>
       <div style={{ flex: 1 }} />
       <div style={{ position: 'relative', padding: mobile ? '0 24px 28px' : '0 40px 40px', display: 'flex', flexDirection: 'column', gap: 22, maxWidth: 720 }}>
-        <h3 style={{ fontSize: mobile ? 36 : 56, color: '#fff' }}>
+        <h3 style={{ fontSize: mobile ? 'var(--text-h2-mobile)' : 'var(--text-h2)', color: '#fff' }}>
           Hospitalidade do<br />desembarque ao embarque.
         </h3>
-        <p style={{ fontSize: mobile ? 15 : 16, color: 'rgba(255,255,255,0.78)', maxWidth: 460, lineHeight: 1.45 }}>
+        <p style={{ fontSize: mobile ? 'var(--text-body-mobile)' : 'var(--text-body)', color: 'rgba(255,255,255,0.78)', maxWidth: 460, lineHeight: 1.45 }}>
           Check-in assistido, fast-track e condução até o portão.
         </p>
         <div style={{ display: 'flex', flexDirection: mobile ? 'column' : 'row', gap: 10, alignItems: mobile ? 'stretch' : 'center' }}>
           <a href="meet-greet.html" className="gl-btn gl-btn--primary" style={{ textDecoration: 'none' }}>Conhecer mais {window.GaleonIcon.arrow(14)}</a>
-          <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.65)', marginLeft: mobile ? 0 : 4 }}>
+          <span style={{ fontSize: 'var(--text-small)', color: 'rgba(255,255,255,0.65)', marginLeft: mobile ? 0 : 4 }}>
             A partir de R$ 480
           </span>
         </div>
@@ -219,10 +219,10 @@ function DeliveryCard({ mobile }) {
         </span>
       </div>
       <div style={{ padding: mobile ? '22px 22px 26px' : '32px 32px 36px', display: 'flex', flexDirection: 'column', gap: 16, flex: 1 }}>
-        <h3 style={{ fontSize: mobile ? 28 : 34 }}>
+        <h3 style={{ fontSize: mobile ? 'var(--text-h4-mobile)' : 'var(--text-h4)' }}>
           Peça sua comida sem sair do portão de embarque
         </h3>
-        <p style={{ color: 'var(--c-muted)', fontSize: mobile ? 15 : 16, lineHeight: 1.45, flex: 1 }}>
+        <p style={{ color: 'var(--c-muted)', fontSize: mobile ? 'var(--text-body-mobile)' : 'var(--text-body)', lineHeight: 1.45, flex: 1 }}>
           Mais de 30 restaurantes do RIOgaleão entregam direto para você. Em até 30 minutos.
         </p>
         <button className="gl-btn gl-btn--dark" style={{ alignSelf: 'flex-start' }}>
@@ -249,10 +249,10 @@ function SalaVipCard({ mobile }) {
           <span className="gl-tag" style={{ color: 'var(--c-sala-vip)', alignSelf: 'flex-start' }}>
             <span className="dot" /> Sala VIP
           </span>
-          <h3 style={{ fontSize: mobile ? 28 : 32 }}>
+          <h3 style={{ fontSize: mobile ? 'var(--text-h4-mobile)' : 'var(--text-h4)' }}>
             Embarque sem barulho.
           </h3>
-          <p style={{ color: 'var(--c-muted)', fontSize: 15, lineHeight: 1.45 }}>
+          <p style={{ color: 'var(--c-muted)', fontSize: 'var(--text-body)', lineHeight: 1.45 }}>
             Salas domésticas e internacionais, com chuveiro e bebidas.
           </p>
         </div>
@@ -289,10 +289,10 @@ function TransportesCard({ mobile }) {
           <span className="gl-tag" style={{ color: '#B07D00', alignSelf: 'flex-start' }}>
             <span className="dot" /> Transportes
           </span>
-          <h3 style={{ fontSize: mobile ? 28 : 32 }}>
+          <h3 style={{ fontSize: mobile ? 'var(--text-h4-mobile)' : 'var(--text-h4)' }}>
             Táxi e transfer pra começar leve.
           </h3>
-          <p style={{ color: 'var(--c-muted)', fontSize: 15, lineHeight: 1.45 }}>
+          <p style={{ color: 'var(--c-muted)', fontSize: 'var(--text-body)', lineHeight: 1.45 }}>
             Motorista te encontra no portão certo.
           </p>
         </div>
@@ -326,7 +326,7 @@ function CompactCard({ name, color, desc, mobile }) {
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <span style={{
           display: 'inline-flex', alignItems: 'center', gap: 8,
-          fontSize: 12, fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase',
+          fontSize: 'var(--text-micro)', fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase',
           color
         }}>
           <span style={{ width: 8, height: 8, borderRadius: 4, background: color, boxShadow: `0 0 0 4px ${color}22` }} />
@@ -334,7 +334,7 @@ function CompactCard({ name, color, desc, mobile }) {
         </span>
         <span style={{ color: 'var(--c-muted)' }}>{window.GaleonIcon.arrow(15)}</span>
       </div>
-      <p style={{ fontSize: mobile ? 17 : 19, lineHeight: 1.3, color: 'var(--c-fg)', fontWeight: 500, letterSpacing: '-0.01em', flex: 1 }}>
+      <p style={{ fontSize: mobile ? 'var(--text-subtitle-mobile)' : 'var(--text-subtitle)', lineHeight: 1.3, color: 'var(--c-fg)', fontWeight: 500, letterSpacing: '-0.01em', flex: 1 }}>
         {desc}
       </p>
     </article>);
@@ -387,7 +387,7 @@ function Vitrine({ mobile }) {
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: 24, flexWrap: 'wrap', marginBottom: mobile ? 28 : 40 }}>
         <div style={{ maxWidth: 720, display: 'flex', flexDirection: 'column', gap: 16 }}>
           <span className="gl-eyebrow">Destaques</span>
-          <h2 style={{ fontSize: mobile ? 32 : 56 }}>Mais pedidos</h2>
+          <h2 style={{ fontSize: mobile ? 'var(--text-h2-mobile)' : 'var(--text-h2)' }}>Mais pedidos</h2>
         </div>
         <div className="gl-tabs">
           {['delivery', 'vip', 'transportes'].map((k) => {
@@ -439,9 +439,9 @@ function VitrineCard({ brand, dish, meta, slot, accent }) {
         <image-slot id={slot} shape="rounded" radius="0" placeholder={`foto: ${dish}`} style={{ width: '100%', height: '100%' }}></image-slot>
       </div>
       <div style={{ padding: '16px 18px 18px', display: 'flex', flexDirection: 'column', gap: 6 }}>
-        <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase', color: accentColor }}>{brand}</span>
-        <span style={{ fontSize: 17, fontWeight: 500, letterSpacing: '-0.01em' }}>{dish}</span>
-        <span style={{ fontSize: 13, color: 'var(--c-muted)', marginTop: 4 }}>{meta}</span>
+        <span style={{ fontSize: 'var(--text-micro)', fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase', color: accentColor }}>{brand}</span>
+        <span style={{ fontSize: 'var(--text-body)', fontWeight: 500, letterSpacing: '-0.01em' }}>{dish}</span>
+        <span style={{ fontSize: 'var(--text-small)', color: 'var(--c-muted)', marginTop: 4 }}>{meta}</span>
       </div>
     </article>);
 
@@ -515,7 +515,7 @@ function Experiencias({ mobile }) {
         maxWidth: 760, marginBottom: mobile ? 28 : 40
       }}>
         <span className="gl-eyebrow">Serviços</span>
-        <h2 style={{ fontSize: mobile ? 36 : 56, lineHeight: 0.98 }}>
+        <h2 style={{ fontSize: mobile ? 'var(--text-h2-mobile)' : 'var(--text-h2)', lineHeight: 'var(--text-h2-lh)' }}>
           Experiências para cada momento da sua jornada
         </h2>
       </div>
@@ -571,7 +571,7 @@ function Experiencias({ mobile }) {
           <span style={{
             display: 'inline-flex', alignItems: 'center', gap: 8,
             color: 'var(--c-sala-vip)',
-            fontSize: 12, fontWeight: 600, letterSpacing: '0.06em',
+            fontSize: 'var(--text-micro)', fontWeight: 600, letterSpacing: '0.06em',
             textTransform: 'uppercase'
           }}>
             {window.GaleonServiceIcon && window.GaleonServiceIcon.vip(16)}
@@ -580,7 +580,7 @@ function Experiencias({ mobile }) {
 
           <h3 style={{
             margin: 0,
-            fontSize: mobile ? 24 : 34, lineHeight: 1.1, letterSpacing: '-0.025em',
+            fontSize: mobile ? 'var(--text-h4-mobile)' : 'var(--text-h4)', lineHeight: 'var(--text-h4-lh)', letterSpacing: 'var(--text-h4-tracking)',
             fontWeight: 600,
             maxWidth: 520
           }}>
@@ -589,7 +589,7 @@ function Experiencias({ mobile }) {
 
           <div style={{
             display: 'flex', flexDirection: 'column', gap: 12,
-            fontSize: mobile ? 14 : 15, lineHeight: 1.5,
+            fontSize: mobile ? 'var(--text-body-mobile)' : 'var(--text-body)', lineHeight: 1.5,
             color: 'var(--c-muted)', maxWidth: 480
           }}>
             <p style={{ margin: 0 }}>
@@ -599,7 +599,7 @@ function Experiencias({ mobile }) {
 
           <a href="#servicos" style={{
             display: 'inline-flex', alignItems: 'center', gap: 10,
-            color: 'var(--c-fg)', fontSize: 14, fontWeight: 600,
+            color: 'var(--c-fg)', fontSize: 'var(--text-small)', fontWeight: 600,
             letterSpacing: '-0.005em', textDecoration: 'none',
             alignSelf: 'flex-start'
           }}>
@@ -696,7 +696,7 @@ function ExpFeatureCard({ serviceKey, serviceLabel, serviceColor, title, desc, s
         <span style={{
           display: 'inline-flex', alignItems: 'center', gap: 8,
           color: serviceColor,
-          fontSize: 12, fontWeight: 600, letterSpacing: '0.06em',
+          fontSize: 'var(--text-micro)', fontWeight: 600, letterSpacing: '0.06em',
           textTransform: 'uppercase'
         }}>
           {Icon[serviceKey] && Icon[serviceKey](16)}
@@ -705,19 +705,19 @@ function ExpFeatureCard({ serviceKey, serviceLabel, serviceColor, title, desc, s
 
         <h3 style={{
           margin: 0,
-          fontSize: mobile ? 24 : 32, lineHeight: 1.1, letterSpacing: '-0.025em',
+          fontSize: mobile ? 'var(--text-h4-mobile)' : 'var(--text-h4)', lineHeight: 'var(--text-h4-lh)', letterSpacing: 'var(--text-h4-tracking)',
           fontWeight: 600, maxWidth: 480
         }}>{title}</h3>
 
         <p style={{
-          margin: 0, fontSize: mobile ? 14 : 15,
+          margin: 0, fontSize: mobile ? 'var(--text-body-mobile)' : 'var(--text-body)',
           color: 'var(--c-muted)', lineHeight: 1.5,
           maxWidth: 420
         }}>{desc}</p>
 
         <span style={{
           display: 'inline-flex', alignItems: 'center', gap: 6,
-          color: 'var(--c-fg)', fontSize: 14, fontWeight: 600,
+          color: 'var(--c-fg)', fontSize: 'var(--text-small)', fontWeight: 600,
           letterSpacing: '-0.005em'
         }}>
           Saiba mais {window.GaleonIcon && window.GaleonIcon.arrow(13)}
@@ -761,7 +761,7 @@ function ExpMiniCard({ serviceKey, serviceLabel, serviceColor, desc, href, mobil
       <span style={{
         display: 'inline-flex', alignItems: 'center', gap: 8,
         color: serviceColor,
-        fontSize: 12, fontWeight: 600, letterSpacing: '0.06em',
+        fontSize: 'var(--text-micro)', fontWeight: 600, letterSpacing: '0.06em',
         textTransform: 'uppercase'
       }}>
         {Icon[serviceKey] && Icon[serviceKey](16)}
@@ -769,12 +769,12 @@ function ExpMiniCard({ serviceKey, serviceLabel, serviceColor, desc, href, mobil
       </span>
       <p style={{
         margin: 0,
-        fontSize: mobile ? 14 : 15,
+        fontSize: mobile ? 'var(--text-body-mobile)' : 'var(--text-body)',
         color: 'var(--c-muted)', lineHeight: 1.5
       }}>{desc}</p>
       <span style={{
         display: 'inline-flex', alignItems: 'center', gap: 6,
-        color: 'var(--c-fg)', fontSize: 14, fontWeight: 600,
+        color: 'var(--c-fg)', fontSize: 'var(--text-small)', fontWeight: 600,
         letterSpacing: '-0.005em',
         marginTop: 4
       }}>
@@ -833,8 +833,8 @@ function Hospitalidade({ mobile }) {
 
           <h2 style={{
             margin: 0,
-            fontSize: mobile ? 36 : 56,
-            lineHeight: 0.98, letterSpacing: '-0.035em',
+            fontSize: mobile ? 'var(--text-h2-mobile)' : 'var(--text-h2)',
+            lineHeight: 'var(--text-h2-lh)', letterSpacing: 'var(--text-h2-tracking)',
             fontWeight: 600, color: '#fff'
           }}>
             Atendimento exclusivo do início ao fim
@@ -842,7 +842,7 @@ function Hospitalidade({ mobile }) {
 
           <p style={{
             margin: 0,
-            fontSize: mobile ? 15 : 17,
+            fontSize: mobile ? 'var(--text-body-mobile)' : 'var(--text-body)',
             color: 'rgba(255,255,255,0.78)',
             lineHeight: 1.55,
             maxWidth: 560
@@ -866,7 +866,7 @@ function Hospitalidade({ mobile }) {
             {includes.map((it) =>
             <li key={it} style={{
               display: 'flex', alignItems: 'center', gap: 12,
-              fontSize: mobile ? 14 : 15,
+              fontSize: mobile ? 'var(--text-body-mobile)' : 'var(--text-body)',
               fontWeight: 500, letterSpacing: '-0.005em',
               color: 'rgba(255,255,255,0.92)',
               lineHeight: 1.4
@@ -887,7 +887,7 @@ function Hospitalidade({ mobile }) {
 
           <a href="meet-greet.html" style={{
             display: 'inline-flex', alignItems: 'center', gap: 10,
-            color: '#fff', fontSize: 14, fontWeight: 600,
+            color: '#fff', fontSize: 'var(--text-small)', fontWeight: 600,
             letterSpacing: '-0.005em', textDecoration: 'none',
             alignSelf: 'flex-start',
             marginTop: mobile ? 4 : 8
@@ -946,8 +946,8 @@ function ProvaSocial({ mobile }) {
       }}>
         <span className="gl-eyebrow">Sobre o GaleON</span>
         <h2 style={{
-          fontSize: mobile ? 36 : 52,
-          lineHeight: 0.98, letterSpacing: '-0.035em'
+          fontSize: mobile ? 'var(--text-h2-mobile)' : 'var(--text-h2)',
+          lineHeight: 'var(--text-h2-lh)', letterSpacing: 'var(--text-h2-tracking)'
         }}>
           O RIOgaleão na palma da sua mão.
         </h2>
@@ -988,19 +988,19 @@ function ProvaSocial({ mobile }) {
           color: '#fff'
         }}>
           <span style={{
-            fontSize: 11, fontWeight: 600,
+            fontSize: 'var(--text-micro)', fontWeight: 600,
             letterSpacing: '0.08em', textTransform: 'uppercase',
             color: 'rgba(255,255,255,0.78)'
           }}>Galeão · 2026</span>
           <h3 style={{
-            fontSize: mobile ? 30 : 44,
-            lineHeight: 1.05, letterSpacing: '-0.025em',
+            fontSize: mobile ? 'var(--text-h3-mobile)' : 'var(--text-h3)',
+            lineHeight: 'var(--text-h3-lh)', letterSpacing: 'var(--text-h3-tracking)',
             fontWeight: 500, color: '#fff'
           }}>
             Reserve antes, chegue tranquilo.
           </h3>
           <p style={{
-            fontSize: mobile ? 14 : 15,
+            fontSize: mobile ? 'var(--text-body-mobile)' : 'var(--text-body)',
             color: 'rgba(255,255,255,0.82)',
             lineHeight: 1.5, maxWidth: 440
           }}>
@@ -1028,7 +1028,7 @@ function ProvaSocial({ mobile }) {
             }}>
               <span style={{
                 display: 'inline-flex', alignItems: 'baseline', gap: mobile ? 4 : 8,
-                fontSize: mobile ? 30 : 56,
+                fontSize: mobile ? 'var(--num-stat-mobile)' : 'var(--num-stat)',
                 lineHeight: 0.92, letterSpacing: '-0.045em', fontWeight: 600,
                 color: 'var(--c-fg)',
                 fontVariantNumeric: 'tabular-nums',
@@ -1067,7 +1067,7 @@ function ProvaSocial({ mobile }) {
                 }
               </span>
               <span style={{
-                fontSize: mobile ? 13 : 22, color: 'var(--c-muted)',
+                fontSize: mobile ? 'var(--text-body-mobile)' : 'var(--text-body)', color: 'var(--c-muted)',
                 lineHeight: 1.4, maxWidth: mobile ? 'none' : 280,
                 marginTop: mobile ? 2 : 6
               }}>
@@ -1129,11 +1129,11 @@ function FAQ({ mobile }) {
       }}>
         <div style={{ position: mobile ? 'static' : 'sticky', top: 120 }}>
           <span className="gl-eyebrow">Dúvidas</span>
-          <h2 style={{ fontSize: mobile ? 40 : 72, marginTop: 16, lineHeight: 0.95 }}>
+          <h2 style={{ fontSize: mobile ? 'var(--text-h2-mobile)' : 'var(--text-h2)', marginTop: 16, lineHeight: 'var(--text-h2-lh)' }}>
             Ainda tem perguntas?
           </h2>
           {!mobile &&
-          <p style={{ marginTop: 24, fontSize: 15, color: 'var(--c-muted)', lineHeight: 1.5, maxWidth: 320 }}>
+          <p style={{ marginTop: 24, fontSize: 'var(--text-body)', color: 'var(--c-muted)', lineHeight: 1.5, maxWidth: 320 }}>
               Se a sua dúvida não estiver aqui, fale com a gente pela Central de Atendimento.
             </p>
           }
@@ -1159,8 +1159,8 @@ function FAQ({ mobile }) {
                   }}>
                   
                   <span style={{
-                    fontSize: mobile ? 18 : 22,
-                    fontWeight: 500, letterSpacing: '-0.015em', lineHeight: 1.3
+                    fontSize: mobile ? 'var(--text-h5-mobile)' : 'var(--text-h5)',
+                    fontWeight: 500, letterSpacing: 'var(--text-h5-tracking)', lineHeight: 'var(--text-h5-lh)'
                   }}>{item.q}</span>
                   <span style={{
                     width: 34, height: 34, borderRadius: 17,
@@ -1185,7 +1185,7 @@ function FAQ({ mobile }) {
                     <div style={{
                       paddingBottom: mobile ? 24 : 30,
                       paddingRight: mobile ? 0 : 80,
-                      fontSize: mobile ? 15 : 16,
+                      fontSize: mobile ? 'var(--text-body-mobile)' : 'var(--text-body)',
                       color: 'var(--c-muted)', lineHeight: 1.55,
                       maxWidth: 700
                     }}>{item.a}</div>
@@ -1238,7 +1238,7 @@ function Jornada({ mobile }) {
     <section id="jornada" className="gl-section">
       <div style={{ display: 'flex', flexDirection: 'column', gap: 16, maxWidth: 900, marginBottom: mobile ? 32 : 56 }}>
         <span className="gl-eyebrow">Antes, durante e depois</span>
-        <h2 style={{ fontSize: mobile ? 36 : 64 }}>
+        <h2 style={{ fontSize: mobile ? 'var(--text-h2-mobile)' : 'var(--text-h2)' }}>
           Alguém do Galeão em cada parte da viagem.
         </h2>
       </div>
@@ -1259,25 +1259,25 @@ function Jornada({ mobile }) {
         }}>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: 12 }}>
               <span style={{
-              fontSize: 13, fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase',
+              fontSize: 'var(--text-small)', fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase',
               display: 'inline-flex', alignItems: 'center', gap: 8
             }}>
-                <span style={{ display: 'inline-grid', placeItems: 'center', width: 22, height: 22, borderRadius: 999, background: 'var(--c-fg)', color: '#fff', fontSize: 11 }}>0{i + 1}</span>
+                <span style={{ display: 'inline-grid', placeItems: 'center', width: 22, height: 22, borderRadius: 999, background: 'var(--c-fg)', color: '#fff', fontSize: 'var(--text-micro)' }}>0{i + 1}</span>
                 {c.moment}
               </span>
-              <span style={{ fontSize: 13, color: 'var(--c-muted)' }}>{c.sub}</span>
+              <span style={{ fontSize: 'var(--text-small)', color: 'var(--c-muted)' }}>{c.sub}</span>
             </div>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 18 }}>
               {c.items.map((it, j) =>
             <li key={j} style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
                   <span style={{
-                fontSize: 11, fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase',
+                fontSize: 'var(--text-micro)', fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase',
                 color: it.color, display: 'inline-flex', alignItems: 'center', gap: 6
               }}>
                     <span style={{ width: 6, height: 6, borderRadius: 3, background: it.color }} />
                     {it.tag}
                   </span>
-                  <span style={{ fontSize: mobile ? 17 : 20, fontWeight: 500, letterSpacing: '-0.01em', lineHeight: 1.3 }}>
+                  <span style={{ fontSize: mobile ? 'var(--text-subtitle-mobile)' : 'var(--text-subtitle)', fontWeight: 500, letterSpacing: '-0.01em', lineHeight: 1.3 }}>
                     {it.text}
                   </span>
                 </li>
@@ -1301,7 +1301,7 @@ function FinalCTA({ mobile }) {
         display: 'flex', flexDirection: mobile ? 'column' : 'row',
         gap: 32, alignItems: mobile ? 'stretch' : 'center', justifyContent: 'space-between'
       }}>
-        <h3 style={{ fontSize: mobile ? 32 : 56, color: 'var(--c-primary-ink)', maxWidth: 720 }}>
+        <h3 style={{ fontSize: mobile ? 'var(--text-h2-mobile)' : 'var(--text-h2)', color: 'var(--c-primary-ink)', maxWidth: 720 }}>
           O próximo voo é por nossa conta.
         </h3>
         <div style={{ display: 'flex', flexDirection: mobile ? 'column' : 'row', gap: 10 }}>
@@ -1358,9 +1358,9 @@ function Footer({ mobile }) {
         { h: 'Ajuda', l: ['Central de atendimento', 'Status do pedido', 'Termos', 'Privacidade'] }].
         map((c, i) =>
         <div key={i} style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-            <h4 style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--c-muted)' }}>{c.h}</h4>
+            <h4 style={{ fontSize: 'var(--text-micro)', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--c-muted)' }}>{c.h}</h4>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
-              {c.l.map((x) => <li key={x}><a href="#" style={{ fontSize: 14 }}>{x}</a></li>)}
+              {c.l.map((x) => <li key={x}><a href="#" style={{ fontSize: 'var(--text-small)' }}>{x}</a></li>)}
             </ul>
           </div>
         )}
@@ -1368,7 +1368,7 @@ function Footer({ mobile }) {
       <div style={{
         display: 'flex', justifyContent: 'space-between', alignItems: 'center',
         paddingTop: 24, borderTop: '1px solid var(--c-border)',
-        fontSize: 13, color: 'var(--c-muted)', flexWrap: 'wrap', gap: 12
+        fontSize: 'var(--text-small)', color: 'var(--c-muted)', flexWrap: 'wrap', gap: 12
       }}>
         <span>© 2026 GaleON · RIOgaleão</span>
         <img src="uploads/desenvolvido-pelo-strelo.webp" alt="Desenvolvido pelo Strelo" style={{ height: 20 }} />

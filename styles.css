@@ -24,7 +24,7 @@
 .gl-btn {
   display: inline-flex; align-items: center; gap: 10px;
   height: 52px; padding: 0 22px; border-radius: 999px;
-  border: 1px solid transparent; font-weight: 600; font-size: 15px;
+  border: 1px solid transparent; font-weight: 600; font-size: var(--text-body);
   letter-spacing: -0.005em;
   transition: transform .15s ease, background-color .15s ease, color .15s ease, border-color .15s ease;
   white-space: nowrap;
@@ -35,14 +35,14 @@
 .gl-btn--ghost { background: transparent; color: var(--c-fg); border-color: var(--c-fg); }
 .gl-btn--ghost:hover { background: var(--c-fg); color: #fff; }
 .gl-btn--dark { background: var(--c-fg); color: #fff; }
-.gl-btn--sm { height: 40px; padding: 0 16px; font-size: 13px; }
+.gl-btn--sm { height: 40px; padding: 0 16px; font-size: var(--text-small); }
 .gl-btn .gl-arrow { transition: transform .2s ease; }
 .gl-btn:hover .gl-arrow { transform: translateX(3px); }
 
 /* Tag chip */
 .gl-tag {
   display: inline-flex; align-items: center; gap: 6px;
-  font-size: 11px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+  font-size: var(--text-micro); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
   padding: 6px 10px; border-radius: 999px;
   background: rgba(255,255,255,0.92);
   color: var(--c-fg);
@@ -55,7 +55,7 @@
 .gl-section--tight { padding: 64px 56px; }
 .gl-eyebrow {
   display: inline-flex; align-items: center; gap: 8px;
-  font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+  font-size: var(--text-micro); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
   color: var(--c-muted);
 }
 .gl-eyebrow::before {
@@ -73,14 +73,14 @@ image-slot {
 .gl-hscroll { scrollbar-width: none; }
 
 /* Mobile-specific */
-.galeao[data-vp="mobile"] { font-size: 15px; }
+.galeao[data-vp="mobile"] { font-size: var(--text-body-mobile); }
 .galeao[data-vp="mobile"] .gl-section { padding: 64px 20px; }
 .galeao[data-vp="mobile"] .gl-section--tight { padding: 48px 20px; }
 .galeao[data-vp="mobile"] .gl-btn { height: 48px; padding: 0 18px; }
 
 /* Tab pill */
 .gl-tabs { display: inline-flex; padding: 4px; background: var(--c-bg-soft); border-radius: 999px; gap: 2px; border: 1px solid var(--c-border); }
-.gl-tab { background: transparent; border: 0; height: 38px; padding: 0 18px; border-radius: 999px; font-weight: 500; font-size: 14px; color: var(--c-muted); letter-spacing: -0.005em; }
+.gl-tab { background: transparent; border: 0; height: 38px; padding: 0 18px; border-radius: 999px; font-weight: 500; font-size: var(--text-small); color: var(--c-muted); letter-spacing: -0.005em; }
 .gl-tab[data-active="true"] { background: var(--c-primary); color: var(--c-primary-ink); }
 
 /* Marquee for partners */
@@ -103,7 +103,7 @@ image-slot {
   padding: 16px 24px 18px; border-radius: var(--r-md);
   background: rgba(20,20,18,0.28); color: rgba(255,255,255,0.82);
   border: 1px solid rgba(255,255,255,0.14);
-  font: inherit; font-weight: 500; font-size: 14px; letter-spacing: -0.005em;
+  font: inherit; font-weight: 500; font-size: var(--text-small); letter-spacing: -0.005em;
   white-space: nowrap; cursor: pointer;
   -webkit-backdrop-filter: blur(20px) saturate(180%);
           backdrop-filter: blur(20px) saturate(180%);

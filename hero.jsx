@@ -193,7 +193,7 @@ function Header({ mobile }) {
 }
 
 const navLinkStyle = {
-  fontSize: 14, color: 'var(--c-fg)', fontWeight: 500,
+  fontSize: 'var(--text-small)', color: 'var(--c-fg)', fontWeight: 500,
   padding: '8px 14px', borderRadius: 8
 };
 
@@ -247,7 +247,7 @@ function LanguageSelector({ compact = false }) {
           background: open ? 'var(--c-bg-soft)' : 'transparent', border: 0,
           padding: compact ? '6px 8px' : '6px 10px 6px 8px',
           borderRadius: 999,
-          fontSize: 13, color: 'var(--c-fg)', fontWeight: 500,
+          fontSize: 'var(--text-small)', color: 'var(--c-fg)', fontWeight: 500,
           fontFamily: 'inherit', cursor: 'pointer',
           transition: 'background .15s ease'
         }}>
@@ -287,8 +287,8 @@ function LanguageSelector({ compact = false }) {
               onMouseOut={(e) => { if (!isActive) e.currentTarget.style.background = 'transparent'; }}>
               <Flag cc={l.cc} size={22} />
               <span style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
-                <span style={{ fontSize: 13, fontWeight: 500, color: 'var(--c-fg)' }}>{l.label}</span>
-                <span style={{ fontSize: 11, color: 'var(--c-muted)', letterSpacing: '0.04em', textTransform: 'uppercase', fontWeight: 600 }}>{l.short}</span>
+                <span style={{ fontSize: 'var(--text-small)', fontWeight: 500, color: 'var(--c-fg)' }}>{l.label}</span>
+                <span style={{ fontSize: 'var(--text-micro)', color: 'var(--c-muted)', letterSpacing: '0.04em', textTransform: 'uppercase', fontWeight: 600 }}>{l.short}</span>
               </span>
               {isActive &&
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--c-fg)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -317,7 +317,7 @@ function ServicesDropdown({ open, setOpen }) {
           display: 'inline-flex', alignItems: 'center', gap: 6,
           background: open ? 'var(--c-bg-soft)' : 'transparent', border: 0,
           padding: '8px 14px', borderRadius: 8,
-          fontSize: 14, color: 'var(--c-fg)', fontWeight: 500
+          fontSize: 'var(--text-small)', color: 'var(--c-fg)', fontWeight: 500
         }}>
         
         Serviços <span style={{ transform: open ? 'rotate(180deg)' : 'none', transition: 'transform .2s' }}>{Icon.chevron(13)}</span>
@@ -350,8 +350,8 @@ function ServicesDropdown({ open, setOpen }) {
             width: 36, height: 36, borderRadius: 10, background: s.color + '14', color: s.color
           }}>{ServiceIcon[s.key](18)}</span>
             <span style={{ display: 'flex', flexDirection: 'column' }}>
-              <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--c-fg)' }}>{s.label}</span>
-              <span style={{ fontSize: 12, color: 'var(--c-muted)' }}>{s.caption}</span>
+              <span style={{ fontSize: 'var(--text-small)', fontWeight: 600, color: 'var(--c-fg)' }}>{s.label}</span>
+              <span style={{ fontSize: 'var(--text-micro)', color: 'var(--c-muted)' }}>{s.caption}</span>
             </span>
           </a>
         )}
@@ -488,10 +488,10 @@ function HeroSplit({ mobile, active, onSelect }) {
             pointerEvents: 'none' /* let drops pass through to image-slot */
           }}>
             <h1 style={{
-              fontSize: mobile ? 40 : 80, lineHeight: 1.0, letterSpacing: '-0.04em',
+              fontSize: mobile ? 'var(--text-h1-mobile)' : 'var(--text-h1)', lineHeight: 'var(--text-h1-lh)', letterSpacing: 'var(--text-h1-tracking)',
               fontWeight: 600, color: '#fff', maxWidth: 1000
             }}>{s.headline}</h1>
-            <p style={{ fontSize: mobile ? 15 : 19, color: 'rgba(255,255,255,0.86)', maxWidth: 560, lineHeight: 1.4 }}>
+            <p style={{ fontSize: mobile ? 'var(--text-subtitle-mobile)' : 'var(--text-subtitle)', color: 'rgba(255,255,255,0.86)', maxWidth: 560, lineHeight: 1.4 }}>
               {s.subline}
             </p>
             {s.key === 'hospitalidade' ?
@@ -546,10 +546,10 @@ function HeroCinema({ mobile, active, onSelect }) {
           }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 22, color: '#fff' }}>
               <h1 style={{
-                fontSize: mobile ? 44 : 92, lineHeight: 0.96, letterSpacing: '-0.045em',
+                fontSize: mobile ? 'var(--text-h1-mobile)' : 'var(--text-h1)', lineHeight: 'var(--text-h1-lh)', letterSpacing: 'var(--text-h1-tracking)',
                 fontWeight: 600, color: '#fff', maxWidth: 1000
               }}>{s.headline}</h1>
-              <p style={{ fontSize: mobile ? 15 : 19, color: 'rgba(255,255,255,0.82)', maxWidth: 540, lineHeight: 1.4 }}>
+              <p style={{ fontSize: mobile ? 'var(--text-subtitle-mobile)' : 'var(--text-subtitle)', color: 'rgba(255,255,255,0.82)', maxWidth: 540, lineHeight: 1.4 }}>
                 {s.subline}
               </p>
               <button className="gl-btn" style={{
@@ -574,7 +574,7 @@ function HeroStatement({ mobile, active }) {
     <section className="gl-section" style={{ paddingTop: mobile ? 32 : 56, paddingBottom: mobile ? 24 : 32 }}>
       <div key={s.key} className="gl-hero-anim" style={{ maxWidth: 1440, margin: '0 auto' }}>
         <h1 style={{
-          fontSize: mobile ? 48 : 132, lineHeight: 0.92, letterSpacing: '-0.05em', fontWeight: 600
+          fontSize: mobile ? 'var(--text-h1-mobile)' : 'var(--text-h1)', lineHeight: 'var(--text-h1-lh)', letterSpacing: 'var(--text-h1-tracking)', fontWeight: 600
         }}>{s.headline}</h1>
         <div style={{
           display: 'grid',
@@ -594,7 +594,7 @@ function HeroStatement({ mobile, active }) {
               style={{ width: '100%', height: '100%' }}></image-slot>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 18, padding: mobile ? '8px 0' : '0 8px' }}>
-              <p style={{ fontSize: mobile ? 16 : 18, lineHeight: 1.4, color: 'var(--c-muted)', maxWidth: 320 }}>
+              <p style={{ fontSize: mobile ? 'var(--text-subtitle-mobile)' : 'var(--text-subtitle)', lineHeight: 1.4, color: 'var(--c-muted)', maxWidth: 320 }}>
                 {s.subline}
               </p>
               <button className="gl-btn" style={{
