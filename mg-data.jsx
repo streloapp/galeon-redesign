@@ -227,13 +227,13 @@ const MGNavIcon = {
   personal:     (s = 18) => <svg {...navsv(s)}><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
 };
 const MG_NAV = [
-  { key: 'meet-greet', label: 'Meet & Greet',     color: '#2B2B2B', desc: 'Atendimento exclusivo no aeroporto' },
-  { key: 'delivery',   label: 'Delivery',          color: '#ED1C24', desc: 'Comida no portão de embarque' },
-  { key: 'vip',        label: 'Sala VIP',          color: '#822A85', desc: 'Embarque com privacidade' },
-  { key: 'transportes',label: 'Transportes',       color: '#E5A91D', desc: 'Táxi e transfer' },
-  { key: 'guarda',     label: 'Guarda-volume',     color: '#F58220', desc: 'Bagagem em segurança' },
-  { key: 'cambio',     label: 'Câmbio',            color: '#009B90', desc: 'Moeda sem fila' },
-  { key: 'personal',   label: 'Personal Shopper',  color: '#ED0080', desc: 'Alguém compra por você' }
+  { key: 'meet-greet', label: 'Meet & Greet',     color: 'var(--c-meet-greet)', desc: 'Atendimento exclusivo no aeroporto' },
+  { key: 'delivery',   label: 'Delivery',          color: 'var(--c-delivery)', desc: 'Comida no portão de embarque' },
+  { key: 'vip',        label: 'Sala VIP',          color: 'var(--c-sala-vip)', desc: 'Embarque com privacidade' },
+  { key: 'transportes',label: 'Transportes',       color: 'var(--c-transportes)', desc: 'Táxi e transfer' },
+  { key: 'guarda',     label: 'Guarda-volume',     color: 'var(--c-guarda)', desc: 'Bagagem em segurança' },
+  { key: 'cambio',     label: 'Câmbio',            color: 'var(--c-cambio)', desc: 'Moeda sem fila' },
+  { key: 'personal',   label: 'Personal Shopper',  color: 'var(--c-personal)', desc: 'Alguém compra por você' }
 ];
 Object.assign(window, { MGNavIcon, MG_NAV });
 

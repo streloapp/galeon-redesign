@@ -6,8 +6,8 @@
 .galeao, .galeao * { box-sizing: border-box; }
 .galeao {
   font-family: var(--font-body);
-  color: var(--c-fg);
-  background: var(--c-bg);
+  color: var(--c-foreground);
+  background: var(--c-background);
   letter-spacing: -0.01em;
   font-feature-settings: "ss01", "ss02";
   -webkit-font-smoothing: antialiased;
@@ -15,27 +15,54 @@
   position: relative;
 }
 .galeao img { display: block; max-width: 100%; }
-.galeao a { color: inherit; text-decoration: none; }
-.galeao button { font: inherit; cursor: pointer; }
+/* :where() zeroes the element specificity so component classes (.gl-btn etc.)
+   reliably win — a bare `.galeao button` reset would otherwise clobber them. */
+.galeao :where(a) { color: inherit; text-decoration: none; }
+.galeao :where(button) { font: inherit; cursor: pointer; }
 .galeao h1, .galeao h2, .galeao h3, .galeao h4 { margin: 0; font-weight: 600; letter-spacing: -0.035em; line-height: 0.96; text-wrap: balance; }
 .galeao p { margin: 0; text-wrap: pretty; }
 
-/* Buttons */
+/* Buttons — shadcn model: variant axis (color/treatment) × size axis.
+   Hover darkens/lightens the same token via color-mix (no hardcoded hex). */
 .gl-btn {
-  display: inline-flex; align-items: center; gap: 10px;
-  height: 52px; padding: 0 22px; border-radius: 999px;
-  border: 1px solid transparent; font-weight: 600; font-size: var(--text-body);
-  letter-spacing: -0.005em;
-  transition: transform .15s ease, background-color .15s ease, color .15s ease, border-color .15s ease;
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  height: 36px; padding: 0 16px; border-radius: var(--r-lg);
+  border: 1px solid transparent; font-weight: 600; font-size: var(--text-small);
+  letter-spacing: -0.005em; cursor: pointer;
+  transition: transform .15s ease, background-color .15s ease, color .15s ease, border-color .15s ease, box-shadow .15s ease;
   white-space: nowrap;
 }
 .gl-btn:hover { transform: translateY(-1px); }
-.gl-btn--primary { background: var(--c-primary); color: var(--c-primary-ink); }
-.gl-btn--primary:hover { background: #88b832; }
-.gl-btn--ghost { background: transparent; color: var(--c-fg); border-color: var(--c-fg); }
-.gl-btn--ghost:hover { background: var(--c-fg); color: #fff; }
-.gl-btn--dark { background: var(--c-fg); color: #fff; }
-.gl-btn--sm { height: 40px; padding: 0 16px; font-size: var(--text-small); }
+.gl-btn:focus-visible { outline: none; box-shadow: 0 0 0 3px color-mix(in srgb, var(--c-ring) 50%, transparent); }
+.gl-btn:disabled, .gl-btn[aria-disabled="true"] { opacity: .5; pointer-events: none; }
+
+/* Variants */
+.gl-btn--primary { background: var(--c-primary); color: var(--c-primary-foreground); }
+.gl-btn--primary:hover { background: color-mix(in srgb, var(--c-primary) 90%, #000); }
+.gl-btn--destructive { background: var(--c-destructive); color: var(--c-destructive-foreground); }
+.gl-btn--destructive:hover { background: color-mix(in srgb, var(--c-destructive) 90%, #000); }
+.gl-btn--service { background: var(--btn-bg); color: var(--btn-fg); }      /* themed primary: pass --btn-bg / --btn-fg */
+.gl-btn--service:hover { background: color-mix(in srgb, var(--btn-bg) 88%, #000); }
+.gl-btn--dark { background: var(--c-foreground); color: var(--c-surface-dark-foreground); }
+.gl-btn--dark:hover { background: color-mix(in srgb, var(--c-foreground) 86%, #fff); }
+.gl-btn--secondary { background: var(--c-card); color: var(--c-card-foreground); border-color: var(--c-border); }   /* light pill on dark surfaces */
+.gl-btn--secondary:hover { background: color-mix(in srgb, var(--c-card) 94%, #000); }
+.gl-btn--outline { background: transparent; color: var(--c-foreground); border-color: var(--c-foreground); }       /* (was --ghost) bordered */
+.gl-btn--outline:hover { background: var(--c-foreground); color: var(--c-surface-dark-foreground); }
+.gl-btn--ghost { background: transparent; color: var(--btn-fg, var(--c-foreground)); }                             /* borderless, low-emphasis; on dark surfaces pass --btn-fg + --btn-ghost-hover */
+.gl-btn--ghost:hover { background: var(--btn-ghost-hover, var(--c-background-soft)); }
+.gl-btn--link { background: transparent; color: var(--c-primary); height: auto; padding: 0; border: 0; border-radius: 0; }
+.gl-btn--link:hover { text-decoration: underline; text-underline-offset: 4px; transform: none; }
+
+/* Sizes — shadcn scale (default = base, 36px). Radius stays --r-lg per brand. */
+.gl-btn--xs { height: 28px; padding: 0 8px;  gap: 4px; font-size: var(--text-micro); }
+.gl-btn--sm { height: 32px; padding: 0 12px; gap: 6px; }
+.gl-btn--lg { height: 40px; padding: 0 24px; }
+.gl-btn--icon    { width: 36px; height: 36px; padding: 0; }
+.gl-btn--icon-xs { width: 28px; height: 28px; padding: 0; }
+.gl-btn--icon-sm { width: 32px; height: 32px; padding: 0; }
+.gl-btn--icon-lg { width: 40px; height: 40px; padding: 0; }
+
 .gl-btn .gl-arrow { transition: transform .2s ease; }
 .gl-btn:hover .gl-arrow { transform: translateX(3px); }
 
@@ -45,7 +72,7 @@
   font-size: var(--text-micro); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
   padding: 6px 10px; border-radius: 999px;
   background: rgba(255,255,255,0.92);
-  color: var(--c-fg);
+  color: var(--c-foreground);
   border: 1px solid var(--c-border);
 }
 .gl-tag .dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
@@ -56,7 +83,7 @@
 .gl-eyebrow {
   display: inline-flex; align-items: center; gap: 8px;
   font-size: var(--text-micro); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
-  color: var(--c-muted);
+  color: var(--c-muted-foreground);
 }
 .gl-eyebrow::before {
   content: ""; width: 22px; height: 1px; background: currentColor;
@@ -76,12 +103,11 @@ image-slot {
 .galeao[data-vp="mobile"] { font-size: var(--text-body-mobile); }
 .galeao[data-vp="mobile"] .gl-section { padding: 64px 20px; }
 .galeao[data-vp="mobile"] .gl-section--tight { padding: 48px 20px; }
-.galeao[data-vp="mobile"] .gl-btn { height: 48px; padding: 0 18px; }
 
 /* Tab pill */
-.gl-tabs { display: inline-flex; padding: 4px; background: var(--c-bg-soft); border-radius: 999px; gap: 2px; border: 1px solid var(--c-border); }
-.gl-tab { background: transparent; border: 0; height: 38px; padding: 0 18px; border-radius: 999px; font-weight: 500; font-size: var(--text-small); color: var(--c-muted); letter-spacing: -0.005em; }
-.gl-tab[data-active="true"] { background: var(--c-primary); color: var(--c-primary-ink); }
+.gl-tabs { display: inline-flex; padding: 4px; background: var(--c-background-soft); border-radius: 999px; gap: 2px; border: 1px solid var(--c-border); }
+.gl-tab { background: transparent; border: 0; height: 38px; padding: 0 18px; border-radius: 999px; font-weight: 500; font-size: var(--text-small); color: var(--c-muted-foreground); letter-spacing: -0.005em; }
+.gl-tab[data-active="true"] { background: var(--c-primary); color: var(--c-primary-foreground); }
 
 /* Marquee for partners */
 @keyframes gl-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
@@ -110,10 +136,10 @@ image-slot {
   box-shadow: 0 8px 24px rgba(0,0,0,0.18);
   transition: color .2s ease, background-color .2s ease, border-color .2s ease;
 }
-.gl-svc-top-chip:hover { color: #fff; background: rgba(20,20,18,0.42); }
+.gl-svc-top-chip:hover { color: var(--c-on-media); background: rgba(20,20,18,0.42); }
 .gl-svc-top-chip[data-active="true"] {
   background: rgba(255,255,255,0.18);
-  color: #fff;
+  color: var(--c-on-media);
   border-color: rgba(255,255,255,0.28);
   font-weight: 700;
 }
@@ -140,7 +166,7 @@ image-slot {
 }
 .gl-svc-progress::after {
   content: ""; display: block; height: 100%; width: 100%;
-  background: var(--chip-c, #fff);
+  background: var(--chip-c, var(--c-on-media));
   transform-origin: left; transform: scaleX(0);
   animation: gl-progress 4500ms linear forwards;
   border-radius: 1px;

@@ -61,7 +61,7 @@ const ServiceIcon = {
 // ─── Service data ───────────────────────────────────────────────────────────
 const SERVICES = [
 {
-  key: 'hospitalidade', label: 'Meet & Greet', caption: 'Recepção personalizada', color: '#2B2B2B', inHero: true,
+  key: 'hospitalidade', label: 'Meet & Greet', caption: 'Recepção personalizada', color: 'var(--c-meet-greet)', ink: 'var(--c-meet-greet-foreground)', inHero: true,
   short: 'Atendimento exclusivo, do desembarque ao embarque.',
   headline: 'Sua jornada, cuidada de ponta a ponta.',
   subline: 'Check-in assistido, fast-track e condução até o portão.',
@@ -70,7 +70,7 @@ const SERVICES = [
   photo: 'atendente da Hospitalidade recebendo passageiro'
 },
 {
-  key: 'delivery', label: 'Delivery', caption: 'Entregas no portão', color: '#ED1C24', inHero: true,
+  key: 'delivery', label: 'Delivery', caption: 'Entregas no portão', color: 'var(--c-delivery)', ink: 'var(--c-delivery-foreground)', inHero: true,
   short: 'Comida no portão de embarque, em 12 min.',
   headline: 'Comer sem sair do portão de embarque.',
   subline: 'Restaurantes do Galeão entregam no seu assento em 12 min.',
@@ -79,7 +79,7 @@ const SERVICES = [
   photo: 'bandeja entregue no portão de embarque'
 },
 {
-  key: 'vip', label: 'Sala VIP', caption: 'Acesso a salas exclusivas', color: '#822A85', inHero: true,
+  key: 'vip', label: 'Sala VIP', caption: 'Acesso a salas exclusivas', color: 'var(--c-sala-vip)', ink: 'var(--c-sala-vip-foreground)', inHero: true,
   short: 'Embarque com privacidade e conforto.',
   headline: 'Embarque sem barulho, com chuveiro e bebida.',
   subline: 'Salas domésticas e internacionais por hora, sem milhas.',
@@ -88,7 +88,7 @@ const SERVICES = [
   photo: 'sala VIP com vista para a pista'
 },
 {
-  key: 'transportes', label: 'Transportes', caption: 'Comuns e executivos', color: '#E5A91D', inHero: true,
+  key: 'transportes', label: 'Transportes', caption: 'Comuns e executivos', color: 'var(--c-transportes)', ink: 'var(--c-transportes-foreground)', inHero: true,
   short: 'Táxi e transfer, planejado ou imediato.',
   headline: 'Táxi e transfer pra começar leve.',
   subline: 'Motorista te encontra no portão certo, no horário certo.',
@@ -97,7 +97,7 @@ const SERVICES = [
   photo: 'van de transfer encostada no terminal'
 },
 {
-  key: 'guarda', label: 'Guarda-volume', caption: 'Locação de armários', color: '#F58220', inHero: true,
+  key: 'guarda', label: 'Guarda-volume', caption: 'Locação de armários', color: 'var(--c-guarda)', ink: 'var(--c-guarda-foreground)', inHero: true,
   short: 'Bagagem em segurança no aeroporto.',
   headline: 'Deixe a bagagem em segurança e ande leve.',
   subline: 'Despache as malas no aeroporto e retire quando voltar.',
@@ -106,7 +106,7 @@ const SERVICES = [
   photo: 'compartimentos do guarda-volume do Galeão'
 },
 {
-  key: 'cambio', label: 'Câmbio', caption: 'Moedas internacionais', color: '#009B90', inHero: true,
+  key: 'cambio', label: 'Câmbio', caption: 'Moedas internacionais', color: 'var(--c-cambio)', ink: 'var(--c-cambio-foreground)', inHero: true,
   short: 'Troque moeda sem fila.',
   headline: 'Troque moeda sem fila.',
   subline: 'Reserve a taxa antes e retire no balcão do Galeão.',
@@ -115,7 +115,7 @@ const SERVICES = [
   photo: 'balcão de câmbio do Galeão'
 },
 {
-  key: 'personal', label: 'Personal Shopper', caption: 'Assistência para compras', color: '#ED0080', inHero: true,
+  key: 'personal', label: 'Personal Shopper', caption: 'Assistência para compras', color: 'var(--c-personal)', ink: 'var(--c-personal-foreground)', inHero: true,
   short: 'Alguém compra por você nas lojas.',
   headline: 'Alguém compra por você nas lojas.',
   subline: 'Diga o que quer; entregamos antes do embarque.',
@@ -184,7 +184,7 @@ function Header({ mobile }) {
         {mobile &&
         <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
           <LanguageSelector compact />
-          <button style={{ background: 'transparent', border: 0, padding: 6 }}>{Icon.menu()}</button>
+          <button className="gl-btn gl-btn--ghost gl-btn--icon">{Icon.menu()}</button>
         </div>
         }
       </div>
@@ -193,7 +193,7 @@ function Header({ mobile }) {
 }
 
 const navLinkStyle = {
-  fontSize: 'var(--text-small)', color: 'var(--c-fg)', fontWeight: 500,
+  fontSize: 'var(--text-small)', color: 'var(--c-foreground)', fontWeight: 500,
   padding: '8px 14px', borderRadius: 8
 };
 
@@ -244,16 +244,16 @@ function LanguageSelector({ compact = false }) {
         aria-label={`Idioma: ${current.label}`}
         style={{
           display: 'inline-flex', alignItems: 'center', gap: 8,
-          background: open ? 'var(--c-bg-soft)' : 'transparent', border: 0,
+          background: open ? 'var(--c-background-soft)' : 'transparent', border: 0,
           padding: compact ? '6px 8px' : '6px 10px 6px 8px',
           borderRadius: 999,
-          fontSize: 'var(--text-small)', color: 'var(--c-fg)', fontWeight: 500,
+          fontSize: 'var(--text-small)', color: 'var(--c-foreground)', fontWeight: 500,
           fontFamily: 'inherit', cursor: 'pointer',
           transition: 'background .15s ease'
         }}>
         <Flag cc={current.cc} size={compact ? 20 : 22} />
         {!compact &&
-          <span style={{ color: 'var(--c-muted)', display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+          <span style={{ color: 'var(--c-muted-foreground)', display: 'inline-flex', alignItems: 'center', gap: 4 }}>
             <span>{current.short}</span>
             <span style={{ transform: open ? 'rotate(180deg)' : 'none', transition: 'transform .2s', display: 'inline-flex' }}>{Icon.chevron(11)}</span>
           </span>
@@ -261,7 +261,7 @@ function LanguageSelector({ compact = false }) {
       </button>
       <div style={{
         position: 'absolute', top: 'calc(100% + 8px)', right: 0,
-        background: '#fff', borderRadius: 14, padding: 6,
+        background: 'var(--c-card)', borderRadius: 14, padding: 6,
         boxShadow: '0 12px 40px rgba(0,0,0,0.10), 0 0 0 1px var(--c-border)',
         minWidth: 200,
         opacity: open ? 1 : 0,
@@ -279,19 +279,19 @@ function LanguageSelector({ compact = false }) {
               style={{
                 display: 'flex', alignItems: 'center', gap: 12,
                 width: '100%', padding: '10px 12px', borderRadius: 10,
-                border: 0, background: isActive ? 'var(--c-bg-soft)' : 'transparent',
+                border: 0, background: isActive ? 'var(--c-background-soft)' : 'transparent',
                 cursor: 'pointer', fontFamily: 'inherit', textAlign: 'left',
                 transition: 'background .15s ease'
               }}
-              onMouseOver={(e) => { if (!isActive) e.currentTarget.style.background = 'var(--c-bg-soft)'; }}
+              onMouseOver={(e) => { if (!isActive) e.currentTarget.style.background = 'var(--c-background-soft)'; }}
               onMouseOut={(e) => { if (!isActive) e.currentTarget.style.background = 'transparent'; }}>
               <Flag cc={l.cc} size={22} />
               <span style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
-                <span style={{ fontSize: 'var(--text-small)', fontWeight: 500, color: 'var(--c-fg)' }}>{l.label}</span>
-                <span style={{ fontSize: 'var(--text-micro)', color: 'var(--c-muted)', letterSpacing: '0.04em', textTransform: 'uppercase', fontWeight: 600 }}>{l.short}</span>
+                <span style={{ fontSize: 'var(--text-small)', fontWeight: 500, color: 'var(--c-foreground)' }}>{l.label}</span>
+                <span style={{ fontSize: 'var(--text-micro)', color: 'var(--c-muted-foreground)', letterSpacing: '0.04em', textTransform: 'uppercase', fontWeight: 600 }}>{l.short}</span>
               </span>
               {isActive &&
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--c-fg)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--c-foreground)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M5 12l5 5L20 7" />
                 </svg>
               }
@@ -315,9 +315,9 @@ function ServicesDropdown({ open, setOpen }) {
         onClick={() => setOpen((o) => !o)}
         style={{
           display: 'inline-flex', alignItems: 'center', gap: 6,
-          background: open ? 'var(--c-bg-soft)' : 'transparent', border: 0,
+          background: open ? 'var(--c-background-soft)' : 'transparent', border: 0,
           padding: '8px 14px', borderRadius: 8,
-          fontSize: 'var(--text-small)', color: 'var(--c-fg)', fontWeight: 500
+          fontSize: 'var(--text-small)', color: 'var(--c-foreground)', fontWeight: 500
         }}>
         
         Serviços <span style={{ transform: open ? 'rotate(180deg)' : 'none', transition: 'transform .2s' }}>{Icon.chevron(13)}</span>
@@ -332,7 +332,7 @@ function ServicesDropdown({ open, setOpen }) {
         zIndex: 20
       }}>
         <div style={{
-          background: '#fff', borderRadius: 16, padding: 12,
+          background: 'var(--c-card)', borderRadius: 16, padding: 12,
           boxShadow: '0 12px 40px rgba(0,0,0,0.10), 0 0 0 1px var(--c-border)',
           minWidth: 480,
           display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 4
@@ -343,15 +343,15 @@ function ServicesDropdown({ open, setOpen }) {
           padding: '12px 14px', borderRadius: 10,
           transition: 'background .15s ease'
         }}
-        onMouseOver={(e) => e.currentTarget.style.background = 'var(--c-bg-soft)'}
+        onMouseOver={(e) => e.currentTarget.style.background = 'var(--c-background-soft)'}
         onMouseOut={(e) => e.currentTarget.style.background = 'transparent'}>
             <span style={{
             display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-            width: 36, height: 36, borderRadius: 10, background: s.color + '14', color: s.color
+            width: 36, height: 36, borderRadius: 10, background: `color-mix(in srgb, ${s.color} 8%, transparent)`, color: s.color
           }}>{ServiceIcon[s.key](18)}</span>
             <span style={{ display: 'flex', flexDirection: 'column' }}>
-              <span style={{ fontSize: 'var(--text-small)', fontWeight: 600, color: 'var(--c-fg)' }}>{s.label}</span>
-              <span style={{ fontSize: 'var(--text-micro)', color: 'var(--c-muted)' }}>{s.caption}</span>
+              <span style={{ fontSize: 'var(--text-small)', fontWeight: 600, color: 'var(--c-foreground)' }}>{s.label}</span>
+              <span style={{ fontSize: 'var(--text-micro)', color: 'var(--c-muted-foreground)' }}>{s.caption}</span>
             </span>
           </a>
         )}
@@ -464,7 +464,7 @@ function HeroSplit({ mobile, active, onSelect }) {
         overflow: 'hidden',
         height: mobile ? 'calc(100dvh - 80px)' : 'calc(100dvh - 97px)',
         minHeight: mobile ? 560 : 620,
-        background: '#1a1a18'
+        background: 'var(--c-surface-dark)'
       }}>
         <div key={s.key} className="gl-hero-anim" style={{ position: 'absolute', inset: 0 }}>
           <image-slot
@@ -489,23 +489,21 @@ function HeroSplit({ mobile, active, onSelect }) {
           }}>
             <h1 style={{
               fontSize: mobile ? 'var(--text-h1-mobile)' : 'var(--text-h1)', lineHeight: 'var(--text-h1-lh)', letterSpacing: 'var(--text-h1-tracking)',
-              fontWeight: 600, color: '#fff', maxWidth: 1000
+              fontWeight: 600, color: 'var(--c-on-media)', maxWidth: 1000
             }}>{s.headline}</h1>
             <p style={{ fontSize: mobile ? 'var(--text-subtitle-mobile)' : 'var(--text-subtitle)', color: 'rgba(255,255,255,0.86)', maxWidth: 560, lineHeight: 1.4 }}>
               {s.subline}
             </p>
             {s.key === 'hospitalidade' ?
-            <a href="meet-greet.html" className="gl-btn" style={{
-              background: s.color, color: '#fff', marginTop: mobile ? 4 : 6,
-              pointerEvents: 'auto', textDecoration: 'none',
-              transition: 'background-color .35s ease'
+            <a href="meet-greet.html" className="gl-btn gl-btn--service gl-btn--lg" style={{
+              '--btn-bg': s.color, '--btn-fg': s.ink, marginTop: mobile ? 4 : 6,
+              pointerEvents: 'auto', textDecoration: 'none'
             }}>
               {s.cta} {Icon.arrow(14)}
             </a> :
-            <button className="gl-btn" style={{
-              background: s.color, color: '#fff', marginTop: mobile ? 4 : 6,
-              pointerEvents: 'auto',
-              transition: 'background-color .35s ease'
+            <button className="gl-btn gl-btn--service gl-btn--lg" style={{
+              '--btn-bg': s.color, '--btn-fg': s.ink, marginTop: mobile ? 4 : 6,
+              pointerEvents: 'auto'
             }}>
               {s.cta} {Icon.arrow(14)}
             </button>
@@ -518,107 +516,7 @@ function HeroSplit({ mobile, active, onSelect }) {
 
 }
 
-function HeroCinema({ mobile, active, onSelect }) {
-  const s = SVC_BY_KEY[active] || SERVICES[0];
-  return (
-    <section style={{ padding: mobile ? '10px 20px 8px' : '10px 40px 8px' }}>
-      <div style={{
-        position: 'relative',
-        borderRadius: 'var(--r-xl)',
-        overflow: 'hidden',
-        height: mobile ? 'calc(100dvh - 80px)' : 'calc(100dvh - 97px)',
-        minHeight: mobile ? 580 : 620
-      }}>
-        <div key={s.key} className="gl-hero-anim" style={{ position: 'absolute', inset: 0 }}>
-          <image-slot id={s.slot} shape="rounded" radius="0"
-          placeholder={`foto: ${s.photo}`}
-          style={{ width: '100%', height: '100%' }}></image-slot>
-          <div style={{
-            position: 'absolute', inset: 0,
-            background: 'linear-gradient(180deg, rgba(0,0,0,0) 35%, rgba(0,0,0,0.65) 100%)',
-            pointerEvents: 'none'
-          }} />
-          <div style={{
-            position: 'absolute', inset: 0,
-            display: 'flex', flexDirection: 'column', justifyContent: 'flex-end',
-            padding: mobile ? '90px 20px 36px' : '110px 48px 56px',
-            pointerEvents: 'none' /* let drops pass through to image-slot */
-          }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 22, color: '#fff' }}>
-              <h1 style={{
-                fontSize: mobile ? 'var(--text-h1-mobile)' : 'var(--text-h1)', lineHeight: 'var(--text-h1-lh)', letterSpacing: 'var(--text-h1-tracking)',
-                fontWeight: 600, color: '#fff', maxWidth: 1000
-              }}>{s.headline}</h1>
-              <p style={{ fontSize: mobile ? 'var(--text-subtitle-mobile)' : 'var(--text-subtitle)', color: 'rgba(255,255,255,0.82)', maxWidth: 540, lineHeight: 1.4 }}>
-                {s.subline}
-              </p>
-              <button className="gl-btn" style={{
-                background: s.color, color: '#fff', alignSelf: 'flex-start',
-                pointerEvents: 'auto',
-                transition: 'background-color .35s ease'
-              }}>
-                {s.cta} {Icon.arrow(14)}
-              </button>
-            </div>
-          </div>
-        </div>
-        <ServiceChipsTop active={active} onSelect={onSelect} mobile={mobile} />
-      </div>
-    </section>);
-
-}
-
-function HeroStatement({ mobile, active }) {
-  const s = SVC_BY_KEY[active] || SERVICES[0];
-  return (
-    <section className="gl-section" style={{ paddingTop: mobile ? 32 : 56, paddingBottom: mobile ? 24 : 32 }}>
-      <div key={s.key} className="gl-hero-anim" style={{ maxWidth: 1440, margin: '0 auto' }}>
-        <h1 style={{
-          fontSize: mobile ? 'var(--text-h1-mobile)' : 'var(--text-h1)', lineHeight: 'var(--text-h1-lh)', letterSpacing: 'var(--text-h1-tracking)', fontWeight: 600
-        }}>{s.headline}</h1>
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: mobile ? '1fr' : '1.2fr 1fr 1.2fr',
-          gap: mobile ? 16 : 24,
-          marginTop: mobile ? 28 : 48
-        }}>
-          <div style={{ borderRadius: 'var(--r-lg)', overflow: 'hidden', aspectRatio: '4/5' }}>
-            <image-slot id={`${s.slot}-a`} shape="rounded" radius="0"
-            placeholder={`foto: ${s.photo}`}
-            style={{ width: '100%', height: '100%' }}></image-slot>
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 24, justifyContent: 'space-between' }}>
-            <div style={{ borderRadius: 'var(--r-lg)', overflow: 'hidden', aspectRatio: '4/3' }}>
-              <image-slot id={`${s.slot}-b`} shape="rounded" radius="0"
-              placeholder={`detalhe: ${s.label}`}
-              style={{ width: '100%', height: '100%' }}></image-slot>
-            </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 18, padding: mobile ? '8px 0' : '0 8px' }}>
-              <p style={{ fontSize: mobile ? 'var(--text-subtitle-mobile)' : 'var(--text-subtitle)', lineHeight: 1.4, color: 'var(--c-muted)', maxWidth: 320 }}>
-                {s.subline}
-              </p>
-              <button className="gl-btn" style={{
-                background: s.color, color: '#fff', alignSelf: 'flex-start',
-                transition: 'background-color .35s ease'
-              }}>
-                {s.cta} {Icon.arrow(14)}
-              </button>
-            </div>
-          </div>
-          <div style={{ borderRadius: 'var(--r-lg)', overflow: 'hidden', aspectRatio: '4/5' }}>
-            <image-slot id={`${s.slot}-c`} shape="rounded" radius="0"
-            placeholder={`contexto: ${s.label}`}
-            style={{ width: '100%', height: '100%' }}></image-slot>
-          </div>
-        </div>
-      </div>
-    </section>);
-
-}
-
-function Hero({ variant, mobile, active, onSelect }) {
-  if (variant === 'cinema') return <HeroCinema mobile={mobile} active={active} onSelect={onSelect} />;
-  if (variant === 'statement') return <HeroStatement mobile={mobile} active={active} onSelect={onSelect} />;
+function Hero({ mobile, active, onSelect }) {
   return <HeroSplit mobile={mobile} active={active} onSelect={onSelect} />;
 }
 

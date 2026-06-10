@@ -229,12 +229,13 @@ function ServiceCard({ item, anchorId, idx, selected, onToggle, svcByKey, Icon }
   const key = `${anchorId}-${idx}`;
   const isSelected = selected.has(key);
   const color = svc?.color || '#0E0F0E';
+  const ink = svc?.ink || 'var(--c-on-media)';
   return (
     <button
       onClick={() => onToggle(key)}
       style={{
-        background: isSelected ? color : '#fff',
-        color: isSelected ? '#fff' : 'var(--c-fg)',
+        background: isSelected ? color : 'var(--c-card)',
+        color: isSelected ? ink : 'var(--c-foreground)',
         border: '1px solid ' + (isSelected ? color : 'var(--c-border)'),
         borderRadius: 'var(--r-md)',
         padding: '14px 16px',
@@ -250,7 +251,7 @@ function ServiceCard({ item, anchorId, idx, selected, onToggle, svcByKey, Icon }
           display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
           width: 28, height: 28, borderRadius: 8,
           background: isSelected ? 'rgba(255,255,255,0.16)' : color + '14',
-          color: isSelected ? '#fff' : color,
+          color: isSelected ? ink : color,
           flexShrink: 0,
         }}>{Icon[item.key] && Icon[item.key](14)}</span>
         <span style={{
@@ -278,12 +279,13 @@ function NowCard({ item, idx, selected, onToggle, svcByKey, Icon, large }) {
   const k = `now-${idx}-${item.key}`;
   const isSelected = selected.has(k);
   const color = svc?.color || '#0E0F0E';
+  const ink = svc?.ink || 'var(--c-on-media)';
   return (
     <button
       onClick={() => onToggle(k)}
       style={{
-        background: isSelected ? color : '#fff',
-        color: isSelected ? '#fff' : 'var(--c-fg)',
+        background: isSelected ? color : 'var(--c-card)',
+        color: isSelected ? ink : 'var(--c-foreground)',
         border: '1px solid ' + (isSelected ? color : 'var(--c-border)'),
         borderRadius: 'var(--r-lg)',
         padding: large ? '28px 30px' : '22px 24px',
@@ -299,7 +301,7 @@ function NowCard({ item, idx, selected, onToggle, svcByKey, Icon, large }) {
           display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
           width: 38, height: 38, borderRadius: 11,
           background: isSelected ? 'rgba(255,255,255,0.16)' : color + '14',
-          color: isSelected ? '#fff' : color,
+          color: isSelected ? ink : color,
           flexShrink: 0,
         }}>{Icon[item.key] && Icon[item.key](18)}</span>
         <span style={{
@@ -320,7 +322,7 @@ function NowCard({ item, idx, selected, onToggle, svcByKey, Icon, large }) {
             marginLeft: 'auto',
             fontSize: 10, fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase',
             padding: '3px 8px', borderRadius: 999,
-            color: '#fff', background: color,
+            color: ink, background: color,
           }}>Agora</span>
         )}
       </div>
@@ -373,14 +375,14 @@ function FlightInput({ flight, onSelect, onClear, mobile }) {
       }}>
         <form onSubmit={submit} style={{
           display: 'flex', gap: 8, alignItems: 'stretch',
-          background: '#fff', border: '1px solid var(--c-border)',
+          background: 'var(--c-card)', border: '1px solid var(--c-border)',
           borderRadius: 999, padding: 5,
           flex: mobile ? '1 1 100%' : '0 1 380px',
           minWidth: mobile ? 0 : 280
         }}>
           <span style={{
             display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-            paddingLeft: 14, color: 'var(--c-muted)'
+            paddingLeft: 14, color: 'var(--c-muted-foreground)'
           }}>
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
               <circle cx="11" cy="11" r="7" /><path d="m20 20-3-3" />
@@ -399,7 +401,7 @@ function FlightInput({ flight, onSelect, onClear, mobile }) {
               padding: '0 6px', height: 38,
               fontSize: 14, fontWeight: 500,
               letterSpacing: '-0.005em',
-              fontFamily: 'inherit', color: 'var(--c-fg)'
+              fontFamily: 'inherit', color: 'var(--c-foreground)'
             }} />
           {code &&
             <button
@@ -407,7 +409,7 @@ function FlightInput({ flight, onSelect, onClear, mobile }) {
               style={{
                 height: 38, padding: '0 14px',
                 borderRadius: 999, border: 0,
-                background: 'var(--c-fg)', color: '#fff',
+                background: 'var(--c-foreground)', color: 'var(--c-surface-dark-foreground)',
                 fontSize: 13, fontWeight: 600, cursor: 'pointer',
                 fontFamily: 'inherit'
               }}>
@@ -425,7 +427,7 @@ function FlightInput({ flight, onSelect, onClear, mobile }) {
               display: 'inline-flex', alignItems: 'center', gap: 10,
               padding: '8px 10px 8px 14px',
               border: '1px solid var(--c-primary)',
-              background: 'var(--c-primary)', color: 'var(--c-primary-ink)',
+              background: 'var(--c-primary)', color: 'var(--c-primary-foreground)',
               borderRadius: 999,
               fontSize: 13, fontWeight: 600, letterSpacing: '-0.005em',
               cursor: 'pointer', whiteSpace: 'nowrap',
@@ -439,9 +441,9 @@ function FlightInput({ flight, onSelect, onClear, mobile }) {
             </svg>
             <span>
               {flight.destination.city}
-              <span style={{ color: 'var(--c-primary-ink)', opacity: 0.45, margin: '0 7px' }}>•</span>
+              <span style={{ color: 'var(--c-primary-foreground)', opacity: 0.45, margin: '0 7px' }}>•</span>
               {flight.date}
-              <span style={{ color: 'var(--c-primary-ink)', opacity: 0.45, margin: '0 7px' }}>•</span>
+              <span style={{ color: 'var(--c-primary-foreground)', opacity: 0.45, margin: '0 7px' }}>•</span>
               {flight.time}
             </span>
             <span style={{
@@ -469,11 +471,11 @@ function FlightInput({ flight, onSelect, onClear, mobile }) {
               background: 'transparent', border: 0, padding: '4px 2px',
               cursor: 'pointer', fontFamily: 'inherit',
               fontSize: 12, fontWeight: 500, letterSpacing: '-0.005em',
-              color: 'var(--c-muted)',
+              color: 'var(--c-muted-foreground)',
               transition: 'color .15s ease'
             }}
-            onMouseOver={(e) => { e.currentTarget.style.color = 'var(--c-fg)'; }}
-            onMouseOut={(e) => { e.currentTarget.style.color = 'var(--c-muted)'; }}>
+            onMouseOver={(e) => { e.currentTarget.style.color = 'var(--c-foreground)'; }}
+            onMouseOut={(e) => { e.currentTarget.style.color = 'var(--c-muted-foreground)'; }}>
             {demoOpen ? 'Esconder' : 'Ver'} voos de demonstração
             <span style={{
               display: 'inline-flex',
@@ -501,16 +503,16 @@ function FlightInput({ flight, onSelect, onClear, mobile }) {
                       padding: mobile ? '9px 13px' : '10px 16px',
                       borderRadius: 999,
                       border: '1px solid var(--c-border)',
-                      background: '#fff', color: 'var(--c-fg)',
+                      background: 'var(--c-card)', color: 'var(--c-foreground)',
                       fontSize: 13, fontWeight: 500, letterSpacing: '-0.005em',
                       cursor: 'pointer', whiteSpace: 'nowrap',
                       fontFamily: 'inherit',
                       transition: 'border-color .15s ease'
                     }}
-                    onMouseOver={(e) => { e.currentTarget.style.borderColor = 'var(--c-fg)'; }}
+                    onMouseOver={(e) => { e.currentTarget.style.borderColor = 'var(--c-foreground)'; }}
                     onMouseOut={(e) => { e.currentTarget.style.borderColor = 'var(--c-border)'; }}>
                     <span style={{ fontWeight: 600 }}>{f.code}</span>
-                    <span style={{ color: 'var(--c-muted)', fontSize: 12 }}>
+                    <span style={{ color: 'var(--c-muted-foreground)', fontSize: 12 }}>
                       {f.origin.code} → {f.destination.code}
                     </span>
                   </button>
@@ -535,7 +537,7 @@ function FlightTicket({ flight, mobile }) {
     <article className="gl-hero-anim" style={{
       position: 'relative',
       width: '100%', maxWidth: mobile ? 'none' : 500,
-      background: '#fff',
+      background: 'var(--c-card)',
       border: '1px solid var(--c-border)',
       borderRadius: 'var(--r-lg)',
       display: 'grid',
@@ -553,12 +555,12 @@ function FlightTicket({ flight, mobile }) {
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <span style={{
             fontSize: 10, fontWeight: 700, letterSpacing: '0.1em',
-            color: 'var(--c-fg)', textTransform: 'uppercase'
+            color: 'var(--c-foreground)', textTransform: 'uppercase'
           }}>{airline}</span>
           <span style={{ height: 10, width: 1, background: 'var(--c-border)' }} />
           <span style={{
             fontSize: 9, fontWeight: 600, letterSpacing: '0.08em',
-            color: 'var(--c-muted)', textTransform: 'uppercase'
+            color: 'var(--c-muted-foreground)', textTransform: 'uppercase'
           }}>Boarding pass</span>
         </div>
 
@@ -571,15 +573,15 @@ function FlightTicket({ flight, mobile }) {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 3, minWidth: 0 }}>
             <span style={{
               fontSize: 8, fontWeight: 700, letterSpacing: '0.1em',
-              color: 'var(--c-muted)', textTransform: 'uppercase'
+              color: 'var(--c-muted-foreground)', textTransform: 'uppercase'
             }}>From</span>
             <span style={{
               fontSize: mobile ? 26 : 32, fontWeight: 700,
               letterSpacing: '-0.045em', lineHeight: 0.95,
-              color: 'var(--c-fg)'
+              color: 'var(--c-foreground)'
             }}>{flight.origin.code}</span>
             <span style={{
-              fontSize: 10, color: 'var(--c-muted)',
+              fontSize: 10, color: 'var(--c-muted-foreground)',
               whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis'
             }}>{flight.origin.city}</span>
           </div>
@@ -589,7 +591,7 @@ function FlightTicket({ flight, mobile }) {
             paddingBottom: mobile ? 10 : 12
           }}>
             <span style={{ width: 10, borderTop: '1px dashed var(--c-border)' }} />
-            <svg width={mobile ? 12 : 14} height={mobile ? 12 : 14} viewBox="0 0 24 24" fill="var(--c-fg)" style={{ flexShrink: 0 }}>
+            <svg width={mobile ? 12 : 14} height={mobile ? 12 : 14} viewBox="0 0 24 24" fill="var(--c-foreground)" style={{ flexShrink: 0 }}>
               <path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1L15 22v-1.5L13 19v-5.5L21 16z" />
             </svg>
             <span style={{ width: 10, borderTop: '1px dashed var(--c-border)' }} />
@@ -598,15 +600,15 @@ function FlightTicket({ flight, mobile }) {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 3, alignItems: 'flex-end', minWidth: 0 }}>
             <span style={{
               fontSize: 8, fontWeight: 700, letterSpacing: '0.1em',
-              color: 'var(--c-muted)', textTransform: 'uppercase'
+              color: 'var(--c-muted-foreground)', textTransform: 'uppercase'
             }}>To</span>
             <span style={{
               fontSize: mobile ? 26 : 32, fontWeight: 700,
               letterSpacing: '-0.045em', lineHeight: 0.95,
-              color: 'var(--c-fg)'
+              color: 'var(--c-foreground)'
             }}>{flight.destination.code}</span>
             <span style={{
-              fontSize: 10, color: 'var(--c-muted)',
+              fontSize: 10, color: 'var(--c-muted-foreground)',
               whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
               textAlign: 'right'
             }}>{flight.destination.city}</span>
@@ -636,11 +638,11 @@ function FlightTicket({ flight, mobile }) {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 2, alignItems: 'center' }}>
           <span style={{
             fontSize: 8, fontWeight: 700, letterSpacing: '0.1em',
-            color: 'var(--c-muted)', textTransform: 'uppercase'
+            color: 'var(--c-muted-foreground)', textTransform: 'uppercase'
           }}>Voo</span>
           <span style={{
             fontSize: mobile ? 15 : 16, fontWeight: 700,
-            letterSpacing: '-0.01em', color: 'var(--c-fg)',
+            letterSpacing: '-0.01em', color: 'var(--c-foreground)',
             fontVariantNumeric: 'tabular-nums'
           }}>{flightNum}</span>
         </div>
@@ -650,7 +652,7 @@ function FlightTicket({ flight, mobile }) {
           {bars.map((w, i) =>
             <span key={i} style={{
               width: w, height: mobile ? 24 : 28,
-              background: 'var(--c-fg)', opacity: 0.88
+              background: 'var(--c-foreground)', opacity: 0.88
             }} />
           )}
         </div>
@@ -660,14 +662,14 @@ function FlightTicket({ flight, mobile }) {
       <span style={{
         position: 'absolute', top: -8, left: `calc(100% - ${stubW}px - 8px)`,
         width: 16, height: 16, borderRadius: 8,
-        background: 'var(--c-bg-soft)',
+        background: 'var(--c-background-soft)',
         border: '1px solid var(--c-border)',
         pointerEvents: 'none'
       }} />
       <span style={{
         position: 'absolute', bottom: -8, left: `calc(100% - ${stubW}px - 8px)`,
         width: 16, height: 16, borderRadius: 8,
-        background: 'var(--c-bg-soft)',
+        background: 'var(--c-background-soft)',
         border: '1px solid var(--c-border)',
         pointerEvents: 'none'
       }} />
@@ -680,11 +682,11 @@ function TicketMeta({ label, value }) {
     <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
       <span style={{
         fontSize: 9, fontWeight: 700, letterSpacing: '0.1em',
-        color: 'var(--c-muted)', textTransform: 'uppercase'
+        color: 'var(--c-muted-foreground)', textTransform: 'uppercase'
       }}>{label}</span>
       <span style={{
         fontSize: 12, fontWeight: 600, letterSpacing: '-0.005em',
-        color: 'var(--c-fg)'
+        color: 'var(--c-foreground)'
       }}>{value}</span>
     </div>);
 
@@ -774,6 +776,7 @@ function JourneyCard({ step, idx, flight, selected, onToggle, svcByKey, Icon, gh
   const key = `step-${idx}`;
   const isSelected = !ghost && selected.has(key);
   const color = svc?.color || '#0E0F0E';
+  const ink = svc?.ink || 'var(--c-on-media)';
   const partners = SVC_PRESENT[step.key]?.partners;
 
   return (
@@ -782,7 +785,7 @@ function JourneyCard({ step, idx, flight, selected, onToggle, svcByKey, Icon, gh
       disabled={ghost}
       style={{
         position: 'relative',
-        background: '#fff',
+        background: 'var(--c-card)',
         border: `1px solid ${isSelected ? color : 'var(--c-border)'}`,
         boxShadow: isSelected ? `0 0 0 2px ${color}` : 'none',
         borderRadius: 'var(--r-md)',
@@ -805,7 +808,7 @@ function JourneyCard({ step, idx, flight, selected, onToggle, svcByKey, Icon, gh
           left: '50%',
           transform: 'translateX(-50%)',
           width: 30, height: 30, borderRadius: 999,
-          background: '#fff',
+          background: 'var(--c-card)',
           border: '2px solid var(--c-primary)',
           display: 'grid', placeItems: 'center',
           fontSize: 12, fontWeight: 700,
@@ -854,14 +857,14 @@ function JourneyCard({ step, idx, flight, selected, onToggle, svcByKey, Icon, gh
             fontSize: 9, fontWeight: 600, letterSpacing: '0.06em',
             textTransform: 'uppercase',
             padding: '3px 7px', borderRadius: 999,
-            background: '#fff', color, border: `1px solid ${color}`
+            background: 'var(--c-card)', color, border: `1px solid ${color}`
           }}>Sugerido</span>
         }
         {isSelected &&
           <span style={{
             position: 'absolute', top: 8, right: 8,
             width: 22, height: 22, borderRadius: 999,
-            background: color, color: '#fff',
+            background: color, color: ink,
             display: 'grid', placeItems: 'center'
           }}>
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
@@ -889,7 +892,7 @@ function JourneyCard({ step, idx, flight, selected, onToggle, svcByKey, Icon, gh
         </h4>
         <p style={{
           margin: 0, fontSize: 12,
-          color: 'var(--c-muted)', lineHeight: 1.45, flex: 1
+          color: 'var(--c-muted-foreground)', lineHeight: 1.45, flex: 1
         }}>{step.meta}</p>
         <span style={{
           marginTop: 8,
@@ -897,7 +900,7 @@ function JourneyCard({ step, idx, flight, selected, onToggle, svcByKey, Icon, gh
           borderTop: '1px dashed var(--c-border)',
           fontSize: 10, fontWeight: 600,
           letterSpacing: '0.08em', textTransform: 'uppercase',
-          color: 'var(--c-muted)',
+          color: 'var(--c-muted-foreground)',
           fontVariantNumeric: 'tabular-nums'
         }}>{step.time}</span>
       </div>
@@ -924,7 +927,7 @@ function Viagem({ mobile }) {
   const journey = useMemoV(() => buildJourney(active), [active && active.id]);
 
   return (
-    <section id="viagem" className="gl-section" style={{ background: 'var(--c-bg-soft)' }}>
+    <section id="viagem" className="gl-section" style={{ background: 'var(--c-background-soft)' }}>
       {/* Header */}
       <div style={{
         display: 'flex', flexDirection: 'column', gap: 16,
@@ -934,7 +937,7 @@ function Viagem({ mobile }) {
         <h2 style={{ fontSize: mobile ? 36 : 64 }}>
           Tudo encaixado no seu voo.
         </h2>
-        <p style={{ fontSize: mobile ? 15 : 17, color: 'var(--c-muted)', maxWidth: 580 }}>
+        <p style={{ fontSize: mobile ? 15 : 17, color: 'var(--c-muted-foreground)', maxWidth: 580 }}>
           {flight ?
             'Os serviços aparecem no momento exato em que fazem sentido. Você escolhe o que entra na sua viagem.' :
             'Digite o número do voo. A gente desenha a viagem em volta dele — Hospitalidade, Sala VIP, transfer, delivery — no horário certo.'

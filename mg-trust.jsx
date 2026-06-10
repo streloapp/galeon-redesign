@@ -66,12 +66,12 @@ function MGTrust({ mobile }) {
         <div style={{
             position: 'absolute', left: mobile ? 22 : 48, bottom: mobile ? 24 : 44,
             right: mobile ? 22 : 'auto', maxWidth: mobile ? 'none' : 520,
-            display: 'flex', flexDirection: 'column', gap: mobile ? 10 : 14, color: '#fff'
+            display: 'flex', flexDirection: 'column', gap: mobile ? 10 : 14, color: 'var(--c-on-media)'
           }}>
           <span style={{ fontSize: 'var(--text-micro)', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.78)' }}>PRIVACIDADE • EXCLUSIVIDADE • CONFORTO • CUIDADO
 
             </span>
-          <h3 style={{ fontSize: mobile ? 'var(--text-h4-mobile)' : 'var(--text-h4)', lineHeight: 'var(--text-h4-lh)', letterSpacing: 'var(--text-h4-tracking)', fontWeight: 600, color: '#fff' }}>Seja na chegada, na partida ou em conexão, sua viagem é gerenciada do início ao fim com total discrição.
+          <h3 style={{ fontSize: mobile ? 'var(--text-h4-mobile)' : 'var(--text-h4)', lineHeight: 'var(--text-h4-lh)', letterSpacing: 'var(--text-h4-tracking)', fontWeight: 600, color: 'var(--c-on-media)' }}>Seja na chegada, na partida ou em conexão, sua viagem é gerenciada do início ao fim com total discrição.
 
 </h3>
         </div>
@@ -89,7 +89,7 @@ function MGTrust({ mobile }) {
             <span className="mg-stat" style={{
                 display: 'inline-flex', alignItems: 'baseline', gap: mobile ? 4 : 8,
                 fontSize: mobile ? 'var(--num-stat-mobile)' : 'var(--num-stat)', lineHeight: 0.92, letterSpacing: '-0.045em',
-                fontWeight: 600, color: 'var(--c-fg)', fontVariantNumeric: 'tabular-nums',
+                fontWeight: 600, color: 'var(--c-foreground)', fontVariantNumeric: 'tabular-nums',
                 justifyContent: 'center', position: 'relative'
               }}>
               {p.star &&
@@ -105,7 +105,7 @@ function MGTrust({ mobile }) {
                 </React.Fragment> :
                 p.stat}
             </span>
-            <span style={{ fontSize: mobile ? 'var(--text-body-mobile)' : 'var(--text-body)', color: 'var(--c-muted)', lineHeight: 1.4, maxWidth: mobile ? 'none' : 280, marginTop: mobile ? 2 : 6 }}>{p.desc}</span>
+            <span style={{ fontSize: mobile ? 'var(--text-body-mobile)' : 'var(--text-body)', color: 'var(--c-muted-foreground)', lineHeight: 1.4, maxWidth: mobile ? 'none' : 280, marginTop: mobile ? 2 : 6 }}>{p.desc}</span>
           </div>
           )}
       </div>
@@ -136,7 +136,7 @@ function MGTrust({ mobile }) {
                   <span className="mg-faq-icon" style={{
                       border: '1px solid ' + (isOpen ? 'var(--c-mg)' : 'var(--c-border)'),
                       background: isOpen ? 'var(--c-mg)' : 'transparent',
-                      color: isOpen ? '#fff' : 'var(--c-fg)',
+                      color: isOpen ? 'var(--c-mg-ink)' : 'var(--c-foreground)',
                       transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)'
                     }}>
                     {window.MGIcon.plus(14)}
@@ -144,7 +144,7 @@ function MGTrust({ mobile }) {
                 </button>
                 <div style={{ display: 'grid', gridTemplateRows: isOpen ? '1fr' : '0fr', transition: 'grid-template-rows .35s ease' }}>
                   <div style={{ overflow: 'hidden' }}>
-                    <div style={{ paddingBottom: mobile ? 22 : 28, paddingRight: mobile ? 0 : 70, fontSize: mobile ? 'var(--text-body-mobile)' : 'var(--text-body)', color: 'var(--c-muted)', lineHeight: 1.6, maxWidth: 720 }}>
+                    <div style={{ paddingBottom: mobile ? 22 : 28, paddingRight: mobile ? 0 : 70, fontSize: mobile ? 'var(--text-body-mobile)' : 'var(--text-body)', color: 'var(--c-muted-foreground)', lineHeight: 1.6, maxWidth: 720 }}>
                       {item.a}
                     </div>
                   </div>
@@ -202,7 +202,7 @@ function MGFooter({ mobile }) {
         { h: 'Ajuda', l: ['Central de atendimento', 'Status do pedido', 'Termos', 'Privacidade'] }].
         map((c, i) =>
         <div key={i} style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-            <h4 style={{ fontSize: 'var(--text-micro)', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--c-muted)' }}>{c.h}</h4>
+            <h4 style={{ fontSize: 'var(--text-micro)', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--c-muted-foreground)' }}>{c.h}</h4>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
               {c.l.map((x) => <li key={x}><a href="#" style={{ fontSize: 'var(--text-small)' }}>{x}</a></li>)}
             </ul>
@@ -212,7 +212,7 @@ function MGFooter({ mobile }) {
       <div style={{
         display: 'flex', justifyContent: 'space-between', alignItems: 'center',
         paddingTop: 24, borderTop: '1px solid var(--c-border)',
-        fontSize: 'var(--text-small)', color: 'var(--c-muted)', flexWrap: 'wrap', gap: 12
+        fontSize: 'var(--text-small)', color: 'var(--c-muted-foreground)', flexWrap: 'wrap', gap: 12
       }}>
         <span>© 2026 GaleON · RIOgaleão</span>
         <span>Aeroporto Internacional do Rio de Janeiro — Tom Jobim</span>

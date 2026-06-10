@@ -44,7 +44,7 @@ function MGDelegacoesSection({ mobile }) {
               <span className="mg-deleg-hero__price-label">A partir de</span>
               <span><b>{s.price.value}</b> {s.price.unit}</span>
             </div>
-            <button className="gl-btn gl-btn--sm" style={{ background: '#fff', color: 'var(--c-ink)', fontWeight: 600, borderRadius: 999 }}>
+            <button className="gl-btn gl-btn--secondary">
               {s.cta} {Icon.arrow(13)}
             </button>
           </div>

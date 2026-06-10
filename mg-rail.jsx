@@ -94,7 +94,7 @@ function MGRail({ mobile }) {
           })}
         </div>
         {!mobile &&
-          <button className="gl-btn gl-btn--sm mg-rail-cta" style={{ background: 'var(--c-mg)', color: '#fff' }} onClick={() => goTo('familia')}>
+          <button className="gl-btn gl-btn--service mg-rail-cta" style={{ '--btn-bg': 'var(--c-mg)', '--btn-fg': 'var(--c-mg-ink)' }} onClick={() => goTo('familia')}>
             Reservar {window.MGIcon.arrow(13)}
           </button>
         }

@@ -43,21 +43,21 @@ function MGLanguage({ compact = false }) {
       <button onClick={() => setOpen((o) => !o)} aria-label={`Idioma: ${current.label}`}
         style={{
           display: 'inline-flex', alignItems: 'center', gap: 8,
-          background: open ? 'var(--c-bg-soft)' : 'transparent', border: 0,
+          background: open ? 'var(--c-background-soft)' : 'transparent', border: 0,
           padding: compact ? '6px 8px' : '6px 10px 6px 8px', borderRadius: 999,
-          fontSize: 'var(--text-small)', color: 'var(--c-fg)', fontWeight: 500, fontFamily: 'inherit', cursor: 'pointer',
+          fontSize: 'var(--text-small)', color: 'var(--c-foreground)', fontWeight: 500, fontFamily: 'inherit', cursor: 'pointer',
           transition: 'background .15s ease'
         }}>
         <MGFlag cc={current.cc} size={compact ? 20 : 22} />
         {!compact &&
-          <span style={{ color: 'var(--c-muted)', display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+          <span style={{ color: 'var(--c-muted-foreground)', display: 'inline-flex', alignItems: 'center', gap: 4 }}>
             <span>{current.short}</span>
             <span style={{ transform: open ? 'rotate(180deg)' : 'none', transition: 'transform .2s', display: 'inline-flex' }}>{window.MGIcon.chevron(11)}</span>
           </span>
         }
       </button>
       <div style={{
-        position: 'absolute', top: 'calc(100% + 8px)', right: 0, background: '#fff',
+        position: 'absolute', top: 'calc(100% + 8px)', right: 0, background: 'var(--c-card)',
         borderRadius: 14, padding: 6, boxShadow: '0 12px 40px rgba(0,0,0,0.10), 0 0 0 1px var(--c-border)',
         minWidth: 200, opacity: open ? 1 : 0, transform: open ? 'translateY(0)' : 'translateY(-6px)',
         pointerEvents: open ? 'auto' : 'none', transition: 'opacity .18s ease, transform .18s ease', zIndex: 10
@@ -68,18 +68,18 @@ function MGLanguage({ compact = false }) {
             <button key={l.code} onClick={() => { setActive(l.code); setOpen(false); }}
               style={{
                 display: 'flex', alignItems: 'center', gap: 12, width: '100%', padding: '10px 12px',
-                borderRadius: 10, border: 0, background: isActive ? 'var(--c-bg-soft)' : 'transparent',
+                borderRadius: 10, border: 0, background: isActive ? 'var(--c-background-soft)' : 'transparent',
                 cursor: 'pointer', fontFamily: 'inherit', textAlign: 'left', transition: 'background .15s ease'
               }}
-              onMouseOver={(e) => { if (!isActive) e.currentTarget.style.background = 'var(--c-bg-soft)'; }}
+              onMouseOver={(e) => { if (!isActive) e.currentTarget.style.background = 'var(--c-background-soft)'; }}
               onMouseOut={(e) => { if (!isActive) e.currentTarget.style.background = 'transparent'; }}>
               <MGFlag cc={l.cc} size={22} />
               <span style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
-                <span style={{ fontSize: 'var(--text-small)', fontWeight: 500, color: 'var(--c-fg)' }}>{l.label}</span>
-                <span style={{ fontSize: 'var(--text-micro)', color: 'var(--c-muted)', letterSpacing: '0.04em', textTransform: 'uppercase', fontWeight: 600 }}>{l.short}</span>
+                <span style={{ fontSize: 'var(--text-small)', fontWeight: 500, color: 'var(--c-foreground)' }}>{l.label}</span>
+                <span style={{ fontSize: 'var(--text-micro)', color: 'var(--c-muted-foreground)', letterSpacing: '0.04em', textTransform: 'uppercase', fontWeight: 600 }}>{l.short}</span>
               </span>
               {isActive &&
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--c-fg)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12l5 5L20 7"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--c-foreground)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12l5 5L20 7"/></svg>
               }
             </button>
           );
@@ -98,13 +98,13 @@ function MGServicesDropdown() {
       <button onClick={() => setOpen((o) => !o)}
         style={{
           display: 'inline-flex', alignItems: 'center', gap: 6,
-          background: open ? 'var(--c-bg-soft)' : 'transparent', border: 0,
-          padding: '8px 14px', borderRadius: 8, fontSize: 'var(--text-small)', color: 'var(--c-fg)', fontWeight: 500, cursor: 'pointer', fontFamily: 'inherit'
+          background: open ? 'var(--c-background-soft)' : 'transparent', border: 0,
+          padding: '8px 14px', borderRadius: 8, fontSize: 'var(--text-small)', color: 'var(--c-foreground)', fontWeight: 500, cursor: 'pointer', fontFamily: 'inherit'
         }}>
         Serviços <span style={{ transform: open ? 'rotate(180deg)' : 'none', transition: 'transform .2s', display: 'inline-flex' }}>{window.MGIcon.chevron(13)}</span>
       </button>
       <div style={{
-        position: 'absolute', top: 'calc(100% + 8px)', right: 0, background: '#fff',
+        position: 'absolute', top: 'calc(100% + 8px)', right: 0, background: 'var(--c-card)',
         borderRadius: 16, padding: 12, boxShadow: '0 12px 40px rgba(0,0,0,0.10), 0 0 0 1px var(--c-border)',
         minWidth: 520, opacity: open ? 1 : 0, transform: open ? 'translateY(0)' : 'translateY(-6px)',
         pointerEvents: open ? 'auto' : 'none', transition: 'opacity .18s ease, transform .18s ease',
@@ -113,14 +113,14 @@ function MGServicesDropdown() {
         {window.MG_NAV.map((s) =>
           <a key={s.key} href={s.key === 'meet-greet' ? '#' : 'site.html#' + s.key} onClick={() => setOpen(false)}
             style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 14px', borderRadius: 10, transition: 'background .15s ease' }}
-            onMouseOver={(e) => e.currentTarget.style.background = 'var(--c-bg-soft)'}
+            onMouseOver={(e) => e.currentTarget.style.background = 'var(--c-background-soft)'}
             onMouseOut={(e) => e.currentTarget.style.background = 'transparent'}>
-            <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 36, height: 36, borderRadius: 10, background: s.color + '14', color: s.color }}>
+            <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 36, height: 36, borderRadius: 10, background: `color-mix(in srgb, ${s.color} 8%, transparent)`, color: s.color }}>
               {Nav[s.key] && Nav[s.key](18)}
             </span>
             <span style={{ display: 'flex', flexDirection: 'column' }}>
-              <span style={{ fontSize: 'var(--text-small)', fontWeight: 600, color: 'var(--c-fg)' }}>{s.label}</span>
-              <span style={{ fontSize: 'var(--text-micro)', color: 'var(--c-muted)' }}>{s.desc}</span>
+              <span style={{ fontSize: 'var(--text-small)', fontWeight: 600, color: 'var(--c-foreground)' }}>{s.label}</span>
+              <span style={{ fontSize: 'var(--text-micro)', color: 'var(--c-muted-foreground)' }}>{s.desc}</span>
             </span>
           </a>
         )}
@@ -129,7 +129,7 @@ function MGServicesDropdown() {
   );
 }
 
-const mgNavLink = { fontSize: 'var(--text-small)', color: 'var(--c-fg)', fontWeight: 500, padding: '8px 14px', borderRadius: 8 };
+const mgNavLink = { fontSize: 'var(--text-small)', color: 'var(--c-foreground)', fontWeight: 500, padding: '8px 14px', borderRadius: 8 };
 
 function MGHeader({ mobile }) {
   const [hidden, setHidden] = useStateH(false);
@@ -175,8 +175,8 @@ function MGHeader({ mobile }) {
         {mobile &&
           <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
             <MGLanguage compact />
-            <button aria-label="Menu" style={{ background: 'transparent', border: 0, padding: 6 }}>
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--c-fg)" strokeWidth="1.6" strokeLinecap="round"><path d="M4 8h16"/><path d="M4 16h16"/></svg>
+            <button aria-label="Menu" className="gl-btn gl-btn--ghost gl-btn--icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--c-foreground)" strokeWidth="1.6" strokeLinecap="round"><path d="M4 8h16"/><path d="M4 16h16"/></svg>
             </button>
           </div>
         }
@@ -216,9 +216,9 @@ function MGHero({ mobile, onExplore }) {
           position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
           padding: mobile ? '90px 24px 36px' : '110px 56px 56px', pointerEvents: 'none'
         }}>
-          <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', color: '#fff', maxWidth: 1000 }}>
+          <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', color: 'var(--c-on-media)', maxWidth: 1000 }}>
             <span className="gl-eyebrow" style={{ position: 'absolute', bottom: '100%', marginBottom: mobile ? 18 : 24, color: 'rgba(255,255,255,0.72)' }}>Meet &amp; Greet</span>
-            <h1 style={{ fontSize: mobile ? 'var(--text-h1-mobile)' : 'var(--text-h1)', lineHeight: 'var(--text-h1-lh)', letterSpacing: 'var(--text-h1-tracking)', fontWeight: 600, color: '#fff' }}>
+            <h1 style={{ fontSize: mobile ? 'var(--text-h1-mobile)' : 'var(--text-h1)', lineHeight: 'var(--text-h1-lh)', letterSpacing: 'var(--text-h1-tracking)', fontWeight: 600, color: 'var(--c-on-media)' }}>
               Sua jornada,<br/>cuidada de ponta a ponta
             </h1>
           </div>

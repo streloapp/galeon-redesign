@@ -6,26 +6,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 :root {
+  /* ── Surfaces ──────────────────────────────────────────────────────── */
+  --c-background:        #FFFFFF;   /* page */
+  --c-background-soft:   #F7F7F4;   /* alt section / soft panel */
+  --c-surface-dark:      #1A1A1A;   /* dark band / section */
+  --c-card:              #FFFFFF;   /* light card */
+  --c-card-dark:         #2B2B2B;   /* dark / cinematic card */
+  --c-border:            #E7E6E1;   /* hairline */
+  --c-border-strong:     #1F1F1F;   /* heavy dividers */
+
+  /* ── Foregrounds (text that sits on each surface) ──────────────────── */
+  --c-foreground:              #0E0F0E;   /* on background / background-soft */
+  --c-muted-foreground:        #6B6B68;   /* secondary text */
+  --c-surface-dark-foreground: #FFFFFF;   /* on surface-dark */
+  --c-card-foreground:         #0E0F0E;   /* on light card */
+  --c-card-dark-foreground:    #FFFFFF;   /* on dark card */
+  --c-on-media:                #FFFFFF;   /* text/icons over photography or scrim — legibility constant, not theme-driven */
+
+  /* ── States ────────────────────────────────────────────────────────── */
+  --c-ring:                    var(--c-primary);   /* focus-visible ring (rendered at 50% alpha) */
+  --c-destructive:             #DC2626;   /* danger action */
+  --c-destructive-foreground:  #FFFFFF;   /* on destructive */
+
   /* ── Brand ─────────────────────────────────────────────────────────── */
-  --c-primary:        #9ACA3C;   /* GaleON green */
-  --c-primary-ink:    #1f2a0c;   /* readable on primary */
+  --c-primary:            #9ACA3C;   /* GaleON green */
+  --c-primary-foreground: #1F2A0C;   /* on primary */
 
-  /* ── Neutrals (warm) ───────────────────────────────────────────────── */
-  --c-bg:             #FFFFFF;   /* page */
-  --c-bg-soft:        #F7F7F4;   /* alt section */
-  --c-fg:             #0E0F0E;   /* body text */
-  --c-muted:          #6B6B68;   /* secondary text */
-  --c-border:         #E7E6E1;   /* hairline */
-  --c-border-strong:  #1f1f1f;   /* heavy dividers */
-
-  /* ── Service palette (one color per offering) ──────────────────────── */
-  --c-meet-greet:     #2B2B2B;   /* (ex-Hospitalidade) */
-  --c-delivery:       #ED1C24;
-  --c-sala-vip:       #822A85;
-  --c-transportes:    #E5A91D;
-  --c-guarda:         #F58220;
-  --c-cambio:         #009B90;
-  --c-personal:       #ED0080;
+  /* ── Service palette (one color per offering + its text) ───────────── */
+  --c-meet-greet:    #2B2B2B;   --c-meet-greet-foreground:  #FFFFFF;
+  --c-delivery:      #ED1C24;   --c-delivery-foreground:    #FFFFFF;
+  --c-sala-vip:      #822A85;   --c-sala-vip-foreground:    #FFFFFF;
+  --c-transportes:   #E5A91D;   --c-transportes-foreground: #0E0F0E;  /* dourado → texto escuro */
+  --c-guarda:        #F58220;   --c-guarda-foreground:      #FFFFFF;
+  --c-cambio:        #009B90;   --c-cambio-foreground:      #FFFFFF;
+  --c-personal:      #ED0080;   --c-personal-foreground:    #FFFFFF;
 
   /* ── Radii ─────────────────────────────────────────────────────────── */
   --r-sm:  8px;
@@ -107,14 +121,14 @@
 .ds-h3 { font-family: var(--font-body); font-weight: 600; font-size: var(--text-h3); line-height: var(--text-h3-lh); letter-spacing: var(--text-h3-tracking); }
 .ds-h4 { font-family: var(--font-body); font-weight: 600; font-size: var(--text-h4); line-height: var(--text-h4-lh); letter-spacing: var(--text-h4-tracking); }
 .ds-h5 { font-family: var(--font-body); font-weight: 600; font-size: var(--text-h5); line-height: var(--text-h5-lh); letter-spacing: var(--text-h5-tracking); }
-.ds-subtitle { font-family: var(--font-body); font-size: var(--text-subtitle); line-height: var(--text-subtitle-lh); letter-spacing: var(--text-subtitle-tracking); color: var(--c-muted); }
+.ds-subtitle { font-family: var(--font-body); font-size: var(--text-subtitle); line-height: var(--text-subtitle-lh); letter-spacing: var(--text-subtitle-tracking); color: var(--c-muted-foreground); }
 .ds-body { font-family: var(--font-body); font-size: var(--text-body); line-height: var(--text-body-lh); letter-spacing: var(--text-body-tracking); }
-.ds-small { font-family: var(--font-body); font-size: var(--text-small); line-height: var(--text-small-lh); color: var(--c-muted); }
+.ds-small { font-family: var(--font-body); font-size: var(--text-small); line-height: var(--text-small-lh); color: var(--c-muted-foreground); }
 .ds-eyebrow {
   font-family: var(--font-body);
   font-size: var(--text-micro); font-weight: 600;
   letter-spacing: var(--text-eyebrow-tracking); text-transform: uppercase;
-  color: var(--c-muted);
+  color: var(--c-muted-foreground);
   display: inline-flex; align-items: center; gap: 8px;
 }
 .ds-eyebrow::before { content: ""; width: 22px; height: 1px; background: currentColor; }

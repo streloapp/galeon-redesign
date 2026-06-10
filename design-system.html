@@ -6,13 +6,13 @@
   <title>GaleON · Design System</title>
   <link rel="stylesheet" href="colors_and_type.css"/>
   <style>
-    html, body { margin: 0; background: var(--c-bg-soft); color: var(--c-fg); font-family: var(--font-body); -webkit-font-smoothing: antialiased; font-feature-settings: "ss01","ss02"; }
+    html, body { margin: 0; background: var(--c-background-soft); color: var(--c-foreground); font-family: var(--font-body); -webkit-font-smoothing: antialiased; font-feature-settings: "ss01","ss02"; }
 
     /* Page chrome */
     .ds-page { max-width: 1200px; margin: 0 auto; padding: 64px 32px 96px; }
     .ds-head { display: flex; flex-direction: column; gap: 16px; margin-bottom: 64px; max-width: 760px; }
     .ds-head h1 { margin: 0; font-size: 72px; line-height: 0.96; letter-spacing: -0.045em; font-weight: 600; }
-    .ds-head p { margin: 0; font-size: 19px; color: var(--c-muted); line-height: 1.45; }
+    .ds-head p { margin: 0; font-size: 19px; color: var(--c-muted-foreground); line-height: 1.45; }
 
     /* TOC */
     .ds-toc {
@@ -27,10 +27,10 @@
     .ds-toc a {
       padding: 10px 18px; border-radius: 999px;
       font-size: 13px; font-weight: 600; letter-spacing: -0.005em;
-      color: var(--c-muted); text-decoration: none;
+      color: var(--c-muted-foreground); text-decoration: none;
       transition: background .15s, color .15s;
     }
-    .ds-toc a:hover { background: var(--c-bg-soft); color: var(--c-fg); }
+    .ds-toc a:hover { background: var(--c-background-soft); color: var(--c-foreground); }
 
     /* Sections */
     .ds-section { margin-bottom: 80px; scroll-margin-top: 32px; }
@@ -45,7 +45,7 @@
       font-weight: 600;
     }
     .ds-section-head .count {
-      font-size: 13px; color: var(--c-muted);
+      font-size: 13px; color: var(--c-muted-foreground);
       font-variant-numeric: tabular-nums;
     }
 
@@ -64,7 +64,7 @@
       gap: 16px;
     }
     .ds-card-head .name { font-size: 14px; font-weight: 600; letter-spacing: -0.005em; }
-    .ds-card-head .sub { font-size: 12px; color: var(--c-muted); }
+    .ds-card-head .sub { font-size: 12px; color: var(--c-muted-foreground); }
     .ds-card iframe {
       width: 100%; border: 0; display: block;
       border-top: 1px solid var(--c-border);
@@ -86,7 +86,7 @@
       <a href="#type">Type</a>
       <a href="#spacing">Spacing</a>
       <a href="#components">Components</a>
-      <a href="ui_kits/galeon-home/index.html" target="_blank" rel="noopener" style="color: var(--c-fg); background: var(--c-bg-soft);">UI Kit ↗</a>
+      <a href="ui_kits/galeon-home/index.html" target="_blank" rel="noopener" style="color: var(--c-foreground); background: var(--c-background-soft);">UI Kit ↗</a>
     </nav>
 
     <section id="brand" class="ds-section">
@@ -161,16 +161,16 @@
       <div class="ds-section-head"><h2>Components</h2><span class="count">10 itens</span></div>
       <div class="ds-grid">
         <article class="ds-card">
-          <div class="ds-card-head"><span class="name">Primary button</span><span class="sub">Brand CTA</span></div>
+          <div class="ds-card-head"><span class="name">Primary</span><span class="sub">.gl-btn--primary · brand CTA</span></div>
           <iframe src="preview/btn-primary.html" style="height: 180px;" loading="lazy"></iframe>
         </article>
         <article class="ds-card">
-          <div class="ds-card-head"><span class="name">Dark + ghost</span><span class="sub">Secondary variants</span></div>
-          <iframe src="preview/btn-dark-ghost.html" style="height: 180px;" loading="lazy"></iframe>
+          <div class="ds-card-head"><span class="name">Variants</span><span class="sub">dark · outline · ghost · link · icon · secondary</span></div>
+          <iframe src="preview/btn-dark-ghost.html" style="height: 240px;" loading="lazy"></iframe>
         </article>
         <article class="ds-card">
-          <div class="ds-card-head"><span class="name">Service-tinted CTA</span><span class="sub">Hero CTA takes the active service color</span></div>
-          <iframe src="preview/btn-service-tinted.html" style="height: 240px;" loading="lazy"></iframe>
+          <div class="ds-card-head"><span class="name">Service-tinted CTA</span><span class="sub">.gl-btn--service · --btn-bg / --btn-fg per service</span></div>
+          <iframe src="preview/btn-service-tinted.html" style="height: 260px;" loading="lazy"></iframe>
         </article>
         <article class="ds-card">
           <div class="ds-card-head"><span class="name">Eyebrow + tag</span><span class="sub">Section opener + service tag</span></div>
@@ -204,8 +204,8 @@
     </section>
 
     <footer style="margin-top: 96px; padding-top: 32px; border-top: 1px solid var(--c-border); display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
-      <span style="font-size: 13px; color: var(--c-muted);">GaleON Design System · v1</span>
-      <span style="font-size: 13px; color: var(--c-muted);">Veja <a href="README.md" style="color: var(--c-fg);">README.md</a> · <a href="colors_and_type.css" style="color: var(--c-fg);">colors_and_type.css</a> · <a href="ui_kits/galeon-home/index.html" style="color: var(--c-fg);">UI kit</a></span>
+      <span style="font-size: 13px; color: var(--c-muted-foreground);">GaleON Design System · v1</span>
+      <span style="font-size: 13px; color: var(--c-muted-foreground);">Veja <a href="README.md" style="color: var(--c-foreground);">README.md</a> · <a href="colors_and_type.css" style="color: var(--c-foreground);">colors_and_type.css</a> · <a href="ui_kits/galeon-home/index.html" style="color: var(--c-foreground);">UI kit</a></span>
     </footer>
   </div>
 </body>

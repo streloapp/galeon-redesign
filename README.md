@@ -30,10 +30,14 @@ Tone of voice (visual): **editorial, calm, oficial.** Not a startup. Not a marke
 ## Visual Foundations
 
 ### Color
-- One brand primary: **GaleON green `#9ACA3C`** on dark ink `#1f2a0c`. Used for the primary CTA, key accents (CSAT star), brand mark.
-- Neutrals are **warm-leaning**: page bg `#FFFFFF`, soft bg `#F7F7F4`, foreground `#0E0F0E`, muted `#6B6B68`, border `#E7E6E1`. Avoids cold blue-grays — the brand sits closer to off-white than to pure white.
-- A **functional palette of 7 service colors**, one per offering. Each service drives the hero CTA color, the chip dot, the card accent. Never mixed gratuitously — a color = a service.
+Token-driven (`--c-*` in `colors_and_type.css`), shadcn-style: surfaces are named by role, and **every surface has a matching `-foreground`** for the text that sits on it.
+- **Surfaces:** `--c-background` `#FFFFFF` · `--c-background-soft` `#F7F7F4` · `--c-surface-dark` `#1A1A1A` (dark bands) · `--c-card` `#FFFFFF` · `--c-card-dark` `#2B2B2B` · borders `--c-border` `#E7E6E1` / `--c-border-strong` `#1F1F1F`. Warm-leaning — avoids cold blue-grays.
+- **Foregrounds (text on a surface):** `--c-foreground` `#0E0F0E` · `--c-muted-foreground` `#6B6B68` · `--c-surface-dark-foreground` & `--c-card-dark-foreground` `#FFFFFF`.
+- **`--c-on-media` `#FFFFFF`:** text/icons over photography or a scrim. A legibility constant — *not* theme-driven, so it stays white even if surfaces are re-themed. Use it instead of hardcoding `#fff` on hero/banner overlays.
+- **Brand:** `--c-primary` `#9ACA3C` + `--c-primary-foreground` `#1F2A0C` (primary CTA, CSAT star, brand mark).
+- **Service palette — 7 colors, one per offering**, each with its `-foreground`. A color = a service; drives the hero CTA, chip dot, card accent. Never mixed gratuitously.
   - Meet & Greet `#2B2B2B` · Delivery `#ED1C24` · Sala VIP `#822A85` · Transportes `#E5A91D` · Guarda-volume `#F58220` · Câmbio `#009B90` · Personal Shopper `#ED0080`
+  - Text on each color is white **except Transportes** (gold `#E5A91D`), which uses dark text (`--c-foreground`) for contrast.
 - **No gradients as decoration.** Gradients exist only as **legibility scrims** over photography (top/bottom dark overlays on hero & banner images).
 
 ### Type
