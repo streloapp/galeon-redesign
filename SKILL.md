@@ -4,7 +4,7 @@ description: Use this skill to generate well-branded interfaces and assets for G
 user-invocable: true
 ---
 
-Read the `README.md` file within this skill, and explore the other available files (`colors_and_type.css`, `preview/`, `ui_kits/galeon-home/`).
+Read the `README.md` file within this skill, and explore the other available files (`colors_and_type.css`, `preview/`, and the live pages `site.html` / `meet-greet.html`).
 
 If creating visual artifacts (slides, mocks, throwaway prototypes, etc), copy assets out and create static HTML files for the user to view. If working on production code, you can copy assets and read the rules here to become an expert in designing with this brand.
 

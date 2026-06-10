@@ -1,345 +1,8 @@
-// GaleON home — remaining sections: Serviços, Vitrine, ProvaSocial, Jornada, Footer.
+// GaleON home — sections: Vitrine, Parceiros, Experiências, Hospitalidade
+// (feature), ProvaSocial, FAQ, Footer e a montagem da página (HomePage).
 
 const { useState: useStateS, useEffect: useEffectS } = React;
 
-// ─── Serviços (overview) ────────────────────────────────────────────────────
-// Scannable grid of all 7 services — icon + name + 1-line summary, in the
-// same hierarchy order as the SERVICES array. Sits above the existing
-// `Servicos` (showcase) section using the same eyebrow + title.
-function ServicosOverview({ mobile }) {
-  const services = window.GaleonServices || [];
-  const Icon = window.GaleonServiceIcon || {};
-  return (
-    <section id="servicos-overview" className="gl-section" style={{ paddingTop: mobile ? 'var(--space-56)' : 'var(--space-96)', paddingBottom: mobile ? 'var(--space-24)' : 'var(--space-32)'}}>
-      <div style={{ maxWidth: 720, marginBottom: mobile ? 'var(--space-28)' : 'var(--space-48)'}}>
-        <span className="gl-eyebrow">Serviços</span>
-        <h2 style={{ fontSize: mobile ? 'var(--text-h2-mobile)' : 'var(--text-h2)', marginTop: 'var(--space-16)', maxWidth: 880 }}>
-          Pra cada momento da viagem.
-        </h2>
-      </div>
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: mobile ? '1fr 1fr' : 'repeat(4, 1fr)',
-        gap: mobile ? 'var(--space-12)' : 'var(--space-20)'
-      }}>
-        {services.map((s) =>
-        <a key={s.key} href={`#${s.key}`} className="gl-card" style={{
-          display: 'flex', flexDirection: 'column', gap: 'var(--space-16)',
-          padding: mobile ? 'var(--space-20) var(--space-20)' : 'var(--space-28) var(--space-28) var(--space-28)',
-          border: '1px solid var(--c-border)', borderRadius: 'var(--r-lg)',
-          background: 'var(--c-card)', minHeight: mobile ? 'auto' : 210,
-          color: 'var(--c-foreground)',
-          position: 'relative',
-          textDecoration: 'none'
-        }}>
-            <div style={{
-            width: mobile ? 40 : 44, height: mobile ? 40 : 44, borderRadius: 'var(--r-md)',
-            background: `color-mix(in srgb, ${s.color} 8%, transparent)`, color: s.color,
-            display: 'grid', placeItems: 'center',
-            alignSelf: 'flex-start'
-          }}>
-              {Icon[s.key] && Icon[s.key](mobile ? 20 : 22)}
-            </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-8)', flex: 1 }}>
-              <span style={{ fontSize: mobile ? 'var(--text-subtitle-mobile)' : 'var(--text-subtitle)', fontWeight: 600, letterSpacing: '-0.01em' }}>{s.label}</span>
-              <span style={{ fontSize: mobile ? 'var(--text-small-mobile)' : 'var(--text-small)', color: 'var(--c-muted-foreground)', lineHeight: 1.4 }}>{s.short}</span>
-            </div>
-            <span style={{
-            position: 'absolute', top: mobile ? 18 : 24, right: mobile ? 16 : 22,
-            color: 'var(--c-muted-foreground)'
-          }}>{window.GaleonIcon.arrow(15)}</span>
-          </a>
-        )}
-      </div>
-    </section>);
-
-}
-
-// ─── Serviços ───────────────────────────────────────────────────────────────
-function Servicos({ mobile }) {
-  const compact = [
-  { name: 'Guarda-volume', color: 'var(--c-guarda)', desc: 'Deixe a bagagem em segurança.' },
-  { name: 'Câmbio', color: 'var(--c-cambio)', desc: 'Troque moeda sem fila.' },
-  { name: 'Personal Shopper', color: 'var(--c-personal)', desc: 'Alguém compra por você no Galeão.' }];
-
-
-  return (
-    <section id="servicos" className="gl-section">
-      <div style={{
-        display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end',
-        gap: 'var(--space-24)', marginBottom: mobile ? 'var(--space-32)' : 'var(--space-64)', flexWrap: 'wrap'
-      }}>
-        <div style={{ maxWidth: 720 }}>
-          <span className="gl-eyebrow">Serviços</span>
-          <h2 style={{ fontSize: mobile ? 'var(--text-h2-mobile)' : 'var(--text-h2)', marginTop: 'var(--space-16)', maxWidth: 880 }}>
-            Pra cada momento da viagem.
-          </h2>
-        </div>
-        {!mobile &&
-        <a href="#" className="gl-btn gl-btn--ghost">
-            Ver todos os serviços {window.GaleonIcon.arrow(13)}
-          </a>
-        }
-      </div>
-
-      {/* Top row: Hospitalidade (huge) + Delivery (vertical) */}
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: mobile ? '1fr' : '1.6fr 1fr',
-        gap: mobile ? 'var(--space-16)' : 'var(--space-20)'
-      }}>
-        <HospitalidadeCard mobile={mobile} />
-        <DeliveryCard mobile={mobile} />
-      </div>
-
-      {/* Middle row: Sala VIP + Transportes */}
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: mobile ? '1fr' : '1fr 1fr',
-        gap: mobile ? 'var(--space-16)' : 'var(--space-20)',
-        marginTop: mobile ? 'var(--space-16)' : 'var(--space-20)'
-      }}>
-        <SalaVipCard mobile={mobile} />
-        <TransportesCard mobile={mobile} />
-      </div>
-
-      {/* Compact row */}
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: mobile ? '1fr' : 'repeat(3, 1fr)',
-        gap: mobile ? 'var(--space-16)' : 'var(--space-20)',
-        marginTop: mobile ? 'var(--space-16)' : 'var(--space-20)'
-      }}>
-        {compact.map((c) =>
-        <CompactCard key={c.name} {...c} mobile={mobile} />
-        )}
-      </div>
-    </section>);
-
-}
-
-function ServiceCardBase({ children, dark, style, mobile, slotId, slotPlaceholder, ratio = '4/3', height }) {
-  return (
-    <article className="gl-card" style={{
-      position: 'relative',
-      borderRadius: 'var(--r-xl)',
-      overflow: 'hidden',
-      background: dark ? 'var(--c-surface-dark)' : 'var(--c-background-soft)',
-      color: dark ? 'var(--c-surface-dark-foreground)' : 'var(--c-foreground)',
-      border: '1px solid ' + (dark ? 'var(--c-border-strong)' : 'var(--c-border)'),
-      ...style
-    }}>
-      {slotId &&
-      <div style={{ width: '100%', aspectRatio: height ? undefined : ratio, height: height || undefined, position: 'relative' }}>
-          <image-slot
-          id={slotId}
-          shape="rounded"
-          radius="0"
-          placeholder={slotPlaceholder}
-          style={{ width: '100%', height: '100%' }}>
-        </image-slot>
-        </div>
-      }
-      <div style={{ padding: mobile ? 'var(--space-20) var(--space-24) var(--space-24)' : 'var(--space-28) var(--space-32) var(--space-32)'}}>
-        {children}
-      </div>
-    </article>);
-
-}
-
-function HospitalidadeCard({ mobile }) {
-  return (
-    <article className="gl-card" id="hospitalidade" style={{
-      position: 'relative',
-      borderRadius: 'var(--r-xl)',
-      overflow: 'hidden',
-      background: 'var(--c-surface-dark)', color: 'var(--c-on-media)',
-      minHeight: mobile ? 520 : 620,
-      display: 'flex', flexDirection: 'column'
-    }}>
-      <div style={{ position: 'absolute', inset: 0 }}>
-        <image-slot
-          id="gl-srv-hospitalidade"
-          shape="rounded"
-          radius="0"
-          placeholder="atendente da Hospitalidade recebendo passageiro"
-          style={{ width: '100%', height: '100%' }}>
-        </image-slot>
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.0) 35%, rgba(0,0,0,0.0) 50%, rgba(0,0,0,0.75) 100%)' }} />
-      </div>
-      <div style={{ position: 'relative', padding: mobile ? 'var(--space-24) var(--space-24)' : 'var(--space-36) var(--space-40)', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 'var(--space-12)'}}>
-        <span className="gl-tag" style={{ background: 'rgba(255,255,255,0.18)', color: 'var(--c-on-media)', borderColor: 'rgba(255,255,255,0.24)', backdropFilter: 'blur(8px)' }}>
-          <span className="dot" style={{ background: 'var(--c-primary)' }} /> Em destaque
-        </span>
-        <span style={{ fontSize: 'var(--text-micro)', color: 'rgba(255,255,255,0.7)' }}>Hospitalidade</span>
-      </div>
-      <div style={{ flex: 1 }} />
-      <div style={{ position: 'relative', padding: mobile ? '0 var(--space-24) var(--space-28)' : '0 var(--space-40) var(--space-40)', display: 'flex', flexDirection: 'column', gap: 'var(--space-24)', maxWidth: 720 }}>
-        <h3 style={{ fontSize: mobile ? 'var(--text-h2-mobile)' : 'var(--text-h2)', color: 'var(--c-on-media)' }}>
-          Hospitalidade do<br />desembarque ao embarque.
-        </h3>
-        <p style={{ fontSize: mobile ? 'var(--text-body-mobile)' : 'var(--text-body)', color: 'rgba(255,255,255,0.78)', maxWidth: 460, lineHeight: 1.45 }}>
-          Check-in assistido, fast-track e condução até o portão.
-        </p>
-        <div style={{ display: 'flex', flexDirection: mobile ? 'column' : 'row', gap: 'var(--space-12)', alignItems: mobile ? 'stretch' : 'center' }}>
-          <a href="meet-greet.html" className="gl-btn gl-btn--primary" style={{ textDecoration: 'none' }}>Conhecer mais {window.GaleonIcon.arrow(14)}</a>
-          <span style={{ fontSize: 'var(--text-small)', color: 'rgba(255,255,255,0.65)', marginLeft: mobile ? 0 : 'var(--space-4)'}}>
-            A partir de R$ 480
-          </span>
-        </div>
-      </div>
-    </article>);
-
-}
-
-function DeliveryCard({ mobile }) {
-  return (
-    <article className="gl-card" style={{
-      position: 'relative',
-      borderRadius: 'var(--r-xl)',
-      overflow: 'hidden',
-      background: 'var(--c-background-soft)',
-      border: '1px solid var(--c-border)',
-      display: 'flex', flexDirection: 'column',
-      minHeight: mobile ? 'auto' : 620
-    }}>
-      <div style={{ position: 'relative', height: mobile ? 220 : 320 }}>
-        <image-slot
-          id="gl-srv-delivery"
-          shape="rounded"
-          radius="0"
-          placeholder="bandeja de hambúrguer entregue no portão"
-          style={{ width: '100%', height: '100%' }}>
-        </image-slot>
-        <span className="gl-tag" style={{
-          position: 'absolute', top: 18, left: 18,
-          color: 'var(--c-delivery)', background: 'rgba(255,255,255,0.95)'
-        }}>
-          <span className="dot" /> Delivery
-        </span>
-      </div>
-      <div style={{ padding: mobile ? 'var(--space-24) var(--space-24) var(--space-28)' : 'var(--space-32) var(--space-32) var(--space-36)', display: 'flex', flexDirection: 'column', gap: 'var(--space-16)', flex: 1 }}>
-        <h3 style={{ fontSize: mobile ? 'var(--text-h4-mobile)' : 'var(--text-h4)' }}>
-          Peça sua comida sem sair do portão de embarque
-        </h3>
-        <p style={{ color: 'var(--c-muted-foreground)', fontSize: mobile ? 'var(--text-body-mobile)' : 'var(--text-body)', lineHeight: 1.45, flex: 1 }}>
-          Mais de 30 restaurantes do RIOgaleão entregam direto para você. Em até 30 minutos.
-        </p>
-        <button className="gl-btn gl-btn--dark" style={{ alignSelf: 'flex-start' }}>
-          Peça no portão de embarque {window.GaleonIcon.arrow(14)}
-        </button>
-      </div>
-    </article>);
-
-}
-
-function SalaVipCard({ mobile }) {
-  return (
-    <article className="gl-card" style={{
-      borderRadius: 'var(--r-xl)',
-      overflow: 'hidden',
-      background: 'var(--c-sala-vip-tint)',
-      border: '1px solid var(--c-sala-vip-tint-border)',
-      display: 'grid',
-      gridTemplateColumns: mobile ? '1fr' : '1fr 1fr',
-      minHeight: mobile ? 'auto' : 340
-    }}>
-      <div style={{ padding: mobile ? 'var(--space-24) var(--space-24) var(--space-28)' : 'var(--space-32) var(--space-32) var(--space-32)', display: 'flex', flexDirection: 'column', gap: 'var(--space-16)', justifyContent: 'space-between' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-16)'}}>
-          <span className="gl-tag" style={{ color: 'var(--c-sala-vip)', alignSelf: 'flex-start' }}>
-            <span className="dot" /> Sala VIP
-          </span>
-          <h3 style={{ fontSize: mobile ? 'var(--text-h4-mobile)' : 'var(--text-h4)' }}>
-            Embarque sem barulho.
-          </h3>
-          <p style={{ color: 'var(--c-muted-foreground)', fontSize: 'var(--text-body)', lineHeight: 1.45 }}>
-            Salas domésticas e internacionais, com chuveiro e bebidas.
-          </p>
-        </div>
-        <button className="gl-btn gl-btn--outline" style={{ alignSelf: 'flex-start' }}>
-          Reserve sua Sala VIP {window.GaleonIcon.arrow(14)}
-        </button>
-      </div>
-      <div style={{ position: 'relative', minHeight: mobile ? 200 : 'auto' }}>
-        <image-slot
-          id="gl-srv-vip"
-          shape="rounded"
-          radius="0"
-          placeholder="poltrona da sala VIP com vista para a pista"
-          style={{ width: '100%', height: '100%' }}>
-        </image-slot>
-      </div>
-    </article>);
-
-}
-
-function TransportesCard({ mobile }) {
-  return (
-    <article className="gl-card" style={{
-      borderRadius: 'var(--r-xl)',
-      overflow: 'hidden',
-      background: 'var(--c-transportes-tint)',
-      border: '1px solid var(--c-transportes-tint-border)',
-      display: 'grid',
-      gridTemplateColumns: mobile ? '1fr' : '1fr 1fr',
-      minHeight: mobile ? 'auto' : 340
-    }}>
-      <div style={{ padding: mobile ? 'var(--space-24) var(--space-24) var(--space-28)' : 'var(--space-32) var(--space-32) var(--space-32)', display: 'flex', flexDirection: 'column', gap: 'var(--space-16)', justifyContent: 'space-between' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-16)'}}>
-          <span className="gl-tag" style={{ color: 'var(--c-transportes-strong)', alignSelf: 'flex-start' }}>
-            <span className="dot" /> Transportes
-          </span>
-          <h3 style={{ fontSize: mobile ? 'var(--text-h4-mobile)' : 'var(--text-h4)' }}>
-            Táxi e transfer pra começar leve.
-          </h3>
-          <p style={{ color: 'var(--c-muted-foreground)', fontSize: 'var(--text-body)', lineHeight: 1.45 }}>
-            Motorista te encontra no portão certo.
-          </p>
-        </div>
-        <button className="gl-btn gl-btn--outline" style={{ alignSelf: 'flex-start' }}>
-          Reserve seu transfer {window.GaleonIcon.arrow(14)}
-        </button>
-      </div>
-      <div style={{ position: 'relative', minHeight: mobile ? 200 : 'auto' }}>
-        <image-slot
-          id="gl-srv-transfer"
-          shape="rounded"
-          radius="0"
-          placeholder="van de transfer encostada no terminal"
-          style={{ width: '100%', height: '100%' }}>
-        </image-slot>
-      </div>
-    </article>);
-
-}
-
-function CompactCard({ name, color, desc, mobile }) {
-  return (
-    <article className="gl-card" style={{
-      borderRadius: 'var(--r-lg)',
-      padding: mobile ? 'var(--space-24)' : 'var(--space-28)',
-      background: 'var(--c-card)',
-      border: '1px solid var(--c-border)',
-      display: 'flex', flexDirection: 'column', gap: 'var(--space-20)',
-      minHeight: mobile ? 'auto' : 220
-    }}>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <span style={{
-          display: 'inline-flex', alignItems: 'center', gap: 'var(--space-8)',
-          fontSize: 'var(--text-micro)', fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase',
-          color
-        }}>
-          <span style={{ width: 8, height: 8, borderRadius: 4, background: color, boxShadow: `0 0 0 4px ${color}22` }} />
-          {name}
-        </span>
-        <span style={{ color: 'var(--c-muted-foreground)' }}>{window.GaleonIcon.arrow(15)}</span>
-      </div>
-      <p style={{ fontSize: mobile ? 'var(--text-subtitle-mobile)' : 'var(--text-subtitle)', lineHeight: 1.3, color: 'var(--c-foreground)', fontWeight: 500, letterSpacing: '-0.01em', flex: 1 }}>
-        {desc}
-      </p>
-    </article>);
-
-}
 
 // ─── Vitrine ────────────────────────────────────────────────────────────────
 const VITRINE_DATA = {
@@ -450,10 +113,6 @@ function VitrineCard({ brand, dish, meta, slot, accent }) {
 
 }
 
-// ─── Sobre o GaleON ─────────────────────────────────────────────────────────
-// Editorial section: 3 zones only — header → focal moment with image →
-// credentials + partners as the data block. Title matches the declarative
-// pattern of other sections ("Tudo encaixado…", "Ainda tem perguntas?").
 // ─── Parceiros (faixa horizontal contínua) ──────────────────────────────────
 // Lives between the hero and the ProvaSocial section. Real brand logos served
 // by the Simple Icons CDN, forced to monochrome black via the `/000000` color
@@ -523,17 +182,14 @@ function Experiencias({ mobile }) {
         </h2>
       </div>
 
-      <article style={{
+      <article className="gl-card" style={{
         background: 'var(--c-card)',
         borderRadius: 'var(--r-xl)',
         overflow: 'hidden',
         display: 'grid',
         gridTemplateColumns: mobile ? '1fr' : '1.05fr 1fr',
-        height: mobile ? 'auto' : 390,
-        transition: 'transform var(--dur-base) ease, box-shadow var(--dur-base) ease'
-      }}
-      onMouseOver={(e) => {e.currentTarget.style.transform = 'translateY(-2px)';e.currentTarget.style.boxShadow = 'var(--shadow-card-hover)';}}
-      onMouseOut={(e) => {e.currentTarget.style.transform = 'translateY(0)';e.currentTarget.style.boxShadow = 'none';}}>
+        height: mobile ? 'auto' : 390
+      }}>
         {/* Image side */}
         <div style={{
           position: 'relative',
@@ -557,8 +213,8 @@ function Experiencias({ mobile }) {
             <div style={{
               position: 'absolute', inset: 0,
               background: mobile ?
-              'linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,0.25) 100%)' :
-              'linear-gradient(90deg, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0) 60%)',
+              'linear-gradient(180deg, color-mix(in srgb, var(--c-scrim) 0%, transparent) 60%, color-mix(in srgb, var(--c-scrim) 25%, transparent) 100%)' :
+              'linear-gradient(90deg, color-mix(in srgb, var(--c-scrim) 18%, transparent) 0%, color-mix(in srgb, var(--c-scrim) 0%, transparent) 60%)',
               pointerEvents: 'none'
             }} />
           </div>
@@ -673,17 +329,14 @@ function Experiencias({ mobile }) {
 function ExpFeatureCard({ serviceKey, serviceLabel, serviceColor, title, desc, slotId, slotPlaceholder, href, mobile }) {
   const Icon = window.GaleonServiceIcon || {};
   return (
-    <a href={href} style={{
+    <a href={href} className="gl-card" style={{
       background: 'var(--c-card)',
       borderRadius: 'var(--r-xl)',
       overflow: 'hidden',
       display: 'flex', flexDirection: 'column',
       textDecoration: 'none', color: 'inherit',
-      minHeight: mobile ? 340 : 380,
-      transition: 'transform var(--dur-base) ease, box-shadow var(--dur-base) ease'
-    }}
-    onMouseOver={(e) => {e.currentTarget.style.transform = 'translateY(-2px)';e.currentTarget.style.boxShadow = 'var(--shadow-card-hover)';}}
-    onMouseOut={(e) => {e.currentTarget.style.transform = 'translateY(0)';e.currentTarget.style.boxShadow = 'none';}}>
+      minHeight: mobile ? 340 : 380
+    }}>
       {/* Top: copy block — centered horizontally, top-aligned */}
       <div style={{
         padding: mobile ? 'var(--space-28) var(--space-24) 0' : 'var(--space-36) var(--space-40) 0px var(--space-48)',
@@ -740,18 +393,15 @@ function ExpFeatureCard({ serviceKey, serviceLabel, serviceColor, title, desc, s
 function ExpMiniCard({ serviceKey, serviceLabel, serviceColor, desc, href, mobile }) {
   const Icon = window.GaleonServiceIcon || {};
   return (
-    <a href={href} style={{
+    <a href={href} className="gl-card" style={{
       position: 'relative',
       background: 'var(--c-card)',
       borderRadius: 'var(--r-lg)',
       padding: mobile ? 'var(--space-24) var(--space-24)' : 'var(--space-28) var(--space-28)',
       display: 'flex', flexDirection: 'column',
       gap: mobile ? 'var(--space-12)' : 'var(--space-12)',
-      textDecoration: 'none', color: 'inherit',
-      transition: 'transform var(--dur-base) ease, box-shadow var(--dur-base) ease'
-    }}
-    onMouseOver={(e) => {e.currentTarget.style.transform = 'translateY(-2px)';e.currentTarget.style.boxShadow = 'var(--shadow-card-hover)';}}
-    onMouseOut={(e) => {e.currentTarget.style.transform = 'translateY(0)';e.currentTarget.style.boxShadow = 'none';}}>
+      textDecoration: 'none', color: 'inherit'
+    }}>
       <span style={{
         display: 'inline-flex', alignItems: 'center', gap: 'var(--space-8)',
         color: serviceColor,
@@ -795,8 +445,7 @@ function Hospitalidade({ mobile }) {
       width: '100%',
       minHeight: '100vh',
       overflow: 'hidden',
-      background: 'var(--c-meet-greet)',
-      backgroundImage: 'radial-gradient(ellipse 80% 80% at 50% -20%, rgba(120,119,198,0.3), rgba(255,255,255,0))'
+      background: 'var(--c-meet-greet)'
     }}>
       {/* Two-column layout: content on the left, image on the right */}
       <div style={{
@@ -960,8 +609,8 @@ function ProvaSocial({ mobile }) {
         <div style={{
           position: 'absolute', inset: 0,
           background: mobile ?
-          'linear-gradient(180deg, rgba(0,0,0,0) 35%, rgba(0,0,0,0.72) 100%)' :
-          'linear-gradient(100deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.18) 45%, rgba(0,0,0,0) 70%)',
+          'linear-gradient(180deg, color-mix(in srgb, var(--c-scrim) 0%, transparent) 35%, color-mix(in srgb, var(--c-scrim) 72%, transparent) 100%)' :
+          'linear-gradient(100deg, color-mix(in srgb, var(--c-scrim) 55%, transparent) 0%, color-mix(in srgb, var(--c-scrim) 18%, transparent) 45%, color-mix(in srgb, var(--c-scrim) 0%, transparent) 70%)',
           pointerEvents: 'none'
         }} />
         {/* Overlay copy — anchored bottom-left */}
@@ -1183,124 +832,11 @@ function FAQ({ mobile }) {
           })}
         </div>
       </div>
-      {/* Wave divider sits flush at the bottom of the section — negative
-                                                                              margins cancel the gl-section side padding so the SVG spans edge to
-                                                                              edge. Padding-bottom on the section is 0 for the same reason. */}
     </section>);
 
 }
 
-// ─── Jornada (Antes, Durante e Depois) ──────────────────────────────────────
-function Jornada({ mobile }) {
-  const cols = [
-  {
-    moment: 'Antes',
-    sub: 'de sair de casa',
-    items: [
-    { tag: 'Meet & Greet', color: 'var(--c-meet-greet)', text: 'Garanta atendimento exclusivo no dia.' },
-    { tag: 'Transportes', color: 'var(--c-transportes)', text: 'Reserve táxi ou transfer pro Galeão.' },
-    { tag: 'Personal Shopper', color: 'var(--c-personal)', text: 'Encomende o que comprar nas lojas.' }]
-
-  },
-  {
-    moment: 'Durante',
-    sub: 'no aeroporto',
-    items: [
-    { tag: 'Delivery', color: 'var(--c-delivery)', text: 'Comida e bebida no seu portão.' },
-    { tag: 'Sala VIP', color: 'var(--c-sala-vip)', text: 'Embarque com privacidade.' },
-    { tag: 'Guarda-volume', color: 'var(--c-guarda)', text: 'Deixe a bagagem em segurança.' }]
-
-  },
-  {
-    moment: 'Depois',
-    sub: 'na chegada',
-    items: [
-    { tag: 'Câmbio', color: 'var(--c-cambio)', text: 'Troque moeda sem fila.' },
-    { tag: 'Transportes', color: 'var(--c-transportes)', text: 'Transfer de saída esperando.' }]
-
-  }];
-
-
-  return (
-    <section id="jornada" className="gl-section">
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-16)', maxWidth: 900, marginBottom: mobile ? 'var(--space-32)' : 'var(--space-56)'}}>
-        <span className="gl-eyebrow">Antes, durante e depois</span>
-        <h2 style={{ fontSize: mobile ? 'var(--text-h2-mobile)' : 'var(--text-h2)' }}>
-          Alguém do Galeão em cada parte da viagem.
-        </h2>
-      </div>
-
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: mobile ? '1fr' : 'repeat(3, 1fr)',
-        gap: mobile ? 'var(--space-24)' : 'var(--space-4)',
-        position: 'relative'
-      }}>
-        {cols.map((c, i) =>
-        <div key={i} style={{
-          padding: mobile ? 'var(--space-24) 0 0' : 'var(--space-24) var(--space-28)',
-          borderLeft: !mobile && i > 0 ? '1px solid var(--c-border)' : 'none',
-          borderTop: mobile && i > 0 ? '1px solid var(--c-border)' : 'none',
-          paddingTop: mobile && i > 0 ? 'var(--space-28)' : mobile ? 0 : 24,
-          display: 'flex', flexDirection: 'column', gap: 'var(--space-24)'
-        }}>
-            <div style={{ display: 'flex', alignItems: 'baseline', gap: 'var(--space-12)'}}>
-              <span style={{
-              fontSize: 'var(--text-small)', fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase',
-              display: 'inline-flex', alignItems: 'center', gap: 'var(--space-8)'
-            }}>
-                <span style={{ display: 'inline-grid', placeItems: 'center', width: 22, height: 22, borderRadius: 'var(--r-pill)', background: 'var(--c-foreground)', color: 'var(--c-surface-dark-foreground)', fontSize: 'var(--text-micro)' }}>0{i + 1}</span>
-                {c.moment}
-              </span>
-              <span style={{ fontSize: 'var(--text-small)', color: 'var(--c-muted-foreground)' }}>{c.sub}</span>
-            </div>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 'var(--space-20)'}}>
-              {c.items.map((it, j) =>
-            <li key={j} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-8)'}}>
-                  <span style={{
-                fontSize: 'var(--text-micro)', fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase',
-                color: it.color, display: 'inline-flex', alignItems: 'center', gap: 'var(--space-8)'
-              }}>
-                    <span style={{ width: 6, height: 6, borderRadius: 3, background: it.color }} />
-                    {it.tag}
-                  </span>
-                  <span style={{ fontSize: mobile ? 'var(--text-subtitle-mobile)' : 'var(--text-subtitle)', fontWeight: 500, letterSpacing: '-0.01em', lineHeight: 1.3 }}>
-                    {it.text}
-                  </span>
-                </li>
-            )}
-            </ul>
-          </div>
-        )}
-      </div>
-    </section>);
-
-}
-
-// ─── Final CTA + Footer ─────────────────────────────────────────────────────
-function FinalCTA({ mobile }) {
-  return (
-    <section className="gl-section" style={{ paddingTop: mobile ? 'var(--space-32)' : 'var(--space-56)', paddingBottom: mobile ? 'var(--space-64)' : 120}}>
-      <div style={{
-        borderRadius: 'var(--r-xl)',
-        background: 'var(--c-primary)',
-        padding: mobile ? 'var(--space-40) var(--space-28)' : 'var(--space-80) var(--space-64)',
-        display: 'flex', flexDirection: mobile ? 'column' : 'row',
-        gap: 'var(--space-32)', alignItems: mobile ? 'stretch' : 'center', justifyContent: 'space-between'
-      }}>
-        <h3 style={{ fontSize: mobile ? 'var(--text-h2-mobile)' : 'var(--text-h2)', color: 'var(--c-primary-foreground)', maxWidth: 720 }}>
-          O próximo voo é por nossa conta.
-        </h3>
-        <div style={{ display: 'flex', flexDirection: mobile ? 'column' : 'row', gap: 'var(--space-12)'}}>
-          <button className="gl-btn gl-btn--dark">Garanta sua Hospitalidade {window.GaleonIcon.arrow(14)}</button>
-          <button className="gl-btn gl-btn--outline">
-            Peça no portão agora
-          </button>
-        </div>
-      </div>
-    </section>);
-
-}
+// ─── Footer ─────────────────────────────────────────────────────────────────
 
 function Footer({ mobile }) {
   return (
@@ -1419,7 +955,6 @@ function HomePage({ width, density }) {
       <Vitrine mobile={mobile} />
       <FAQ mobile={mobile} />
       <Footer mobile={mobile} />
-      {/* <window.GaleonViagem mobile={mobile} /> */}
     </div>);
 
 }

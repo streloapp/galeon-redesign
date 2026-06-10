@@ -24,6 +24,8 @@ function AwardBadge({
   link = '#',
   width = 260
 }) {
+  const reduceMotion = typeof matchMedia === 'function' &&
+    matchMedia('(prefers-reduced-motion: reduce)').matches;
   const ref = useRefAB(null);
   const [firstOverlayPosition, setFirstOverlayPosition] = useStateAB(0);
   const [matrix, setMatrix] = useStateAB(__AB_identity);
@@ -211,7 +213,7 @@ function AwardBadge({
                 transform: `rotate(${firstOverlayPosition + i * 10}deg)`,
                 transformOrigin: 'center center',
                 transition: !disableInOutOverlayAnimation ? 'transform 200ms ease-out' : 'none',
-                animation: disableOverlayAnimation ? 'none' : `glAwardOverlay${i + 1} 5s infinite`,
+                animation: (disableOverlayAnimation || reduceMotion) ? 'none' : `glAwardOverlay${i + 1} 5s infinite`,
                 willChange: 'transform'
               }}>
                 <polygon

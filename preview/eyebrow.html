@@ -2,50 +2,23 @@
 <html lang="pt-BR"><head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Eyebrow + tag chip</title>
-<link rel="stylesheet" href="../colors_and_type.css"/>
+<title>Eyebrow · .gl-eyebrow</title>
+<link rel="stylesheet" href="../styles.css"/>
 <style>
-  html, body { margin: 0; padding: 0; background: #fff; font-family: var(--font-body); color: var(--c-foreground); -webkit-font-smoothing: antialiased; font-feature-settings: "ss01","ss02"; }
-  .card { width: 100%; min-height: 230px; padding: 24px 28px; box-sizing: border-box; display: flex; }
+  html, body { margin: 0; padding: 0; background: #fff; }
+  .card { width: 100%; min-height: 150px; padding: 24px 28px; box-sizing: border-box; display: flex; }
   .meta { font-size: 11px; color: var(--c-muted-foreground); letter-spacing: 0.04em; text-transform: uppercase; font-weight: 600; }
-  .hex { font-size: 12px; color: var(--c-muted-foreground); font-variant-numeric: tabular-nums; }
-  .gl-btn {
-    display: inline-flex; align-items: center; gap: 10px;
-    height: 52px; padding: 0 22px; border-radius: 999px;
-    border: 1px solid transparent; font-weight: 600; font-size: 15px;
-    letter-spacing: -0.005em; cursor: pointer; font-family: inherit;
-    white-space: nowrap; transition: transform .15s ease, background .15s ease;
-  }
-  .gl-btn:hover { transform: translateY(-1px); }
-  .gl-btn--primary { background: var(--c-primary); color: var(--c-primary-foreground); }
-  .gl-btn--dark { background: var(--c-foreground); color: #fff; }
-  .gl-btn--ghost { background: transparent; color: var(--c-foreground); border-color: var(--c-foreground); }
-  .gl-btn--sm { height: 40px; padding: 0 16px; font-size: 13px; }
-  .gl-tag {
-    display: inline-flex; align-items: center; gap: 6px;
-    font-size: 11px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
-    padding: 6px 10px; border-radius: 999px;
-    background: rgba(255,255,255,0.92);
-    color: var(--c-foreground);
-    border: 1px solid var(--c-border);
-  }
-  .gl-tag .dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
-  .gl-tabs { display: inline-flex; padding: 4px; background: var(--c-background-soft); border-radius: 999px; gap: 2px; border: 1px solid var(--c-border); }
-  .gl-tab { background: transparent; border: 0; height: 38px; padding: 0 18px; border-radius: 999px; font-weight: 500; font-size: 14px; color: var(--c-muted-foreground); font-family: inherit; cursor: pointer; }
-  .gl-tab[data-active="true"] { background: var(--c-foreground); color: #fff; }
-  .arrow { width: 14px; height: 14px; }
 </style>
-</head><body><div class="card"><div style="display:flex;flex-direction:column;gap:24px;width:100%;">
-     <div>
-       <div class="meta" style="margin-bottom:10px;">Eyebrow</div>
-       <span class="ds-eyebrow">Sobre o GaleON</span>
-     </div>
-     <div>
-       <div class="meta" style="margin-bottom:10px;">Tag chip (service-tinted)</div>
-       <div style="display:flex;gap:10px;flex-wrap:wrap;">
-         <span class="gl-tag" style="color:var(--c-delivery);"><span class="dot"></span> Delivery</span>
-         <span class="gl-tag" style="color:var(--c-sala-vip);"><span class="dot"></span> Sala VIP</span>
-         <span class="gl-tag" style="color:var(--c-cambio);"><span class="dot"></span> Câmbio</span>
-       </div>
-     </div>
-   </div></div></body></html>
+</head><body><div class="galeao" style="background:#fff;"><div class="card"><div style="display:flex;flex-direction:column;gap:20px;width:100%;">
+  <div>
+    <div class="meta" style="margin-bottom:10px;">Abertura de seção — 12px uppercase + régua de 22px</div>
+    <span class="gl-eyebrow">Sobre o GaleON</span>
+  </div>
+  <div>
+    <div class="meta" style="margin-bottom:10px;">Em cor de serviço ou sobre mídia, via color</div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <span class="gl-eyebrow" style="color:var(--c-meet-greet);">Experiências</span>
+      <span style="background:var(--c-surface-dark);border-radius:10px;padding:10px 14px;align-self:flex-start;"><span class="gl-eyebrow" style="color:rgba(255,255,255,0.72);">Meet &amp; Greet</span></span>
+    </div>
+  </div>
+</div></div></div></body></html>

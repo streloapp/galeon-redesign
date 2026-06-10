@@ -14,9 +14,8 @@
      PRIMITIVOS
      ══════════════════════════════════════════════════════════════════════ */
 
-  /* ── Type · famílias ───────────────────────────────────────────────── */
+  /* ── Type · família ────────────────────────────────────────────────── */
   --font-body: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --font-serif-italic: Georgia, "Times New Roman", serif;
 
   /* ── Type scale ────────────────────────────────────────────────────────
      One step per hierarchy level. Each token carries its size (desktop /
@@ -58,7 +57,7 @@
 
   /* --text-micro · Eyebrow / kicker (variante: uppercase + tracking) · 12→12 */
   --text-micro:            12px;   --text-micro-mobile:     12px;
-  --text-micro-lh:         1.3;     --text-micro-tracking:   0;
+  --text-micro-tracking:   0;
   --text-eyebrow-tracking: 0.06em;
 
   /* ── Numerals (preços & stats) ─────────────────────────────────────────
@@ -126,7 +125,6 @@
   --c-card:              #FFFFFF;   /* light card */
   --c-card-dark:         #2B2B2B;   /* dark / cinematic card */
   --c-border:            #E7E6E1;   /* hairline */
-  --c-border-strong:     #1F1F1F;   /* heavy dividers */
 
   /* ── Foregrounds (text that sits on each surface) ──────────────────── */
   --c-foreground:              #0E0F0E;   /* on background / background-soft */
@@ -149,12 +147,6 @@
   --c-guarda:        #F58220;   --c-guarda-foreground:      #FFFFFF;
   --c-cambio:        #009B90;   --c-cambio-foreground:      #FFFFFF;
   --c-personal:      #ED0080;   --c-personal-foreground:    #FFFFFF;
-
-  /* ── Service tints (superfícies tonais suaves p/ cards de serviço) ─────
-     Valores escolhidos à mão (não são color-mix puros da cor do serviço). */
-  --c-sala-vip-tint:        #F4F0F4;   --c-sala-vip-tint-border:    #E8DCE8;
-  --c-transportes-tint:     #FBF5E9;   --c-transportes-tint-border: #F2E8CC;
-  --c-transportes-strong:   #B07D00;   /* dourado escuro legível p/ texto em superfície clara */
 
   /* ── States ────────────────────────────────────────────────────────── */
   --c-ring:                    var(--c-primary);   /* focus-visible ring (rendered at 50% alpha) */
@@ -184,7 +176,6 @@
        --btn-bg / --btn-fg   · CTA temática por serviço (.gl-btn--service)
        --btn-ghost-hover     · hover de ghost em superfície escura
        --chip-c              · cor da barra de progresso do service-chip
-       --fill                · progresso 0→1 do chip do rail (.mg-chip-fill)
      ══════════════════════════════════════════════════════════════════════ */
 }
 

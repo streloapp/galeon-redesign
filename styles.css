@@ -66,20 +66,8 @@
 .gl-btn .gl-arrow { transition: transform var(--dur-base) ease; }
 .gl-btn:hover .gl-arrow { transform: translateX(3px); }
 
-/* Tag chip */
-.gl-tag {
-  display: inline-flex; align-items: center; gap: var(--space-8);
-  font-size: var(--text-micro); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
-  padding: var(--space-8) var(--space-12); border-radius: var(--r-pill);
-  background: rgba(255,255,255,0.92);
-  color: var(--c-foreground);
-  border: 1px solid var(--c-border);
-}
-.gl-tag .dot { width: 7px; height: 7px; border-radius: var(--r-pill); background: currentColor; }
-
 /* Section frame */
 .gl-section { padding: var(--section-pad-y) var(--section-pad-x); }
-.gl-section--tight { padding: var(--space-64) var(--space-56); }
 .gl-eyebrow {
   display: inline-flex; align-items: center; gap: var(--space-8);
   font-size: var(--text-micro); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
@@ -102,7 +90,6 @@ image-slot {
 /* Mobile-specific */
 .galeao[data-vp="mobile"] { font-size: var(--text-body-mobile); }
 .galeao[data-vp="mobile"] .gl-section { padding: var(--section-pad-y-mobile) var(--section-pad-x-mobile); }
-.galeao[data-vp="mobile"] .gl-section--tight { padding: var(--space-48) var(--space-20); }
 
 /* Tab pill */
 .gl-tabs { display: inline-flex; padding: var(--space-4); background: var(--c-background-soft); border-radius: var(--r-pill); gap: 2px; border: 1px solid var(--c-border); }
@@ -112,11 +99,11 @@ image-slot {
 /* Marquee for partners */
 @keyframes gl-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 .gl-marquee-track { display: flex; gap: var(--space-80); width: max-content; animation: gl-marquee 38s linear infinite; }
-.galeao[data-vp="mobile"] .gl-marquee-track { gap: var(--space-48); animation-duration: 26px; }
+.galeao[data-vp="mobile"] .gl-marquee-track { gap: var(--space-48); animation-duration: 26s; }
 
-/* Card hover */
-.gl-card { transition: transform var(--dur-moderate) var(--ease-out), border-color var(--dur-base) ease; }
-.gl-card:hover { transform: translateY(-3px); }
+/* Card hover — lift + sombra (padrão único de hover de card) */
+.gl-card { transition: transform var(--dur-base) ease, box-shadow var(--dur-base) ease, border-color var(--dur-base) ease; }
+.gl-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-card-hover); }
 
 /* Hero crossfade — keyframe-driven; runs on key change. */
 @keyframes gl-fadein { from { opacity: 0; } to { opacity: 1; } }
@@ -181,6 +168,3 @@ body.gl-is-dragging .gl-hero-anim { animation-play-state: paused; }
   .gl-hero-anim { animation: none; }
   .gl-svc-progress::after { animation: none; transform: scaleX(0); }
 }
-
-/* Subtle grid line that fades */
-.gl-divider { height: 1px; background: var(--c-border); width: 100%; }

@@ -236,13 +236,3 @@ const MG_NAV = [
   { key: 'personal',   label: 'Personal Shopper',  color: 'var(--c-personal)', desc: 'Alguém compra por você' }
 ];
 Object.assign(window, { MGNavIcon, MG_NAV });
-
-// ─── Cinematic interstitial moment (between the two zones) ──────────────────
-const MG_MOMENT = {
-  kicker: 'A experiência Meet & Greet',
-  pre: 'Do desembarque ao embarque, ',
-  em: 'alguém cuida de cada detalhe',
-  post: ' por você.',
-  photo: 'anfitrião conduzindo passageiro pelo terminal do RIOgaleão ao entardecer'
-};
-Object.assign(window, { MG_MOMENT });

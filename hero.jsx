@@ -476,7 +476,7 @@ function HeroSplit({ mobile, active, onSelect }) {
           </image-slot>
           <div style={{
             position: 'absolute', inset: 0,
-            background: 'radial-gradient(70% 65% at 50% 50%, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.45) 100%)',
+            background: 'radial-gradient(70% 65% at 50% 50%, color-mix(in srgb, var(--c-scrim) 25%, transparent) 0%, color-mix(in srgb, var(--c-scrim) 45%, transparent) 100%)',
             pointerEvents: 'none'
           }} />
           <div style={{
