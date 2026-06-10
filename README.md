@@ -1,109 +1,122 @@
-# GaleON Design System
+# GaleON — protótipo + design system
 
-A visual design system for the **GaleON** app — the digital front door for services inside Aeroporto Internacional do Rio de Janeiro (RIOgaleão).
+Protótipo navegável do **GaleON** (porta de entrada digital dos serviços do Aeroporto
+Internacional do Rio de Janeiro / RIOgaleão): duas páginas vivas, um design system
+tokenizado e um workbench de design.
 
-This file describes the foundations and visual rules. Component cards live in `preview/` and are registered for the **Design System tab**.
-
----
-
-## Product context
-
-GaleON lets a passenger reserve everything offered inside the Galeão terminal — Hospitalidade (concierge), Delivery (food at your gate), Sala VIP, Transportes (taxi/transfer), Guarda-volume, Câmbio, and Personal Shopper — before or during the airport visit.
-
-Tone of voice (visual): **editorial, calm, oficial.** Not a startup. Not a marketplace. It feels closer to an institutional travel publication than a delivery app.
-
-**Source of truth** for this system: the GaleON web prototype in this same project (`index.html`, `hero.jsx`, `sections.jsx`, `viagem.jsx`, `styles.css`). All tokens are extracted from there.
+**Papéis dos documentos:** trabalhar *dentro* do protótipo → este README ·
+reproduzir *fora* (handoff) → `design.md` · valores → só no CSS (`colors_and_type.css`).
 
 ---
 
-## Index
+## Índice
 
-- `README.md` — this file
-- `colors_and_type.css` — the canonical CSS variables (colors, type, radii)
-- `assets/` — brand graphics (e.g. `footer-riogaleao.png`, the RIOgaleão multi-color wave divider)
-- `preview/` — small HTML cards consumed by the Design System tab
-- `ui_kits/galeon-home/` — high-fidelity recreation of the GaleON home page
-- `SKILL.md` — agent-skill manifest
+| Caminho | Papel |
+|---|---|
+| `site.html` | **Home** (página viva; abre direto no navegador) |
+| `meet-greet.html` | **Meet & Greet** (página viva) |
+| `colors_and_type.css` | **Fonte de verdade dos tokens** (3 camadas) + helpers `.ds-*` |
+| `styles.css` | Componentes `.gl-*` compartilhados (importa colors_and_type) |
+| `mg-styles.css` | Estilos específicos do M&G (`.mg-*`; importados só pelo meet-greet) |
+| `design-system.html` + `preview/` | Catálogo visual do sistema (tiles consomem o CSS real) |
+| `hero.jsx`, `sections.jsx`, `award-badge.jsx` | Seções da Home |
+| `mg-data.jsx`, `mg-hero.jsx`, `mg-services.jsx`, `mg-carousel.jsx`, `mg-delegacoes.jsx`, `mg-trust.jsx`, `mg-app.jsx` | Seções e dados do M&G |
+| `index.html`, `app.jsx`, `design-canvas.jsx`, `tweaks-panel.jsx`, `image-slot.js` | **Workbench/tooling** (não portar pra produção) |
+| `viagem.jsx`, `journey-animated.jsx`, `mg-rail.jsx` | **Dormentes** — nenhum HTML os carrega; ficam no repo como referência |
+| `assets/`, `uploads/` | Mídia (vídeo do hero M&G, escudo CBF, imagens coladas) |
+| `context/` | Discovery, decisões e auditorias do projeto |
+| `design.md` | Handoff agnóstico de stack (draft) |
+| `SKILL.md` | Manifesto de agent-skill da marca |
 
----
+## Como trabalhar
 
-## Visual Foundations
+- Abra `site.html` / `meet-greet.html` direto, ou `index.html` para o canvas com
+  artboards desktop+mobile da Home.
+- **Imagens**: todos os blocos cinza são `<image-slot>` — arraste fotos reais por cima;
+  o estado persiste em `.image-slots.state.json` (local, **não** exportável).
+- **Tweaks**: o painel flutuante (no canvas e no M&G) alterna variantes de layout;
+  o default aprovado do M&G é `overlap`.
+- React/Babel chegam via unpkg em builds de desenvolvimento — bom pra protótipo,
+  inviável pra produção (ver `design.md` §2).
 
-### Color
-Token-driven (`--c-*` in `colors_and_type.css`), shadcn-style: surfaces are named by role, and **every surface has a matching `-foreground`** for the text that sits on it.
-- **Surfaces:** `--c-background` `#FFFFFF` · `--c-background-soft` `#F7F7F4` · `--c-surface-dark` `#1A1A1A` (dark bands) · `--c-card` `#FFFFFF` · `--c-card-dark` `#2B2B2B` · borders `--c-border` `#E7E6E1` / `--c-border-strong` `#1F1F1F`. Warm-leaning — avoids cold blue-grays.
-- **Foregrounds (text on a surface):** `--c-foreground` `#0E0F0E` · `--c-muted-foreground` `#6B6B68` · `--c-surface-dark-foreground` & `--c-card-dark-foreground` `#FFFFFF`.
-- **`--c-on-media` `#FFFFFF`:** text/icons over photography or a scrim. A legibility constant — *not* theme-driven, so it stays white even if surfaces are re-themed. Use it instead of hardcoding `#fff` on hero/banner overlays.
-- **Brand:** `--c-primary` `#9ACA3C` + `--c-primary-foreground` `#1F2A0C` (primary CTA, CSAT star, brand mark).
-- **Service palette — 7 colors, one per offering**, each with its `-foreground`. A color = a service; drives the hero CTA, chip dot, card accent. Never mixed gratuitously.
-  - Meet & Greet `#2B2B2B` · Delivery `#ED1C24` · Sala VIP `#822A85` · Transportes `#E5A91D` · Guarda-volume `#F58220` · Câmbio `#009B90` · Personal Shopper `#ED0080`
-  - Text on each color is white **except Transportes** (gold `#E5A91D`), which uses dark text (`--c-foreground`) for contrast.
-- **No gradients as decoration.** Gradients exist only as **legibility scrims** over photography (top/bottom dark overlays on hero & banner images).
+## Fundações (estado real)
 
-### Type
-- Single typeface: **Plus Jakarta Sans**, weights 400/500/600/700/800. Loaded from Google Fonts.
-- **One scale, nine steps, all even** (`--text-*` tokens in `colors_and_type.css`). Each step carries size (desktop→mobile), line-height and tracking. Home and Meet & Greet share it — same hierarchy level = same token.
+### Tokens em 3 camadas (`colors_and_type.css`)
+- **PRIMITIVO** — valor cru, nomeado pelo valor (`--space-24`, `--r-lg`, `--dur-base`…).
+- **SEMÂNTICO** — nomeado pelo uso (`--c-background`, `--c-primary`, `--shadow-card`…).
+- **COMPONENTE** — escopado, definido no call-site (`--btn-bg/--btn-fg`,
+  `--btn-ghost-hover`, `--chip-c`).
 
-  | Token | desktop→mobile | line-height | tracking | papel |
-  |---|---|---|---|---|
-  | `--text-h1` | 80→44 | 1.0 | -0.045em | herói de página |
-  | `--text-h2` | 56→36 | 1.0 | -0.04em | título de seção |
-  | `--text-h3` | 44→30 | 1.05 | -0.03em | subhead / título de experiência |
-  | `--text-h4` | 32→26 | 1.1 | -0.025em | título de card |
-  | `--text-h5` | 24→20 | 1.2 | -0.015em | bloco menor / pergunta FAQ |
-  | `--text-subtitle` | 20→18 | 1.45 | -0.01em | parágrafo de abertura / subtítulo do herói |
-  | `--text-body` | 16 | 1.5 | -0.005em | texto corrido |
-  | `--text-small` | 14 | 1.4 | 0 | legenda / label secundário |
-  | `--text-micro` | 12 | 1.3 | uppercase +0.06em (eyebrow) | eyebrow / kicker |
-- Display copy uses tight tracking (`letter-spacing: -0.035em` to `-0.05em` at large sizes) and short line-height (`0.92`–`1.0`). `text-wrap: balance` on headlines.
-- Body uses `text-wrap: pretty`, line-height ~1.45.
-- Feature settings always on: `ss01, ss02`, plus `font-variant-numeric: tabular-nums` for any stat.
-- One italic-serif accent: partner marquees use **Georgia italic** as a visual contrast against the otherwise sans-serif system. (Now superseded by real B&W brand logos in the partners strip; serif italic stays as a fallback option.)
-- Eyebrows: 12 px, uppercase, letter-spacing `0.06em`, with a 22 px lead-in rule before the text.
+### Cor
+- Toda superfície tem seu `-foreground` pareado (modelo shadcn).
+- `--c-on-media` `#FFFFFF`: texto/ícone sobre fotografia ou scrim — constante de
+  legibilidade, não muda com re-tema.
+- **Scrim**: `--c-scrim` `#15110D` (quase-preto morno), sempre aplicado com alpha via
+  `color-mix`. Nunca preto puro, nunca gradiente decorativo.
+- **Brand**: `--c-primary` `#9ACA3C` + ink `#1F2A0C`.
+- **Serviços**: 7 cores, uma por oferta, cada uma com `-foreground` (Transportes é a
+  única com texto escuro). A cor segue o serviço — não mistura por estética.
 
-### Spacing & radii
-- Radii: `--r-sm 8` · `--r-md 14` · `--r-lg 22` · `--r-xl 32`. Cards default to `--r-lg`; hero / showcase to `--r-xl`; chips & buttons are fully pill (`999`).
-- Section padding: **desktop `96px 56px`**, **mobile `64px 20px`**. A tight variant (`--tight`) drops vertical to 64/48.
-- Internal card padding is generous: mobile 22 px, desktop 28–32 px.
+### Tipo
+- Uma família: **Plus Jakarta Sans** 400–800 (exceção consciente: o AwardBadge do
+  footer mantém o visual do selo original).
+- Escala de 9 degraus, todos pares (`--text-h1` 80→44 … `--text-micro` 12); cada degrau
+  carrega tamanho desktop/mobile, line-height e tracking. Home e M&G compartilham a escala.
+- Numerais (`--num-stat`, `--num-price`, `--num-price-sm`) com `tabular-nums` + `ss01/ss02`
+  (helper `.ds-num`).
 
-### Buttons
-- Pill (`border-radius: 999`), height 52 desktop / 48 mobile, internal padding 22.
-- Variants: `primary` (brand green on green-ink), `dark` (black on white), `ghost` (transparent with black outline), and a contextual **service-tinted** variant used in the hero (CTA bg = active service color, text white).
-- Hover state: `translateY(-1px)`; the inline `gl-arrow` translates right `3px`.
+### Espaço, raio, sombra, movimento
+- **Grid 4px**: `--space-N` onde N = px (4→104). Ritmo de seção: `--section-pad-*`
+  (desktop 96×56, mobile 64×20) via `.gl-section`.
+- **Radii**: sm 8 · md 14 · lg 22 (cards, botões) · xl 32 (hero/showcase) · pill 999.
+- **Sombras por papel** (não formam escala): `--shadow-card`, `--shadow-card-hover`,
+  `--shadow-panel`, `--shadow-pop`, `--shadow-dark`. One-offs literais intencionais:
+  glass do hero (`0 10px 30px …22`), dot da galeria M&G, hairlines inset.
+- **Motion**: `--ease-out` + `--dur-fast/base/moderate/slow` para interações.
+  Animações **ambiente** têm timing próprio, fora da escala: rotator/progresso do hero
+  4500ms, marquee 38s (26s mobile), kenburns 26–30s, crossfade `gl-fadein` 320ms.
+  Tudo respeita `prefers-reduced-motion` (exceção conhecida: o vídeo do hero M&G —
+  ver `design.md` §5).
 
-### Cards
-- Default card: white bg, `1px solid var(--c-border)`, `var(--r-lg)` radius, subtle hover lift (`translateY(-3px)`).
-- Showcase cards (hero, service cards) use `var(--r-xl)` and a darker/colored background with photography behind a legibility scrim.
-- No drop shadows by default — depth comes from radius + border + lift.
-- A single full-bleed image inside a card uses `aspect-ratio` to lock proportion (4/3, 4/5, 16/7, 21/8 depending on layout role).
+### Breakpoint
+- Token de referência: `--bp-mobile: 720px` (usado pelas media queries dos helpers
+  `.ds-*` e do catálogo). Em runtime as páginas trocam via `[data-vp="mobile"]`:
+  a Home decide em `width <= 480` (uma vez, no load); o M&G em `< 820` com listener.
+  A divergência é um quirk documentado — no handoff a fronteira canônica é 720
+  (`design.md` §5).
 
-### Imagery
-- Photography is the dominant decorative element. Used full-bleed in hero, as the moment in "Sobre o GaleON", as the visual of each service card.
-- Always paired with a **scrim** when copy sits on top: a radial dim, or a directional `linear-gradient` from `rgba(0,0,0,0.55)` to transparent.
-- Image-slots are placeholder shells the user fills with real photos; the system never draws people via SVG.
+## Componentes (`.gl-*` em styles.css)
 
-### Motion
-- Crossfade only on content swap (`@keyframes gl-fadein`, 320 ms ease).
-- Marquee: linear infinite, 38 s desktop / 26 s mobile.
-- Service-chip progress bar: 4500 ms linear scaleX(0 → 1), drives auto-rotate of the hero.
-- Card hover: `transform .35s cubic-bezier(.2,.7,.3,1)`.
-- All animations respect `prefers-reduced-motion: reduce` — animations disabled, progress bar held at 0.
+- **Botão `.gl-btn`** — modelo shadcn: eixo variante × eixo tamanho. Default 36px,
+  radius `--r-lg` (desvio de marca vs. rounded-md). Variantes: `--primary`,
+  `--destructive`, `--service` (passa `--btn-bg/--btn-fg`), `--dark`, `--secondary`,
+  `--outline`, `--ghost`, `--link`. Tamanhos: `--xs/--sm/(default)/--lg` + `--icon[-xs/-sm/-lg]`.
+  A matriz completa é o contrato do componente; hoje as páginas usam `--service`,
+  `--ghost`, `--secondary` e `--icon` (as demais vivem nos previews).
+- **`.gl-section`** — moldura de seção (ritmo 96×56 / 64×20).
+- **`.gl-eyebrow`** — abertura de seção: 12px uppercase + régua 22px.
+- **`.gl-tabs` / `.gl-tab`** — pill de tabs; ativa = `--c-primary`, e na Vitrine a cor
+  do serviço sobrescreve via style inline.
+- **`.gl-card`** — hover padrão de card: lift −2px + `--shadow-card-hover`.
+- **`.gl-svc-top-chip`(+`--bare`) / `.gl-svc-progress`** — chips do rotator do hero
+  (glass bar), barra de progresso 4500ms via `--chip-c`.
+- **`.gl-marquee-track`** — esteira infinita (parceiros na Home, escudos no M&G).
+- **`.gl-hscroll`** — carrossel horizontal com scroll-snap (Vitrine).
+- **`.gl-hero-anim`** — crossfade de conteúdo (320ms, keyframe-driven).
+- **`body.gl-is-dragging`** — pausa animações enquanto se arrasta arquivo (tooling).
 
-### Layout patterns
-- Sticky institutional header with a glass background (`rgba(255,255,255,0.92) + backdrop-filter: blur(16px) saturate(180%)`).
-- Sections are full-page wide with internal max-widths on text (e.g. 720 for headers, 540 for hero subline).
-- Two-column desktop layouts (1.35fr 1fr / 0.9fr 1.3fr) typical for benefit + image and FAQ.
-- Mobile collapses to single column; small details (gaps, type) scale to ~55–60 % of desktop.
+Os `.mg-*` do M&G são estilos de página (seções), não átomos do sistema — anatomia e
+comportamento documentados em prosa no `design.md` §7.
 
-### Iconography
-- All product iconography is hand-rolled **line SVG**, 24×24 viewBox, stroke `currentColor`, stroke-width `1.6`, round line caps + joins. See `hero.jsx` (`Icon`, `ServiceIcon`). Each service has its own glyph (concierge bell, takeout container, lounge sofa, car, locker, currency arrows, shopping bag).
-- Arrow icon (`Icon.arrow`) is the universal "go" cue; it lives inside buttons and on card top-right corners.
-- Brand logos (partners marquee): real third-party SVGs served from `cdn.simpleicons.org/{slug}/000000`, displayed monochrome with `filter: brightness(0)` + `opacity: 0.7` for a unified ink-on-paper feel.
-- No emoji. No unicode glyphs as UI.
+## O que este sistema NÃO é
 
-### What this system is NOT
-- No drop shadows by default.
-- No purple/blue gradients.
-- No emoji.
-- No multi-color icon system.
-- No big visual flourishes beyond photography and the green primary.
+- Sem sombras fora dos 5 tokens de papel (+ one-offs documentados).
+- Sem gradiente decorativo — gradiente só como scrim de legibilidade sobre foto.
+- Sem emoji; sem ícone multicolorido (linha 24×24, stroke 1.6).
+- Sem segunda família tipográfica (exceção: AwardBadge).
+- Sem roxo/azul gratuito; fora da paleta de serviço, o acento é o verde GaleON.
+
+## Estado do conteúdo
+
+Copy, preços, fotos, logos e o prêmio do footer são **draft/fictícios** — status slot a
+slot e bloqueadores de publicação no `design.md` §8.
