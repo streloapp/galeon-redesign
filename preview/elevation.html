@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Elevation</title>
+<link rel="stylesheet" href="../colors_and_type.css"/>
+<style>
+  html, body { margin: 0; padding: 0; background: #fff; font-family: var(--font-body); color: var(--c-foreground); -webkit-font-smoothing: antialiased; font-feature-settings: "ss01","ss02"; }
+  .wrap { padding: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 30px 22px; align-items: start; }
+  .cell { display: flex; flex-direction: column; gap: 12px; align-items: center; }
+  .box { width: 100%; height: 80px; border-radius: var(--r-md); background: var(--c-card); border: 1px solid var(--c-border); }
+  .cap { display: flex; flex-direction: column; gap: 2px; align-items: center; text-align: center; }
+  .tok { font-size: 12px; font-weight: 600; }
+  .role { font-size: 11px; color: var(--c-muted-foreground); }
+  .box--card       { box-shadow: var(--shadow-card); }
+  .box--card-hover { box-shadow: var(--shadow-card-hover); }
+  .box--panel      { box-shadow: var(--shadow-panel); }
+  .box--pop        { box-shadow: var(--shadow-pop); }
+  /* dark surface row for --shadow-dark */
+  .dark { grid-column: 1 / -1; background: var(--c-surface-dark); border-radius: var(--r-lg); padding: 26px 28px; display: flex; gap: 22px; align-items: center; }
+  .dark .box { width: 170px; flex-shrink: 0; background: var(--c-card-dark); border-color: rgba(255,255,255,0.08); box-shadow: var(--shadow-dark); }
+  .dark .cap { align-items: flex-start; text-align: left; }
+  .dark .tok { color: var(--c-on-media); }
+  .dark .role { color: rgba(255,255,255,0.6); }
+</style>
+</head><body>
+  <div class="wrap">
+    <div class="cell"><div class="box box--card"></div><div class="cap"><span class="tok">--shadow-card</span><span class="role">card em repouso</span></div></div>
+    <div class="cell"><div class="box box--card-hover"></div><div class="cap"><span class="tok">--shadow-card-hover</span><span class="role">card no hover</span></div></div>
+    <div class="cell"><div class="box box--panel"></div><div class="cap"><span class="tok">--shadow-panel</span><span class="role">painel flutuante (hero)</span></div></div>
+    <div class="cell"><div class="box box--pop"></div><div class="cap"><span class="tok">--shadow-pop</span><span class="role">lift de mídia / popover</span></div></div>
+    <div class="dark">
+      <div class="box"></div>
+      <div class="cap"><span class="tok">--shadow-dark</span><span class="role">card sobre superfície escura</span></div>
+    </div>
+  </div>
+</body></html>

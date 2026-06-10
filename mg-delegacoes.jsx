@@ -57,7 +57,7 @@ function MGDelegacoesSection({ mobile }) {
             ganham cor ao passar o mouse (regra no CSS). */}
         <div className="mg-deleg-hero__logos">
           <div className="mg-deleg-hero__marquee">
-            <div className="gl-marquee-track" style={{ gap: mobile ? 40 : 64, alignItems: 'center' }}>
+            <div className="gl-marquee-track" style={{ gap: mobile ? 'var(--space-40)' : 'var(--space-64)', alignItems: 'center' }}>
               {MG_DELEG_LOGOS.concat(MG_DELEG_LOGOS).map((l, i) =>
                 <img key={i} src={l.src} alt={l.name} title={l.name} loading="lazy"
                   style={{ height: mobile ? 38 : 48, width: 'auto', flexShrink: 0 }} />

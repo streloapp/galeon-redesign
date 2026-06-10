@@ -152,13 +152,13 @@ function Header({ mobile }) {
       backdropFilter: 'blur(16px) saturate(180%)',
       WebkitBackdropFilter: 'blur(16px) saturate(180%)',
       transform: hidden ? 'translateY(-110%)' : 'translateY(0)',
-      transition: 'transform 0.28s ease'
+      transition: 'transform var(--dur-moderate) ease'
     }}>
       <div style={{
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        padding: mobile ? '24px 20px 14px' : '28px 40px 18px'
+        padding: mobile ? 'var(--space-24) var(--space-20) var(--space-16)' : 'var(--space-28) var(--space-40) var(--space-20)'
       }}>
-        <a href="#" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+        <a href="#" style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-8)'}}>
           <image-slot
             id="gl-logo"
             shape="rect"
@@ -174,7 +174,7 @@ function Header({ mobile }) {
           </image-slot>
         </a>
         {!mobile &&
-        <nav style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+        <nav style={{ display: 'flex', gap: 'var(--space-8)', alignItems: 'center' }}>
             <ServicesDropdown open={open} setOpen={setOpen} />
             <a href="#" style={navLinkStyle}>Atendimento</a>
             <a href="#" style={navLinkStyle}>Entrar</a>
@@ -182,7 +182,7 @@ function Header({ mobile }) {
           </nav>
         }
         {mobile &&
-        <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-8)'}}>
           <LanguageSelector compact />
           <button className="gl-btn gl-btn--ghost gl-btn--icon">{Icon.menu()}</button>
         </div>
@@ -194,7 +194,7 @@ function Header({ mobile }) {
 
 const navLinkStyle = {
   fontSize: 'var(--text-small)', color: 'var(--c-foreground)', fontWeight: 500,
-  padding: '8px 14px', borderRadius: 8
+  padding: 'var(--space-8) var(--space-16)', borderRadius: 'var(--r-sm)'
 };
 
 // ─── Language selector ─────────────────────────────────────────────────────
@@ -243,31 +243,31 @@ function LanguageSelector({ compact = false }) {
         onClick={() => setOpen((o) => !o)}
         aria-label={`Idioma: ${current.label}`}
         style={{
-          display: 'inline-flex', alignItems: 'center', gap: 8,
+          display: 'inline-flex', alignItems: 'center', gap: 'var(--space-8)',
           background: open ? 'var(--c-background-soft)' : 'transparent', border: 0,
-          padding: compact ? '6px 8px' : '6px 10px 6px 8px',
-          borderRadius: 999,
+          padding: compact ? 'var(--space-8) var(--space-8)' : 'var(--space-8) var(--space-12) var(--space-8) var(--space-8)',
+          borderRadius: 'var(--r-pill)',
           fontSize: 'var(--text-small)', color: 'var(--c-foreground)', fontWeight: 500,
           fontFamily: 'inherit', cursor: 'pointer',
-          transition: 'background .15s ease'
+          transition: 'background var(--dur-fast) ease'
         }}>
         <Flag cc={current.cc} size={compact ? 20 : 22} />
         {!compact &&
-          <span style={{ color: 'var(--c-muted-foreground)', display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+          <span style={{ color: 'var(--c-muted-foreground)', display: 'inline-flex', alignItems: 'center', gap: 'var(--space-4)'}}>
             <span>{current.short}</span>
-            <span style={{ transform: open ? 'rotate(180deg)' : 'none', transition: 'transform .2s', display: 'inline-flex' }}>{Icon.chevron(11)}</span>
+            <span style={{ transform: open ? 'rotate(180deg)' : 'none', transition: 'transform var(--dur-base)', display: 'inline-flex' }}>{Icon.chevron(11)}</span>
           </span>
         }
       </button>
       <div style={{
         position: 'absolute', top: 'calc(100% + 8px)', right: 0,
-        background: 'var(--c-card)', borderRadius: 14, padding: 6,
-        boxShadow: '0 12px 40px rgba(0,0,0,0.10), 0 0 0 1px var(--c-border)',
+        background: 'var(--c-card)', borderRadius: 'var(--r-md)', padding: 'var(--space-8)',
+        boxShadow: 'var(--shadow-panel)',
         minWidth: 200,
         opacity: open ? 1 : 0,
         transform: open ? 'translateY(0)' : 'translateY(-6px)',
         pointerEvents: open ? 'auto' : 'none',
-        transition: 'opacity .18s ease, transform .18s ease',
+        transition: 'opacity var(--dur-base) ease, transform var(--dur-base) ease',
         zIndex: 10
       }}>
         {LOCALES.map((l) => {
@@ -277,11 +277,11 @@ function LanguageSelector({ compact = false }) {
               key={l.code}
               onClick={() => { setActive(l.code); setOpen(false); }}
               style={{
-                display: 'flex', alignItems: 'center', gap: 12,
-                width: '100%', padding: '10px 12px', borderRadius: 10,
+                display: 'flex', alignItems: 'center', gap: 'var(--space-12)',
+                width: '100%', padding: 'var(--space-12) var(--space-12)', borderRadius: 'var(--r-sm)',
                 border: 0, background: isActive ? 'var(--c-background-soft)' : 'transparent',
                 cursor: 'pointer', fontFamily: 'inherit', textAlign: 'left',
-                transition: 'background .15s ease'
+                transition: 'background var(--dur-fast) ease'
               }}
               onMouseOver={(e) => { if (!isActive) e.currentTarget.style.background = 'var(--c-background-soft)'; }}
               onMouseOut={(e) => { if (!isActive) e.currentTarget.style.background = 'transparent'; }}>
@@ -314,40 +314,40 @@ function ServicesDropdown({ open, setOpen }) {
       <button
         onClick={() => setOpen((o) => !o)}
         style={{
-          display: 'inline-flex', alignItems: 'center', gap: 6,
+          display: 'inline-flex', alignItems: 'center', gap: 'var(--space-8)',
           background: open ? 'var(--c-background-soft)' : 'transparent', border: 0,
-          padding: '8px 14px', borderRadius: 8,
+          padding: 'var(--space-8) var(--space-16)', borderRadius: 'var(--r-sm)',
           fontSize: 'var(--text-small)', color: 'var(--c-foreground)', fontWeight: 500
         }}>
         
-        Serviços <span style={{ transform: open ? 'rotate(180deg)' : 'none', transition: 'transform .2s' }}>{Icon.chevron(13)}</span>
+        Serviços <span style={{ transform: open ? 'rotate(180deg)' : 'none', transition: 'transform var(--dur-base)' }}>{Icon.chevron(13)}</span>
       </button>
       <div style={{
         position: 'absolute', top: '100%', right: 0,
-        paddingTop: 8,
+        paddingTop: 'var(--space-8)',
         opacity: open ? 1 : 0,
         transform: open ? 'translateY(0)' : 'translateY(-6px)',
         pointerEvents: open ? 'auto' : 'none',
-        transition: 'opacity .18s ease, transform .18s ease',
+        transition: 'opacity var(--dur-base) ease, transform var(--dur-base) ease',
         zIndex: 20
       }}>
         <div style={{
-          background: 'var(--c-card)', borderRadius: 16, padding: 12,
-          boxShadow: '0 12px 40px rgba(0,0,0,0.10), 0 0 0 1px var(--c-border)',
+          background: 'var(--c-card)', borderRadius: 'var(--r-md)', padding: 'var(--space-12)',
+          boxShadow: 'var(--shadow-panel)',
           minWidth: 480,
-          display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 4
+          display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-4)'
         }}>
         {SERVICES.map((s) =>
         <a key={s.key} href={s.key === 'hospitalidade' ? 'meet-greet.html' : `#${s.key}`} onClick={() => setOpen(false)} style={{
-          display: 'flex', alignItems: 'center', gap: 12,
-          padding: '12px 14px', borderRadius: 10,
-          transition: 'background .15s ease'
+          display: 'flex', alignItems: 'center', gap: 'var(--space-12)',
+          padding: 'var(--space-12) var(--space-16)', borderRadius: 'var(--r-sm)',
+          transition: 'background var(--dur-fast) ease'
         }}
         onMouseOver={(e) => e.currentTarget.style.background = 'var(--c-background-soft)'}
         onMouseOut={(e) => e.currentTarget.style.background = 'transparent'}>
             <span style={{
             display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-            width: 36, height: 36, borderRadius: 10, background: `color-mix(in srgb, ${s.color} 8%, transparent)`, color: s.color
+            width: 36, height: 36, borderRadius: 'var(--r-sm)', background: `color-mix(in srgb, ${s.color} 8%, transparent)`, color: s.color
           }}>{ServiceIcon[s.key](18)}</span>
             <span style={{ display: 'flex', flexDirection: 'column' }}>
               <span style={{ fontSize: 'var(--text-small)', fontWeight: 600, color: 'var(--c-foreground)' }}>{s.label}</span>
@@ -372,14 +372,14 @@ function ServiceChipsTop({ active, onSelect, mobile }) {
       <div style={{
         position: 'absolute', top: 16, left: 0, right: 0, zIndex: 3,
         display: 'flex', justifyContent: 'center',
-        padding: '0 12px',
+        padding: '0 var(--space-12)',
         pointerEvents: 'none'
       }}>
         <div style={{
           display: 'inline-flex',
           gap: 2,
           pointerEvents: 'auto',
-          padding: 5,
+          padding: 'var(--space-4)',
           background: 'rgba(20,20,18,0.32)',
           borderRadius: 'var(--r-md)',
           WebkitBackdropFilter: 'blur(22px) saturate(180%)',
@@ -416,8 +416,8 @@ function ServiceChipsTop({ active, onSelect, mobile }) {
     }}>
       <div style={{
         display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-        gap: 4,
-        padding: 5,
+        gap: 'var(--space-4)',
+        padding: 'var(--space-4)',
         background: 'rgba(20,20,18,0.32)',
 
         WebkitBackdropFilter: 'blur(22px) saturate(180%)',
@@ -457,7 +457,7 @@ window.GaleonServiceChipsTop = ServiceChipsTop;
 function HeroSplit({ mobile, active, onSelect }) {
   const s = SVC_BY_KEY[active] || SERVICES[0];
   return (
-    <section style={{ padding: mobile ? '10px 20px 8px' : '10px 40px 8px' }}>
+    <section style={{ padding: mobile ? 'var(--space-12) var(--space-20) var(--space-8)' : 'var(--space-12) var(--space-40) var(--space-8)'}}>
       <div style={{
         position: 'relative',
         borderRadius: 'var(--r-xl)',
@@ -482,8 +482,8 @@ function HeroSplit({ mobile, active, onSelect }) {
           <div style={{
             position: 'absolute', inset: 0,
             display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-            gap: mobile ? 20 : 26,
-            padding: mobile ? '96px 24px 32px' : '120px 48px 40px',
+            gap: mobile ? 'var(--space-20)' : 'var(--space-28)',
+            padding: mobile ? 'var(--space-96) var(--space-24) var(--space-32)' : '120px var(--space-48) var(--space-40)',
             textAlign: 'center',
             pointerEvents: 'none' /* let drops pass through to image-slot */
           }}>
@@ -496,13 +496,13 @@ function HeroSplit({ mobile, active, onSelect }) {
             </p>
             {s.key === 'hospitalidade' ?
             <a href="meet-greet.html" className="gl-btn gl-btn--service gl-btn--lg" style={{
-              '--btn-bg': s.color, '--btn-fg': s.ink, marginTop: mobile ? 4 : 6,
+              '--btn-bg': s.color, '--btn-fg': s.ink, marginTop: mobile ? 'var(--space-4)' : 'var(--space-8)',
               pointerEvents: 'auto', textDecoration: 'none'
             }}>
               {s.cta} {Icon.arrow(14)}
             </a> :
             <button className="gl-btn gl-btn--service gl-btn--lg" style={{
-              '--btn-bg': s.color, '--btn-fg': s.ink, marginTop: mobile ? 4 : 6,
+              '--btn-bg': s.color, '--btn-fg': s.ink, marginTop: mobile ? 'var(--space-4)' : 'var(--space-8)',
               pointerEvents: 'auto'
             }}>
               {s.cta} {Icon.arrow(14)}

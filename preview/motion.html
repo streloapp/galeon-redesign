@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Motion</title>
+<link rel="stylesheet" href="../colors_and_type.css"/>
+<style>
+  html, body { margin: 0; padding: 0; background: #fff; font-family: var(--font-body); color: var(--c-foreground); -webkit-font-smoothing: antialiased; font-feature-settings: "ss01","ss02"; }
+  .wrap { padding: 22px 28px; display: flex; flex-direction: column; gap: 16px; }
+  .grp-label { font-size: 11px; color: var(--c-muted-foreground); letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600; }
+  .ease { display: flex; align-items: center; gap: 12px; }
+  .ease code { font-size: 12px; }
+  .ease .raw { color: var(--c-muted-foreground); }
+  .rows { display: flex; flex-direction: column; gap: 10px; }
+  .row { display: flex; align-items: center; gap: 14px; }
+  .tok { width: 168px; flex-shrink: 0; font-size: 12px; font-variant-numeric: tabular-nums; }
+  .tok small { color: var(--c-muted-foreground); }
+  .track { position: relative; flex: 1; height: 18px; background: var(--c-background-soft); border: 1px solid var(--c-border); border-radius: var(--r-pill); overflow: hidden; }
+  .dot { position: absolute; top: 50%; left: 4px; width: 12px; height: 12px; margin-top: -6px; border-radius: var(--r-pill); background: var(--c-primary); transition-property: left; transition-timing-function: var(--ease-out); }
+  .dot.go { left: calc(100% - 16px); }
+  .dot--fast     { transition-duration: var(--dur-fast); }
+  .dot--base     { transition-duration: var(--dur-base); }
+  .dot--moderate { transition-duration: var(--dur-moderate); }
+  .dot--slow     { transition-duration: var(--dur-slow); }
+  @media (prefers-reduced-motion: reduce) { .dot { transition: none; } }
+</style>
+</head><body>
+  <div class="wrap">
+    <div>
+      <div class="grp-label">Easing assinatura</div>
+      <div class="ease"><code>--ease-out</code><code class="raw">cubic-bezier(.2, .7, .3, 1)</code></div>
+    </div>
+    <div>
+      <div class="grp-label" style="margin-bottom: 10px;">Durações de interação · o ponto desliza em loop</div>
+      <div class="rows">
+        <div class="row"><div class="tok">--dur-fast <small>.15s</small></div><div class="track"><span class="dot dot--fast"></span></div></div>
+        <div class="row"><div class="tok">--dur-base <small>.2s</small></div><div class="track"><span class="dot dot--base"></span></div></div>
+        <div class="row"><div class="tok">--dur-moderate <small>.35s</small></div><div class="track"><span class="dot dot--moderate"></span></div></div>
+        <div class="row"><div class="tok">--dur-slow <small>.8s</small></div><div class="track"><span class="dot dot--slow"></span></div></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    var dots = document.querySelectorAll('.dot');
+    var on = false;
+    setInterval(function () { on = !on; for (var i = 0; i < dots.length; i++) dots[i].classList.toggle('go', on); }, 1300);
+  </script>
+</body></html>

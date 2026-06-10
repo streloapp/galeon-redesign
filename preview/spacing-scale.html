@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Spacing scale</title>
+<link rel="stylesheet" href="../colors_and_type.css"/>
+<style>
+  html, body { margin: 0; padding: 0; background: #fff; font-family: var(--font-body); color: var(--c-foreground); -webkit-font-smoothing: antialiased; font-feature-settings: "ss01","ss02"; }
+  .wrap { padding: 22px 28px; display: flex; flex-direction: column; gap: 14px; }
+  .grp-label { font-size: 11px; color: var(--c-muted-foreground); letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600; }
+  .row { display: flex; align-items: center; gap: 12px; }
+  .tok { width: 96px; flex-shrink: 0; font-size: 12px; font-variant-numeric: tabular-nums; color: var(--c-foreground); }
+  .tok small { color: var(--c-muted-foreground); }
+  .bar { height: 14px; border-radius: 3px; background: var(--c-primary); }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 28px; }
+</style>
+</head><body>
+  <div class="wrap">
+    <div class="grp-label">Componente · grid 4px · token = px</div>
+    <div class="grid" id="comp"></div>
+    <div class="grp-label" style="margin-top:6px;">Seção · ritmo de página</div>
+    <div class="grid" id="sec"></div>
+  </div>
+  <script>
+    const comp = [4,8,12,16,20,24,28,32,36,40,44,48,52,56,64];
+    const sec  = [80,88,96,104];
+    const row = v => `<div class="row"><div class="tok">--space-${v} <small>${v}</small></div><div class="bar" style="width:${Math.min(v,120)}px"></div></div>`;
+    document.getElementById('comp').innerHTML = comp.map(row).join('');
+    document.getElementById('sec').innerHTML  = sec.map(row).join('');
+  </script>
+</body></html>

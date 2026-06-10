@@ -1,54 +1,20 @@
 /* ──────────────────────────────────────────────────────────────────────────
-   GaleON Design System — colors, type, spacing tokens
-   Single source of truth. Mirror of styles.css in the prototype.
+   GaleON Design System — tokens
+   Single source of truth (styles.css / mg-styles.css importam este arquivo).
+   Organizado em 3 níveis:
+     PRIMITIVO  — valor cru, nomeado pelo valor, sem contexto.
+     SEMÂNTICO  — aponta p/ primitivo, nomeado pelo uso (camada de re-tema).
+     COMPONENTE — escopado, definido no call-site (ver nota no fim do :root).
    ────────────────────────────────────────────────────────────────────────── */
 
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 :root {
-  /* ── Surfaces ──────────────────────────────────────────────────────── */
-  --c-background:        #FFFFFF;   /* page */
-  --c-background-soft:   #F7F7F4;   /* alt section / soft panel */
-  --c-surface-dark:      #1A1A1A;   /* dark band / section */
-  --c-card:              #FFFFFF;   /* light card */
-  --c-card-dark:         #2B2B2B;   /* dark / cinematic card */
-  --c-border:            #E7E6E1;   /* hairline */
-  --c-border-strong:     #1F1F1F;   /* heavy dividers */
+  /* ══════════════════════════════════════════════════════════════════════
+     PRIMITIVOS
+     ══════════════════════════════════════════════════════════════════════ */
 
-  /* ── Foregrounds (text that sits on each surface) ──────────────────── */
-  --c-foreground:              #0E0F0E;   /* on background / background-soft */
-  --c-muted-foreground:        #6B6B68;   /* secondary text */
-  --c-surface-dark-foreground: #FFFFFF;   /* on surface-dark */
-  --c-card-foreground:         #0E0F0E;   /* on light card */
-  --c-card-dark-foreground:    #FFFFFF;   /* on dark card */
-  --c-on-media:                #FFFFFF;   /* text/icons over photography or scrim — legibility constant, not theme-driven */
-
-  /* ── States ────────────────────────────────────────────────────────── */
-  --c-ring:                    var(--c-primary);   /* focus-visible ring (rendered at 50% alpha) */
-  --c-destructive:             #DC2626;   /* danger action */
-  --c-destructive-foreground:  #FFFFFF;   /* on destructive */
-
-  /* ── Brand ─────────────────────────────────────────────────────────── */
-  --c-primary:            #9ACA3C;   /* GaleON green */
-  --c-primary-foreground: #1F2A0C;   /* on primary */
-
-  /* ── Service palette (one color per offering + its text) ───────────── */
-  --c-meet-greet:    #2B2B2B;   --c-meet-greet-foreground:  #FFFFFF;
-  --c-delivery:      #ED1C24;   --c-delivery-foreground:    #FFFFFF;
-  --c-sala-vip:      #822A85;   --c-sala-vip-foreground:    #FFFFFF;
-  --c-transportes:   #E5A91D;   --c-transportes-foreground: #0E0F0E;  /* dourado → texto escuro */
-  --c-guarda:        #F58220;   --c-guarda-foreground:      #FFFFFF;
-  --c-cambio:        #009B90;   --c-cambio-foreground:      #FFFFFF;
-  --c-personal:      #ED0080;   --c-personal-foreground:    #FFFFFF;
-
-  /* ── Radii ─────────────────────────────────────────────────────────── */
-  --r-sm:  8px;
-  --r-md:  14px;
-  --r-lg:  22px;
-  --r-xl:  32px;
-  --r-pill: 999px;
-
-  /* ── Type ──────────────────────────────────────────────────────────── */
+  /* ── Type · famílias ───────────────────────────────────────────────── */
   --font-body: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-serif-italic: Georgia, "Times New Roman", serif;
 
@@ -102,16 +68,124 @@
   --num-price:             24px;   /* valor de preço em destaque */
   --num-price-sm:          18px;   /* preço inline / compacto */
 
-  /* ── Spacing scale (used informally; sections use raw values) ──────── */
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-5: 24px;
-  --space-6: 32px;
-  --space-7: 48px;
-  --space-8: 64px;
-  --space-9: 96px;
+  /* ── Spacing scale — 4px grid. Token name = pixel value. ───────────────
+     Mapeia 1:1 com o Tailwind (índice = px ÷ 4). Só os degraus realmente
+     usados pelas páginas são emitidos (sem degraus mortos).
+     Componente (gaps + padding interno): 4 → 64.
+     Seção (ritmo de página): 80 → 104. */
+  --space-4:   4px;
+  --space-8:   8px;
+  --space-12:  12px;
+  --space-16:  16px;
+  --space-20:  20px;
+  --space-24:  24px;
+  --space-28:  28px;
+  --space-32:  32px;
+  --space-36:  36px;
+  --space-40:  40px;
+  --space-44:  44px;
+  --space-48:  48px;
+  --space-52:  52px;
+  --space-56:  56px;
+  --space-64:  64px;
+  --space-80:  80px;
+  --space-88:  88px;
+  --space-96:  96px;
+  --space-104: 104px;
+
+  /* ── Radii ─────────────────────────────────────────────────────────── */
+  --r-sm:  8px;
+  --r-md:  14px;
+  --r-lg:  22px;
+  --r-xl:  32px;
+  --r-pill: 999px;
+
+  /* ── Motion ──────────────────────────────────────────────────────────
+     Easing assinatura + durações de interação. Animações ambiente
+     (kenburns, marquee, barra de progresso) usam timing próprio e ficam
+     fora desta escala. */
+  --ease-out:     cubic-bezier(.2, .7, .3, 1);   /* saída suave — cards, reveals, hovers */
+  --dur-fast:     .15s;   /* hover de botão/link, troca de cor */
+  --dur-base:     .2s;    /* transição padrão */
+  --dur-moderate: .35s;   /* lift de card */
+  --dur-slow:     .8s;    /* zoom de imagem, reveal de scroll */
+
+  /* ── Breakpoint ──────────────────────────────────────────────────────
+     Fronteira mobile. Em runtime as páginas trocam via [data-vp="mobile"]
+     (JS); este token é a referência documentada da quebra. */
+  --bp-mobile: 720px;
+
+  /* ══════════════════════════════════════════════════════════════════════
+     SEMÂNTICOS  (apontam p/ primitivos; nomeados pelo uso)
+     ══════════════════════════════════════════════════════════════════════ */
+
+  /* ── Surfaces ──────────────────────────────────────────────────────── */
+  --c-background:        #FFFFFF;   /* page */
+  --c-background-soft:   #F7F7F4;   /* alt section / soft panel */
+  --c-surface-dark:      #1A1A1A;   /* dark band / section */
+  --c-card:              #FFFFFF;   /* light card */
+  --c-card-dark:         #2B2B2B;   /* dark / cinematic card */
+  --c-border:            #E7E6E1;   /* hairline */
+  --c-border-strong:     #1F1F1F;   /* heavy dividers */
+
+  /* ── Foregrounds (text that sits on each surface) ──────────────────── */
+  --c-foreground:              #0E0F0E;   /* on background / background-soft */
+  --c-muted-foreground:        #6B6B68;   /* secondary text */
+  --c-surface-dark-foreground: #FFFFFF;   /* on surface-dark */
+  --c-card-foreground:         #0E0F0E;   /* on light card */
+  --c-card-dark-foreground:    #FFFFFF;   /* on dark card */
+  --c-on-media:                #FFFFFF;   /* text/icons over photography or scrim — legibility constant, not theme-driven */
+  --c-scrim:                   #15110D;   /* warm near-black base dos scrims sobre foto/vídeo — usado com alpha via color-mix */
+
+  /* ── Brand ─────────────────────────────────────────────────────────── */
+  --c-primary:            #9ACA3C;   /* GaleON green */
+  --c-primary-foreground: #1F2A0C;   /* on primary */
+
+  /* ── Service palette (one color per offering + its text) ───────────── */
+  --c-meet-greet:    #2B2B2B;   --c-meet-greet-foreground:  #FFFFFF;
+  --c-delivery:      #ED1C24;   --c-delivery-foreground:    #FFFFFF;
+  --c-sala-vip:      #822A85;   --c-sala-vip-foreground:    #FFFFFF;
+  --c-transportes:   #E5A91D;   --c-transportes-foreground: #0E0F0E;  /* dourado → texto escuro */
+  --c-guarda:        #F58220;   --c-guarda-foreground:      #FFFFFF;
+  --c-cambio:        #009B90;   --c-cambio-foreground:      #FFFFFF;
+  --c-personal:      #ED0080;   --c-personal-foreground:    #FFFFFF;
+
+  /* ── Service tints (superfícies tonais suaves p/ cards de serviço) ─────
+     Valores escolhidos à mão (não são color-mix puros da cor do serviço). */
+  --c-sala-vip-tint:        #F4F0F4;   --c-sala-vip-tint-border:    #E8DCE8;
+  --c-transportes-tint:     #FBF5E9;   --c-transportes-tint-border: #F2E8CC;
+  --c-transportes-strong:   #B07D00;   /* dourado escuro legível p/ texto em superfície clara */
+
+  /* ── States ────────────────────────────────────────────────────────── */
+  --c-ring:                    var(--c-primary);   /* focus-visible ring (rendered at 50% alpha) */
+  --c-destructive:             #DC2626;   /* danger action */
+  --c-destructive-foreground:  #FFFFFF;   /* on destructive */
+
+  /* ── Section rhythm (aliases sobre a escala de espaçamento) ──────────── */
+  --section-pad-x:        var(--space-56);
+  --section-pad-x-mobile: var(--space-20);
+  --section-pad-y:        var(--space-96);
+  --section-pad-y-mobile: var(--space-64);
+
+  /* ── Elevation / sombras (por papel) ───────────────────────────────────
+     Não formam escala numérica; nomeadas pelo papel. Algumas sombras
+     one-off ficam literais de propósito (sem token): chip do hero, dot de
+     galeria, hairline inset, e os controles "glass" sobre mídia no hero
+     (0 10px 30px / .22 — sombra de elemento flutuante sobre foto, não card). */
+  --shadow-card:       0 16px 44px rgba(20, 17, 13, 0.06);   /* card em repouso */
+  --shadow-card-hover: 0 22px 50px rgba(20, 17, 13, 0.10);   /* card no hover */
+  --shadow-panel:      0 12px 40px rgba(0, 0, 0, 0.10), 0 0 0 1px var(--c-border);  /* painel flutuante (hero) */
+  --shadow-pop:        0 18px 48px -18px rgba(20, 17, 13, 0.18);  /* lift de mídia / popover */
+  --shadow-dark:       0 16px 44px rgba(0, 0, 0, 0.35);      /* card sobre superfície escura */
+
+  /* ══════════════════════════════════════════════════════════════════════
+     COMPONENTE — escopados, NÃO globais: definidos onde o componente é usado.
+     Referência (não declarar aqui):
+       --btn-bg / --btn-fg   · CTA temática por serviço (.gl-btn--service)
+       --btn-ghost-hover     · hover de ghost em superfície escura
+       --chip-c              · cor da barra de progresso do service-chip
+       --fill                · progresso 0→1 do chip do rail (.mg-chip-fill)
+     ══════════════════════════════════════════════════════════════════════ */
 }
 
 /* ── Semantic typography helpers ──────────────────────────────────────────

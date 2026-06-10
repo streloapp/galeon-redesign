@@ -29,7 +29,7 @@ function JourneyEditorialCard({ step, idx, svcByKey, Icon, mobile, flightId }) {
         borderRadius: 'var(--r-lg)',
         overflow: 'hidden',
         cursor: 'pointer',
-        transition: 'transform .2s ease, box-shadow .2s ease',
+        transition: 'transform var(--dur-base) ease, box-shadow var(--dur-base) ease',
         userSelect: 'none',
         textDecoration: 'none',
         color: 'inherit',
@@ -38,7 +38,7 @@ function JourneyEditorialCard({ step, idx, svcByKey, Icon, mobile, flightId }) {
       }}
       onMouseOver={(e) => {
         e.currentTarget.style.transform = 'translateY(-2px)';
-        e.currentTarget.style.boxShadow = '0 12px 32px rgba(0,0,0,0.18)';
+        e.currentTarget.style.boxShadow = 'var(--shadow-card-hover)';
       }}
       onMouseOut={(e) => {
         e.currentTarget.style.transform = 'translateY(0)';
@@ -69,7 +69,7 @@ function JourneyEditorialCard({ step, idx, svcByKey, Icon, mobile, flightId }) {
         position: 'absolute',
         left: mobile ? 16 : 20, right: mobile ? 16 : 20,
         bottom: mobile ? 16 : 20,
-        display: 'flex', flexDirection: 'column', gap: 8,
+        display: 'flex', flexDirection: 'column', gap: 'var(--space-8)',
         zIndex: 2
       }}>
         <h3 style={{
@@ -77,7 +77,7 @@ function JourneyEditorialCard({ step, idx, svcByKey, Icon, mobile, flightId }) {
           fontSize: mobile ? 17 : 19, fontWeight: 600,
           letterSpacing: '-0.015em', lineHeight: 1.2,
           color: '#fff',
-          display: 'flex', alignItems: 'center', gap: 8
+          display: 'flex', alignItems: 'center', gap: 'var(--space-8)'
         }}>
           <span style={{
             display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
@@ -128,7 +128,7 @@ function JourneyLinear({ journey, flight, isGhost, selected, onToggle, svcByKey,
           listStyle: 'none', padding: 0, margin: 0,
           display: 'grid',
           gridTemplateColumns: `repeat(${journey.length}, minmax(0, 1fr))`,
-          gap: 18
+          gap: 'var(--space-20)'
         }}>
           {journey.map((step, idx) =>
             <li key={idx} style={{ position: 'relative' }}>
@@ -138,7 +138,7 @@ function JourneyLinear({ journey, flight, isGhost, selected, onToggle, svcByKey,
                 left: '50%',
                 top: -(circleSize + 28),
                 transform: 'translateX(-50%)',
-                width: circleSize, height: circleSize, borderRadius: 999,
+                width: circleSize, height: circleSize, borderRadius: 'var(--r-pill)',
                 background: '#fff',
                 border: `3px solid var(--c-primary)`,
                 boxSizing: 'border-box',
@@ -203,7 +203,7 @@ function JourneyLinear({ journey, flight, isGhost, selected, onToggle, svcByKey,
               position: 'absolute',
               left: railLeft,
               top: 0,
-              width: circleSize, height: circleSize, borderRadius: 999,
+              width: circleSize, height: circleSize, borderRadius: 'var(--r-pill)',
               background: '#fff',
               border: `3px solid var(--c-primary)`,
               boxSizing: 'border-box',

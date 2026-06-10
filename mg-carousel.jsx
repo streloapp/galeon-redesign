@@ -11,9 +11,9 @@ function MGCarPrice({ s }) {
     return <span className="ds-num" style={{ fontSize: 'var(--num-price-sm)', color: 'var(--c-foreground)' }}>{s.price.value}</span>;
   }
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)'}}>
       <span style={{ fontSize: 'var(--text-small)', color: 'var(--c-muted-foreground)' }}>A partir de</span>
-      <div style={{ display: 'flex', alignItems: 'baseline', gap: 7, flexWrap: 'wrap' }}>
+      <div style={{ display: 'flex', alignItems: 'baseline', gap: 'var(--space-8)', flexWrap: 'wrap' }}>
         <span className="ds-num" style={{ fontSize: 'var(--num-price)', fontWeight: 600, color: 'var(--c-foreground)', letterSpacing: '-0.02em' }}>{s.price.value}</span>
         {s.price.unit && <span style={{ fontSize: 'var(--text-micro)', color: 'var(--c-muted-foreground)' }}>{s.price.unit}</span>}
       </div>
@@ -29,11 +29,11 @@ function MGCarouselSlide({ s }) {
         <image-slot id={'mg-car-' + s.key} shape="rect" fit="cover" placeholder={`foto: ${s.photo}`}></image-slot>
       </div>
       <div className="mg-emp-card__body">
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-12)'}}>
           <h3 style={{ fontSize: 'var(--text-h5)', letterSpacing: 'var(--text-h5-tracking)', lineHeight: 'var(--text-h5-lh)', color: 'var(--c-foreground)' }}>{s.name}</h3>
           <p style={{ fontSize: 'var(--text-body)', color: 'var(--c-muted-foreground)', lineHeight: 1.5, display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{s.lead}</p>
         </div>
-        <div style={{ marginTop: 22, display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 22 }}>
+        <div style={{ marginTop: 'var(--space-24)', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 'var(--space-24)'}}>
           <MGCarPrice s={s} />
           <button className="gl-btn gl-btn--secondary" style={{ flexShrink: 0 }}>Saber mais {Icon.arrow(13)}</button>
         </div>

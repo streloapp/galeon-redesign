@@ -39,8 +39,8 @@ function MGTrust({ mobile }) {
   const [open, setOpen] = useStateT(0);
   return (
     <>
-    <section id="confianca" className="mg-zone" style={{ paddingTop: mobile ? 64 : 104 }}>
-      <div className="mg-zone-head" style={{ marginBottom: mobile ? 28 : 44 }}>
+    <section id="confianca" className="mg-zone" style={{ paddingTop: mobile ? 'var(--space-64)' : 'var(--space-104)'}}>
+      <div className="mg-zone-head" style={{ marginBottom: mobile ? 'var(--space-28)' : 'var(--space-44)'}}>
         <span className="gl-eyebrow" style={{ color: 'var(--c-mg)' }}>Por que o GaleON</span>
         <h2 style={{ fontSize: mobile ? 'var(--text-h2-mobile)' : 'var(--text-h2)', letterSpacing: 'var(--text-h2-tracking)', lineHeight: 'var(--text-h2-lh)' }}>
           Quem cuida de você já cuidou de milhares.
@@ -60,13 +60,13 @@ function MGTrust({ mobile }) {
         <div style={{
             position: 'absolute', inset: 0, pointerEvents: 'none',
             background: mobile ?
-            'linear-gradient(180deg, rgba(21,17,13,0) 40%, rgba(21,17,13,0.78) 100%)' :
-            'linear-gradient(100deg, rgba(21,17,13,0.6) 0%, rgba(21,17,13,0.15) 45%, rgba(21,17,13,0) 70%)'
+            'linear-gradient(180deg, color-mix(in srgb, var(--c-scrim) 0%, transparent) 40%, color-mix(in srgb, var(--c-scrim) 78%, transparent) 100%)' :
+            'linear-gradient(100deg, color-mix(in srgb, var(--c-scrim) 60%, transparent) 0%, color-mix(in srgb, var(--c-scrim) 15%, transparent) 45%, color-mix(in srgb, var(--c-scrim) 0%, transparent) 70%)'
           }} />
         <div style={{
             position: 'absolute', left: mobile ? 22 : 48, bottom: mobile ? 24 : 44,
             right: mobile ? 22 : 'auto', maxWidth: mobile ? 'none' : 520,
-            display: 'flex', flexDirection: 'column', gap: mobile ? 10 : 14, color: 'var(--c-on-media)'
+            display: 'flex', flexDirection: 'column', gap: mobile ? 'var(--space-12)' : 'var(--space-16)', color: 'var(--c-on-media)'
           }}>
           <span style={{ fontSize: 'var(--text-micro)', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.78)' }}>PRIVACIDADE • EXCLUSIVIDADE • CONFORTO • CUIDADO
 
@@ -82,12 +82,12 @@ function MGTrust({ mobile }) {
           esquerda do número, e os mesmos tamanhos de fonte. */}
       <div style={{
           display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: mobile ? 12 : 32, paddingTop: mobile ? 20 : 36
+          gap: mobile ? 'var(--space-12)' : 'var(--space-32)', paddingTop: mobile ? 'var(--space-20)' : 'var(--space-36)'
         }}>
         {MG_STATS.map((p, i) =>
-          <div key={i} style={{ display: 'flex', flexDirection: 'column', gap: 6, alignItems: 'center', textAlign: 'center', justifyContent: 'center' }}>
+          <div key={i} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-8)', alignItems: 'center', textAlign: 'center', justifyContent: 'center' }}>
             <span className="mg-stat" style={{
-                display: 'inline-flex', alignItems: 'baseline', gap: mobile ? 4 : 8,
+                display: 'inline-flex', alignItems: 'baseline', gap: mobile ? 'var(--space-4)' : 'var(--space-8)',
                 fontSize: mobile ? 'var(--num-stat-mobile)' : 'var(--num-stat)', lineHeight: 0.92, letterSpacing: '-0.045em',
                 fontWeight: 600, color: 'var(--c-foreground)', fontVariantNumeric: 'tabular-nums',
                 justifyContent: 'center', position: 'relative'
@@ -95,17 +95,17 @@ function MGTrust({ mobile }) {
               {p.star &&
                 <svg width={mobile ? 16 : 36} height={mobile ? 16 : 36} viewBox="0 0 24 24"
                   fill="var(--c-mg)" aria-hidden="true"
-                  style={{ position: 'absolute', right: '100%', marginRight: mobile ? 6 : 12, top: mobile ? '4px' : '8px', flexShrink: 0 }}>
+                  style={{ position: 'absolute', right: '100%', marginRight: mobile ? 'var(--space-8)' : 'var(--space-12)', top: mobile ? '4px' : '8px', flexShrink: 0 }}>
                   <path d="M12 2.5l2.95 5.98 6.6.96-4.78 4.66 1.13 6.57L12 17.58l-5.9 3.1 1.13-6.57L2.45 9.44l6.6-.96L12 2.5z" />
                 </svg>}
               {p.stat.startsWith('+') ?
                 <React.Fragment>
-                  <span style={{ color: 'var(--c-mg)', position: 'absolute', right: '100%', marginRight: mobile ? 2 : 4, top: 0 }}>+</span>
+                  <span style={{ color: 'var(--c-mg)', position: 'absolute', right: '100%', marginRight: mobile ? 2 : 'var(--space-4)', top: 0 }}>+</span>
                   {p.stat.slice(1)}
                 </React.Fragment> :
                 p.stat}
             </span>
-            <span style={{ fontSize: mobile ? 'var(--text-body-mobile)' : 'var(--text-body)', color: 'var(--c-muted-foreground)', lineHeight: 1.4, maxWidth: mobile ? 'none' : 280, marginTop: mobile ? 2 : 6 }}>{p.desc}</span>
+            <span style={{ fontSize: mobile ? 'var(--text-body-mobile)' : 'var(--text-body)', color: 'var(--c-muted-foreground)', lineHeight: 1.4, maxWidth: mobile ? 'none' : 280, marginTop: mobile ? 2 : 'var(--space-8)'}}>{p.desc}</span>
           </div>
           )}
       </div>
@@ -115,10 +115,10 @@ function MGTrust({ mobile }) {
     <section id="faq" className="mg-zone mg-faq-band">
       <div style={{
           display: 'grid', gridTemplateColumns: mobile ? '1fr' : '0.9fr 1.3fr',
-          gap: mobile ? 36 : 80, alignItems: 'start'
+          gap: mobile ? 'var(--space-36)' : 'var(--space-80)', alignItems: 'start'
         }}>
-        <div style={{ position: mobile ? 'static' : 'sticky', top: 90, display: 'flex', flexDirection: 'column', gap: 22 }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+        <div style={{ position: mobile ? 'static' : 'sticky', top: 90, display: 'flex', flexDirection: 'column', gap: 'var(--space-24)'}}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-16)'}}>
             <span className="gl-eyebrow">Antes de você perguntar</span>
             <h3 style={{ fontSize: mobile ? 'var(--text-h2-mobile)' : 'var(--text-h2)', letterSpacing: 'var(--text-h2-tracking)', lineHeight: 'var(--text-h2-lh)' }}>
               Sem surpresas no dia.
@@ -142,9 +142,9 @@ function MGTrust({ mobile }) {
                     {window.MGIcon.plus(14)}
                   </span>
                 </button>
-                <div style={{ display: 'grid', gridTemplateRows: isOpen ? '1fr' : '0fr', transition: 'grid-template-rows .35s ease' }}>
+                <div style={{ display: 'grid', gridTemplateRows: isOpen ? '1fr' : '0fr', transition: 'grid-template-rows var(--dur-moderate) ease' }}>
                   <div style={{ overflow: 'hidden' }}>
-                    <div style={{ paddingBottom: mobile ? 22 : 28, paddingRight: mobile ? 0 : 70, fontSize: mobile ? 'var(--text-body-mobile)' : 'var(--text-body)', color: 'var(--c-muted-foreground)', lineHeight: 1.6, maxWidth: 720 }}>
+                    <div style={{ paddingBottom: mobile ? 'var(--space-24)' : 'var(--space-28)', paddingRight: mobile ? 0 : 70, fontSize: mobile ? 'var(--text-body-mobile)' : 'var(--text-body)', color: 'var(--c-muted-foreground)', lineHeight: 1.6, maxWidth: 720 }}>
                       {item.a}
                     </div>
                   </div>
@@ -163,17 +163,17 @@ function MGFooter({ mobile }) {
   return (
     <footer style={{
       borderTop: '1px solid var(--c-border)',
-      padding: mobile ? '40px 20px 32px' : '64px 56px 40px',
-      display: 'flex', flexDirection: 'column', gap: 40
+      padding: mobile ? 'var(--space-40) var(--space-20) var(--space-32)' : 'var(--space-64) var(--space-56) var(--space-40)',
+      display: 'flex', flexDirection: 'column', gap: 'var(--space-40)'
     }}>
       <div style={{
         display: 'grid',
         gridTemplateColumns: mobile ? '1fr' : '1fr auto auto auto',
-        gap: mobile ? 32 : '24px 56px',
+        gap: mobile ? 'var(--space-32)' : 'var(--space-24) var(--space-56)',
         alignItems: 'stretch'
       }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 18, maxWidth: 360 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-20)', maxWidth: 360 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-8)'}}>
             <image-slot
               id="gl-logo"
               shape="rect"
@@ -201,9 +201,9 @@ function MGFooter({ mobile }) {
         { h: 'GaleON', l: ['Como funciona', 'Para empresas', 'Para parceiros', 'Imprensa'] },
         { h: 'Ajuda', l: ['Central de atendimento', 'Status do pedido', 'Termos', 'Privacidade'] }].
         map((c, i) =>
-        <div key={i} style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+        <div key={i} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-12)'}}>
             <h4 style={{ fontSize: 'var(--text-micro)', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--c-muted-foreground)' }}>{c.h}</h4>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 'var(--space-12)'}}>
               {c.l.map((x) => <li key={x}><a href="#" style={{ fontSize: 'var(--text-small)' }}>{x}</a></li>)}
             </ul>
           </div>
@@ -211,8 +211,8 @@ function MGFooter({ mobile }) {
       </div>
       <div style={{
         display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-        paddingTop: 24, borderTop: '1px solid var(--c-border)',
-        fontSize: 'var(--text-small)', color: 'var(--c-muted-foreground)', flexWrap: 'wrap', gap: 12
+        paddingTop: 'var(--space-24)', borderTop: '1px solid var(--c-border)',
+        fontSize: 'var(--text-small)', color: 'var(--c-muted-foreground)', flexWrap: 'wrap', gap: 'var(--space-12)'
       }}>
         <span>© 2026 GaleON · RIOgaleão</span>
         <span>Aeroporto Internacional do Rio de Janeiro — Tom Jobim</span>

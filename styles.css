@@ -25,11 +25,11 @@
 /* Buttons — shadcn model: variant axis (color/treatment) × size axis.
    Hover darkens/lightens the same token via color-mix (no hardcoded hex). */
 .gl-btn {
-  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-  height: 36px; padding: 0 16px; border-radius: var(--r-lg);
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--space-8);
+  height: 36px; padding: 0 var(--space-16); border-radius: var(--r-lg);
   border: 1px solid transparent; font-weight: 600; font-size: var(--text-small);
   letter-spacing: -0.005em; cursor: pointer;
-  transition: transform .15s ease, background-color .15s ease, color .15s ease, border-color .15s ease, box-shadow .15s ease;
+  transition: transform var(--dur-fast) ease, background-color var(--dur-fast) ease, color var(--dur-fast) ease, border-color var(--dur-fast) ease, box-shadow var(--dur-fast) ease;
   white-space: nowrap;
 }
 .gl-btn:hover { transform: translateY(-1px); }
@@ -55,33 +55,33 @@
 .gl-btn--link:hover { text-decoration: underline; text-underline-offset: 4px; transform: none; }
 
 /* Sizes — shadcn scale (default = base, 36px). Radius stays --r-lg per brand. */
-.gl-btn--xs { height: 28px; padding: 0 8px;  gap: 4px; font-size: var(--text-micro); }
-.gl-btn--sm { height: 32px; padding: 0 12px; gap: 6px; }
-.gl-btn--lg { height: 40px; padding: 0 24px; }
+.gl-btn--xs { height: 28px; padding: 0 var(--space-8);  gap: var(--space-4); font-size: var(--text-micro); }
+.gl-btn--sm { height: 32px; padding: 0 var(--space-12); gap: var(--space-8); }
+.gl-btn--lg { height: 40px; padding: 0 var(--space-24); }
 .gl-btn--icon    { width: 36px; height: 36px; padding: 0; }
 .gl-btn--icon-xs { width: 28px; height: 28px; padding: 0; }
 .gl-btn--icon-sm { width: 32px; height: 32px; padding: 0; }
 .gl-btn--icon-lg { width: 40px; height: 40px; padding: 0; }
 
-.gl-btn .gl-arrow { transition: transform .2s ease; }
+.gl-btn .gl-arrow { transition: transform var(--dur-base) ease; }
 .gl-btn:hover .gl-arrow { transform: translateX(3px); }
 
 /* Tag chip */
 .gl-tag {
-  display: inline-flex; align-items: center; gap: 6px;
+  display: inline-flex; align-items: center; gap: var(--space-8);
   font-size: var(--text-micro); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
-  padding: 6px 10px; border-radius: 999px;
+  padding: var(--space-8) var(--space-12); border-radius: var(--r-pill);
   background: rgba(255,255,255,0.92);
   color: var(--c-foreground);
   border: 1px solid var(--c-border);
 }
-.gl-tag .dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.gl-tag .dot { width: 7px; height: 7px; border-radius: var(--r-pill); background: currentColor; }
 
 /* Section frame */
-.gl-section { padding: 96px 56px; }
-.gl-section--tight { padding: 64px 56px; }
+.gl-section { padding: var(--section-pad-y) var(--section-pad-x); }
+.gl-section--tight { padding: var(--space-64) var(--space-56); }
 .gl-eyebrow {
-  display: inline-flex; align-items: center; gap: 8px;
+  display: inline-flex; align-items: center; gap: var(--space-8);
   font-size: var(--text-micro); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
   color: var(--c-muted-foreground);
 }
@@ -101,21 +101,21 @@ image-slot {
 
 /* Mobile-specific */
 .galeao[data-vp="mobile"] { font-size: var(--text-body-mobile); }
-.galeao[data-vp="mobile"] .gl-section { padding: 64px 20px; }
-.galeao[data-vp="mobile"] .gl-section--tight { padding: 48px 20px; }
+.galeao[data-vp="mobile"] .gl-section { padding: var(--section-pad-y-mobile) var(--section-pad-x-mobile); }
+.galeao[data-vp="mobile"] .gl-section--tight { padding: var(--space-48) var(--space-20); }
 
 /* Tab pill */
-.gl-tabs { display: inline-flex; padding: 4px; background: var(--c-background-soft); border-radius: 999px; gap: 2px; border: 1px solid var(--c-border); }
-.gl-tab { background: transparent; border: 0; height: 38px; padding: 0 18px; border-radius: 999px; font-weight: 500; font-size: var(--text-small); color: var(--c-muted-foreground); letter-spacing: -0.005em; }
+.gl-tabs { display: inline-flex; padding: var(--space-4); background: var(--c-background-soft); border-radius: var(--r-pill); gap: 2px; border: 1px solid var(--c-border); }
+.gl-tab { background: transparent; border: 0; height: 38px; padding: 0 var(--space-20); border-radius: var(--r-pill); font-weight: 500; font-size: var(--text-small); color: var(--c-muted-foreground); letter-spacing: -0.005em; }
 .gl-tab[data-active="true"] { background: var(--c-primary); color: var(--c-primary-foreground); }
 
 /* Marquee for partners */
 @keyframes gl-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-.gl-marquee-track { display: flex; gap: 80px; width: max-content; animation: gl-marquee 38s linear infinite; }
-.galeao[data-vp="mobile"] .gl-marquee-track { gap: 48px; animation-duration: 26px; }
+.gl-marquee-track { display: flex; gap: var(--space-80); width: max-content; animation: gl-marquee 38s linear infinite; }
+.galeao[data-vp="mobile"] .gl-marquee-track { gap: var(--space-48); animation-duration: 26px; }
 
 /* Card hover */
-.gl-card { transition: transform .35s cubic-bezier(.2,.7,.3,1), border-color .2s ease; }
+.gl-card { transition: transform var(--dur-moderate) var(--ease-out), border-color var(--dur-base) ease; }
 .gl-card:hover { transform: translateY(-3px); }
 
 /* Hero crossfade — keyframe-driven; runs on key change. */
@@ -125,8 +125,8 @@ image-slot {
 /* Service chips bar (top of hero) — static, with per-chip progress bar. */
 .gl-svc-top-chip {
   position: relative;
-  display: inline-flex; align-items: center; gap: 7px;
-  padding: 16px 24px 18px; border-radius: var(--r-md);
+  display: inline-flex; align-items: center; gap: var(--space-8);
+  padding: var(--space-16) var(--space-24) var(--space-20); border-radius: var(--r-md);
   background: rgba(20,20,18,0.28); color: rgba(255,255,255,0.82);
   border: 1px solid rgba(255,255,255,0.14);
   font: inherit; font-weight: 500; font-size: var(--text-small); letter-spacing: -0.005em;
@@ -134,7 +134,7 @@ image-slot {
   -webkit-backdrop-filter: blur(20px) saturate(180%);
           backdrop-filter: blur(20px) saturate(180%);
   box-shadow: 0 8px 24px rgba(0,0,0,0.18);
-  transition: color .2s ease, background-color .2s ease, border-color .2s ease;
+  transition: color var(--dur-base) ease, background-color var(--dur-base) ease, border-color var(--dur-base) ease;
 }
 .gl-svc-top-chip:hover { color: var(--c-on-media); background: rgba(20,20,18,0.42); }
 .gl-svc-top-chip[data-active="true"] {
@@ -151,7 +151,7 @@ image-slot {
   box-shadow: none;
   -webkit-backdrop-filter: none;
           backdrop-filter: none;
-  padding: 15px 18px 17px;
+  padding: var(--space-16) var(--space-20) var(--space-16);
   justify-content: center;
 }
 .gl-svc-top-chip--bare:hover { background: rgba(255,255,255,0.10); }

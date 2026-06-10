@@ -10,22 +10,22 @@ function ServicosOverview({ mobile }) {
   const services = window.GaleonServices || [];
   const Icon = window.GaleonServiceIcon || {};
   return (
-    <section id="servicos-overview" className="gl-section" style={{ paddingTop: mobile ? 56 : 96, paddingBottom: mobile ? 24 : 32 }}>
-      <div style={{ maxWidth: 720, marginBottom: mobile ? 28 : 48 }}>
+    <section id="servicos-overview" className="gl-section" style={{ paddingTop: mobile ? 'var(--space-56)' : 'var(--space-96)', paddingBottom: mobile ? 'var(--space-24)' : 'var(--space-32)'}}>
+      <div style={{ maxWidth: 720, marginBottom: mobile ? 'var(--space-28)' : 'var(--space-48)'}}>
         <span className="gl-eyebrow">Serviços</span>
-        <h2 style={{ fontSize: mobile ? 'var(--text-h2-mobile)' : 'var(--text-h2)', marginTop: 16, maxWidth: 880 }}>
+        <h2 style={{ fontSize: mobile ? 'var(--text-h2-mobile)' : 'var(--text-h2)', marginTop: 'var(--space-16)', maxWidth: 880 }}>
           Pra cada momento da viagem.
         </h2>
       </div>
       <div style={{
         display: 'grid',
         gridTemplateColumns: mobile ? '1fr 1fr' : 'repeat(4, 1fr)',
-        gap: mobile ? 12 : 18
+        gap: mobile ? 'var(--space-12)' : 'var(--space-20)'
       }}>
         {services.map((s) =>
         <a key={s.key} href={`#${s.key}`} className="gl-card" style={{
-          display: 'flex', flexDirection: 'column', gap: 16,
-          padding: mobile ? '20px 18px' : '26px 26px 28px',
+          display: 'flex', flexDirection: 'column', gap: 'var(--space-16)',
+          padding: mobile ? 'var(--space-20) var(--space-20)' : 'var(--space-28) var(--space-28) var(--space-28)',
           border: '1px solid var(--c-border)', borderRadius: 'var(--r-lg)',
           background: 'var(--c-card)', minHeight: mobile ? 'auto' : 210,
           color: 'var(--c-foreground)',
@@ -33,14 +33,14 @@ function ServicosOverview({ mobile }) {
           textDecoration: 'none'
         }}>
             <div style={{
-            width: mobile ? 40 : 44, height: mobile ? 40 : 44, borderRadius: 12,
+            width: mobile ? 40 : 44, height: mobile ? 40 : 44, borderRadius: 'var(--r-md)',
             background: `color-mix(in srgb, ${s.color} 8%, transparent)`, color: s.color,
             display: 'grid', placeItems: 'center',
             alignSelf: 'flex-start'
           }}>
               {Icon[s.key] && Icon[s.key](mobile ? 20 : 22)}
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 6, flex: 1 }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-8)', flex: 1 }}>
               <span style={{ fontSize: mobile ? 'var(--text-subtitle-mobile)' : 'var(--text-subtitle)', fontWeight: 600, letterSpacing: '-0.01em' }}>{s.label}</span>
               <span style={{ fontSize: mobile ? 'var(--text-small-mobile)' : 'var(--text-small)', color: 'var(--c-muted-foreground)', lineHeight: 1.4 }}>{s.short}</span>
             </div>
@@ -67,11 +67,11 @@ function Servicos({ mobile }) {
     <section id="servicos" className="gl-section">
       <div style={{
         display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end',
-        gap: 24, marginBottom: mobile ? 32 : 64, flexWrap: 'wrap'
+        gap: 'var(--space-24)', marginBottom: mobile ? 'var(--space-32)' : 'var(--space-64)', flexWrap: 'wrap'
       }}>
         <div style={{ maxWidth: 720 }}>
           <span className="gl-eyebrow">Serviços</span>
-          <h2 style={{ fontSize: mobile ? 'var(--text-h2-mobile)' : 'var(--text-h2)', marginTop: 16, maxWidth: 880 }}>
+          <h2 style={{ fontSize: mobile ? 'var(--text-h2-mobile)' : 'var(--text-h2)', marginTop: 'var(--space-16)', maxWidth: 880 }}>
             Pra cada momento da viagem.
           </h2>
         </div>
@@ -86,7 +86,7 @@ function Servicos({ mobile }) {
       <div style={{
         display: 'grid',
         gridTemplateColumns: mobile ? '1fr' : '1.6fr 1fr',
-        gap: mobile ? 14 : 18
+        gap: mobile ? 'var(--space-16)' : 'var(--space-20)'
       }}>
         <HospitalidadeCard mobile={mobile} />
         <DeliveryCard mobile={mobile} />
@@ -96,8 +96,8 @@ function Servicos({ mobile }) {
       <div style={{
         display: 'grid',
         gridTemplateColumns: mobile ? '1fr' : '1fr 1fr',
-        gap: mobile ? 14 : 18,
-        marginTop: mobile ? 14 : 18
+        gap: mobile ? 'var(--space-16)' : 'var(--space-20)',
+        marginTop: mobile ? 'var(--space-16)' : 'var(--space-20)'
       }}>
         <SalaVipCard mobile={mobile} />
         <TransportesCard mobile={mobile} />
@@ -107,8 +107,8 @@ function Servicos({ mobile }) {
       <div style={{
         display: 'grid',
         gridTemplateColumns: mobile ? '1fr' : 'repeat(3, 1fr)',
-        gap: mobile ? 14 : 18,
-        marginTop: mobile ? 14 : 18
+        gap: mobile ? 'var(--space-16)' : 'var(--space-20)',
+        marginTop: mobile ? 'var(--space-16)' : 'var(--space-20)'
       }}>
         {compact.map((c) =>
         <CompactCard key={c.name} {...c} mobile={mobile} />
@@ -140,7 +140,7 @@ function ServiceCardBase({ children, dark, style, mobile, slotId, slotPlaceholde
         </image-slot>
         </div>
       }
-      <div style={{ padding: mobile ? '20px 22px 22px' : '28px 32px 32px' }}>
+      <div style={{ padding: mobile ? 'var(--space-20) var(--space-24) var(--space-24)' : 'var(--space-28) var(--space-32) var(--space-32)'}}>
         {children}
       </div>
     </article>);
@@ -167,23 +167,23 @@ function HospitalidadeCard({ mobile }) {
         </image-slot>
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.0) 35%, rgba(0,0,0,0.0) 50%, rgba(0,0,0,0.75) 100%)' }} />
       </div>
-      <div style={{ position: 'relative', padding: mobile ? '24px 24px' : '36px 40px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12 }}>
+      <div style={{ position: 'relative', padding: mobile ? 'var(--space-24) var(--space-24)' : 'var(--space-36) var(--space-40)', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 'var(--space-12)'}}>
         <span className="gl-tag" style={{ background: 'rgba(255,255,255,0.18)', color: 'var(--c-on-media)', borderColor: 'rgba(255,255,255,0.24)', backdropFilter: 'blur(8px)' }}>
           <span className="dot" style={{ background: 'var(--c-primary)' }} /> Em destaque
         </span>
         <span style={{ fontSize: 'var(--text-micro)', color: 'rgba(255,255,255,0.7)' }}>Hospitalidade</span>
       </div>
       <div style={{ flex: 1 }} />
-      <div style={{ position: 'relative', padding: mobile ? '0 24px 28px' : '0 40px 40px', display: 'flex', flexDirection: 'column', gap: 22, maxWidth: 720 }}>
+      <div style={{ position: 'relative', padding: mobile ? '0 var(--space-24) var(--space-28)' : '0 var(--space-40) var(--space-40)', display: 'flex', flexDirection: 'column', gap: 'var(--space-24)', maxWidth: 720 }}>
         <h3 style={{ fontSize: mobile ? 'var(--text-h2-mobile)' : 'var(--text-h2)', color: 'var(--c-on-media)' }}>
           Hospitalidade do<br />desembarque ao embarque.
         </h3>
         <p style={{ fontSize: mobile ? 'var(--text-body-mobile)' : 'var(--text-body)', color: 'rgba(255,255,255,0.78)', maxWidth: 460, lineHeight: 1.45 }}>
           Check-in assistido, fast-track e condução até o portão.
         </p>
-        <div style={{ display: 'flex', flexDirection: mobile ? 'column' : 'row', gap: 10, alignItems: mobile ? 'stretch' : 'center' }}>
+        <div style={{ display: 'flex', flexDirection: mobile ? 'column' : 'row', gap: 'var(--space-12)', alignItems: mobile ? 'stretch' : 'center' }}>
           <a href="meet-greet.html" className="gl-btn gl-btn--primary" style={{ textDecoration: 'none' }}>Conhecer mais {window.GaleonIcon.arrow(14)}</a>
-          <span style={{ fontSize: 'var(--text-small)', color: 'rgba(255,255,255,0.65)', marginLeft: mobile ? 0 : 4 }}>
+          <span style={{ fontSize: 'var(--text-small)', color: 'rgba(255,255,255,0.65)', marginLeft: mobile ? 0 : 'var(--space-4)'}}>
             A partir de R$ 480
           </span>
         </div>
@@ -218,7 +218,7 @@ function DeliveryCard({ mobile }) {
           <span className="dot" /> Delivery
         </span>
       </div>
-      <div style={{ padding: mobile ? '22px 22px 26px' : '32px 32px 36px', display: 'flex', flexDirection: 'column', gap: 16, flex: 1 }}>
+      <div style={{ padding: mobile ? 'var(--space-24) var(--space-24) var(--space-28)' : 'var(--space-32) var(--space-32) var(--space-36)', display: 'flex', flexDirection: 'column', gap: 'var(--space-16)', flex: 1 }}>
         <h3 style={{ fontSize: mobile ? 'var(--text-h4-mobile)' : 'var(--text-h4)' }}>
           Peça sua comida sem sair do portão de embarque
         </h3>
@@ -238,14 +238,14 @@ function SalaVipCard({ mobile }) {
     <article className="gl-card" style={{
       borderRadius: 'var(--r-xl)',
       overflow: 'hidden',
-      background: '#F4F0F4',
-      border: '1px solid #E8DCE8',
+      background: 'var(--c-sala-vip-tint)',
+      border: '1px solid var(--c-sala-vip-tint-border)',
       display: 'grid',
       gridTemplateColumns: mobile ? '1fr' : '1fr 1fr',
       minHeight: mobile ? 'auto' : 340
     }}>
-      <div style={{ padding: mobile ? '22px 22px 26px' : '32px 32px 32px', display: 'flex', flexDirection: 'column', gap: 16, justifyContent: 'space-between' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+      <div style={{ padding: mobile ? 'var(--space-24) var(--space-24) var(--space-28)' : 'var(--space-32) var(--space-32) var(--space-32)', display: 'flex', flexDirection: 'column', gap: 'var(--space-16)', justifyContent: 'space-between' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-16)'}}>
           <span className="gl-tag" style={{ color: 'var(--c-sala-vip)', alignSelf: 'flex-start' }}>
             <span className="dot" /> Sala VIP
           </span>
@@ -278,15 +278,15 @@ function TransportesCard({ mobile }) {
     <article className="gl-card" style={{
       borderRadius: 'var(--r-xl)',
       overflow: 'hidden',
-      background: '#FBF5E9',
-      border: '1px solid #F2E8CC',
+      background: 'var(--c-transportes-tint)',
+      border: '1px solid var(--c-transportes-tint-border)',
       display: 'grid',
       gridTemplateColumns: mobile ? '1fr' : '1fr 1fr',
       minHeight: mobile ? 'auto' : 340
     }}>
-      <div style={{ padding: mobile ? '22px 22px 26px' : '32px 32px 32px', display: 'flex', flexDirection: 'column', gap: 16, justifyContent: 'space-between' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-          <span className="gl-tag" style={{ color: '#B07D00', alignSelf: 'flex-start' }}>
+      <div style={{ padding: mobile ? 'var(--space-24) var(--space-24) var(--space-28)' : 'var(--space-32) var(--space-32) var(--space-32)', display: 'flex', flexDirection: 'column', gap: 'var(--space-16)', justifyContent: 'space-between' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-16)'}}>
+          <span className="gl-tag" style={{ color: 'var(--c-transportes-strong)', alignSelf: 'flex-start' }}>
             <span className="dot" /> Transportes
           </span>
           <h3 style={{ fontSize: mobile ? 'var(--text-h4-mobile)' : 'var(--text-h4)' }}>
@@ -317,15 +317,15 @@ function CompactCard({ name, color, desc, mobile }) {
   return (
     <article className="gl-card" style={{
       borderRadius: 'var(--r-lg)',
-      padding: mobile ? '22px' : '28px',
+      padding: mobile ? 'var(--space-24)' : 'var(--space-28)',
       background: 'var(--c-card)',
       border: '1px solid var(--c-border)',
-      display: 'flex', flexDirection: 'column', gap: 18,
+      display: 'flex', flexDirection: 'column', gap: 'var(--space-20)',
       minHeight: mobile ? 'auto' : 220
     }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <span style={{
-          display: 'inline-flex', alignItems: 'center', gap: 8,
+          display: 'inline-flex', alignItems: 'center', gap: 'var(--space-8)',
           fontSize: 'var(--text-micro)', fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase',
           color
         }}>
@@ -384,8 +384,8 @@ function Vitrine({ mobile }) {
   const data = VITRINE_DATA[tab];
   return (
     <section id="vitrine" className="gl-section" style={{ background: 'var(--c-background)' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: 24, flexWrap: 'wrap', marginBottom: mobile ? 28 : 40 }}>
-        <div style={{ maxWidth: 720, display: 'flex', flexDirection: 'column', gap: 16 }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: 'var(--space-24)', flexWrap: 'wrap', marginBottom: mobile ? 'var(--space-28)' : 'var(--space-40)'}}>
+        <div style={{ maxWidth: 720, display: 'flex', flexDirection: 'column', gap: 'var(--space-16)'}}>
           <span className="gl-eyebrow">Destaques</span>
           <h2 style={{ fontSize: mobile ? 'var(--text-h2-mobile)' : 'var(--text-h2)' }}>Mais pedidos</h2>
         </div>
@@ -414,9 +414,9 @@ function Vitrine({ mobile }) {
         display: 'grid',
         gridAutoFlow: 'column',
         gridAutoColumns: mobile ? '78%' : tab === 'delivery' ? '300px' : '380px',
-        gap: 16,
+        gap: 'var(--space-16)',
         overflowX: 'auto',
-        padding: '4px 0 24px',
+        padding: 'var(--space-4) 0 var(--space-24)',
         scrollSnapType: 'x mandatory'
       }}>
         {data.items.map((it, i) =>
@@ -441,10 +441,10 @@ function VitrineCard({ brand, dish, meta, slot, accent }) {
       <div style={{ aspectRatio: '4/3', position: 'relative' }}>
         <image-slot id={slot} shape="rounded" radius="0" placeholder={`foto: ${dish}`} style={{ width: '100%', height: '100%' }}></image-slot>
       </div>
-      <div style={{ padding: '16px 18px 18px', display: 'flex', flexDirection: 'column', gap: 6 }}>
+      <div style={{ padding: 'var(--space-16) var(--space-20) var(--space-20)', display: 'flex', flexDirection: 'column', gap: 'var(--space-8)'}}>
         <span style={{ fontSize: 'var(--text-micro)', fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase', color: accentColor }}>{brand}</span>
         <span style={{ fontSize: 'var(--text-body)', fontWeight: 500, letterSpacing: '-0.01em' }}>{dish}</span>
-        <span style={{ fontSize: 'var(--text-small)', color: 'var(--c-muted-foreground)', marginTop: 4 }}>{meta}</span>
+        <span style={{ fontSize: 'var(--text-small)', color: 'var(--c-muted-foreground)', marginTop: 'var(--space-4)'}}>{meta}</span>
       </div>
     </article>);
 
@@ -477,14 +477,14 @@ function ParceirosStrip({ mobile }) {
 
   return (
     <div style={{
-      paddingTop: mobile ? 48 : 80,
-      paddingBottom: mobile ? 28 : 40,
+      paddingTop: mobile ? 'var(--space-48)' : 'var(--space-80)',
+      paddingBottom: mobile ? 'var(--space-28)' : 'var(--space-40)',
       background: 'var(--c-background)',
       overflow: 'hidden',
       maskImage: 'linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%)',
       WebkitMaskImage: 'linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%)'
     }}>
-      <div className="gl-marquee-track" style={{ gap: mobile ? 56 : 88, alignItems: 'center' }}>
+      <div className="gl-marquee-track" style={{ gap: mobile ? 'var(--space-56)' : 'var(--space-88)', alignItems: 'center' }}>
         {[...partners, ...partners].map((p, i) =>
         <img
           key={i}
@@ -514,8 +514,8 @@ function Experiencias({ mobile }) {
   return (
     <section id="experiencias" className="gl-section" style={{ background: 'var(--c-background-soft)' }}>
       <div style={{
-        display: 'flex', flexDirection: 'column', gap: 16,
-        maxWidth: 760, marginBottom: mobile ? 28 : 40
+        display: 'flex', flexDirection: 'column', gap: 'var(--space-16)',
+        maxWidth: 760, marginBottom: mobile ? 'var(--space-28)' : 'var(--space-40)'
       }}>
         <span className="gl-eyebrow">Serviços</span>
         <h2 style={{ fontSize: mobile ? 'var(--text-h2-mobile)' : 'var(--text-h2)', lineHeight: 'var(--text-h2-lh)' }}>
@@ -530,14 +530,14 @@ function Experiencias({ mobile }) {
         display: 'grid',
         gridTemplateColumns: mobile ? '1fr' : '1.05fr 1fr',
         height: mobile ? 'auto' : 390,
-        transition: 'transform .2s ease, box-shadow .2s ease'
+        transition: 'transform var(--dur-base) ease, box-shadow var(--dur-base) ease'
       }}
-      onMouseOver={(e) => {e.currentTarget.style.transform = 'translateY(-2px)';e.currentTarget.style.boxShadow = '0 12px 32px rgba(0,0,0,0.08)';}}
+      onMouseOver={(e) => {e.currentTarget.style.transform = 'translateY(-2px)';e.currentTarget.style.boxShadow = 'var(--shadow-card-hover)';}}
       onMouseOut={(e) => {e.currentTarget.style.transform = 'translateY(0)';e.currentTarget.style.boxShadow = 'none';}}>
         {/* Image side */}
         <div style={{
           position: 'relative',
-          padding: mobile ? 16 : '36px 0 36px 40px',
+          padding: mobile ? 'var(--space-16)' : 'var(--space-36) 0 var(--space-36) var(--space-40)',
           aspectRatio: mobile ? '4/3' : 'auto',
           minHeight: mobile ? 230 : 'auto'
         }}>
@@ -566,13 +566,13 @@ function Experiencias({ mobile }) {
 
         {/* Copy side */}
         <div style={{
-          padding: mobile ? '28px 24px 32px' : '44px 56px 44px 36px',
+          padding: mobile ? 'var(--space-28) var(--space-24) var(--space-32)' : 'var(--space-44) var(--space-56) var(--space-44) var(--space-36)',
           display: 'flex', flexDirection: 'column', justifyContent: 'center',
-          gap: mobile ? 16 : 20
+          gap: mobile ? 'var(--space-16)' : 'var(--space-20)'
         }}>
           {/* Service tag — icon + name in service color */}
           <span style={{
-            display: 'inline-flex', alignItems: 'center', gap: 8,
+            display: 'inline-flex', alignItems: 'center', gap: 'var(--space-8)',
             color: 'var(--c-sala-vip)',
             fontSize: 'var(--text-micro)', fontWeight: 600, letterSpacing: '0.06em',
             textTransform: 'uppercase'
@@ -591,7 +591,7 @@ function Experiencias({ mobile }) {
           </h3>
 
           <div style={{
-            display: 'flex', flexDirection: 'column', gap: 12,
+            display: 'flex', flexDirection: 'column', gap: 'var(--space-12)',
             fontSize: mobile ? 'var(--text-body-mobile)' : 'var(--text-body)', lineHeight: 1.5,
             color: 'var(--c-muted-foreground)', maxWidth: 480
           }}>
@@ -610,8 +610,8 @@ function Experiencias({ mobile }) {
       <div style={{
         display: 'grid',
         gridTemplateColumns: mobile ? '1fr' : '1fr 1fr',
-        gap: mobile ? 16 : 24,
-        marginTop: mobile ? 16 : 24
+        gap: mobile ? 'var(--space-16)' : 'var(--space-24)',
+        marginTop: mobile ? 'var(--space-16)' : 'var(--space-24)'
       }}>
         <ExpFeatureCard
           serviceKey="delivery"
@@ -639,8 +639,8 @@ function Experiencias({ mobile }) {
       <div style={{
         display: 'grid',
         gridTemplateColumns: mobile ? '1fr' : 'repeat(3, 1fr)',
-        gap: mobile ? 12 : 24,
-        marginTop: mobile ? 12 : 24
+        gap: mobile ? 'var(--space-12)' : 'var(--space-24)',
+        marginTop: mobile ? 'var(--space-12)' : 'var(--space-24)'
       }}>
         <ExpMiniCard
           serviceKey="guarda"
@@ -680,19 +680,19 @@ function ExpFeatureCard({ serviceKey, serviceLabel, serviceColor, title, desc, s
       display: 'flex', flexDirection: 'column',
       textDecoration: 'none', color: 'inherit',
       minHeight: mobile ? 340 : 380,
-      transition: 'transform .2s ease, box-shadow .2s ease'
+      transition: 'transform var(--dur-base) ease, box-shadow var(--dur-base) ease'
     }}
-    onMouseOver={(e) => {e.currentTarget.style.transform = 'translateY(-2px)';e.currentTarget.style.boxShadow = '0 12px 32px rgba(0,0,0,0.08)';}}
+    onMouseOver={(e) => {e.currentTarget.style.transform = 'translateY(-2px)';e.currentTarget.style.boxShadow = 'var(--shadow-card-hover)';}}
     onMouseOut={(e) => {e.currentTarget.style.transform = 'translateY(0)';e.currentTarget.style.boxShadow = 'none';}}>
       {/* Top: copy block — centered horizontally, top-aligned */}
       <div style={{
-        padding: mobile ? '28px 24px 0' : '36px 40px 0px 46px',
+        padding: mobile ? 'var(--space-28) var(--space-24) 0' : 'var(--space-36) var(--space-40) 0px var(--space-48)',
         display: 'flex', flexDirection: 'column',
-        gap: mobile ? 12 : 14,
+        gap: mobile ? 'var(--space-12)' : 'var(--space-16)',
         alignItems: 'flex-start', textAlign: 'left'
       }}>
         <span style={{
-          display: 'inline-flex', alignItems: 'center', gap: 8,
+          display: 'inline-flex', alignItems: 'center', gap: 'var(--space-8)',
           color: serviceColor,
           fontSize: 'var(--text-micro)', fontWeight: 600, letterSpacing: '0.06em',
           textTransform: 'uppercase'
@@ -721,7 +721,7 @@ function ExpFeatureCard({ serviceKey, serviceLabel, serviceColor, title, desc, s
       {/* Bottom: image fills remaining space */}
       <div style={{
         position: 'relative', flex: 1,
-        marginTop: mobile ? 22 : 28,
+        marginTop: mobile ? 'var(--space-24)' : 'var(--space-28)',
         minHeight: mobile ? 150 : 170
       }}>
         <image-slot
@@ -744,16 +744,16 @@ function ExpMiniCard({ serviceKey, serviceLabel, serviceColor, desc, href, mobil
       position: 'relative',
       background: 'var(--c-card)',
       borderRadius: 'var(--r-lg)',
-      padding: mobile ? '24px 22px' : '28px 28px',
+      padding: mobile ? 'var(--space-24) var(--space-24)' : 'var(--space-28) var(--space-28)',
       display: 'flex', flexDirection: 'column',
-      gap: mobile ? 10 : 12,
+      gap: mobile ? 'var(--space-12)' : 'var(--space-12)',
       textDecoration: 'none', color: 'inherit',
-      transition: 'transform .2s ease, box-shadow .2s ease'
+      transition: 'transform var(--dur-base) ease, box-shadow var(--dur-base) ease'
     }}
-    onMouseOver={(e) => {e.currentTarget.style.transform = 'translateY(-2px)';e.currentTarget.style.boxShadow = '0 10px 28px rgba(0,0,0,0.06)';}}
+    onMouseOver={(e) => {e.currentTarget.style.transform = 'translateY(-2px)';e.currentTarget.style.boxShadow = 'var(--shadow-card-hover)';}}
     onMouseOut={(e) => {e.currentTarget.style.transform = 'translateY(0)';e.currentTarget.style.boxShadow = 'none';}}>
       <span style={{
-        display: 'inline-flex', alignItems: 'center', gap: 8,
+        display: 'inline-flex', alignItems: 'center', gap: 'var(--space-8)',
         color: serviceColor,
         fontSize: 'var(--text-micro)', fontWeight: 600, letterSpacing: '0.06em',
         textTransform: 'uppercase'
@@ -766,7 +766,7 @@ function ExpMiniCard({ serviceKey, serviceLabel, serviceColor, desc, href, mobil
         fontSize: mobile ? 'var(--text-body-mobile)' : 'var(--text-body)',
         color: 'var(--c-muted-foreground)', lineHeight: 1.5
       }}>{desc}</p>
-      <span className="gl-btn gl-btn--ghost" style={{ alignSelf: 'flex-start', marginLeft: -16, marginTop: 4 }}>
+      <span className="gl-btn gl-btn--ghost" style={{ alignSelf: 'flex-start', marginLeft: -16, marginTop: 'var(--space-4)'}}>
         Saiba mais {window.GaleonIcon && window.GaleonIcon.arrow(13)}
       </span>
     </a>);
@@ -803,8 +803,8 @@ function Hospitalidade({ mobile }) {
         position: 'relative',
         display: 'grid',
         gridTemplateColumns: mobile ? '1fr' : '1.3fr 0.85fr',
-        gap: mobile ? 32 : 40,
-        padding: mobile ? '56px 20px' : '80px 56px',
+        gap: mobile ? 'var(--space-32)' : 'var(--space-40)',
+        padding: mobile ? 'var(--space-56) var(--space-20)' : 'var(--space-80) var(--space-56)',
         boxSizing: 'border-box',
         alignItems: 'center',
         minHeight: '100vh'
@@ -812,7 +812,7 @@ function Hospitalidade({ mobile }) {
         {/* Left — content */}
         <div style={{
           display: 'flex', flexDirection: 'column',
-          gap: mobile ? 20 : 28,
+          gap: mobile ? 'var(--space-20)' : 'var(--space-28)',
           maxWidth: mobile ? 'none' : 580,
           color: 'var(--c-meet-greet-foreground)'
         }}>
@@ -843,18 +843,18 @@ function Hospitalidade({ mobile }) {
           <span style={{
             display: 'block', width: '100%',
             height: 1, background: 'rgba(255,255,255,0.18)',
-            marginTop: mobile ? 4 : 8
+            marginTop: mobile ? 'var(--space-4)' : 'var(--space-8)'
           }} />
 
           <ul style={{
             listStyle: 'none', padding: 0, margin: 0,
             display: 'grid',
             gridTemplateColumns: mobile ? '1fr' : '1fr 1fr',
-            gap: mobile ? '10px 0' : '12px 32px'
+            gap: mobile ? 'var(--space-12) 0' : 'var(--space-12) var(--space-32)'
           }}>
             {includes.map((it) =>
             <li key={it} style={{
-              display: 'flex', alignItems: 'center', gap: 12,
+              display: 'flex', alignItems: 'center', gap: 'var(--space-12)',
               fontSize: mobile ? 'var(--text-body-mobile)' : 'var(--text-body)',
               fontWeight: 500, letterSpacing: '-0.005em',
               color: 'rgba(255,255,255,0.92)',
@@ -877,7 +877,7 @@ function Hospitalidade({ mobile }) {
           <a href="meet-greet.html" className="gl-btn gl-btn--ghost" style={{
             '--btn-fg': 'var(--c-meet-greet-foreground)',
             '--btn-ghost-hover': 'rgba(255,255,255,0.12)',
-            alignSelf: 'flex-start', marginLeft: -8, marginTop: mobile ? 4 : 8
+            alignSelf: 'flex-start', marginLeft: -8, marginTop: mobile ? 'var(--space-4)' : 'var(--space-8)'
           }}>
             Conhecer mais {window.GaleonIcon && window.GaleonIcon.arrow(13)}
           </a>
@@ -923,13 +923,13 @@ function ProvaSocial({ mobile }) {
   return (
     <section id="sobre" className="gl-section" style={{
       background: 'var(--c-background)',
-      paddingTop: mobile ? 56 : 80,
-      paddingBottom: mobile ? 56 : 80
+      paddingTop: mobile ? 'var(--space-56)' : 'var(--space-80)',
+      paddingBottom: mobile ? 'var(--space-56)' : 'var(--space-80)'
     }}>
       {/* ─── Compact header — eyebrow + title only ─────────────────── */}
       <div style={{
-        display: 'flex', flexDirection: 'column', gap: 14,
-        maxWidth: 760, marginBottom: mobile ? 28 : 40
+        display: 'flex', flexDirection: 'column', gap: 'var(--space-16)',
+        maxWidth: 760, marginBottom: mobile ? 'var(--space-28)' : 'var(--space-40)'
       }}>
         <span className="gl-eyebrow">Sobre o GaleON</span>
         <h2 style={{
@@ -971,7 +971,7 @@ function ProvaSocial({ mobile }) {
           right: mobile ? 22 : 'auto',
           bottom: mobile ? 24 : 44,
           maxWidth: mobile ? 'none' : 520,
-          display: 'flex', flexDirection: 'column', gap: mobile ? 10 : 14,
+          display: 'flex', flexDirection: 'column', gap: mobile ? 'var(--space-12)' : 'var(--space-16)',
           color: 'var(--c-on-media)'
         }}>
           <span style={{
@@ -1002,19 +1002,19 @@ function ProvaSocial({ mobile }) {
       <div style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(3, 1fr)',
-        gap: mobile ? 12 : 32,
-        paddingTop: mobile ? 20 : 36
+        gap: mobile ? 'var(--space-12)' : 'var(--space-32)',
+        paddingTop: mobile ? 'var(--space-20)' : 'var(--space-36)'
       }}>
         {proof.map((p, i) => {
           return (
             <div key={i} style={{
-              display: 'flex', flexDirection: 'column', gap: 6,
+              display: 'flex', flexDirection: 'column', gap: 'var(--space-8)',
               alignItems: 'center',
               textAlign: 'center',
               justifyContent: 'center'
             }}>
               <span style={{
-                display: 'inline-flex', alignItems: 'baseline', gap: mobile ? 4 : 8,
+                display: 'inline-flex', alignItems: 'baseline', gap: mobile ? 'var(--space-4)' : 'var(--space-8)',
                 fontSize: mobile ? 'var(--num-stat-mobile)' : 'var(--num-stat)',
                 lineHeight: 0.92, letterSpacing: '-0.045em', fontWeight: 600,
                 color: 'var(--c-foreground)',
@@ -1031,7 +1031,7 @@ function ProvaSocial({ mobile }) {
                   style={{
                     position: 'absolute',
                     right: '100%',
-                    marginRight: mobile ? 6 : 12,
+                    marginRight: mobile ? 'var(--space-8)' : 'var(--space-12)',
                     top: mobile ? '4px' : '8px',
                     flexShrink: 0
                   }}
@@ -1045,7 +1045,7 @@ function ProvaSocial({ mobile }) {
                     color: 'var(--c-primary)',
                     position: 'absolute',
                     right: '100%',
-                    marginRight: mobile ? 2 : 4,
+                    marginRight: mobile ? 2 : 'var(--space-4)',
                     top: 0
                   }}>+</span>
                     {p.stat.slice(1)}
@@ -1056,7 +1056,7 @@ function ProvaSocial({ mobile }) {
               <span style={{
                 fontSize: mobile ? 'var(--text-body-mobile)' : 'var(--text-body)', color: 'var(--c-muted-foreground)',
                 lineHeight: 1.4, maxWidth: mobile ? 'none' : 280,
-                marginTop: mobile ? 2 : 6
+                marginTop: mobile ? 2 : 'var(--space-8)'
               }}>
                 {mobile && p.mobileBreak ?
                 p.desc.split(' ').map((w, wi) =>
@@ -1107,25 +1107,25 @@ const FAQ_ITEMS = [
 function FAQ({ mobile }) {
   const [openIdx, setOpenIdx] = useStateS(0);
   return (
-    <section id="faq" className="gl-section" style={{ background: 'var(--c-background-soft)', padding: "96px 56px 0px", overflow: 'hidden' }}>
+    <section id="faq" className="gl-section" style={{ background: 'var(--c-background-soft)', padding: "var(--space-96) var(--space-56) 0px", overflow: 'hidden' }}>
       <div style={{
         display: 'grid',
         gridTemplateColumns: mobile ? '1fr' : '0.9fr 1.3fr',
-        gap: mobile ? 32 : 96,
+        gap: mobile ? 'var(--space-32)' : 'var(--space-96)',
         alignItems: 'start'
       }}>
         <div style={{ position: mobile ? 'static' : 'sticky', top: 120 }}>
           <span className="gl-eyebrow">Dúvidas</span>
-          <h2 style={{ fontSize: mobile ? 'var(--text-h2-mobile)' : 'var(--text-h2)', marginTop: 16, lineHeight: 'var(--text-h2-lh)' }}>
+          <h2 style={{ fontSize: mobile ? 'var(--text-h2-mobile)' : 'var(--text-h2)', marginTop: 'var(--space-16)', lineHeight: 'var(--text-h2-lh)' }}>
             Ainda tem perguntas?
           </h2>
           {!mobile &&
-          <p style={{ marginTop: 24, fontSize: 'var(--text-body)', color: 'var(--c-muted-foreground)', lineHeight: 1.5, maxWidth: 320 }}>
+          <p style={{ marginTop: 'var(--space-24)', fontSize: 'var(--text-body)', color: 'var(--c-muted-foreground)', lineHeight: 1.5, maxWidth: 320 }}>
               Se a sua dúvida não estiver aqui, fale com a gente pela Central de Atendimento.
             </p>
           }
         </div>
-        <div style={{ paddingTop: mobile ? 0 : 36 }}>
+        <div style={{ paddingTop: mobile ? 0 : 'var(--space-36)'}}>
           {FAQ_ITEMS.map((item, i) => {
             const isOpen = openIdx === i;
             return (
@@ -1138,8 +1138,8 @@ function FAQ({ mobile }) {
                   style={{
                     width: '100%',
                     display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                    gap: 24,
-                    padding: mobile ? '20px 0' : '26px 0',
+                    gap: 'var(--space-24)',
+                    padding: mobile ? 'var(--space-20) 0' : 'var(--space-28) 0',
                     border: 0, background: 'transparent', cursor: 'pointer',
                     fontFamily: 'inherit', color: 'var(--c-foreground)',
                     textAlign: 'left'
@@ -1155,7 +1155,7 @@ function FAQ({ mobile }) {
                     background: isOpen ? 'var(--c-foreground)' : 'transparent',
                     color: isOpen ? 'var(--c-surface-dark-foreground)' : 'var(--c-foreground)',
                     display: 'grid', placeItems: 'center', flexShrink: 0,
-                    transition: 'transform .3s ease, background-color .25s ease, border-color .25s ease, color .25s ease',
+                    transition: 'transform var(--dur-moderate) ease, background-color var(--dur-base) ease, border-color var(--dur-base) ease, color var(--dur-base) ease',
                     transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)'
                   }}>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
@@ -1166,12 +1166,12 @@ function FAQ({ mobile }) {
                 <div style={{
                   display: 'grid',
                   gridTemplateRows: isOpen ? '1fr' : '0fr',
-                  transition: 'grid-template-rows .35s ease'
+                  transition: 'grid-template-rows var(--dur-moderate) ease'
                 }}>
                   <div style={{ overflow: 'hidden' }}>
                     <div style={{
-                      paddingBottom: mobile ? 24 : 30,
-                      paddingRight: mobile ? 0 : 80,
+                      paddingBottom: mobile ? 'var(--space-24)' : 'var(--space-32)',
+                      paddingRight: mobile ? 0 : 'var(--space-80)',
                       fontSize: mobile ? 'var(--text-body-mobile)' : 'var(--text-body)',
                       color: 'var(--c-muted-foreground)', lineHeight: 1.55,
                       maxWidth: 700
@@ -1223,7 +1223,7 @@ function Jornada({ mobile }) {
 
   return (
     <section id="jornada" className="gl-section">
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 16, maxWidth: 900, marginBottom: mobile ? 32 : 56 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-16)', maxWidth: 900, marginBottom: mobile ? 'var(--space-32)' : 'var(--space-56)'}}>
         <span className="gl-eyebrow">Antes, durante e depois</span>
         <h2 style={{ fontSize: mobile ? 'var(--text-h2-mobile)' : 'var(--text-h2)' }}>
           Alguém do Galeão em cada parte da viagem.
@@ -1233,33 +1233,33 @@ function Jornada({ mobile }) {
       <div style={{
         display: 'grid',
         gridTemplateColumns: mobile ? '1fr' : 'repeat(3, 1fr)',
-        gap: mobile ? 24 : 4,
+        gap: mobile ? 'var(--space-24)' : 'var(--space-4)',
         position: 'relative'
       }}>
         {cols.map((c, i) =>
         <div key={i} style={{
-          padding: mobile ? '24px 0 0' : '24px 28px',
+          padding: mobile ? 'var(--space-24) 0 0' : 'var(--space-24) var(--space-28)',
           borderLeft: !mobile && i > 0 ? '1px solid var(--c-border)' : 'none',
           borderTop: mobile && i > 0 ? '1px solid var(--c-border)' : 'none',
-          paddingTop: mobile && i > 0 ? 28 : mobile ? 0 : 24,
-          display: 'flex', flexDirection: 'column', gap: 24
+          paddingTop: mobile && i > 0 ? 'var(--space-28)' : mobile ? 0 : 24,
+          display: 'flex', flexDirection: 'column', gap: 'var(--space-24)'
         }}>
-            <div style={{ display: 'flex', alignItems: 'baseline', gap: 12 }}>
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: 'var(--space-12)'}}>
               <span style={{
               fontSize: 'var(--text-small)', fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase',
-              display: 'inline-flex', alignItems: 'center', gap: 8
+              display: 'inline-flex', alignItems: 'center', gap: 'var(--space-8)'
             }}>
-                <span style={{ display: 'inline-grid', placeItems: 'center', width: 22, height: 22, borderRadius: 999, background: 'var(--c-foreground)', color: 'var(--c-surface-dark-foreground)', fontSize: 'var(--text-micro)' }}>0{i + 1}</span>
+                <span style={{ display: 'inline-grid', placeItems: 'center', width: 22, height: 22, borderRadius: 'var(--r-pill)', background: 'var(--c-foreground)', color: 'var(--c-surface-dark-foreground)', fontSize: 'var(--text-micro)' }}>0{i + 1}</span>
                 {c.moment}
               </span>
               <span style={{ fontSize: 'var(--text-small)', color: 'var(--c-muted-foreground)' }}>{c.sub}</span>
             </div>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 18 }}>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 'var(--space-20)'}}>
               {c.items.map((it, j) =>
-            <li key={j} style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+            <li key={j} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-8)'}}>
                   <span style={{
                 fontSize: 'var(--text-micro)', fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase',
-                color: it.color, display: 'inline-flex', alignItems: 'center', gap: 6
+                color: it.color, display: 'inline-flex', alignItems: 'center', gap: 'var(--space-8)'
               }}>
                     <span style={{ width: 6, height: 6, borderRadius: 3, background: it.color }} />
                     {it.tag}
@@ -1280,18 +1280,18 @@ function Jornada({ mobile }) {
 // ─── Final CTA + Footer ─────────────────────────────────────────────────────
 function FinalCTA({ mobile }) {
   return (
-    <section className="gl-section" style={{ paddingTop: mobile ? 32 : 56, paddingBottom: mobile ? 64 : 120 }}>
+    <section className="gl-section" style={{ paddingTop: mobile ? 'var(--space-32)' : 'var(--space-56)', paddingBottom: mobile ? 'var(--space-64)' : 120}}>
       <div style={{
         borderRadius: 'var(--r-xl)',
         background: 'var(--c-primary)',
-        padding: mobile ? '40px 28px' : '80px 64px',
+        padding: mobile ? 'var(--space-40) var(--space-28)' : 'var(--space-80) var(--space-64)',
         display: 'flex', flexDirection: mobile ? 'column' : 'row',
-        gap: 32, alignItems: mobile ? 'stretch' : 'center', justifyContent: 'space-between'
+        gap: 'var(--space-32)', alignItems: mobile ? 'stretch' : 'center', justifyContent: 'space-between'
       }}>
         <h3 style={{ fontSize: mobile ? 'var(--text-h2-mobile)' : 'var(--text-h2)', color: 'var(--c-primary-foreground)', maxWidth: 720 }}>
           O próximo voo é por nossa conta.
         </h3>
-        <div style={{ display: 'flex', flexDirection: mobile ? 'column' : 'row', gap: 10 }}>
+        <div style={{ display: 'flex', flexDirection: mobile ? 'column' : 'row', gap: 'var(--space-12)'}}>
           <button className="gl-btn gl-btn--dark">Garanta sua Hospitalidade {window.GaleonIcon.arrow(14)}</button>
           <button className="gl-btn gl-btn--outline">
             Peça no portão agora
@@ -1306,17 +1306,17 @@ function Footer({ mobile }) {
   return (
     <footer style={{
       borderTop: '1px solid var(--c-border)',
-      padding: mobile ? '40px 20px 32px' : '64px 56px 40px',
-      display: 'flex', flexDirection: 'column', gap: 40
+      padding: mobile ? 'var(--space-40) var(--space-20) var(--space-32)' : 'var(--space-64) var(--space-56) var(--space-40)',
+      display: 'flex', flexDirection: 'column', gap: 'var(--space-40)'
     }}>
       <div style={{
         display: 'grid',
         gridTemplateColumns: mobile ? '1fr' : '1fr auto auto auto',
-        gap: mobile ? 32 : '24px 56px',
+        gap: mobile ? 'var(--space-32)' : 'var(--space-24) var(--space-56)',
         alignItems: 'stretch'
       }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 18, maxWidth: 360 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-20)', maxWidth: 360 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-8)'}}>
             <image-slot
               id="gl-logo"
               shape="rect"
@@ -1344,9 +1344,9 @@ function Footer({ mobile }) {
         { h: 'GaleON', l: ['Como funciona', 'Para empresas', 'Para parceiros', 'Imprensa'] },
         { h: 'Ajuda', l: ['Central de atendimento', 'Status do pedido', 'Termos', 'Privacidade'] }].
         map((c, i) =>
-        <div key={i} style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+        <div key={i} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-12)'}}>
             <h4 style={{ fontSize: 'var(--text-micro)', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--c-muted-foreground)' }}>{c.h}</h4>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 'var(--space-12)'}}>
               {c.l.map((x) => <li key={x}><a href="#" style={{ fontSize: 'var(--text-small)' }}>{x}</a></li>)}
             </ul>
           </div>
@@ -1354,8 +1354,8 @@ function Footer({ mobile }) {
       </div>
       <div style={{
         display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-        paddingTop: 24, borderTop: '1px solid var(--c-border)',
-        fontSize: 'var(--text-small)', color: 'var(--c-muted-foreground)', flexWrap: 'wrap', gap: 12
+        paddingTop: 'var(--space-24)', borderTop: '1px solid var(--c-border)',
+        fontSize: 'var(--text-small)', color: 'var(--c-muted-foreground)', flexWrap: 'wrap', gap: 'var(--space-12)'
       }}>
         <span>© 2026 GaleON · RIOgaleão</span>
         <img src="uploads/desenvolvido-pelo-strelo.webp" alt="Desenvolvido pelo Strelo" style={{ height: 20 }} />

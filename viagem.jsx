@@ -238,18 +238,18 @@ function ServiceCard({ item, anchorId, idx, selected, onToggle, svcByKey, Icon }
         color: isSelected ? ink : 'var(--c-foreground)',
         border: '1px solid ' + (isSelected ? color : 'var(--c-border)'),
         borderRadius: 'var(--r-md)',
-        padding: '14px 16px',
-        display: 'flex', flexDirection: 'column', gap: 8,
+        padding: 'var(--space-16) var(--space-16)',
+        display: 'flex', flexDirection: 'column', gap: 'var(--space-8)',
         cursor: 'pointer', textAlign: 'left',
         fontFamily: 'inherit',
-        transition: 'background-color .25s ease, color .25s ease, border-color .25s ease',
+        transition: 'background-color var(--dur-base) ease, color var(--dur-base) ease, border-color var(--dur-base) ease',
         width: '100%',
       }}
     >
-      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-8)'}}>
         <span style={{
           display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-          width: 28, height: 28, borderRadius: 8,
+          width: 28, height: 28, borderRadius: 'var(--r-sm)',
           background: isSelected ? 'rgba(255,255,255,0.16)' : color + '14',
           color: isSelected ? ink : color,
           flexShrink: 0,
@@ -262,7 +262,7 @@ function ServiceCard({ item, anchorId, idx, selected, onToggle, svcByKey, Icon }
         {item.recommended && !isSelected && (
           <span style={{
             fontSize: 10, fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase',
-            padding: '3px 7px', borderRadius: 999,
+            padding: '3px var(--space-8)', borderRadius: 'var(--r-pill)',
             color: color, border: '1px solid ' + color,
           }}>Sugerido</span>
         )}
@@ -288,15 +288,15 @@ function NowCard({ item, idx, selected, onToggle, svcByKey, Icon, large }) {
         color: isSelected ? ink : 'var(--c-foreground)',
         border: '1px solid ' + (isSelected ? color : 'var(--c-border)'),
         borderRadius: 'var(--r-lg)',
-        padding: large ? '28px 30px' : '22px 24px',
-        display: 'flex', flexDirection: 'column', gap: 14,
+        padding: large ? 'var(--space-28) var(--space-32)' : 'var(--space-24) var(--space-24)',
+        display: 'flex', flexDirection: 'column', gap: 'var(--space-16)',
         cursor: 'pointer', textAlign: 'left',
         fontFamily: 'inherit',
-        transition: 'background-color .25s ease, color .25s ease, border-color .25s ease',
+        transition: 'background-color var(--dur-base) ease, color var(--dur-base) ease, border-color var(--dur-base) ease',
         minHeight: large ? 240 : 180,
       }}
     >
-      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-12)'}}>
         <span style={{
           display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
           width: 38, height: 38, borderRadius: 11,
@@ -313,7 +313,7 @@ function NowCard({ item, idx, selected, onToggle, svcByKey, Icon, large }) {
           <span style={{
             marginLeft: 'auto',
             fontSize: 10, fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase',
-            padding: '3px 8px', borderRadius: 999,
+            padding: '3px var(--space-8)', borderRadius: 'var(--r-pill)',
             color, border: '1px solid ' + color,
           }}>Sugerido</span>
         )}
@@ -321,12 +321,12 @@ function NowCard({ item, idx, selected, onToggle, svcByKey, Icon, large }) {
           <span style={{
             marginLeft: 'auto',
             fontSize: 10, fontWeight: 600, letterSpacing: '0.04em', textTransform: 'uppercase',
-            padding: '3px 8px', borderRadius: 999,
+            padding: '3px var(--space-8)', borderRadius: 'var(--r-pill)',
             color: ink, background: color,
           }}>Agora</span>
         )}
       </div>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 6, flex: 1 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-8)', flex: 1 }}>
         <div style={{
           fontSize: large ? 26 : 20, fontWeight: 600,
           letterSpacing: '-0.02em', lineHeight: 1.15,
@@ -366,23 +366,23 @@ function FlightInput({ flight, onSelect, onClear, mobile }) {
 
   return (
     <div style={{
-      display: 'flex', flexDirection: 'column', gap: mobile ? 16 : 18
+      display: 'flex', flexDirection: 'column', gap: mobile ? 'var(--space-16)' : 'var(--space-20)'
     }}>
       {/* Search row — input + active flight chip side by side */}
       <div style={{
-        display: 'flex', alignItems: 'center', gap: 10,
+        display: 'flex', alignItems: 'center', gap: 'var(--space-12)',
         flexWrap: 'wrap'
       }}>
         <form onSubmit={submit} style={{
-          display: 'flex', gap: 8, alignItems: 'stretch',
+          display: 'flex', gap: 'var(--space-8)', alignItems: 'stretch',
           background: 'var(--c-card)', border: '1px solid var(--c-border)',
-          borderRadius: 999, padding: 5,
+          borderRadius: 'var(--r-pill)', padding: 'var(--space-4)',
           flex: mobile ? '1 1 100%' : '0 1 380px',
           minWidth: mobile ? 0 : 280
         }}>
           <span style={{
             display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-            paddingLeft: 14, color: 'var(--c-muted-foreground)'
+            paddingLeft: 'var(--space-16)', color: 'var(--c-muted-foreground)'
           }}>
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
               <circle cx="11" cy="11" r="7" /><path d="m20 20-3-3" />
@@ -398,7 +398,7 @@ function FlightInput({ flight, onSelect, onClear, mobile }) {
             style={{
               flex: 1, minWidth: 0,
               border: 0, outline: 0, background: 'transparent',
-              padding: '0 6px', height: 38,
+              padding: '0 var(--space-8)', height: 38,
               fontSize: 14, fontWeight: 500,
               letterSpacing: '-0.005em',
               fontFamily: 'inherit', color: 'var(--c-foreground)'
@@ -407,8 +407,8 @@ function FlightInput({ flight, onSelect, onClear, mobile }) {
             <button
               type="submit"
               style={{
-                height: 38, padding: '0 14px',
-                borderRadius: 999, border: 0,
+                height: 38, padding: '0 var(--space-16)',
+                borderRadius: 'var(--r-pill)', border: 0,
                 background: 'var(--c-foreground)', color: 'var(--c-surface-dark-foreground)',
                 fontSize: 13, fontWeight: 600, cursor: 'pointer',
                 fontFamily: 'inherit'
@@ -424,15 +424,15 @@ function FlightInput({ flight, onSelect, onClear, mobile }) {
             className="gl-hero-anim"
             aria-label={`Remover voo ${flight.code}`}
             style={{
-              display: 'inline-flex', alignItems: 'center', gap: 10,
-              padding: '8px 10px 8px 14px',
+              display: 'inline-flex', alignItems: 'center', gap: 'var(--space-12)',
+              padding: 'var(--space-8) var(--space-12) var(--space-8) var(--space-16)',
               border: '1px solid var(--c-primary)',
               background: 'var(--c-primary)', color: 'var(--c-primary-foreground)',
-              borderRadius: 999,
+              borderRadius: 'var(--r-pill)',
               fontSize: 13, fontWeight: 600, letterSpacing: '-0.005em',
               cursor: 'pointer', whiteSpace: 'nowrap',
               fontFamily: 'inherit',
-              transition: 'opacity .15s ease'
+              transition: 'opacity var(--dur-fast) ease'
             }}
             onMouseOver={(e) => { e.currentTarget.style.opacity = '0.88'; }}
             onMouseOut={(e) => { e.currentTarget.style.opacity = '1'; }}>
@@ -441,14 +441,14 @@ function FlightInput({ flight, onSelect, onClear, mobile }) {
             </svg>
             <span>
               {flight.destination.city}
-              <span style={{ color: 'var(--c-primary-foreground)', opacity: 0.45, margin: '0 7px' }}>•</span>
+              <span style={{ color: 'var(--c-primary-foreground)', opacity: 0.45, margin: '0 var(--space-8)'}}>•</span>
               {flight.date}
-              <span style={{ color: 'var(--c-primary-foreground)', opacity: 0.45, margin: '0 7px' }}>•</span>
+              <span style={{ color: 'var(--c-primary-foreground)', opacity: 0.45, margin: '0 var(--space-8)'}}>•</span>
               {flight.time}
             </span>
             <span style={{
               display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-              width: 18, height: 18, borderRadius: 999,
+              width: 18, height: 18, borderRadius: 'var(--r-pill)',
               background: 'rgba(31,42,12,0.16)',
               marginLeft: 2
             }}>
@@ -462,17 +462,17 @@ function FlightInput({ flight, onSelect, onClear, mobile }) {
 
       {/* Demo flights — only in empty state, hidden behind a discreet toggle */}
       {!flight &&
-        <div style={{ display: 'flex', flexDirection: 'column', gap: demoOpen ? 12 : 0 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: demoOpen ? 'var(--space-12)' : 0}}>
           <button
             onClick={() => setDemoOpen((o) => !o)}
             style={{
               alignSelf: 'flex-start',
-              display: 'inline-flex', alignItems: 'center', gap: 6,
-              background: 'transparent', border: 0, padding: '4px 2px',
+              display: 'inline-flex', alignItems: 'center', gap: 'var(--space-8)',
+              background: 'transparent', border: 0, padding: 'var(--space-4) 2px',
               cursor: 'pointer', fontFamily: 'inherit',
               fontSize: 12, fontWeight: 500, letterSpacing: '-0.005em',
               color: 'var(--c-muted-foreground)',
-              transition: 'color .15s ease'
+              transition: 'color var(--dur-fast) ease'
             }}
             onMouseOver={(e) => { e.currentTarget.style.color = 'var(--c-foreground)'; }}
             onMouseOut={(e) => { e.currentTarget.style.color = 'var(--c-muted-foreground)'; }}>
@@ -480,7 +480,7 @@ function FlightInput({ flight, onSelect, onClear, mobile }) {
             <span style={{
               display: 'inline-flex',
               transform: demoOpen ? 'rotate(180deg)' : 'rotate(0)',
-              transition: 'transform .2s ease'
+              transition: 'transform var(--dur-base) ease'
             }}>
               <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="m6 9 6 6 6-6" />
@@ -490,24 +490,24 @@ function FlightInput({ flight, onSelect, onClear, mobile }) {
           <div style={{
             display: 'grid',
             gridTemplateRows: demoOpen ? '1fr' : '0fr',
-            transition: 'grid-template-rows .25s ease'
+            transition: 'grid-template-rows var(--dur-base) ease'
           }}>
             <div style={{ overflow: 'hidden' }}>
-              <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', paddingTop: 4 }}>
+              <div style={{ display: 'flex', gap: 'var(--space-8)', flexWrap: 'wrap', paddingTop: 'var(--space-4)'}}>
                 {FLIGHTS.map((f) =>
                   <button
                     key={f.id}
                     onClick={() => onSelect(f.id)}
                     style={{
-                      display: 'inline-flex', alignItems: 'center', gap: 10,
-                      padding: mobile ? '9px 13px' : '10px 16px',
-                      borderRadius: 999,
+                      display: 'inline-flex', alignItems: 'center', gap: 'var(--space-12)',
+                      padding: mobile ? 'var(--space-8) var(--space-12)' : 'var(--space-12) var(--space-16)',
+                      borderRadius: 'var(--r-pill)',
                       border: '1px solid var(--c-border)',
                       background: 'var(--c-card)', color: 'var(--c-foreground)',
                       fontSize: 13, fontWeight: 500, letterSpacing: '-0.005em',
                       cursor: 'pointer', whiteSpace: 'nowrap',
                       fontFamily: 'inherit',
-                      transition: 'border-color .15s ease'
+                      transition: 'border-color var(--dur-fast) ease'
                     }}
                     onMouseOver={(e) => { e.currentTarget.style.borderColor = 'var(--c-foreground)'; }}
                     onMouseOut={(e) => { e.currentTarget.style.borderColor = 'var(--c-border)'; }}>
@@ -546,13 +546,13 @@ function FlightTicket({ flight, mobile }) {
     }}>
       {/* ── Main body (left) ── */}
       <div style={{
-        padding: mobile ? '14px 16px' : '16px 20px',
+        padding: mobile ? 'var(--space-16) var(--space-16)' : 'var(--space-16) var(--space-20)',
         display: 'flex', flexDirection: 'column',
-        gap: mobile ? 12 : 14,
+        gap: mobile ? 'var(--space-12)' : 'var(--space-16)',
         borderRight: '1.5px dashed var(--c-border)'
       }}>
         {/* Airline + boarding pass label */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-8)'}}>
           <span style={{
             fontSize: 10, fontWeight: 700, letterSpacing: '0.1em',
             color: 'var(--c-foreground)', textTransform: 'uppercase'
@@ -568,7 +568,7 @@ function FlightTicket({ flight, mobile }) {
         <div style={{
           display: 'grid',
           gridTemplateColumns: '1fr auto 1fr',
-          alignItems: 'end', gap: 8
+          alignItems: 'end', gap: 'var(--space-8)'
         }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 3, minWidth: 0 }}>
             <span style={{
@@ -587,8 +587,8 @@ function FlightTicket({ flight, mobile }) {
           </div>
 
           <div style={{
-            display: 'flex', alignItems: 'center', gap: 4,
-            paddingBottom: mobile ? 10 : 12
+            display: 'flex', alignItems: 'center', gap: 'var(--space-4)',
+            paddingBottom: mobile ? 'var(--space-12)' : 'var(--space-12)'
           }}>
             <span style={{ width: 10, borderTop: '1px dashed var(--c-border)' }} />
             <svg width={mobile ? 12 : 14} height={mobile ? 12 : 14} viewBox="0 0 24 24" fill="var(--c-foreground)" style={{ flexShrink: 0 }}>
@@ -619,8 +619,8 @@ function FlightTicket({ flight, mobile }) {
         <div style={{
           display: 'grid',
           gridTemplateColumns: '1fr 1fr',
-          gap: 12,
-          paddingTop: 10,
+          gap: 'var(--space-12)',
+          paddingTop: 'var(--space-12)',
           borderTop: '1px dashed var(--c-border)'
         }}>
           <TicketMeta label="Date" value={flight.when} />
@@ -630,10 +630,10 @@ function FlightTicket({ flight, mobile }) {
 
       {/* ── Stub (right) ── */}
       <div style={{
-        padding: mobile ? '12px 6px' : '14px 8px',
+        padding: mobile ? 'var(--space-12) var(--space-8)' : 'var(--space-16) var(--space-8)',
         display: 'flex', flexDirection: 'column',
         alignItems: 'center', justifyContent: 'space-between',
-        gap: 10
+        gap: 'var(--space-12)'
       }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 2, alignItems: 'center' }}>
           <span style={{
@@ -661,14 +661,14 @@ function FlightTicket({ flight, mobile }) {
       {/* ── Perforation cutouts ── */}
       <span style={{
         position: 'absolute', top: -8, left: `calc(100% - ${stubW}px - 8px)`,
-        width: 16, height: 16, borderRadius: 8,
+        width: 16, height: 16, borderRadius: 'var(--r-sm)',
         background: 'var(--c-background-soft)',
         border: '1px solid var(--c-border)',
         pointerEvents: 'none'
       }} />
       <span style={{
         position: 'absolute', bottom: -8, left: `calc(100% - ${stubW}px - 8px)`,
-        width: 16, height: 16, borderRadius: 8,
+        width: 16, height: 16, borderRadius: 'var(--r-sm)',
         background: 'var(--c-background-soft)',
         border: '1px solid var(--c-border)',
         pointerEvents: 'none'
@@ -795,7 +795,7 @@ function JourneyCard({ step, idx, flight, selected, onToggle, svcByKey, Icon, gh
         textAlign: 'left',
         fontFamily: 'inherit',
         overflow: 'visible',
-        transition: 'border-color .2s ease, box-shadow .2s ease, transform .2s ease',
+        transition: 'border-color var(--dur-base) ease, box-shadow var(--dur-base) ease, transform var(--dur-base) ease',
         width: '100%'
       }}
       onMouseOver={(e) => { if (!ghost && !isSelected) e.currentTarget.style.transform = 'translateY(-2px)'; }}
@@ -807,7 +807,7 @@ function JourneyCard({ step, idx, flight, selected, onToggle, svcByKey, Icon, gh
           top: -22,
           left: '50%',
           transform: 'translateX(-50%)',
-          width: 30, height: 30, borderRadius: 999,
+          width: 30, height: 30, borderRadius: 'var(--r-pill)',
           background: 'var(--c-card)',
           border: '2px solid var(--c-primary)',
           display: 'grid', placeItems: 'center',
@@ -832,7 +832,7 @@ function JourneyCard({ step, idx, flight, selected, onToggle, svcByKey, Icon, gh
         {partners ?
           <div style={{
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            gap: mobile ? 10 : 14, padding: '0 12px',
+            gap: mobile ? 'var(--space-12)' : 'var(--space-16)', padding: '0 var(--space-12)',
             width: '100%', height: '100%',
             boxSizing: 'border-box'
           }}>
@@ -856,14 +856,14 @@ function JourneyCard({ step, idx, flight, selected, onToggle, svcByKey, Icon, gh
             position: 'absolute', top: 8, left: 8,
             fontSize: 9, fontWeight: 600, letterSpacing: '0.06em',
             textTransform: 'uppercase',
-            padding: '3px 7px', borderRadius: 999,
+            padding: '3px var(--space-8)', borderRadius: 'var(--r-pill)',
             background: 'var(--c-card)', color, border: `1px solid ${color}`
           }}>Sugerido</span>
         }
         {isSelected &&
           <span style={{
             position: 'absolute', top: 8, right: 8,
-            width: 22, height: 22, borderRadius: 999,
+            width: 22, height: 22, borderRadius: 'var(--r-pill)',
             background: color, color: ink,
             display: 'grid', placeItems: 'center'
           }}>
@@ -876,13 +876,13 @@ function JourneyCard({ step, idx, flight, selected, onToggle, svcByKey, Icon, gh
 
       {/* Body */}
       <div style={{
-        padding: mobile ? '12px 14px 14px' : '14px 16px 16px',
-        display: 'flex', flexDirection: 'column', gap: 6, flex: 1
+        padding: mobile ? 'var(--space-12) var(--space-16) var(--space-16)' : 'var(--space-16) var(--space-16) var(--space-16)',
+        display: 'flex', flexDirection: 'column', gap: 'var(--space-8)', flex: 1
       }}>
         <h4 style={{
           fontSize: mobile ? 15 : 16, fontWeight: 600,
           letterSpacing: '-0.015em', lineHeight: 1.25, margin: 0,
-          display: 'flex', alignItems: 'center', gap: 8
+          display: 'flex', alignItems: 'center', gap: 'var(--space-8)'
         }}>
           <span style={{
             width: 6, height: 6, borderRadius: 3,
@@ -895,8 +895,8 @@ function JourneyCard({ step, idx, flight, selected, onToggle, svcByKey, Icon, gh
           color: 'var(--c-muted-foreground)', lineHeight: 1.45, flex: 1
         }}>{step.meta}</p>
         <span style={{
-          marginTop: 8,
-          paddingTop: 8,
+          marginTop: 'var(--space-8)',
+          paddingTop: 'var(--space-8)',
           borderTop: '1px dashed var(--c-border)',
           fontSize: 10, fontWeight: 600,
           letterSpacing: '0.08em', textTransform: 'uppercase',
@@ -930,8 +930,8 @@ function Viagem({ mobile }) {
     <section id="viagem" className="gl-section" style={{ background: 'var(--c-background-soft)' }}>
       {/* Header */}
       <div style={{
-        display: 'flex', flexDirection: 'column', gap: 16,
-        maxWidth: 760, marginBottom: mobile ? 24 : 32
+        display: 'flex', flexDirection: 'column', gap: 'var(--space-16)',
+        maxWidth: 760, marginBottom: mobile ? 'var(--space-24)' : 'var(--space-32)'
       }}>
         <span className="gl-eyebrow">Sua viagem</span>
         <h2 style={{ fontSize: mobile ? 36 : 64 }}>
@@ -946,7 +946,7 @@ function Viagem({ mobile }) {
       </div>
 
       {/* Search + active flight chip */}
-      <div style={{ marginBottom: mobile ? 24 : 32 }}>
+      <div style={{ marginBottom: mobile ? 'var(--space-24)' : 'var(--space-32)'}}>
         <FlightInput
           flight={flight}
           mobile={mobile}

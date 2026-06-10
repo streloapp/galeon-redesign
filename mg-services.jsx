@@ -15,9 +15,9 @@ function mgPriceNum(v) { return parseInt(String(v).replace(/\D/g, ''), 10) || 0;
 function MGFamPrice({ s }) {
   const lowest = s.prices.reduce((a, b) => (mgPriceNum(b.value) < mgPriceNum(a.value) ? b : a));
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)'}}>
       <span style={{ fontSize: 'var(--text-small)', color: 'var(--c-muted-foreground)' }}>A partir de</span>
-      <div style={{ display: 'flex', alignItems: 'baseline', gap: 7, flexWrap: 'wrap' }}>
+      <div style={{ display: 'flex', alignItems: 'baseline', gap: 'var(--space-8)', flexWrap: 'wrap' }}>
         <span className="ds-num" style={{ fontSize: 'var(--num-price)', fontWeight: 600, color: 'var(--c-foreground)', letterSpacing: '-0.02em' }}>{lowest.value}</span>
         <span style={{ fontSize: 'var(--text-micro)', color: 'var(--c-muted-foreground)' }}>/pessoa</span>
       </div>
@@ -29,9 +29,9 @@ function MGFamPrice({ s }) {
 function MGFamInclGroup({ items }) {
   const Feat = window.MGFeat;
   return (
-    <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 8 }}>
+    <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 'var(--space-8)'}}>
       {items.map((it) =>
-      <li key={it.label} style={{ display: 'flex', alignItems: 'flex-start', gap: 13, fontSize: 'var(--text-body)', color: 'var(--c-foreground)', lineHeight: 1.35 }}>
+      <li key={it.label} style={{ display: 'flex', alignItems: 'flex-start', gap: 'var(--space-12)', fontSize: 'var(--text-body)', color: 'var(--c-foreground)', lineHeight: 1.35 }}>
           <span style={{ color: 'var(--c-mg)', flexShrink: 0, marginTop: 1 }}>{Feat[it.icon] && Feat[it.icon](18)}</span>
           <span>{it.label}</span>
         </li>
@@ -69,12 +69,12 @@ function MGGallery({ images }) {
 function MGFamBody({ s, mobile, style }) {
   const Icon = window.MGIcon;
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: mobile ? 18 : 22, ...style }}>
+    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: mobile ? 'var(--space-20)' : 'var(--space-24)', ...style }}>
       <h3 style={{ fontSize: mobile ? 'var(--text-h4-mobile)' : 'var(--text-h4)', lineHeight: 'var(--text-h4-lh)', letterSpacing: 'var(--text-h4-tracking)' }}>{s.name}</h3>
       <p style={{ fontSize: mobile ? 'var(--text-body-mobile)' : 'var(--text-body)', color: 'var(--c-muted-foreground)', lineHeight: 1.5 }}>{s.lead}</p>
       <MGFamInclGroup items={s.includes} />
       <MGFamPrice s={s} />
-      <div style={{ marginTop: 4 }}>
+      <div style={{ marginTop: 'var(--space-4)'}}>
         <button className="gl-btn gl-btn--service" style={{ '--btn-bg': 'var(--c-mg)', '--btn-fg': 'var(--c-mg-ink)' }}>{s.cta} {Icon.arrow(13)}</button>
       </div>
     </div>);
@@ -98,8 +98,8 @@ function MGServiceCard({ s, side, mobile, variant = 'overlap' }) {
     if (variant === 'overlap') {
       return (
         <article className="mg-fam" id={s.key} style={{ position: 'relative', display: 'block' }}>
-          {media({ position: 'relative', margin: '0 16px', aspectRatio: '4/3' })}
-          <div className="mg-fam__card" style={{ position: 'relative', zIndex: 1, margin: '-40px 16px 0', padding: '64px 26px 28px' }}>
+          {media({ position: 'relative', margin: '0 var(--space-16)', aspectRatio: '4/3' })}
+          <div className="mg-fam__card" style={{ position: 'relative', zIndex: 1, margin: '-40px var(--space-16) 0', padding: 'var(--space-64) var(--space-28) var(--space-28)'}}>
             <MGFamBody s={s} mobile={mobile} />
           </div>
         </article>);
@@ -109,11 +109,11 @@ function MGServiceCard({ s, side, mobile, variant = 'overlap' }) {
       return (
         <article className="mg-fam" id={s.key} style={{
           background: 'var(--c-card)', border: '1px solid var(--c-border)', borderRadius: 'var(--r-xl)',
-          overflow: 'hidden', boxShadow: '0 16px 44px rgba(20,17,13,0.06)',
+          overflow: 'hidden', boxShadow: 'var(--shadow-card)',
           display: 'flex', flexDirection: 'column'
         }}>
           {media({ position: 'relative', width: '100%', aspectRatio: '4/3', borderRadius: 0, boxShadow: 'none' })}
-          <div style={{ padding: '24px 22px 22px' }}>
+          <div style={{ padding: 'var(--space-24) var(--space-24) var(--space-24)'}}>
             <MGFamBody s={s} mobile={mobile} />
           </div>
         </article>);
@@ -121,12 +121,12 @@ function MGServiceCard({ s, side, mobile, variant = 'overlap' }) {
     return (
       <article className="mg-fam" id={s.key}
         style={insetM
-          ? { background: 'var(--c-card)', border: '1px solid var(--c-border)', borderRadius: 'var(--r-xl)', boxShadow: '0 16px 44px rgba(20,17,13,0.06)', padding: 14, display: 'flex', flexDirection: 'column', gap: 6 }
-          : { display: 'flex', flexDirection: 'column', gap: 16 }}>
+          ? { background: 'var(--c-card)', border: '1px solid var(--c-border)', borderRadius: 'var(--r-xl)', boxShadow: 'var(--shadow-card)', padding: 'var(--space-16)', display: 'flex', flexDirection: 'column', gap: 'var(--space-8)'}
+          : { display: 'flex', flexDirection: 'column', gap: 'var(--space-16)'}}>
         {media({ position: 'relative', width: '100%', aspectRatio: '4/3', borderRadius: insetM ? 'var(--r-lg)' : 'var(--r-xl)' })}
         <div className="mg-fam__card" style={insetM
-          ? { background: 'transparent', border: 0, boxShadow: 'none', borderRadius: 0, padding: '14px 12px 10px' }
-          : { padding: '26px 24px' }}>
+          ? { background: 'transparent', border: 0, boxShadow: 'none', borderRadius: 0, padding: 'var(--space-16) var(--space-12) var(--space-12)'}
+          : { padding: 'var(--space-28) var(--space-24)'}}>
           <MGFamBody s={s} mobile={mobile} />
         </div>
       </article>);
@@ -134,13 +134,13 @@ function MGServiceCard({ s, side, mobile, variant = 'overlap' }) {
 
   // ── DESKTOP: BESIDE — two panels, small gap ────────────────────────────
   if (variant === 'beside') {
-    const mediaEl = media({ position: 'relative', flex: '1.05 1 0', borderRadius: 'var(--r-xl)', overflow: 'hidden', boxShadow: '0 18px 48px -18px rgba(20,17,13,0.18)', background: 'var(--c-mg-soft)' });
+    const mediaEl = media({ position: 'relative', flex: '1.05 1 0', borderRadius: 'var(--r-xl)', overflow: 'hidden', boxShadow: 'var(--shadow-pop)', background: 'var(--c-mg-soft)' });
     const cardEl =
-      <div className="mg-fam__card" style={{ flex: '1 1 0', padding: '52px 56px' }}>
+      <div className="mg-fam__card" style={{ flex: '1 1 0', padding: 'var(--space-52) var(--space-56)'}}>
         <MGFamBody s={s} mobile={mobile} />
       </div>;
     return (
-      <article className="mg-fam mg-fam--beside" id={s.key} style={{ display: 'flex', alignItems: 'stretch', gap: 28, minHeight: 520 }}>
+      <article className="mg-fam mg-fam--beside" id={s.key} style={{ display: 'flex', alignItems: 'stretch', gap: 'var(--space-28)', minHeight: 520 }}>
         {imgLeft ? <React.Fragment>{mediaEl}{cardEl}</React.Fragment> : <React.Fragment>{cardEl}{mediaEl}</React.Fragment>}
       </article>);
   }
@@ -149,14 +149,14 @@ function MGServiceCard({ s, side, mobile, variant = 'overlap' }) {
   if (variant === 'inset') {
     const mediaEl = media({ position: 'relative', flex: '1.05 1 0', borderRadius: 'var(--r-lg)', overflow: 'hidden', boxShadow: 'none', background: 'var(--c-mg-soft)' });
     const cardEl =
-      <div style={{ flex: '1 1 0', padding: imgLeft ? '32px 36px 32px 24px' : '32px 24px 32px 36px' }}>
+      <div style={{ flex: '1 1 0', padding: imgLeft ? 'var(--space-32) var(--space-36) var(--space-32) var(--space-24)' : 'var(--space-32) var(--space-24) var(--space-32) var(--space-36)'}}>
         <MGFamBody s={s} mobile={mobile} />
       </div>;
     return (
       <article className="mg-fam mg-fam--inset" id={s.key} style={{
-        display: 'flex', alignItems: 'stretch', gap: 8, minHeight: 520,
+        display: 'flex', alignItems: 'stretch', gap: 'var(--space-8)', minHeight: 520,
         background: 'var(--c-card)', border: '1px solid var(--c-border)', borderRadius: 'var(--r-xl)',
-        boxShadow: '0 16px 44px rgba(20,17,13,0.06)', padding: 18
+        boxShadow: 'var(--shadow-card)', padding: 'var(--space-20)'
       }}>
         {imgLeft ? <React.Fragment>{mediaEl}{cardEl}</React.Fragment> : <React.Fragment>{cardEl}{mediaEl}</React.Fragment>}
       </article>);
@@ -169,14 +169,14 @@ function MGServiceCard({ s, side, mobile, variant = 'overlap' }) {
     const mediaRadius = imgLeft ? '0 var(--r-lg) var(--r-lg) 0' : 'var(--r-lg) 0 0 var(--r-lg)';
     const mediaEl = media({ position: 'relative', flex: '1.12 1 0', borderRadius: mediaRadius, overflow: 'hidden', boxShadow: 'none', background: 'var(--c-mg-soft)' });
     const cardEl =
-      <div style={{ flex: '1 1 0', padding: imgLeft ? '40px 48px 40px 20px' : '40px 20px 40px 48px' }}>
+      <div style={{ flex: '1 1 0', padding: imgLeft ? 'var(--space-40) var(--space-48) var(--space-40) var(--space-20)' : 'var(--space-40) var(--space-20) var(--space-40) var(--space-48)'}}>
         <MGFamBody s={s} mobile={mobile} />
       </div>;
     return (
       <article className="mg-fam mg-fam--flush" id={s.key} style={{
-        display: 'flex', alignItems: 'stretch', minHeight: 520, gap: 28,
+        display: 'flex', alignItems: 'stretch', minHeight: 520, gap: 'var(--space-28)',
         background: 'var(--c-card)', border: '1px solid var(--c-border)', borderRadius: 'var(--r-xl)',
-        overflow: 'hidden', boxShadow: '0 16px 44px rgba(20,17,13,0.06)'
+        overflow: 'hidden', boxShadow: 'var(--shadow-card)'
       }}>
         {imgLeft ? <React.Fragment>{mediaEl}{cardEl}</React.Fragment> : <React.Fragment>{cardEl}{mediaEl}</React.Fragment>}
       </article>);
@@ -191,7 +191,7 @@ function MGServiceCard({ s, side, mobile, variant = 'overlap' }) {
     <div className="mg-fam__card" style={{
       position: 'relative', zIndex: 1, width: '44%',
       marginLeft: imgLeft ? 'auto' : 0, marginRight: imgLeft ? 0 : 'auto',
-      padding: imgLeft ? '46px 50px 46px 132px' : '46px 132px 46px 50px'
+      padding: imgLeft ? 'var(--space-48) var(--space-52) var(--space-48) 132px' : 'var(--space-48) 132px var(--space-48) var(--space-52)'
     }}>
       <MGFamBody s={s} mobile={mobile} />
     </div>;
@@ -225,13 +225,13 @@ function MGZoneSection({ zone, mobile, variant = 'overlap' }) {
 
   return (
     <section ref={rootRef} id={zone.id} className="gl-section" style={{ scrollMarginTop: 80 }}>
-      <div style={{ maxWidth: 820, display: 'flex', flexDirection: 'column', gap: 16, marginBottom: mobile ? 32 : 52 }} className="mg-reveal">
+      <div style={{ maxWidth: 820, display: 'flex', flexDirection: 'column', gap: 'var(--space-16)', marginBottom: mobile ? 'var(--space-32)' : 'var(--space-52)'}} className="mg-reveal">
         <span className="gl-eyebrow" style={{ color: 'var(--c-mg)' }}>{zone.eyebrow}</span>
         <h2 style={{ fontSize: mobile ? 'var(--text-h2-mobile)' : 'var(--text-h2)', letterSpacing: 'var(--text-h2-tracking)', lineHeight: 'var(--text-h2-lh)' }}>{zone.title}</h2>
         {zone.sub && <p style={{ fontSize: mobile ? 'var(--text-subtitle-mobile)' : 'var(--text-subtitle)', color: 'var(--c-muted-foreground)', lineHeight: 1.5, maxWidth: 640 }}>{zone.sub}</p>}
       </div>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: mobile ? 32 : 104 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: mobile ? 'var(--space-32)' : 'var(--space-104)'}}>
         {all.map((s, i) =>
         <div key={s.key} className="mg-reveal">
             <MGServiceCard s={s} side={i % 2 === 0 ? 'right' : 'left'} mobile={mobile} variant={variant} />
